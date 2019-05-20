@@ -1,0 +1,69 @@
+/*
+ * Workaround SLDS icons for FontAwesome
+ */
+
+/* fix inline "fill" attribute for FA javascript code */
+
+svg.svg-inline--fa path {
+	fill: inherit !important;
+}
+
+
+/* fix paddings in the box - different size FA incons and SLDS icons */
+
+.slds-icon_container .svg-inline--fa {
+	margin: .25rem;
+}
+
+
+/* FF: fix icon position in the standart buttons with text */
+/*
+@supports (-moz-appearance:meterbar) {
+	.slds-button:not(.slds-button_icon) .slds-button__icon {
+		position: relative;
+		top: -1px;
+	}
+}
+*/
+.slds-icon,
+.slds-button__icon {
+    position: relative;
+    top: -1px;
+}
+
+
+
+/* Spin Animation - copy from source CSS */
+
+.fa-spin {
+	-webkit-animation: fa-spin 2s infinite linear;
+			animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+	-webkit-animation: fa-spin 1s infinite steps(8);
+			animation: fa-spin 1s infinite steps(8);
+}
+
+
+@-webkit-keyframes fa-spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+	}
+}
+
+@keyframes fa-spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+	}
+}
