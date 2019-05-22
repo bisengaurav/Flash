@@ -43,6 +43,10 @@
                 type: Function,
                 required: true
             },
+            immediateRefresh: {
+                type: Boolean,
+                default: true
+            },
 
             // "static" external params, not used in logic
             params: {
@@ -78,7 +82,7 @@
                 ))
                     .then(data => {
                         this.highlightedId = id;
-                        this.data = data;
+                        this.data = data.content;
                         this.loading = false;
                     });
             }
@@ -88,8 +92,7 @@
         // EVENTS
         //
         mounted() {
-            console.log('selected data', this.$props.filters);
-            this.refresh();
+            if (this.$props.immediateRefresh) this.refresh();
         },
 
         //
