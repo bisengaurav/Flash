@@ -72,7 +72,7 @@ public class EquipmentApi {
 	}
 
 	/**
-	 * @return OperationResults with list of the Countries
+	 * @return OperationResults with list of the SelectOptions
 	 */
 	@GetMapping(value = "getUniqueCountries")
 	public OperationResults getUniqueCountries()
@@ -84,7 +84,7 @@ public class EquipmentApi {
 	//
 
 	/**
-	 * @return OperationResults with list of the Equipment Types
+	 * @return OperationResults with list of the SelectOptions
 	 */
 	@GetMapping(value = "getEquipmentTypes")
 	public OperationResults getEquipmentTypes()

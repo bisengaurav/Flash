@@ -56,9 +56,10 @@ public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 			filter.getInstallationCity__c(), false);
 		queryBuilder.addCondition_FieldContains("installationStateProvice__c",
 			filter.getInstallationStateProvice__c(), false);
-
-		queryBuilder.addSimpleConditionIfNotNull("fsmLastValidCliEndDate__c",
-			(filter.getFsmLastValidCliEndDate__c()) ? ">=" : "<", new Date(System.currentTimeMillis()));
+		if (filter.getFsmLastValidCliEndDate__c() != null) {
+			queryBuilder.addSimpleCondition("fsmLastValidCliEndDate__c",
+				(filter.getFsmLastValidCliEndDate__c()) ? ">=" : "<", new Date(System.currentTimeMillis()));
+		}
 
 		queryBuilder.setPageRequest(pageRequest);
 

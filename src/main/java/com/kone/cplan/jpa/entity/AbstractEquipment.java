@@ -162,6 +162,7 @@ abstract class AbstractEquipment implements Serializable {
 	}
 
 	public Boolean getFsmLastValidCliEndDate__c() {
+		if (fsmLastValidCliEndDate__c == null) { return null; }
 		return fsmLastValidCliEndDate__c.getTime() >= System.currentTimeMillis();
 	}
 	//
