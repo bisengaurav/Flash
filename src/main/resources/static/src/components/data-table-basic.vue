@@ -23,7 +23,7 @@
 
     <div v-else class="slds-p-around_medium">
         <alert type="static" :showIcon="false" :animate="false" :closable="false">
-            No data found
+            No data selected
         </alert>
     </div>
 </template>
@@ -74,7 +74,7 @@
                 this.action(Object.assign(
                     {},
                     this.$props.params,
-                    {filterJson: JSON.stringify(this.$props.filters)},
+                    {filter: JSON.stringify(this.$props.filters)},
                 ))
                     .then(data => {
                         this.highlightedId = id;
@@ -88,6 +88,7 @@
         // EVENTS
         //
         mounted() {
+            console.log('selected data', this.$props.filters);
             this.refresh();
         },
 
