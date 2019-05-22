@@ -7,6 +7,7 @@ import com.kone.cplan.helpers.serialization.JsonUtils;
 import com.kone.cplan.jpa.filter.EquipmentFilter;
 import com.kone.cplan.jpa.repository.EquipmentDetailsRepository;
 import com.kone.cplan.jpa.repository.EquipmentRepository;
+import com.kone.cplan.utils.dto.SelectOption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -76,7 +77,9 @@ public class EquipmentApi {
 	@GetMapping(value = "getUniqueCountries")
 	public OperationResults getUniqueCountries()
 	{
-		return OperationResults.newSuccess(equipmentRepo.getUniqueCountries());
+		return OperationResults.newSuccess(
+			SelectOption.generateList(equipmentRepo.getUniqueCountries().toArray())
+		);
 	}
 	//
 
@@ -86,7 +89,9 @@ public class EquipmentApi {
 	@GetMapping(value = "getEquipmentTypes")
 	public OperationResults getEquipmentTypes()
 	{
-		return OperationResults.newSuccess(equipmentRepo.getEquipmentTypes());
+		return OperationResults.newSuccess(
+			SelectOption.generateList(equipmentRepo.getEquipmentTypes().toArray())
+		);
 	}
 	//
 }
