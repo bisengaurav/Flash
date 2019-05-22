@@ -34,6 +34,7 @@
         // PARAMS: porps, data, computed
         //
         props: {
+            // query params
             keyField: {
                 type: String,
                 default: 'id'
@@ -42,7 +43,17 @@
                 type: Function,
                 required: true
             },
-            params: {},
+
+            // "static" external params, not used in logic
+            params: {
+                type: Object,
+                default: () => ({})
+            },
+            filters: {
+                type: Object,
+                default: () => ({})
+            },
+
             rowClass: null
         },
         data() {
@@ -59,7 +70,12 @@
         methods: {
             refresh(id) {
                 this.loading = true;
-                this.action(this.params)
+
+                this.action(Object.assign(
+                    {},
+                    this.$props.params,
+                    {filterJson: JSON.stringify(this.$props.filters)},
+                ))
                     .then(data => {
                         this.highlightedId = id;
                         this.data = data;
@@ -80,7 +96,13 @@
         //
         watch: {
             params: {
-                handler() {
+                handler(val, oldVal) {
+                    this.refresh();
+                },
+                deep: true
+            },
+            filters: {
+                handler(val, oldVal) {
                     this.refresh();
                 },
                 deep: true

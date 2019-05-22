@@ -1,7 +1,15 @@
+
+html,
+body {
+/*    background: #edeff0;*/
+    background: #fff;
+}
+
+
 /* Text / Heading */
 
 html {
-	color: #333;
+	color: #1e2528;
 }
 
 .slds-text-heading_large,
@@ -20,20 +28,21 @@ html {
 }
 
 
+
 .slds-text-color_weak,
 .slds-text-color--weak {
-	color: #959ba2;
+	color: #8d9194;
 }
 
 .slds-text-color_error,
 .slds-text-color--error,
 .slds-text-color_destructive {
-	color: #e90d05;
+	color: #c71f25;
 }
 
 .slds-text-color_success,
 .slds-text-color--success {
-	color: #18a60d;
+	color: #58ab27;
 }
 
 
@@ -51,12 +60,14 @@ html {
 .slds-icon-text-warning {
 }
 
-.slds-icon-text-success {
+.slds-icon-text-error {
+    fill: #c71f25;
 }
 
-.slds-icon-text-error {
-	fill: #e90d05;
+.slds-icon-text-success {
+    fill: #58ab27
 }
+
 
 
 
@@ -69,7 +80,7 @@ html {
 
 .slds-button_neutral,
 .slds-button--neutral {
-	color: #096eb5;
+	color: #0071b9;
 }
 .slds-button_neutral:hover,
 .slds-button_neutral:focus,
@@ -77,15 +88,15 @@ html {
 .slds-button--neutral:hover,
 .slds-button--neutral:focus,
 .slds-button--neutral:active {
-	color: #004373;
+	color: #004987;
 }
 
 
 .slds-button_icon-brand,
 .slds-button_brand,
 .slds-button--brand {
-	background-color: #005998;
-	border-color: #005998;
+	background-color: #0071b9;
+	border-color: #0071b9;
 }
 .slds-button_icon-brand:hover,
 .slds-button_icon-brand:focus,
@@ -96,15 +107,31 @@ html {
 .slds-button--brand:hover,
 .slds-button--brand:focus,
 .slds-button--brand:active {
-	background-color: #004373;
-	border-color: #004373;
+	background-color: #004987;
+	border-color: #004987;
+}
+
+
+.slds-button_outline-brand,
+.slds-button--outline-brand {
+    color: #0071b9;
+    border-color: #0071b9;
+}
+.slds-button_outline-brand:hover:not([disabled]),
+.slds-button_outline-brand:focus:not([disabled]),
+.slds-button_outline-brand:active:not([disabled]),
+.slds-button--outline-brand:hover:not([disabled]),
+.slds-button--outline-brand:focus:not([disabled]),
+.slds-button--outline-brand:active:not([disabled]) {
+    color: #004987;
+    border-color: #004987;
 }
 
 
 .slds-button_destructive,
 .slds-button--destructive {
-	background-color: #e90d05;
-	border-color: #e90d05;
+	background-color: #c71f25;
+	border-color: #c71f25;
 }
 .slds-button_destructive:hover,
 .slds-button_destructive:focus,
@@ -112,14 +139,14 @@ html {
 .slds-button--destructive:hover,
 .slds-button--destructive:focus,
 .slds-button--destructive:active {
-	background-color: #cf0e07;
-	border-color: #cf0e07;
+	background-color: #b30e14;
+	border-color: #b30e14;
 }
 
 
 .slds-button_text-destructive,
 .slds-button--text-destructive {
-	color: #e90d05;
+	color: #c71f25;
 }
 .slds-button_text-destructive:hover,
 .slds-button_text-destructive:focus,
@@ -127,30 +154,14 @@ html {
 .slds-button--text-destructive:hover,
 .slds-button--text-destructive:focus,
 .slds-button--text-destructive:active {
-	color: #cf0e07;
-}
-
-
-.slds-button_outline-brand,
-.slds-button--outline-brand {
-	color: #005998;
-	border-color: #005998;
-}
-.slds-button_outline-brand:hover,
-.slds-button_outline-brand:focus,
-.slds-button_outline-brand:active,
-.slds-button--outline-brand:hover,
-.slds-button--outline-brand:focus,
-.slds-button--outline-brand:active {
-	color: #004373;
-	border-color: #004373;
+	color: #b30e14;
 }
 
 
 .slds-button_success,
 .slds-button--success {
-	background-color: #18a60d;
-	border-color: #18a60d;
+	background-color: #58ab27;
+	border-color: #58ab27;
 	color: #fff;
 }
 .slds-button_success:hover,
@@ -159,8 +170,8 @@ html {
 .slds-button--success:hover,
 .slds-button--success:focus,
 .slds-button--success:active {
-	background-color: #119307;
-	border-color: #119307;
+	background-color: #3c8a0e;
+	border-color: #3c8a0e;
 }
 
 
@@ -171,7 +182,7 @@ html {
 .slds-button_outline-brand[disabled],
 .slds-button--outline-brand[disabled] {
 	background-color: white;
-	color: #dddbda;
+	color: #babdbf;
 }
 .slds-button_brand[disabled],
 .slds-button--brand[disabled],
@@ -179,8 +190,8 @@ html {
 .slds-button--destructive[disabled],
 .slds-button_success[disabled],
 .slds-button--success[disabled] {
-	background: #c9c7c5;
-	border-color: #c9c7c5;
+	background: #babdbf;
+	border-color: #babdbf;
 }
 
 
@@ -194,7 +205,7 @@ html {
 .slds-button--icon-error:hover,
 .slds-button--icon-error:active,
 .slds-button--icon-error:focus {
-	color: #e90d05;
+	color: #c71f25;
 }
 
 
@@ -213,8 +224,6 @@ html {
     /*color: #f4802a;*/
 
     font-size: .75rem;
-
-
 
 	padding-top: .6rem;
 	padding-bottom: .6rem;
@@ -308,8 +317,10 @@ html {
 .slds-checkbox_toggle .slds-checkbox--faux:hover,
 .slds-checkbox_toggle .slds-checkbox_faux:focus,
 .slds-checkbox_toggle .slds-checkbox_faux:hover {
-	background-color: #e6eef0 !important;
-	border-color: #e6eef0 !important;
+/*	background-color: #d1d6d8 !important;
+	border-color: #d1d6d8 !important;*/
+    background-color: #e0e4e6 !important;
+    border-color: #e0e4e6 !important;
 }
 .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux,
 .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux,
@@ -348,8 +359,8 @@ html {
 .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox--faux:hover,
 .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox_faux:focus,
 .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox_faux:hover {
-	background-color: #007298 !important;
-	border-color: #007298 !important;
+	background-color: #0071b9 !important;
+	border-color: #0071b9 !important;
 }
 
 .slds-checkbox_toggle [type="checkbox"]:focus + .slds-checkbox_faux,
@@ -364,7 +375,7 @@ html {
 .slds-checkbox--toggle [type="checkbox"]:focus ~ .slds-checkbox--faux,
 .slds-checkbox--toggle [type="checkbox"]:focus + .slds-checkbox_faux_container .slds-checkbox_faux,
 .slds-checkbox--toggle [type="checkbox"]:focus + .slds-checkbox--faux_container .slds-checkbox--faux {
-	box-shadow: 0 0 3px #007298 !important;
+	box-shadow: 0 0 3px #0071b9 !important;
 }
 
 
@@ -373,7 +384,7 @@ html {
 /* Error */
 
 .slds-required {
-	color: #e90d05;
+	color: #c71f25;
 }
 
 /*
@@ -388,7 +399,7 @@ html {
 }
 */
 .slds-has-error .slds-form-element__help {
-	color: #e90d05;
+	color: #c71f25;
 }
 /*
 .slds-has-error .slds-input {
@@ -466,7 +477,7 @@ html {
 /* Field Label */
 
 .slds-form-element__label {
-	color: #747d88;
+	color: #56727d;
 }
 
 /* Select */
@@ -491,7 +502,7 @@ html {
 
 .slds-popover_tooltip,
 .slds-popover--tooltip {
-	background-color: #007298;
+	background-color: #58ab27;
 }
 .slds-popover_tooltip .slds-text-title_caps,
 .slds-popover--tooltip .slds-text-title_caps {
@@ -541,25 +552,26 @@ html {
 
 .slds-theme_info,
 .slds-theme--info {
-	background-color: #cadce1;
-	color: inherit;
+/*	background-color: #b3daf1;*/
+    background-color: #0071b9;
+/*	color: inherit;*/
 }
 .slds-theme_info .slds-icon,
 .slds-theme_info .slds-button__icon,
 .slds-theme--info .slds-icon,
 .slds-theme--info .slds-button__icon {
-	fill: inherit;
+/*	fill: inherit;*/
 }
 .slds-theme_info a:not(.slds-button--neutral),
 .slds-theme_info button:not(.slds-button--neutral),
 .slds-theme--info a:not(.slds-button--neutral),
 .slds-theme--info button:not(.slds-button--neutral) {
-	color: inherit;
+/*	color: inherit;*/
 }
 
 .slds-theme_warning,
 .slds-theme--warning {
-	background-color: #fedf77;
+	background-color: #ffc628;
 	color: inherit;
 }
 .slds-theme_warning .slds-icon,
@@ -577,7 +589,10 @@ html {
 
 .slds-theme_error,
 .slds-theme--error {
+    background-color: #c71f25;
 }
 .slds-theme_success,
 .slds-theme--success {
+    background-color: #58ab27;
 }
+

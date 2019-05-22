@@ -1,10 +1,8 @@
 <template>
-    <div class="cmp-app_main-scroll">
-        <navigation />
-
-        <div class="cmp-app_main">
+    <div>
+        <navigation>
             <router-view></router-view>
-        </div>
+        </navigation>
 
         <alert-emitter />
         <page-loader />
@@ -27,21 +25,3 @@
         }
     }
 </script>
-
-<style>
-    html,
-    body {
-        background: #e6eef0;
-        overflow: hidden;
-    }
-
-    .cmp-app_main-scroll {
-        height: 100vh;
-        overflow: hidden;
-        overflow-y: auto;
-    }
-    .cmp-app_main {
-        padding: 40px 50px;
-        margin-left: 90px;
-    }
-</style>

@@ -24,6 +24,6 @@ public class AppSettings {
 	public static final int TIMEOUT_FOR_LONG_OPs_IN_SECs = 20;
 	public static final int TIMEOUT_FOR_LONG_OPs_IN_MSECs = (TIMEOUT_FOR_LONG_OPs_IN_SECs * 1000);
 	
-	public static final int DEFAULT_PAGE_SIZE = 25;
+	public static final int DEFAULT_PAGE_SIZE = 100;
 	//
 }

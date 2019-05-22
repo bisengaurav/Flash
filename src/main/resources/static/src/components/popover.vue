@@ -1,16 +1,15 @@
 <template>
     <span>
 
-        <span class="z-level7">
-            <span
-                ref="popover"
-                v-show="isShow"
-                :style="{
-                    maxWidth: ($props.maxWidth ? $props.maxWidth+'px' : 'none')
-                }"
-            >
-                <slot name="content"></slot>
-            </span>
+        <span
+            ref="popover"
+            v-show="isShow"
+            class="popover"
+            :style="{
+                maxWidth: ($props.maxWidth ? $props.maxWidth+'px' : 'none')
+            }"
+        >
+            <slot name="content"></slot>
         </span>
 
         <slot></slot>
@@ -196,6 +195,9 @@
                                         offset: [
                                             this.computedOffset
                                         ].reduce((r, c) => r.concat([c, c]), []).join(',')
+                                    },
+                                    preventOverflow: {
+                                        boundariesElement: document.querySelector('.cmp-app_main')
                                     }
                                 },
                                 onCreate: () => {
@@ -248,3 +250,12 @@
         }
     }
 </script>
+
+<style>
+    .popover {
+        position: absolute;
+        display: block;
+        width: auto;
+        z-index: 1000;
+    }
+</style>

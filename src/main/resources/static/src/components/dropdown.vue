@@ -1,19 +1,18 @@
 <template>
     <span>
 
-        <span class="z-level7">
-            <span
-                ref="popover"
-                v-show="isShow"
-                :style="{
-                    maxWidth: ($props.maxWidth ? $props.maxWidth+'px' : 'none')
-                }"
-            >
-                <span class="dropdown__arrow" x-arrow></span>
-                <div class="dropdown">
-                    <slot name="content"></slot>
-                </div>
-            </span>
+        <span
+            ref="popover"
+            v-show="isShow"
+            class="popover"
+            :style="{
+                maxWidth: ($props.maxWidth ? $props.maxWidth+'px' : 'none')
+            }"
+        >
+            <span class="dropdown__arrow" x-arrow></span>
+            <div class="dropdown">
+                <slot name="content"></slot>
+            </div>
         </span>
 
         <slot></slot>
