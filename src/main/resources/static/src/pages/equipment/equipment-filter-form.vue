@@ -3,7 +3,7 @@
 
             <form-element label="Country" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
                 <input
-                    v-model="innerValue.country"
+                    v-model="innerValue.installationCountry__c"
                     id="country"
                     class="slds-input"
                 />
@@ -100,31 +100,35 @@
             </form-element>
 
             <div class="slds-size_1-of-1">
-                <button class="slds-button slds-button_neutral slds-text-nowrap slds-m-top_large">Apply</button>
+                <button class="slds-button slds-button_neutral slds-text-nowrap slds-m-top_large" v-on:click="applyFilter">Apply</button>
+                <button class="slds-button slds-button_neutral slds-text-nowrap slds-m-top_large" v-on:click="clearAll">Clear All</button>
             </div>
     </div>
 </template>
 
 <script>
 
+    const templateForm = {
+                   installationCountry__c:  null,
+                   equipmentType__c: null,
+                   customerAssetName__c: null,
+                   equipmentPhoneNumber__c: null,
+                   accountName: null,
+                   soldToName: null,
+                   locationName: null,
+                   installationStreet__c: null,
+                   installationCity__c: null,
+                   installationStateProvice__c: null,
+                   validContract: null
+                }
+
     export default {
+        
 
         props: {
             value: {
                 type: Object,
-                default: {
-                   country:  null,
-                   equipment: null,
-                   customerAssetName: null,
-                   phone: null,
-                   account: null,
-                   soldTo: null,
-                   location: null,
-                   street: null,
-                   city: null,
-                   stateProvince: null,
-                   validContract: null
-                }
+                default: this.templateForm
             }
         },
 
@@ -138,18 +142,13 @@
             }
         },
 
-        //
-        // WATCHERS
-        //
-        watch: {
-
-            innerValue:{ 
-                handler: function() {
-                    this.$emit('input', this.innerValue);
-                },
-                deep: true
+        methods: {
+            applyFilter: function () {
+                this.$emit('input', this.innerValue);
+            },
+            clearAll: function () {
+                this.innerValue = this.templateForm;
             }
-            
-        },
+        }
     }
  </script>

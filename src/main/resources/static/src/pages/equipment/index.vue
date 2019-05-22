@@ -4,6 +4,7 @@
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">{{pageTitle}}</h1>
 
         <div>
+            
             <equpment-filter-form v-model="filters"></equpment-filter-form>
             
             <div class="primary-section">
@@ -11,7 +12,7 @@
                 <data-table-basic
                         ref="equipmentTable"
                         :action="$API.equipmentApi.getAllByFilter"
-                        :filters="filters"
+                        :filters="appliedFilters"
                     >
                         <template #head>
                             <th>Equipment</th>
@@ -31,22 +32,22 @@
                         </template>
                         <template #row="{row, id}">
                             <td>{{id}}</td>
-                            <td>{{row.type}}</td>
-                            <td>{{row.customerName}}</td>
-                            <td>{{row.phone}}</td>
+                            <td>{{row.equipmentType__c}}</td>
+                            <td>{{row.customerAssetName__c}}</td>
+                            <td>{{row.equipmentPhoneNumber__c}}</td>
                             <td>{{row.accountName}}</td>
-                            <td>{{row.soldTo}}</td>
-                            <td>{{row.location}}</td>
-                            <td>{{row.street}}</td>
-                            <td>{{row.city}}</td>
-                            <td>{{row.stateProvince}}</td>
-                            <td>{{row.serviceTerritory}}</td>
-                            <td>{{row.workCenter}}</td>
+                            <td>{{row.soldToName}}</td>
+                            <td>{{row.locationName}}</td>
+                            <td>{{row.installationStreet__c}}</td>
+                            <td>{{row.installationCity__c}}</td>
+                            <td>{{row.installationStateProvice__c}}</td>
+                            <td>{{row.serviceTerritoryName}}</td>
+                            <td>{{row.workCenterName}}</td>
                             <td>{{row.validContract}}</td>
                         </template>
                     </data-table-basic>
-                </div>
 
+                </div>
         </div>
 
     </div>
@@ -76,14 +77,17 @@
                 }
             }
         },
-       
-        watch: {
-            filters: {
-                handler: function(newValue) {
-                    console.log(newValue);
-                },
-                deep: true
+
+        computed: {
+            appliedFilters: function() {
+                let f = {};
+
+                Object.keys(this.filters).forEach(k => {
+                    if (this.filters[k]) f[k] = this.filters[k];
+                });
+
+                return f;
             }
-        },
+        }
     }
 </script>
