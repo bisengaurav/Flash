@@ -31,19 +31,18 @@
             return {
                 pageTitle: 'Equipment',
                 filters: {
-                   country:  null,
-                   equipment: null,
-                   customerAssetName: null,
-                   phone: null,
-                   account: null,
-                   soldTo: null,
-                   location: null,
-                   street: null,
-                   сity: null,
-                   stateProvince: null,
-                   validContract: null
+                  
                 }
             }
-        }
+        },
+       
+        watch: {
+            filters: {
+                handler: function(newValue) {
+                    console.log(newValue);
+                },
+                deep: true
+            }
+        },
     }
 </script>

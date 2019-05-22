@@ -46,7 +46,7 @@
 <script>
 
     export default {
-        
+
         methods: {
             dataTemplate() {
                 return new Promise((resolve, reject) => {

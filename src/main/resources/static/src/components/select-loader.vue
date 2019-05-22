@@ -33,9 +33,6 @@
             },
             emptyLabel: ''
         },
-        mounted() {
-            console.log(this.props.source)
-        },
         data() {
             return  {
                 innerValue: this.$props.value,
