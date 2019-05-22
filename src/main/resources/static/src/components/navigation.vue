@@ -1,43 +1,34 @@
 <template>
-    <div class="z-level4">
-        <div class="slds-backdrop" :class="{'slds-backdrop_open': isOpen}" @click="close"></div>
+    <div>
 
-        <div class="header" :class="{'header-expanded': isOpen}" @click="open">
-            <div class="logo logo-sign">
-                <img alt="Cervello" src="/assets/img/logo-sign.png" />
-            </div>
-            <div class="logo logo-full">
-                <img alt="Cervello" src="/assets/img/logo-full.png" />
+        <div class="z-level4" :class="{'nav-expanded': isOpen}">
+            <div class="slds-backdrop" @click="close"></div>
+
+            <div class="nav-panel">
+                <div class="logo">
+                    <img alt="Cervello" src="/assets/img/logo.png" />
+                </div>
+
+                <div class="nav">
+                    <router-link :to="{name: 'home'}" exact active-class="nav-active" @click="close">Home</router-link>
+                    <router-link :to="{name: 'users'}" active-class="nav-active" @click="close">User Management</router-link>
+                    <router-link :to="{name: 'callouts'}" active-class="nav-active" @click="close">Callouts</router-link>
+                    <router-link :to="{name: 'equipment'}" active-class="nav-active" @click="close">Equipment</router-link>
+                    <router-link :to="{name: 'serviceResources'}" active-class="nav-active" @click="close">Service Resources</router-link>
+                </div>
             </div>
 
-            <div class="nav-sign">
+            <div class="nav-sign" @click="open">
                 <icon icon="bars" class="slds-icon" />
             </div>
-            <div class="nav" @click.stop>
-                <router-link :to="{name: 'home'}" exact active-class="active" @click="close">Home</router-link>
-                <router-link :to="{name: 'users'}" active-class="active" @click="close">User Management</router-link>
-                <router-link :to="{name: 'callouts'}" active-class="active" @click="close">Callouts</router-link>
-                <router-link :to="{name: 'equipment'}" active-class="active" @click="close">Equipment</router-link>
-                <router-link :to="{name: 'serviceResources'}" active-class="active" @click="close">Service Resource</router-link>
-            </div>
-
-
-            <!--div class="userinfo">
-                <div class="userinfo-icon">
-                    <icon icon="user-alt" class="slds-icon slds-icon_xx-small" />
-                </div>
-                <div class="userinfo-menu">
-                    <div>
-                        <div class="userinfo-username">user-name</div>
-                        <a href="/">Settings</a>
-                        <a href="/logout">Logout</a>
-                    </div>
-                    <div>
-                        <a href="/login">Sign In</a>
-                    </div>
-                </div>
-            </div-->
         </div>
+
+        <div class="main-scroll">
+            <div class="main">
+                <slot></slot>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -80,167 +71,170 @@
 </script>
 
 <style>
-    /*
-    * Header
-    */
+    html,
+    body {
+        overflow: hidden;
+    }
+    .main-scroll {
+        height: 100vh;
+        /*overflow: hidden;*/
+        overflow-y: auto;
+    }
+    .main {
+        padding: 40px 50px;
+        margin-left: 90px;
+    }
 
-    .header {
+
+    /* Nav Sign */
+
+    .nav-sign {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 88px;
+        background-color: #fff;
+    }
+    .nav-sign .slds-icon {
+        position: absolute;
+        top: 40px;
+        left: 31px;
+        width: 30px;
+        text-align: center;
+
+        fill: #0071b9;
+        cursor: pointer;
+    }
+
+
+    /* Nav Panel - Logo + Nav */
+
+    .nav-panel {
         position: fixed;
         top: 0;
         left: 0;
         height: 100%;
         width: 90px;
-        z-index: 9050;
-        background-color: #182a2f;
+        background-color: #fff;
+        border-right: 2px solid #dae2e7;
         transition: width 0.5s;
     }
-    .header-expanded {
-        width: 280px;
-    }
-
 
 
     /* Logo */
 
     .logo {
         position: absolute;
-        left: 24px;
+        left: 31px;
         top: 40px;
-    }
-    .logo-sign {
-        z-index: 1;
-    }
-    .logo-sign,
-    .logo-sign img {
-        width: 45px;
-        height: 47px;
-    }
 
-    .logo-full {
         z-index: 2;
-        background-color: #182a2f;
-
-        left: -400px;
+        background-color: #fff;
         opacity: 0;
     }
-    .header.header-expanded .logo-full {
-        left: 24px;
-        opacity: 1;
-        transition: opacity 0.5s;
-        transition-delay: 0.3s
-    }
-    .logo-full,
-    .logo-full img {
-        width: 194px;
-        height: 63px;
+    .logo,
+    .logo img {
+        width: 113px;
+        height: 58px;
     }
 
 
     /* Nav */
 
-    .nav-sign {
-        position: absolute;
-        top: 130px;
-        left: 31px;
-        width: 30px;
-        text-align: center;
-    }
-    .header.header-expanded .nav-sign {
-        display:none;
-    }
-    .nav-sign .slds-icon {
-        fill: #e3ebed;
-        cursor: pointer;
-    }
-
-
     .nav {
         position: absolute;
-        top: 145px;
+        top: 138px;
         left: -400px;
+        bottom: 0;
         width: 100%;
+        overflow: hidden;
+        overflow-y: auto;
         opacity: 0;
     }
-    .header.header-expanded .nav {
-        left: 0;
-        opacity: 1;
-        transition: opacity 0.5s;
-        transition-delay: 0.3s
-    }
-
     .nav a {
         display: block;
         padding: 0 30px;
         height: 42px;
 
-        font-size: 14px;
+        font-size: 12px;
+        font-weight: 700;
         line-height: 42px;
-        color: #e3ebed;
+        color: #1e2528;
         text-decoration: none;
+        text-transform: uppercase;
     }
     .nav a:hover {
+        background-color: #e0f2fb;
+    }
+    .nav a.nav-active,
+    .nav a.nav-active:hover {
         color: #fff;
-        background-color: #20353b;
-    }
-    .nav a.active,
-    .nav a.active:hover {
-        color: #444;
-        background-color: #e3ebed;
+        background-color: #0071b9;
     }
 
 
-    /* UserInfo */
 
-    .userinfo {
-        position: absolute;
-        bottom: 0;
+    /* Expand */
+
+    .nav-expanded .slds-backdrop {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.4s linear;
+    }
+    .nav-expanded .nav-panel {
+        width: 220px;
+        border: none;
+        box-shadow: 1px 0 4px rgba(0,0,0,.3);
+    }
+    .nav-expanded .nav-sign {
+        display:none;
+    }
+    .nav-expanded .logo {
+        opacity: 1;
+        transition: opacity 0.5s;
+        transition-delay: 0.3s
+    }
+    .nav-expanded .nav {
         left: 0;
-        width: 100%;
-        height: 145px;
-        border-top: 1px solid #3f5964;
-    }
-    .userinfo-icon {
-        position: absolute;
-        top: 25px;
-        left: 28px;
-
-        width: 30px;
-        height: 30px;
-        background-color: #e71c50;
-        border-radius: 50%;
-        text-align: center;
-    }
-    .userinfo-icon .slds-icon {
-        margin-top: 8px;
-        fill: #fff;
-        cursor: pointer;
-    }
-
-    .userinfo-menu {
-        position: absolute;
-        left: -400px;
-        top: 28px;
-        opacity: 0;
-
-        font-size: 14px;
-    }
-    .header.header-expanded .userinfo-menu {
-        left: 75px;
         opacity: 1;
         transition: opacity 0.5s;
         transition-delay: 0.3s
     }
 
-    .userinfo-username {
-        margin-bottom: 15px;
-        color: #fff;
+
+
+    @media (max-width: 479px) {
+        .main {
+            padding: 60px 20px 20px;
+            margin-left: 0;
+        }
+
+
+        /* Nav Sign */
+
+        .nav-sign {
+            height: 40px;
+            width: 100%;
+            border-bottom: 2px solid #dae2e7;
+        }
+        .nav-sign .slds-icon {
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 28px;
+        }
+
+
+        /* Nav Panel - Logo + Nav */
+
+        .nav-panel {
+            width: 0;
+            border-right: none;
+        }
+
     }
-    .userinfo-menu a {
-        display: block;
-        font-size: .8rem;
-        color: #e3ebed;
-    }
-    .userinfo-menu a + a {
-        margin-top: 5px;
-    }
+
 </style>

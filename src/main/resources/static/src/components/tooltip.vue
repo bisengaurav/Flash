@@ -1,20 +1,18 @@
 <template>
     <span>
 
-        <span class="z-level7">
-            <span
-                ref="popover"
-                v-show="isShow"
-                class="tooltip"
-                :style="{
-                    maxWidth: ($props.maxWidth ? $props.maxWidth+'px' : 'none')
-                }"
-            >
-                <span class="tooltip__arrow" x-arrow></span>
-                <slot name="content">
-                    <span v-html="content"></span>
-                </slot>
-            </span>
+        <span
+            ref="popover"
+            v-show="isShow"
+            class="popover tooltip"
+            :style="{
+                maxWidth: ($props.maxWidth ? $props.maxWidth+'px' : 'none')
+            }"
+        >
+            <span class="tooltip__arrow" x-arrow></span>
+            <slot name="content">
+                <span v-html="content"></span>
+            </slot>
         </span>
 
         <slot></slot>
@@ -44,10 +42,6 @@
 
 <style>
     .tooltip {
-        position: absolute;
-        display: block;
-        width: auto;
-
         font-size: .75rem;
         font-weight: normal;
         color: #fff;
@@ -61,7 +55,7 @@
 
         padding: .5rem .75rem;
         border-radius: .25rem;
-        background-color: #007298;
+        background-color: #0071b9;
         box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .16);
     }
 
@@ -80,7 +74,7 @@
     }
     .tooltip[x-placement^="top"] .tooltip__arrow {
         border-width: 5px 5px 0 5px;
-        border-color: #007298 transparent transparent transparent;
+        border-color: #0071b9 transparent transparent transparent;
         bottom: -5px;
         left: calc(50% - 5px);
         margin-top: 0;
@@ -92,7 +86,7 @@
     }
     .tooltip[x-placement^="bottom"] .tooltip__arrow {
         border-width: 0 5px 5px 5px;
-        border-color: transparent transparent #007298 transparent;
+        border-color: transparent transparent #0071b9 transparent;
         top: -5px;
         left: calc(50% - 5px);
         margin-top: 0;
@@ -104,7 +98,7 @@
     }
     .tooltip[x-placement^="right"] .tooltip__arrow {
         border-width: 5px 5px 5px 0;
-        border-color: transparent #007298 transparent transparent;
+        border-color: transparent #0071b9 transparent transparent;
         left: -5px;
         top: calc(50% - 5px);
         margin-left: 0;
@@ -116,7 +110,7 @@
     }
     .tooltip[x-placement^="left"] .tooltip__arrow {
         border-width: 5px 0 5px 5px;
-        border-color: transparent transparent transparent #007298;
+        border-color: transparent transparent transparent #0071b9;
         right: -5px;
         top: calc(50% - 5px);
         margin-left: 0;

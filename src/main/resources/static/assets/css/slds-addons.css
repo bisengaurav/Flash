@@ -154,7 +154,7 @@ a.slds-button_icon-border-inverse {
 
 
 /*
- * Workaround Alesrt / Toasts / Notify
+ * Workaround Alerts / Toasts / Notify
  */
 
 .slds-notify--toast,
@@ -274,12 +274,12 @@ a.slds-button_icon-border-inverse {
 
 .slds-theme_static {
     background-color: transparent;
-    color: #959ba2;
+    color: #8d9194;
 }
 .slds-theme_static .slds-icon,
 .slds-theme_static .slds-button-icon,
 .slds-theme_static .slds-button__icon {
-    fill: #b0adab;
+    fill: #b0adab; /* .slds-icon-text-light */
 }
 
 
