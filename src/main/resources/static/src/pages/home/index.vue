@@ -95,14 +95,10 @@
     import Icons from '../../core/icons.js';
     import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons/';
     Icons.add(faExclamationTriangle);
-    import EquipmentTable from '../equipment/equipment-table.vue';
 
     export default {
         extends: Page,
 
-        components: {
-            EquipmentTable
-        },
         //
         // PARAMS: porps, data, computed
         //

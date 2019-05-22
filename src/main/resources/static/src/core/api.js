@@ -4,7 +4,7 @@ import Query from './query.js';
 // API methods
 //
 let API = {
-    equipmentApi: {
+    equipment: {
         getAllByFilter: (params) => {
             return Query('/ui-api/equipment/getAllByFilter', params);
         },

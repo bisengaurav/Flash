@@ -1,153 +1,133 @@
 <template>
-       <div class="slds-grid slds-grid_vertical-align-end slds-wrap">
+    <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-end slds-wrap">
 
-            <form-element label="Country" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    v-model="innerValue.installationCountry__c"
-                    id="country"
-                    class="slds-input"
+        <form-element label="Country" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                v-model="innerValue.installationCountry__c"
+                id="country"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="Equipment Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="equipment_type">
+            <div class="slds-select_container">
+                <select-loader
+                    :source="$API.equipment.getEquipmentTypes"
+                    valueParam="name"
+                    :allowEmpty="true"
+                    v-model="innerValue.equipmentType__c"
+                    id="equipment_type"
+                    class="slds-select"
                 />
-            </form-element>
-   
-             <form-element label="Equipment Type" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6" for="equipment_type">
-                <div class="slds-select_container">
-                    <select-loader
-                        :source="list.equipment"
-                        valueParam="name"
-                        :allowEmpty="true"
-                        v-model="innerValue.equipment"
-                        id="equipment_type"
-                        class="slds-select"
-                    />
-                </div>
-            </form-element>
-
-            <form-element label="Customer Asset Name" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    id="customer_asset_name"
-                    v-model="innerValue.customerAssetName"
-                    class="slds-input"
-                />
-            </form-element>
-
-             <form-element label="Phone" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    id="phone"
-                    v-model="innerValue.phone"
-                    class="slds-input"
-                />
-            </form-element>
-
-            <form-element label="Account" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    id="account"
-                    v-model="innerValue.account"
-                    class="slds-input"
-                />
-            </form-element>
-
-            <form-element label="Sold to" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    id="sold_to"
-                    v-model="innerValue.soldTo"
-                    class="slds-input"
-                />
-            </form-element>
-
-            <form-element label="Location" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    id="location"
-                    v-model="innerValue.location"
-                    class="slds-input"
-                />
-            </form-element>
-
-            <form-element label="Street" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    id="street"
-                    v-model="innerValue.street"
-                    class="slds-input"
-                />
-            </form-element>
-
-            <form-element label="City" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    id="сity"
-                    v-model="innerValue.city"
-                    class="slds-input"
-                />
-            </form-element>
-
-            <form-element label="State/Province" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6">
-                <input
-                    id="stateProvince"
-                    v-model="innerValue.stateProvince"
-                    class="slds-input"
-                />
-            </form-element>
-
-            <form-element label="Valid Contract" class="slds-p-right_small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3  slds-large-size_1-of-6" for="valid_contract">
-                <div class="slds-select_container">
-                    <select-loader
-                        :source="list.valid"
-                        innerValueParam="name"
-                        :allowEmpty="true"
-                         v-model="innerValue.validContract"
-                        id="valid_contract"
-                        class="slds-select"
-                    />
-                </div>
-            </form-element>
-
-            <div class="slds-size_1-of-1">
-                <button class="slds-button slds-button_neutral slds-text-nowrap slds-m-top_large" v-on:click="applyFilter">Apply</button>
-                <button class="slds-button slds-button_neutral slds-text-nowrap slds-m-top_large" v-on:click="clearAll">Clear All</button>
             </div>
+        </form-element>
+
+        <form-element label="Customer Asset Name" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                id="customer_asset_name"
+                v-model="innerValue.customerAssetName__c"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="Phone" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                id="phone"
+                v-model="innerValue.equipmentPhoneNumber__c"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="Account" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                id="account"
+                v-model="innerValue.accountName"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="Sold to" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                id="sold_to"
+                v-model="innerValue.soldToName"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="Location" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                id="location"
+                v-model="innerValue.locationName"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="Street" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                id="street"
+                v-model="innerValue.installationStreet__c"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="City" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                id="сity"
+                v-model="innerValue.installationCity__c"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="State/Province" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+            <input
+                id="stateProvince"
+                v-model="innerValue.installationStateProvice__c"
+                class="slds-input"
+            />
+        </form-element>
+
+        <form-element label="Valid Contract" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="valid_contract">
+            <div class="slds-select_container">
+                <select
+                    v-model="innerValue.validContract"
+                    id="valid_contract"
+                    class="slds-select"
+                >
+                    <option></option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+        </form-element>
+
+        <div class="slds-col slds-size_1-of-1 slds-p-top_small">
+            <button class="slds-button slds-button_brand" @click="apply">Apply</button>
+            <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
+        </div>
     </div>
 </template>
 
 <script>
-
-    const templateForm = {
-                   installationCountry__c:  null,
-                   equipmentType__c: null,
-                   customerAssetName__c: null,
-                   equipmentPhoneNumber__c: null,
-                   accountName: null,
-                   soldToName: null,
-                   locationName: null,
-                   installationStreet__c: null,
-                   installationCity__c: null,
-                   installationStateProvice__c: null,
-                   validContract: null
-                }
+    import FiltersInterface from '../../components/filters-interface.vue';
 
     export default {
-        
-
-        props: {
-            value: {
-                type: Object,
-                default: this.templateForm
-            }
-        },
+        extends: FiltersInterface,
 
         data() {
             return {
-                innerValue: Object.assign({}, this.$props.value),
-                list: {
-                        equipment: [{"label":"Autowalk","name":"Autowalk"},{"label":"Building","name":"Building"},{"label":"Building Door","name":"Building Door"},{"label":"Dumbwaiter","name":"Dumbwaiter"},{"label":"Elevator","name":"Elevator"},{"label":"Escalator","name":"Escalator"},{"label":"Façadator","name":"Façadator"},{"label":"Marine Elevator","name":"Marine Elevator"},{"label":"Marine Escalator","name":"Marine Escalator"},{"label":"Marine Other Eq.","name":"Marine Other Eq."},{"label":"Other","name":"Other"},{"label":"PFI","name":"PFI"},{"label":"Stairlift","name":"Stairlift"},{"label":"Test","name":"Test"}],
-                        valid:     [{"label":"yes","name":"yes"},{"label":"no","name":"no"}]
-                },
-            }
-        },
-
-        methods: {
-            applyFilter: function () {
-                this.$emit('input', this.innerValue);
-            },
-            clearAll: function () {
-                this.innerValue = this.templateForm;
+                metadata: {
+                    installationCountry__c:  null,
+                    equipmentType__c: null,
+                    customerAssetName__c: null,
+                    equipmentPhoneNumber__c: null,
+                    accountName: null,
+                    soldToName: null,
+                    locationName: null,
+                    installationStreet__c: null,
+                    installationCity__c: null,
+                    installationStateProvice__c: null,
+                    validContract: null
+                }
             }
         }
     }

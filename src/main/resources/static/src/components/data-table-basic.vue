@@ -23,7 +23,7 @@
 
     <div v-else class="slds-p-around_medium">
         <alert type="static" :showIcon="false" :animate="false" :closable="false">
-            No data selected
+            No data found
         </alert>
     </div>
 </template>
@@ -62,7 +62,7 @@
         },
         data() {
             return {
-                loading: true,
+                loading: false,
                 data: [],
                 highlightedId: null
             }
@@ -92,6 +92,7 @@
         // EVENTS
         //
         mounted() {
+            console.log(this.$props.immediateRefresh);
             if (this.$props.immediateRefresh) this.refresh();
         },
 
@@ -107,6 +108,7 @@
             },
             filters: {
                 handler(val, oldVal) {
+                    console.log('filters changed');
                     this.refresh();
                 },
                 deep: true
