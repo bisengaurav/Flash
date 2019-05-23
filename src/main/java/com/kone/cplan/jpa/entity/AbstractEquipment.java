@@ -56,8 +56,8 @@ abstract class AbstractEquipment implements Serializable {
 	@Column
 	private String installationCity__c;
 
-	@Column
-	private String installationStateProvice__c;
+	@Column(name = "installation_state_provice__c")
+	private String installationStateProvince__c;
 
 	@Column
 	private String installationCountry__c;
@@ -137,8 +137,8 @@ abstract class AbstractEquipment implements Serializable {
 		return installationCity__c;
 	}
 
-	public String getInstallationStateProvice__c() {
-		return installationStateProvice__c;
+	public String getInstallationStateProvince__c() {
+		return installationStateProvince__c;
 	}
 
 	public String getInstallationCountry__c() {

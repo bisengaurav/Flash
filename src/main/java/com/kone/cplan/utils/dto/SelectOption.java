@@ -5,34 +5,34 @@ import java.util.List;
 
 /**
  * This class represents a Select Option.
- * 
+ *
  * @author Gennadiy Pervukhin
  * @created 15-03-2019
  */
 public class SelectOption {
-	
+
 	//
 	//Constructors
 	//
 	protected SelectOption() {}
-	
-	public SelectOption(String label, String name) {
+
+	public SelectOption(String label, String value) {
 		this.label = label;
-		this.name = name;
+		this.value = value;
 	}
-	
-	public SelectOption(String name) {
-		this(name, name);
+
+	public SelectOption(String value) {
+		this(value, value);
 	}
 	//
-	
+
 	//
 	//Variables
 	//
 	private String label;
-	private String name;
+	private String value;
 	//
-	
+
 	//
 	//Properties
 	//
@@ -43,15 +43,15 @@ public class SelectOption {
 		this.label = label;
 	}
 
-	public String getName() {
-		return name;
+	public String getValue() {
+		return value;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String value) {
+		this.value = value;
 	}
 	//
-	
-	
+
+
 	//
 	//Public static methods
 	//

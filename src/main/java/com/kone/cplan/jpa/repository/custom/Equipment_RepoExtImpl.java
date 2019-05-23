@@ -3,8 +3,6 @@ package com.kone.cplan.jpa.repository.custom;
 import com.kone.cplan.jpa.entity.Equipment;
 import com.kone.cplan.jpa.filter.EquipmentFilter;
 import com.kone.cplan.jpa.utils.JpaQueryBuilder;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
@@ -12,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 
@@ -26,11 +25,10 @@ public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 	//Public methods
 	//
 	@Override
-	public Page<Equipment> findByFilter(EquipmentFilter filter, Pageable pageRequest,
-		boolean getRecordsCount) {
+	public List<Equipment> findByFilter(EquipmentFilter filter, Pageable pageRequest) {
 
 		if (filter == null) {
-			return (new PageImpl<>(new ArrayList<>(), pageRequest, 0));
+			return (new ArrayList<>());
 		}
 
 		//STEP #1: initialize and configure a JPA query builder
@@ -39,7 +37,7 @@ public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 		queryBuilder.addSimpleConditionIfNotNull("installationCountry__c", "=",
 			filter.getInstallationCountry__c());
 		queryBuilder.addSimpleConditionIfNotNull("equipmentType__c", "=",
-			filter.getEquipmentType__c());
+			filter.getEquipmentType__c(), false);
 		queryBuilder.addCondition_FieldContains("customerAssetName__c",
 			filter.getCustomerAssetName__c(), false);
 		queryBuilder.addCondition_FieldContains("equipmentPhoneNumber__c",
@@ -54,8 +52,8 @@ public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 			filter.getInstallationStreet__c(), false);
 		queryBuilder.addCondition_FieldContains("installationCity__c",
 			filter.getInstallationCity__c(), false);
-		queryBuilder.addCondition_FieldContains("installationStateProvice__c",
-			filter.getInstallationStateProvice__c(), false);
+		queryBuilder.addCondition_FieldContains("installationStateProvince__c",
+			filter.getInstallationStateProvince__c(), false);
 		if (filter.getFsmLastValidCliEndDate__c() != null) {
 			queryBuilder.addSimpleCondition("fsmLastValidCliEndDate__c",
 				(filter.getFsmLastValidCliEndDate__c()) ? ">=" : "<", new Date(System.currentTimeMillis()));
@@ -63,14 +61,8 @@ public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 
 		queryBuilder.setPageRequest(pageRequest);
 
-		//STEP #2: get records for the requested page
-		List<Equipment> records = queryBuilder.buildForRecords().getResultList();
-
-		//STEP #3: get total count of records if needed
-		Long totalRecordsCount = (getRecordsCount) ? queryBuilder.buildForCount().getSingleResult() : 0L;
-
-		//STEP #4: pack the results in the PageImpl object and return it
-		return new PageImpl<>(records, pageRequest, totalRecordsCount);
+		//STEP #2: return records for the requested page
+		return queryBuilder.buildForRecords().getResultList();
 	}
 	//
 }
