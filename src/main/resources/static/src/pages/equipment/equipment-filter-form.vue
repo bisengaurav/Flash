@@ -7,13 +7,21 @@
                 id="country"
                 class="slds-input"
             />
+            <!-- <select-loader
+                    :source="$API.equipment.getUniqueCountries"
+                    valueParam="value"
+                    :allowEmpty="true"
+                    v-model="innerValue.installationCountry__c"
+                    id="equipment_type"
+                    class="slds-select"
+            /> -->
         </form-element>
 
         <form-element label="Equipment Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="equipment_type">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.equipment.getEquipmentTypes"
-                    valueParam="name"
+                    valueParam="value"
                     :allowEmpty="true"
                     v-model="innerValue.equipmentType__c"
                     id="equipment_type"
@@ -81,7 +89,7 @@
         <form-element label="State/Province" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
             <input
                 id="stateProvince"
-                v-model="innerValue.installationStateProvice__c"
+                v-model="innerValue.installationStateProvince__c"
                 class="slds-input"
             />
         </form-element>
@@ -101,7 +109,7 @@
         </form-element>
 
         <div class="slds-col slds-size_1-of-1 slds-p-top_small">
-            <button class="slds-button slds-button_brand" @click="apply">Apply</button>
+            <button class="slds-button slds-button_brand" @click="apply" :disabled="disableButton">Apply</button>
             <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
         </div>
     </div>
@@ -125,10 +133,17 @@
                     locationName: null,
                     installationStreet__c: null,
                     installationCity__c: null,
-                    installationStateProvice__c: null,
+                    installationStateProvince__c: null,
                     fsmLastValidCliEndDate__c: null
                 }
             }
+        },
+
+        computed: {
+            disableButton: function() {
+                return !Object.keys(this.appliedFilters).length;
+            }
         }
+
     }
  </script>

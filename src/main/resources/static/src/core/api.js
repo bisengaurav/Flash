@@ -15,7 +15,7 @@ let API = {
             return Query('/ui-api/equipment/getUniqueCountries');
         },
         getEquipmentTypes: () => {
-            return Query('/ui-api/equipment/getEquipmentTypes');
+            return Query('/ui-api/equipment/getUniqueEquipmentTypes');
         }
     }
 };

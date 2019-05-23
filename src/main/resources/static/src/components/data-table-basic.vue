@@ -82,7 +82,7 @@
                 ))
                     .then(data => {
                         this.highlightedId = id;
-                        this.data = data.content;
+                        this.data = data;
                         this.loading = false;
                     });
             }

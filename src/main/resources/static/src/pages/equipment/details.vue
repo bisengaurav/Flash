@@ -2,12 +2,98 @@
     <div>
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="users" class="slds-m-right_medium" />
+            <back-button to="equipment" class="slds-m-right_medium" />
             {{pageTitle}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
+             <div class="slds-col slds-size_1-of-1">
+
+                <div class="slds-card slds-p-around_medium">
+                     <!-- slds-p-bottom_medium slds-m-bottom_medium slds-border_bottom -->
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Equipment type</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.equipmentType__c}}
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Valid contract</span>
+                            <div class="slds-form-element__static">
+                                {{ equipment.fsmLastValidCliEndDate__c ? 'Yes' : '' }} {{ equipment.fsmLastValidCliEndDate__c === false ? 'No' : '' }}
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Customer asset name</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.customerAssetName__c}}
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Account ID</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.accountId}}
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Account name</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.accountName}}
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Sold-to ID</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.soldToId}}
+                            </div>
+                        </div>
+                    
+                         <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Sold-to name</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.soldToName}}
+                            </div>
+                        </div>
+
+                         <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">City</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.installationCity__c}}
+                            </div>
+                        </div>
+
+                         <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Country</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.installationCountry__c}}
+                            </div>
+                        </div>
+
+                         <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Location</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.locationName}}
+                            </div>
+                        </div>
+
+                         <div class="slds-size_1-of-6 slds-m-bottom_medium">
+                            <span class="slds-form-element__label">Service territory</span>
+                            <div class="slds-form-element__static">
+                                {{equipment.serviceTerritoryName}}
+                            </div>
+                        </div>   
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -32,7 +118,8 @@
         data() {
             return  {
                 pageTitle: 'Equipment Record Detail',
-                loading: true
+                loading: true,
+                equipment: {},
             }
         },
 
@@ -44,11 +131,23 @@
                 this.loading = true;
 
                 // wrong Job ID
+                console.log('init');
+
                 if (!this.id) {
                     throw new Error('Wrong ID');
                 }
 
                 // data
+                // data
+                this.$API.equipment.getById(this.id)
+                    .then(data => {
+                       
+                        console.log(data);
+                        this.equipment = data;
+                        this.loading = false;
+                        // run auto refresh
+                        if (this.autoRefreshOn) this.initAutoRefresh();
+                    });
             }
         },
 

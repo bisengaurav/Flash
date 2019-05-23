@@ -50,6 +50,18 @@
         //
         created() {
             this.init();
-        }
+        },
+
+        //
+        // WATCHERS
+        //
+        // watch: {
+        //     innerValue: function() {
+        //         console.log('innerValue');
+        //     //   this.disableButton = this.innerValue !== {} ? true : false;
+        //     },
+        //     deep: true
+        // }
+        
     }
 </script>

@@ -38,7 +38,7 @@
                     <td>{{row.locationName}}</td>
                     <td>{{row.installationStreet__c}}</td>
                     <td>{{row.installationCity__c}}</td>
-                    <td>{{row.installationStateProvice__c}}</td>
+                    <td>{{row.installationStateProvince__c}}</td>
                     <td>{{row.serviceTerritoryName}}</td>
                     <td>{{row.workCenterName}}</td>
                     <td>{{ row.fsmLastValidCliEndDate__c ? 'Yes' : '' }} {{ row.fsmLastValidCliEndDate__c === false ? 'No' : '' }}</td>
