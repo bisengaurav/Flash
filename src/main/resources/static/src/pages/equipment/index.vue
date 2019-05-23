@@ -29,7 +29,7 @@
                     <th></th>
                 </template>
                 <template #row="{row, id}">
-                    <td>{{id}}</td>
+                    <td><router-link :to="{name: 'equipmentDetails', params: {id: id }}">{{id}}</router-link></td>
                     <td>{{row.equipmentType__c}}</td>
                     <td>{{row.customerAssetName__c}}</td>
                     <td>{{row.equipmentPhoneNumber__c}}</td>
@@ -41,7 +41,7 @@
                     <td>{{row.installationStateProvice__c}}</td>
                     <td>{{row.serviceTerritoryName}}</td>
                     <td>{{row.workCenterName}}</td>
-                    <td>{{row.validContract}}</td>
+                    <td>{{ row.fsmLastValidCliEndDate__c ? 'Yes' : '' }} {{ row.fsmLastValidCliEndDate__c === false ? 'No' : '' }}</td>
                 </template>
             </data-table-basic>
         </div>

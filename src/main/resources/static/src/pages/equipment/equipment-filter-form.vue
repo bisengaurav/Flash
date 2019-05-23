@@ -89,13 +89,13 @@
         <form-element label="Valid Contract" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="valid_contract">
             <div class="slds-select_container">
                 <select
-                    v-model="innerValue.validContract"
+                    v-model="innerValue.fsmLastValidCliEndDate__c"
                     id="valid_contract"
                     class="slds-select"
                 >
                     <option></option>
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select>
             </div>
         </form-element>
@@ -126,7 +126,7 @@
                     installationStreet__c: null,
                     installationCity__c: null,
                     installationStateProvice__c: null,
-                    validContract: null
+                    fsmLastValidCliEndDate__c: null
                 }
             }
         }
