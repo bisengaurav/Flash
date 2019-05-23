@@ -33,6 +33,9 @@ public class EquipmentApi {
 	private EquipmentRepository equipmentRepo;
 	@Autowired
 	private EquipmentDetailsRepository equipmentDetailsRepo;
+
+	private static final String EMPTY_FILTER = "Please clarify your search request by applying at" +
+		" least one filter.";
 	//
 
 	//
@@ -65,10 +68,14 @@ public class EquipmentApi {
 	{
 		//- deserialize parameters
 		EquipmentFilter filter = JsonUtils.deserialize_typed(filterJson, EquipmentFilter.class);
+		if (filter == null || filter.isEmpty()) {
+			return OperationResults.newError(EMPTY_FILTER);
+		}
+
 		Pageable pageRequest = PagingUtils.extractOrGetDefaultPageRequest(getDefaultSort());
 
 		//- get and return data
-		return OperationResults.newSuccess(equipmentRepo.findByFilter(filter, pageRequest, false));
+		return OperationResults.newSuccess(equipmentRepo.findByFilter(filter, pageRequest));
 	}
 
 	/**
@@ -86,11 +93,11 @@ public class EquipmentApi {
 	/**
 	 * @return OperationResults with list of the SelectOptions
 	 */
-	@GetMapping(value = "getEquipmentTypes")
-	public OperationResults getEquipmentTypes()
+	@GetMapping(value = "getUniqueEquipmentTypes")
+	public OperationResults getUniqueEquipmentTypes()
 	{
 		return OperationResults.newSuccess(
-			SelectOption.generateList(equipmentRepo.getEquipmentTypes().toArray())
+			SelectOption.generateList(equipmentRepo.getUniqueEquipmentTypes().toArray())
 		);
 	}
 	//

@@ -15,6 +15,6 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Integer>,
 	@Query("SELECT DISTINCT e.installationCountry__c FROM Equipment e ORDER BY e.installationCountry__c")
 	List<String> getUniqueCountries();
 
-	@Query("SELECT e.value FROM EquipmentType e ORDER BY e.value")
-	List<String> getEquipmentTypes();
+	@Query("SELECT DISTINCT e.value FROM EquipmentType e ORDER BY e.value")
+	List<String> getUniqueEquipmentTypes();
 }

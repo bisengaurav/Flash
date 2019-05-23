@@ -1,5 +1,7 @@
 package com.kone.cplan.jpa.filter;
 
+import java.lang.reflect.Field;
+
 /**
  * This class represents a filter for the Equipment entities.
  *
@@ -29,7 +31,7 @@ public class EquipmentFilter {
 
 	private String installationCity__c;
 
-	private String installationStateProvice__c;
+	private String installationStateProvince__c;
 
 	private Boolean fsmLastValidCliEndDate__c;
 	//
@@ -100,11 +102,11 @@ public class EquipmentFilter {
 		this.installationCity__c = installationCity__c;
 	}
 
-	public String getInstallationStateProvice__c() {
-		return installationStateProvice__c;
+	public String getInstallationStateProvince__c() {
+		return installationStateProvince__c;
 	}
-	public void setInstallationStateProvice__c(String installationStateProvice__c) {
-		this.installationStateProvice__c = installationStateProvice__c;
+	public void setInstallationStateProvince__c(String installationStateProvince__c) {
+		this.installationStateProvince__c = installationStateProvince__c;
 	}
 
 	public Boolean getFsmLastValidCliEndDate__c() {
@@ -112,6 +114,24 @@ public class EquipmentFilter {
 	}
 	public void setFsmLastValidCliEndDate__c(Boolean fsmLastValidCliEndDate__c) {
 		this.fsmLastValidCliEndDate__c = fsmLastValidCliEndDate__c;
+	}
+	//
+
+	//
+	//Public Methods
+	//
+	public boolean isEmpty() {
+		for (Field f : getClass().getDeclaredFields()) {
+			f.setAccessible(true);
+			try {
+				if (f.get(this) != null) {
+					return false;
+				}
+			} catch (IllegalAccessException error) {
+				error.printStackTrace();
+			}
+		}
+		return true;
 	}
 	//
 }
