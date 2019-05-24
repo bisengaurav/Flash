@@ -2,11 +2,11 @@
     <div>
 
         <div class="z-level4" :class="{'nav-expanded': isOpen}">
-            <div class="slds-backdrop nav-backdrop" @click="close"></div>
+            <div class="slds-backdrop" @click="close"></div>
 
             <div class="nav-panel">
                 <div class="logo">
-                    <img alt="Cervello" src="/assets/img/logo-white.png" />
+                    <img alt="Cervello" src="/assets/img/logo.png" />
                 </div>
 
                 <div class="nav">
@@ -85,10 +85,6 @@
         margin-left: 90px;
     }
 
-    .nav-backdrop {
-        background: rgba(255,255,255,.6);
-    }
-
 
     /* Nav Sign */
 
@@ -97,8 +93,8 @@
         top: 0;
         left: 0;
         height: 100%;
-        width: 90px;
-        background-color: #0071b9;
+        width: 88px;
+        background-color: #fff;
     }
     .nav-sign .slds-icon {
         position: absolute;
@@ -107,7 +103,7 @@
         width: 30px;
         text-align: center;
 
-        fill: #fff;
+        fill: #0071b9;
         cursor: pointer;
     }
 
@@ -120,7 +116,8 @@
         left: 0;
         height: 100%;
         width: 90px;
-        background-color: #0071b9;
+        background-color: #fff;
+        border-right: 2px solid #dae2e7;
         transition: width 0.5s;
     }
 
@@ -133,13 +130,13 @@
         top: 40px;
 
         z-index: 2;
-        background-color: #0071b9;
+        background-color: #fff;
         opacity: 0;
     }
     .logo,
     .logo img {
         width: 113px;
-        height: 57px;
+        height: 58px;
     }
 
 
@@ -163,17 +160,17 @@
         font-size: 12px;
         font-weight: 700;
         line-height: 42px;
-        color: #fff;
+        color: #1e2528;
         text-decoration: none;
         text-transform: uppercase;
     }
     .nav a:hover {
-        background-color: #057ac4;
+        background-color: #e0f2fb;
     }
     .nav a.nav-active,
     .nav a.nav-active:hover {
         color: #fff;
-        background-color: #1990dc;
+        background-color: #0071b9;
     }
 
 
@@ -219,6 +216,7 @@
         .nav-sign {
             height: 40px;
             width: 100%;
+            border-bottom: 2px solid #dae2e7;
         }
         .nav-sign .slds-icon {
             position: absolute;
