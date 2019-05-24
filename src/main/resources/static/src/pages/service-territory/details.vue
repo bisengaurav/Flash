@@ -3,7 +3,7 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
             <back-button to="equipment" class="slds-m-right_medium" />
-            {{title}}
+            {{serviceTerritory.name}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
@@ -28,7 +28,10 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
+                                <th>Start Date</th>
+                                <th>End Date</th>
                                 <th>Title</th>
+                                <th>Phone</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,7 +39,11 @@
                                 v-for="row in serviceTerritory.serviceTerritoryResources"
                                 :key="row.id"
                             >
-                               <td>{{row.serviceResource_name}}</td>
+                                <td>{{row.startDate__c|formatDate}}</td>
+                                <td>{{row.endDate__c|formatDate}}</td>
+                                <td>{{row.serviceResource_name}}</td>
+                                <td>{{row.phone__c}}</td>
+                               
                             </tr>
                         </tbody>
                     </table>
@@ -66,7 +73,6 @@
             return  {
                 pageTitle: 'Service Territory Record Detail',
                 loading: true,
-                title: '',
                 serviceTerritory: {},
             }
         },
@@ -89,7 +95,6 @@
                         this.loading = false;
                         console.log(data);
                         this.serviceTerritory = data;
-                        this.title = data.name;
                         if (this.autoRefreshOn) this.initAutoRefresh();
                     });
             }

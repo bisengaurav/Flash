@@ -3,7 +3,7 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
             <back-button to="equipment" class="slds-m-right_medium" />
-            {{title}}
+            {{workCenter.name}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
@@ -66,7 +66,6 @@
                 pageTitle: 'Work Center Record Detail',
                 loading: true,
                 workCenter: {},
-                title: ''
             }
         },
 
@@ -89,7 +88,6 @@
                         this.loading = false;
                         console.log(data);
                         this.workCenter = data;
-                        this.title = data.name;
                         if (this.autoRefreshOn) this.initAutoRefresh();
                     });
             }
