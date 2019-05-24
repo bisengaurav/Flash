@@ -47,6 +47,10 @@
                 type: Boolean,
                 default: true
             },
+            useLoading: {
+                type: Boolean,
+                default: true
+            },
 
             // "static" external params, not used in logic
             params: {
@@ -73,7 +77,7 @@
         //
         methods: {
             refresh(id) {
-                this.loading = true;
+                this.loading = this.useLoading;
 
                 this.action(Object.assign(
                     {},
@@ -92,7 +96,6 @@
         // EVENTS
         //
         mounted() {
-            console.log(this.$props.immediateRefresh);
             if (this.$props.immediateRefresh) this.refresh();
         },
 
@@ -108,7 +111,6 @@
             },
             filters: {
                 handler(val, oldVal) {
-                    console.log('filters changed');
                     this.refresh();
                 },
                 deep: true

@@ -21,7 +21,6 @@
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.equipment.getEquipmentTypes"
-                    valueParam="value"
                     :allowEmpty="true"
                     v-model="innerValue.equipmentType__c"
                     id="equipment_type"

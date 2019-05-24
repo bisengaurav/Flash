@@ -6,7 +6,7 @@ import Query from './query.js';
 let API = {
     equipment: {
         getAllByFilter: (params) => {
-            return Query('/ui-api/equipment/getAllByFilter', params);
+            return Query('/ui-api/equipment/getAllByFilter', params, 'GET', true);
         },
         getById: (id) => {
             return Query('/ui-api/equipment/getById', {id});
