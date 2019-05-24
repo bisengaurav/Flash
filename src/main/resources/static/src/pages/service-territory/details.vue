@@ -49,6 +49,15 @@
                 }
 
                 // data
+                this.$API.equipment.getById(this.id)
+                    .then(data => {
+                       
+                        console.log(data);
+                        this.equipment = data;
+                        this.loading = false;
+                        // run auto refresh
+                        if (this.autoRefreshOn) this.initAutoRefresh();
+                    });
             }
         },
 

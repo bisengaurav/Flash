@@ -39,8 +39,8 @@
                     <td>{{row.installationStreet__c}}</td>
                     <td>{{row.installationCity__c}}</td>
                     <td>{{row.installationStateProvince__c}}</td>
-                    <td>{{row.serviceTerritoryName}}</td>
-                    <td>{{row.workCenterName}}</td>
+                    <td><router-link :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
+                    <td><router-link :to="{name: 'workCenter', params: {id: row.workCenterId }}">{{row.workCenterName}}</router-link></td>
                     <td>{{ row.fsmLastValidCliEndDate__c ? 'Yes' : '' }} {{ row.fsmLastValidCliEndDate__c === false ? 'No' : '' }}</td>
                 </template>
             </data-table-basic>

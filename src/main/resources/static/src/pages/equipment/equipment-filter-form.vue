@@ -2,19 +2,19 @@
     <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-end slds-wrap">
 
         <form-element label="Country" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
-            <input
+            <!-- <input
                 v-model="innerValue.installationCountry__c"
                 id="country"
                 class="slds-input"
-            />
-            <!-- <select-loader
+            /> -->
+            <select-loader
                     :source="$API.equipment.getUniqueCountries"
                     valueParam="value"
                     :allowEmpty="true"
                     v-model="innerValue.installationCountry__c"
                     id="equipment_type"
                     class="slds-select"
-            /> -->
+            />
         </form-element>
 
         <form-element label="Equipment Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="equipment_type">
