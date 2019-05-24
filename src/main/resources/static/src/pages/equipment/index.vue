@@ -11,6 +11,7 @@
                     :action="$API.equipment.getAllByFilter"
                     :filters="filters"
                     :immediateRefresh="false"
+                    :useLoading="false"
                 >
                 <template #head>
                     <th>Equipment</th>
