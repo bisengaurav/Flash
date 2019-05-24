@@ -96,9 +96,9 @@
 
             </div>
 
-            <div class="primary-section">
+            <div class="primary-section" v-if="equipment.activeSLAs.length > 0">
 
-                    <table v-if="equipment.activeSLAs.length > 0" class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
                                 <th>SLA</th>
@@ -174,7 +174,6 @@
                     throw new Error('Wrong ID');
                 }
 
-                // data
                 // data
                 this.$API.equipment.getById(this.id)
                     .then(data => {

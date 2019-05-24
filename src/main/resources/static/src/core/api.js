@@ -16,6 +16,16 @@ let API = {
         },
         getEquipmentTypes: () => {
             return Query('/ui-api/equipment/getUniqueEquipmentTypes');
+        } 
+    },
+    workCenter: {
+        getById: (id) => {
+            return Query('/ui-api/workCenter__c/getById', {id});
+        }
+    },
+    serviceTerritory: {
+        getById: (id) => {
+            return Query('/ui-api/serviceTerritory/getById', {id});
         }
     }
 };
