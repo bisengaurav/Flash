@@ -2,15 +2,55 @@
     <div>
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="users" class="slds-m-right_medium" />
-            {{pageTitle}}
+            <back-button to="equipment" class="slds-m-right_medium" />
+            {{serviceTerritory.name}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
 
-        </div>
+            <div class="slds-col slds-size_1-of-1">
+                <div class="slds-card slds-p-around_medium">
+                     <!-- slds-p-bottom_mediumslds-border_bottom -->
+                    <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
+                        <div class="slds-size_1-of-6 slds-col_padded">
+                            <span class="slds-form-element__label">Sales organization</span>
+                            <div class="slds-form-element__static">
+                                {{serviceTerritory.salesOrganization__c}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="primary-section" v-if="serviceTerritory.serviceTerritoryResources.length > 0">
+
+                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Title</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="row in serviceTerritory.serviceTerritoryResources"
+                                :key="row.id"
+                            >
+                                <td>{{row.startDate__c|formatDate}}</td>
+                                <td>{{row.endDate__c|formatDate}}</td>
+                                <td>{{row.serviceResource_name}}</td>
+                                <td>{{row.phone__c}}</td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+
+            </div>
+
+        </div>
     </div>
 </template>
 
@@ -32,7 +72,8 @@
         data() {
             return  {
                 pageTitle: 'Service Territory Record Detail',
-                loading: true
+                loading: true,
+                serviceTerritory: {},
             }
         },
 
@@ -49,13 +90,11 @@
                 }
 
                 // data
-                this.$API.equipment.getById(this.id)
+                 this.$API.serviceTerritory.getById(this.id)
                     .then(data => {
-                       
-                        console.log(data);
-                        this.equipment = data;
                         this.loading = false;
-                        // run auto refresh
+                        console.log(data);
+                        this.serviceTerritory = data;
                         if (this.autoRefreshOn) this.initAutoRefresh();
                     });
             }
