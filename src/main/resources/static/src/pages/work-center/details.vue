@@ -27,7 +27,11 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th>Workcenter Members</th>
+                                <th>Service Resource</th>
+                                <th>Work Type</th>
+                                <th>Preference Type</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,7 +39,11 @@
                                 v-for="row in workCenter.workCenterResources"
                                 :key="row.id"
                             >
-                               <td>{{row.serviceResource_name}}</td>
+                                <td>{{row.serviceResource_name}}</td>
+                                <td>{{row.workType_name}}</td>
+                                <td>{{row.preferenceType__c}}</td>
+                                <td>{{row.startDate__c|formatDate}}</td>
+                                <td>{{row.endDate__c|formatDate}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -83,10 +91,8 @@
 
                 // data
                   this.$API.workCenter.getById(this.id)
-                    .then(data => {
-                        
+                    .then(data => {                    
                         this.loading = false;
-                        console.log(data);
                         this.workCenter = data;
                         if (this.autoRefreshOn) this.initAutoRefresh();
                     });
