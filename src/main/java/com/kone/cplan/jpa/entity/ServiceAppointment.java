@@ -1,21 +1,19 @@
 package com.kone.cplan.jpa.entity;
 
 import com.kone.cplan.helpers.db.DbSchema;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
-@Table(schema = DbSchema.C_PLAN)
-public class WorkCenter__c implements Serializable {
+@Table(schema = DbSchema.C_PLAN, name = "serviceappointment")
+public class ServiceAppointment implements Serializable {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public WorkCenter__c() {};
+	public ServiceAppointment() {};
 	//
 
 	//
@@ -30,10 +28,8 @@ public class WorkCenter__c implements Serializable {
 	@Column
 	private String name;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "work_center__c", referencedColumnName = "sfid")
-	@Where(clause = "end_date__c > CURRENT_DATE OR end_date__c IS NULL")
-	private Set<WorkCenterResource> workCenterResources;
+	@Column
+	private String status;
 	//
 
 	//
@@ -51,8 +47,8 @@ public class WorkCenter__c implements Serializable {
 		return name;
 	}
 
-	public Set<WorkCenterResource> getWorkCenterResources() {
-		return workCenterResources;
+	public String getStatus() {
+		return status;
 	}
 	//
 }
