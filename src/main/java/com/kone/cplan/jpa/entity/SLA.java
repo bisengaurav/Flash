@@ -12,7 +12,7 @@ import java.sql.Date;
  * @created 22-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "entitlement")
+@Table(schema = DbSchema.C_PLAN, name = "view_entitlement")
 public class SLA {
 
 	//
@@ -28,7 +28,7 @@ public class SLA {
 	@Id
 	private Integer id;
 
-	@Column
+	@Column(unique = true)
 	private String sfid;
 
 	@Column
