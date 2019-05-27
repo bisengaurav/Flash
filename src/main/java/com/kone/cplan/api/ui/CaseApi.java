@@ -78,5 +78,16 @@ public class CaseApi {
 			SelectOption.generateList(caseRepo.getUniqueSalesOrganizations().toArray())
 		);
 	}
+
+	/**
+	 * @return OperationResults with list of the SelectOptions
+	 */
+	@GetMapping(value = "getUniqueStatuses")
+	public OperationResults getUniqueStatuses()
+	{
+		return OperationResults.newSuccess(
+			SelectOption.generateList(caseRepo.getUniqueStatuses().toArray())
+		);
+	}
 	//
 }

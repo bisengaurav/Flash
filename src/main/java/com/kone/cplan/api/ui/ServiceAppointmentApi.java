@@ -3,7 +3,6 @@ package com.kone.cplan.api.ui;
 import com.kone.cplan.api.JpaUtilsForApi;
 import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.jpa.repository.ServiceAppointmentRepository;
-import com.kone.cplan.utils.dto.SelectOption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,17 +36,6 @@ public class ServiceAppointmentApi {
 	@GetMapping(value = "getById")
 	public OperationResults getById(@RequestParam Integer id) {
 		return JpaUtilsForApi.findById(serviceAppointmentRepo, id);
-	}
-
-	/**
-	 * @return OperationResults with list of the SelectOptions
-	 */
-	@GetMapping(value = "getUniqueStatuses")
-	public OperationResults getUniqueStatuses()
-	{
-		return OperationResults.newSuccess(
-			SelectOption.generateList(serviceAppointmentRepo.getUniqueStatuses().toArray())
-		);
 	}
 	//
 }

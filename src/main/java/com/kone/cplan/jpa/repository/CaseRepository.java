@@ -13,4 +13,8 @@ public interface CaseRepository extends JpaRepository<Case, Integer>, Case_RepoE
 	@Query(nativeQuery = true, value = "SELECT sales_organization__c FROM " + DbSchema.C_PLAN + ".case " +
 		"WHERE sales_organization__c IS NOT NULL GROUP BY sales_organization__c ORDER BY sales_organization__c")
 	List<String> getUniqueSalesOrganizations();
+
+	@Query(nativeQuery = true, value = "SELECT status FROM " + DbSchema.C_PLAN + ".serviceappointment" +
+		" WHERE status IS NOT NULL GROUP BY status ORDER BY status")
+	List<String> getUniqueStatuses();
 }
