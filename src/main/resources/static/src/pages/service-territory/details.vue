@@ -39,8 +39,8 @@
                                 v-for="row in serviceTerritory.serviceTerritoryResources"
                                 :key="row.id"
                             >
-                                <td>{{row.startDate__c|formatDate}}</td>
-                                <td>{{row.endDate__c|formatDate}}</td>
+                                <td>{{row.effectiveStartDate|formatDate}}</td>
+                                <td>{{row.effectiveEndDate|formatDate}}</td>
                                 <td>{{row.serviceResource_name}}</td>
                                 <td>{{row.phone__c}}</td>
                                
