@@ -27,6 +27,14 @@ public class ServiceTerritoryResource {
 	@Id
 	private Integer id;
 
+	@Column(name = "effectivestartdate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
+	private Timestamp effectiveStartDate;
+
+	@Column(name = "effectiveenddate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
+	private Timestamp effectiveEndDate;
+
 	@Column
 	private Integer serviceResource_id;
 
@@ -35,12 +43,6 @@ public class ServiceTerritoryResource {
 
 	@Column
 	private String phone__c;
-
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
-	private Timestamp startDate__c;
-
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
-	private Timestamp endDate__c;
 	//
 
 	//
@@ -48,6 +50,14 @@ public class ServiceTerritoryResource {
 	//
 	public Integer getId() {
 		return id;
+	}
+
+	public Timestamp getEffectiveStartDate() {
+		return effectiveStartDate;
+	}
+
+	public Timestamp getEffectiveEndDate() {
+		return effectiveEndDate;
 	}
 
 	public Integer getServiceResource_id() {
@@ -60,14 +70,6 @@ public class ServiceTerritoryResource {
 
 	public String getPhone__c() {
 		return phone__c;
-	}
-
-	public Timestamp getStartDate__c() {
-		return startDate__c;
-	}
-
-	public Timestamp getEndDate__c() {
-		return endDate__c;
 	}
 	//
 }

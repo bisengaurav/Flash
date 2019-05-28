@@ -32,7 +32,7 @@ public class WorkCenter__c implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "work_center__c", referencedColumnName = "sfid")
-	@Where(clause = "effectiveenddate > CURRENT_DATE OR effectiveenddate IS NULL")
+	@Where(clause = "end_date__c > CURRENT_DATE OR end_date__c IS NULL")
 	private Set<WorkCenterResource> workCenterResources;
 	//
 
