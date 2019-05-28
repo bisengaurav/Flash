@@ -5,6 +5,7 @@ import com.kone.cplan.api.ui.utils.pagination.PagingUtils;
 import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.helpers.serialization.JsonUtils;
 import com.kone.cplan.jpa.filter.CaseFilter;
+import com.kone.cplan.jpa.repository.CaseDetailsRepository;
 import com.kone.cplan.jpa.repository.CaseRepository;
 import com.kone.cplan.utils.dto.SelectOption;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class CaseApi {
 	//
 	@Autowired
 	private CaseRepository caseRepo;
+	@Autowired
+	private CaseDetailsRepository caseDetailsRepo;
 	//
 
 	//
@@ -49,7 +52,7 @@ public class CaseApi {
 	 */
 	@GetMapping(value = "getById")
 	public OperationResults getById(@RequestParam Integer id) {
-		return JpaUtilsForApi.findById(caseRepo, id);
+		return JpaUtilsForApi.findById(caseDetailsRepo, id);
 	}
 
 	/**
@@ -76,17 +79,6 @@ public class CaseApi {
 	{
 		return OperationResults.newSuccess(
 			SelectOption.generateList(caseRepo.getUniqueSalesOrganizations().toArray())
-		);
-	}
-
-	/**
-	 * @return OperationResults with list of the SelectOptions
-	 */
-	@GetMapping(value = "getUniqueStatuses")
-	public OperationResults getUniqueStatuses()
-	{
-		return OperationResults.newSuccess(
-			SelectOption.generateList(caseRepo.getUniqueStatuses().toArray())
 		);
 	}
 	//
