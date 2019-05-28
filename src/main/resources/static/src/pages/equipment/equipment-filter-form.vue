@@ -2,11 +2,6 @@
     <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-end slds-wrap">
 
         <form-element label="Country" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
-            <!-- <input
-                v-model="innerValue.installationCountry__c"
-                id="country"
-                class="slds-input"
-            /> -->
             <select-loader
                     :source="$API.equipment.getUniqueCountries"
                     valueParam="value"
