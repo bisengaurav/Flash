@@ -1,5 +1,9 @@
 package com.kone.cplan.config;
 
+import java.util.Locale;
+
+import org.springframework.core.env.Environment;
+
 /**
  * This class provides utilities for application settings.
  * 
@@ -25,5 +29,40 @@ public class AppSettings {
 	public static final int TIMEOUT_FOR_LONG_OPs_IN_MSECs = (TIMEOUT_FOR_LONG_OPs_IN_SECs * 1000);
 	
 	public static final int DEFAULT_PAGE_SIZE = 100;
+	
+	public static final Locale DEFAULT_LOCALE = Locale.US;
+	//
+	
+	//
+	//Static initialization
+	//
+	private static Environment environment;
+	
+	public static void initialize(Environment environment)
+	{
+		AppSettings.environment = environment;
+	}
+	//
+	
+	
+	/*********************************************************
+	* SETTINGS FROM the APPLICATION.PROPERTIES *
+	**********************************************************/
+	//
+	//Private static methods
+	//
+	private static String getPropertyValue(String key)
+	{
+		return environment.getProperty(key);
+	}
+	//
+	
+	//
+	//Public static methods
+	//
+	public static String getMessagesBaseName()
+	{
+		return getPropertyValue("spring.messages.basename");
+	}
 	//
 }
