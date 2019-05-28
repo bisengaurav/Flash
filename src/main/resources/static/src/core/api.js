@@ -27,6 +27,20 @@ let API = {
         getById: (id) => {
             return Query('/ui-api/serviceTerritory/getById', {id});
         }
+    },
+    case: {
+        getById: (id) => {
+            return Query('/ui-api/case/getById', {id});
+        },
+        getAllByFilter: (params) => {
+            return Query('/ui-api/case/getAllByFilter', params, 'GET', true);
+        },
+        getUniqueSalesOrganizations: () => {
+            return Query('/ui-api/equipment/getUniqueSalesOrganizations');
+        },
+        getUniqueStatuses: () => {
+            return Query('/ui-api/equipment/getUniqueStatuses');
+        } 
     }
 };
 
