@@ -27,25 +27,31 @@ public class WorkCenterResource {
 	@Id
 	private Integer id;
 
+	@Column(name = "workcenter_id")
+	private Integer workCenterId;
+
+	@Column(name = "workcenter_name")
+	private String workCenterName;
+
 	@Column
 	private String preferenceType__c;
 
-	@Column
+	@Column(name = "effectivestartdate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
-	private Timestamp startDate__c;
+	private Timestamp effectiveStartDate;
 
-	@Column
+	@Column(name = "effectiveenddate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
-	private Timestamp endDate__c;
+	private Timestamp effectiveEndDate;
 
 	@Column
-	private Integer serviceResource_id;
+	private Integer serviceResourceId;
 
 	@Column
-	private String serviceResource_name;
+	private String serviceResourceName;
 
 	@Column
-	private String workType_name;
+	private String workTypeName;
 	//
 
 	//
@@ -55,28 +61,36 @@ public class WorkCenterResource {
 		return id;
 	}
 
+	public Integer getWorkCenterId() {
+		return workCenterId;
+	}
+
+	public String getWorkCenterName() {
+		return workCenterName;
+	}
+
 	public String getPreferenceType__c() {
 		return preferenceType__c;
 	}
 
-	public Timestamp getStartDate__c() {
-		return startDate__c;
+	public Timestamp getEffectiveStartDate() {
+		return effectiveStartDate;
 	}
 
-	public Timestamp getEndDate__c() {
-		return endDate__c;
+	public Timestamp getEffectiveEndDate() {
+		return effectiveEndDate;
 	}
 
-	public Integer getServiceResource_id() {
-		return serviceResource_id;
+	public Integer getServiceResourceId() {
+		return serviceResourceId;
 	}
 
-	public String getServiceResource_name() {
-		return serviceResource_name;
+	public String getServiceResourceName() {
+		return serviceResourceName;
 	}
 
-	public String getWorkType_name() {
-		return workType_name;
+	public String getWorkTypeName() {
+		return workTypeName;
 	}
 	//
 }
