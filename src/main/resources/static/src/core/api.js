@@ -36,10 +36,12 @@ let API = {
             return Query('/ui-api/case/getAllByFilter', params, 'GET', true);
         },
         getUniqueSalesOrganizations: () => {
-            return Query('/ui-api/equipment/getUniqueSalesOrganizations');
-        },
+            return Query('/ui-api/case/getUniqueSalesOrganizations');
+        }  
+    },
+    serviceAppointment: {
         getUniqueStatuses: () => {
-            return Query('/ui-api/equipment/getUniqueStatuses');
+            return Query('/ui-api/serviceAppointment/getUniqueStatuses');
         } 
     }
 };
