@@ -4,17 +4,17 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * This class encapsulates information for internationalization of the application.
+ * This class encapsulates information for localization.
  * 
  * @author Gennadiy Pervukhin
  * @created 29-05-2019
  */
-public class I18nInfo {
+public class L10nInfo {
 
 	//
 	//Constructors
 	//
-	private I18nInfo(String localeCode) {
+	private L10nInfo(String localeCode) {
 		this.languageTag = localeCode;
 	}
 	//
@@ -61,9 +61,9 @@ public class I18nInfo {
 	//
 	//Public static methods
 	//
-	public static I18nInfo buildNew(String languageTag) {
+	public static L10nInfo buildNew(String languageTag) {
 		//- initialize a new I18nInfo and Locale
-		I18nInfo i18nInfo = new I18nInfo(languageTag);
+		L10nInfo i18nInfo = new L10nInfo(languageTag);
 		Locale locale = Locale.forLanguageTag(languageTag);
 		
 		//- set string resources
