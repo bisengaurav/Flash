@@ -2,7 +2,7 @@
     <div>
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="users" class="slds-m-right_medium" />
+            <back-button to="callouts" class="slds-m-right_medium" />
             {{pageTitle}}
         </h1>
 
@@ -32,7 +32,8 @@
         data() {
             return  {
                 pageTitle: 'Case Record Detail',
-                loading: true
+                loading: true,
+                case: {}
             }
         },
 
@@ -49,6 +50,13 @@
                 }
 
                 // data
+                  this.$API.case.getById(this.id)
+                    .then(data => {                    
+                        this.loading = false;
+                        this.case = data;
+                        console.log(data);
+                        if (this.autoRefreshOn) this.initAutoRefresh();
+                    });
             }
         },
 
