@@ -39,6 +39,9 @@ public class WorkOrder implements Serializable {
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp dueDate__c;
+
+	@Column
+	private String maintenanceActivityTypeCode__c;
 	//
 
 	//
@@ -62,6 +65,10 @@ public class WorkOrder implements Serializable {
 
 	public Timestamp getDueDate__c() {
 		return dueDate__c;
+	}
+
+	public String getMaintenanceActivityTypeCode__c() {
+		return maintenanceActivityTypeCode__c;
 	}
 	//
 }

@@ -7,7 +7,7 @@ import com.kone.cplan.helpers.db.DbSchema;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * @author Andrey Gribanov (Cervello)
@@ -29,10 +29,6 @@ public class Case extends AbstractCase {
 
 	@Column
 	private String stateProvince__c;
-
-	@Column
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
-	private Date npxResponseDueDate__c;
 
 	@Column(name = "serviceappointment_id")
 	private Integer serviceAppointmentId;
@@ -59,12 +55,6 @@ public class Case extends AbstractCase {
 	private String assembly__c;
 
 	@Column
-	private Integer assetId;
-
-	@Column
-	private String assetName;
-
-	@Column
 	private String locationName;
 
 	@Column(name = "workorder_id")
@@ -72,6 +62,13 @@ public class Case extends AbstractCase {
 
 	@Column(name = "workorder_number")
 	private String workOrderNumber;
+
+	@Column
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
+	private Timestamp dueDate__c;
+
+	@Column
+	private String maintenanceActivityTypeCode__c;
 	//
 
 	//
@@ -89,8 +86,8 @@ public class Case extends AbstractCase {
 		return stateProvince__c;
 	}
 
-	public Date getNpxResponseDueDate__c() {
-		return npxResponseDueDate__c;
+	public Timestamp getDueDate__c() {
+		return dueDate__c;
 	}
 
 	public Integer getServiceAppointmentId() {
@@ -125,14 +122,6 @@ public class Case extends AbstractCase {
 		return assembly__c;
 	}
 
-	public Integer getAssetId() {
-		return assetId;
-	}
-
-	public String getAssetName() {
-		return assetName;
-	}
-
 	public String getLocationName() {
 		return locationName;
 	}
@@ -143,6 +132,10 @@ public class Case extends AbstractCase {
 
 	public String getWorkOrderNumber() {
 		return workOrderNumber;
+	}
+
+	public String getMaintenanceActivityTypeCode__c() {
+		return maintenanceActivityTypeCode__c;
 	}
 	//
 }
