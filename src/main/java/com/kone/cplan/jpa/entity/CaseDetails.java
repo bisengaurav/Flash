@@ -10,7 +10,7 @@ import java.util.Set;
  * @created 28-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_case")
+@Table(schema = DbSchema.C_PLAN, name = "view_case_details")
 public class CaseDetails extends AbstractCase {
 
 	//
@@ -44,9 +44,9 @@ public class CaseDetails extends AbstractCase {
 	@Column
 	private String description;
 
-//	@OneToMany(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "caseid", referencedColumnName = "sfid")
-//	private Set<WorkOrder> workOrders;
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "caseid", referencedColumnName = "sfid")
+	private Set<WorkOrder> workOrders;
 	//
 
 	//
@@ -80,8 +80,8 @@ public class CaseDetails extends AbstractCase {
 		return description;
 	}
 
-//	public Set<WorkOrder> getWorkOrders() {
-//		return workOrders;
-//	}
+	public Set<WorkOrder> getWorkOrders() {
+		return workOrders;
+	}
 	//
 }

@@ -81,5 +81,27 @@ public class CaseApi {
 			SelectOption.generateList(caseRepo.getUniqueSalesOrganizations().toArray())
 		);
 	}
+
+	/**
+	 * @return OperationResults with list of the SelectOptions
+	 */
+	@GetMapping(value = "getUniqueMaintenanceActivityTypeCodes")
+	public OperationResults getUniqueMaintenanceActivityTypeCodes()
+	{
+		return OperationResults.newSuccess(
+			SelectOption.generateList(caseRepo.getUniqueMaintenanceActivityTypeCodes().toArray())
+		);
+	}
+
+	/**
+	 * @return OperationResults with list of the SelectOptions
+	 */
+	@GetMapping(value = "getUniqueAssemblies")
+	public OperationResults getUniqueAssemblies()
+	{
+		return OperationResults.newSuccess(
+			SelectOption.generateList(caseRepo.getUniqueAssemblies().toArray())
+		);
+	}
 	//
 }

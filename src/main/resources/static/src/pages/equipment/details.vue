@@ -8,7 +8,8 @@
 
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
-             <div class="slds-col slds-size_1-of-1">
+            
+            <div class="slds-col slds-size_1-of-1">
 
                 <div class="slds-card slds-p-around_medium">
                      <!-- slds-p-bottom_mediumslds-border_bottom -->
@@ -96,39 +97,42 @@
 
             </div>
 
-            <div class="primary-section" v-if="equipment.activeSLAs.length > 0">
-
-                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
-                        <thead>
-                            <tr class="slds-line-height_reset">
-                                <th>SLA</th>
-                                <th>Coverage</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Status</th>
-                                <th>Response Time</th>
-                                <th>Response Time After Hours</th>
-                                <th>Callout Hours</th>
-                                <th>Service Hours</th>           
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                v-for="row in equipment.activeSLAs"
-                                :key="row.id"
-                            >
-                               <td>{{row.name}}</td>
-                               <td>{{row.coverage__c}}</td>
-                               <td>{{row.startdate|formatDate}}</td>
-                               <td>{{row.enddate|formatDate}}</td>
-                               <td>{{row.status}}</td>
-                               <td>{{row.responseTime__c}}</td>
-                               <td>{{row.responseTimeAfterHours__c}}</td>
-                               <td>{{row.calloutHours__c}}</td>
-                               <td>{{row.serviceHours__c}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div v-if="equipment.activeSLAs.length > 0">
+                
+                <div class="slds-card slds-p-around_medium slds-m-top_medium">
+                        <h2 class="slds-text-heading_small slds-m-bottom_small">SLAs</h2>
+                        <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th>SLA</th>
+                                    <th>Coverage</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                    <th>Response Time</th>
+                                    <th>Response Time After Hours</th>
+                                    <th>Callout Hours</th>
+                                    <th>Service Hours</th>           
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    v-for="row in equipment.activeSLAs"
+                                    :key="row.id"
+                                >
+                                <td>{{row.name}}</td>
+                                <td>{{row.coverage__c}}</td>
+                                <td>{{row.startdate|formatDate}}</td>
+                                <td>{{row.enddate|formatDate}}</td>
+                                <td>{{row.status}}</td>
+                                <td>{{row.responseTime__c}}</td>
+                                <td>{{row.responseTimeAfterHours__c}}</td>
+                                <td>{{row.calloutHours__c}}</td>
+                                <td>{{row.serviceHours__c}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
             </div>
 

@@ -37,7 +37,7 @@
                     <th></th>
                 </template>
                 <template #row="{row, id}">
-                    <td>{{row.caseNumber}}</td>
+                    <td><router-link :to="{name: 'case', params: {id: row.id }}">{{row.caseNumber}}</router-link></td>
                     <td>{{row.createdDate}}</td>
                     <td>{{row.npxResponseDueDate__c}}</td>
                     <td>{{row.entrapment__c}}</td>

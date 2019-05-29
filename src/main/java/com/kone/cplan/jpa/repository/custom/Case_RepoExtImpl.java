@@ -39,14 +39,9 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 			filter.getCaseNumber(), false);
 		queryBuilder.addSimpleConditionIfNotNull("createdDate", ">=",
 			filter.getCreatedDate());
-		queryBuilder.addSimpleConditionIfNotNull("npxResponseDueDate__c", ">=",
-			filter.getNpxResponseDueDate__c());
-		queryBuilder.addSimpleConditionIfNotNull("entrapment__c", "=",
-			filter.getEntrapment__c(), false);
-		queryBuilder.addSimpleConditionIfNotNull("hazard__c", "=",
-			filter.getHazard__c(), false);
-		queryBuilder.addSimpleConditionIfNotNull("injury__c", "=",
-			filter.getInjury__c(), false);
+		queryBuilder.addSimpleConditionIfNotNull("entrapment__c", "=", filter.getEntrapment__c());
+		queryBuilder.addSimpleConditionIfNotNull("hazard__c", "=", filter.getHazard__c());
+		queryBuilder.addSimpleConditionIfNotNull("injury__c", "=", filter.getInjury__c());
 		queryBuilder.addCondition_FieldContains("assetName",
 			filter.getAssetName(), false);
 		queryBuilder.addCondition_FieldContains("locationName",
@@ -63,9 +58,11 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 			filter.getCallerName__c(), false);
 		queryBuilder.addCondition_FieldContains("workOrderNumber",
 			filter.getWorkOrderNumber(), false);
-		queryBuilder.addCondition_FieldContains("assemblyNumber__c",
-			filter.getAssemblyNumber__c(), false);
-		queryBuilder.addCondition_FieldContains("assembly__c",
+		queryBuilder.addSimpleConditionIfNotNull("dueDate__c", ">=",
+			filter.getDueDate__c());
+		queryBuilder.addSimpleConditionIfNotNull("maintenanceActivityTypeCode__c", "=",
+			filter.getMaintenanceActivityTypeCode__c(), false);
+		queryBuilder.addSimpleConditionIfNotNull("assembly__c", "=",
 			filter.getAssembly__c(), false);
 		queryBuilder.addCondition_FieldContains("appointmentNumber",
 			filter.getAppointmentNumber(), false);
@@ -85,7 +82,7 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 		queryBuilder.addSimpleCondition("createdDate", ">=", new Timestamp(1546290000000L));
 
 		queryBuilder.addSimpleCondition("recordTypeId", "=", "012w0000000V9MrAAK");
-		queryBuilder.addSimpleCondition("status", "IN", Arrays.asList("Cancelled", "Completed"));
+		queryBuilder.addSimpleCondition("status", "NOT IN", Arrays.asList("Cancelled", "Completed"));
 
 		queryBuilder.setPageRequest(pageRequest);
 

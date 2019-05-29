@@ -155,12 +155,16 @@
             />
         </form-element>
 
-        <form-element label="SA status" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
-             <input
-                id="sa_status"
-                v-model="innerValue.serviceAppointmentStatus"
-                class="slds-input"
-            />
+        <form-element label="SA status." class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="sa_status">
+            <div class="slds-select_container">
+                <select-loader
+                    :source="$API.serviceAppointment.getUniqueStatuses"
+                    :allowEmpty="true"
+                    v-model="innerValue.serviceAppointmentStatus"
+                    id="sa_status"
+                    class="slds-select"
+                />
+            </div>
         </form-element>
 
         <form-element label="Service Resource" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
@@ -187,12 +191,16 @@
             />
         </form-element>
 
-        <form-element label="Sales org." class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
-             <input
-                id="sales_org"
-                v-model="innerValue.salesOrganization__c"
-                class="slds-input"
-            />
+        <form-element label="Sales org." class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="sales_org">
+            <div class="slds-select_container">
+                <select-loader
+                    :source="$API.case.getUniqueSalesOrganizations"
+                    :allowEmpty="true"
+                    v-model="innerValue.salesOrganization__c"
+                    id="sales_org"
+                    class="slds-select"
+                />
+            </div>
         </form-element>
 
         <div class="slds-col slds-size_1-of-1 slds-p-top_small">
