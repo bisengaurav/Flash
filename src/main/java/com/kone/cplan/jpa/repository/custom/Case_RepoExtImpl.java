@@ -63,8 +63,6 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 			filter.getCallerName__c(), false);
 		queryBuilder.addCondition_FieldContains("workOrderNumber",
 			filter.getWorkOrderNumber(), false);
-		queryBuilder.addCondition_FieldContains("assemblyNumber__c",
-			filter.getAssemblyNumber__c(), false);
 		queryBuilder.addCondition_FieldContains("assembly__c",
 			filter.getAssembly__c(), false);
 		queryBuilder.addCondition_FieldContains("appointmentNumber",

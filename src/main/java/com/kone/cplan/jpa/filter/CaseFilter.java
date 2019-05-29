@@ -42,8 +42,6 @@ public class CaseFilter {
 
 	private String workOrderNumber;
 
-	private String assemblyNumber__c;
-
 	private String assembly__c;
 
 	private String appointmentNumber;
@@ -158,13 +156,6 @@ public class CaseFilter {
 	}
 	public void setWorkOrderNumber(String workOrderNumber) {
 		this.workOrderNumber = workOrderNumber;
-	}
-
-	public String getAssemblyNumber__c() {
-		return assemblyNumber__c;
-	}
-	public void setAssemblyNumber__c(String assemblyNumber__c) {
-		this.assemblyNumber__c = assemblyNumber__c;
 	}
 
 	public String getAssembly__c() {

@@ -9,13 +9,13 @@ import java.util.Set;
 
 @Entity
 @Table(schema = DbSchema.C_PLAN)
-public class WorkCenter__c implements Serializable {
+public class WorkCenter implements Serializable {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public WorkCenter__c() {};
+	public WorkCenter() {};
 	//
 
 	//
