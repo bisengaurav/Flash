@@ -41,12 +41,9 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 			filter.getCreatedDate());
 		queryBuilder.addSimpleConditionIfNotNull("npxResponseDueDate__c", ">=",
 			filter.getNpxResponseDueDate__c());
-		queryBuilder.addSimpleConditionIfNotNull("entrapment__c", "=",
-			filter.getEntrapment__c(), false);
-		queryBuilder.addSimpleConditionIfNotNull("hazard__c", "=",
-			filter.getHazard__c(), false);
-		queryBuilder.addSimpleConditionIfNotNull("injury__c", "=",
-			filter.getInjury__c(), false);
+		queryBuilder.addSimpleConditionIfNotNull("entrapment__c", "=", filter.getEntrapment__c());
+		queryBuilder.addSimpleConditionIfNotNull("hazard__c", "=", filter.getHazard__c());
+		queryBuilder.addSimpleConditionIfNotNull("injury__c", "=", filter.getInjury__c());
 		queryBuilder.addCondition_FieldContains("assetName",
 			filter.getAssetName(), false);
 		queryBuilder.addCondition_FieldContains("locationName",
