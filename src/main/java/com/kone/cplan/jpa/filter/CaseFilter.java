@@ -1,6 +1,5 @@
 package com.kone.cplan.jpa.filter;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -17,8 +16,6 @@ public class CaseFilter {
 	private String caseNumber;
 
 	private Timestamp createdDate;
-
-	private Date npxResponseDueDate__c;
 
 	private Boolean entrapment__c;
 
@@ -41,6 +38,10 @@ public class CaseFilter {
 	private String callerName__c;
 
 	private String workOrderNumber;
+
+	private Timestamp dueDate__c;
+
+	private String maintenanceActivityTypeCode__c;
 
 	private String assembly__c;
 
@@ -72,13 +73,6 @@ public class CaseFilter {
 	}
 	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
-	}
-
-	public Date getNpxResponseDueDate__c() {
-		return npxResponseDueDate__c;
-	}
-	public void setNpxResponseDueDate__c(Date npxResponseDueDate__c) {
-		this.npxResponseDueDate__c = npxResponseDueDate__c;
 	}
 
 	public Boolean getEntrapment__c() {
@@ -156,6 +150,17 @@ public class CaseFilter {
 	}
 	public void setWorkOrderNumber(String workOrderNumber) {
 		this.workOrderNumber = workOrderNumber;
+	}
+
+	public Timestamp getDueDate__c() {
+		return dueDate__c;
+	}
+
+	public String getMaintenanceActivityTypeCode__c() {
+		return maintenanceActivityTypeCode__c;
+	}
+	public void setMaintenanceActivityTypeCode__c(String maintenanceActivityTypeCode__c) {
+		this.maintenanceActivityTypeCode__c = maintenanceActivityTypeCode__c;
 	}
 
 	public String getAssembly__c() {

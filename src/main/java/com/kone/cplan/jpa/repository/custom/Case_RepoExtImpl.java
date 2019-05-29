@@ -39,8 +39,6 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 			filter.getCaseNumber(), false);
 		queryBuilder.addSimpleConditionIfNotNull("createdDate", ">=",
 			filter.getCreatedDate());
-		queryBuilder.addSimpleConditionIfNotNull("npxResponseDueDate__c", ">=",
-			filter.getNpxResponseDueDate__c());
 		queryBuilder.addSimpleConditionIfNotNull("entrapment__c", "=", filter.getEntrapment__c());
 		queryBuilder.addSimpleConditionIfNotNull("hazard__c", "=", filter.getHazard__c());
 		queryBuilder.addSimpleConditionIfNotNull("injury__c", "=", filter.getInjury__c());
@@ -60,6 +58,10 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 			filter.getCallerName__c(), false);
 		queryBuilder.addCondition_FieldContains("workOrderNumber",
 			filter.getWorkOrderNumber(), false);
+		queryBuilder.addSimpleConditionIfNotNull("dueDate__c", ">=",
+			filter.getDueDate__c());
+		queryBuilder.addSimpleConditionIfNotNull("maintenanceActivityTypeCode__c", "=",
+			filter.getMaintenanceActivityTypeCode__c(), false);
 		queryBuilder.addCondition_FieldContains("assembly__c",
 			filter.getAssembly__c(), false);
 		queryBuilder.addCondition_FieldContains("appointmentNumber",

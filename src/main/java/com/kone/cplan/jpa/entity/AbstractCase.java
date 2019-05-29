@@ -45,6 +45,12 @@ abstract class AbstractCase implements Serializable {
 	private String recordTypeId;
 
 	@Column
+	private Integer assetId;
+
+	@Column
+	private String assetName;
+
+	@Column
 	private String callerName__c;
 
 	@Column
@@ -90,6 +96,14 @@ abstract class AbstractCase implements Serializable {
 
 	public String getRecordTypeId() {
 		return recordTypeId;
+	}
+
+	public Integer getAssetId() {
+		return assetId;
+	}
+
+	public String getAssetName() {
+		return assetName;
 	}
 
 	public String getCallerName__c() {
