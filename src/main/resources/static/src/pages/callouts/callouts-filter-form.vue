@@ -196,7 +196,7 @@
         </form-element>
 
         <div class="slds-col slds-size_1-of-1 slds-p-top_small">
-            <button class="slds-button slds-button_brand" @click="apply" :disabled="disableButton">Apply</button>
+            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters">Apply</button>
             <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
         </div>
     </div>
@@ -234,13 +234,6 @@
                     salesOrganization__c: null,
                 }
             }
-        },
-
-        computed: {
-            disableButton: function() {
-                return !Object.keys(this.appliedFilters).length;
-            }
         }
-
     }
  </script>

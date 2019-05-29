@@ -23,6 +23,9 @@
                 });
 
                 return f;
+            },
+            countOfAppliedFilters: function() {
+                return Object.keys(this.appliedFilters).length;
             }
         },
 
@@ -62,6 +65,6 @@
         //     },
         //     deep: true
         // }
-        
+
     }
 </script>
