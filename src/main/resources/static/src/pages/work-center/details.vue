@@ -21,9 +21,11 @@
                     </div>
                 </div>
             </div> -->
+        </div>
 
-            <div class="primary-section" v-if="workCenter.workCenterResources.length > 0">
+        <div v-if="workCenter.workCenterResources.length > 0">
 
+                <div class="slds-card slds-p-around_medium">
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
@@ -40,7 +42,7 @@
                                 v-for="row in workCenter.workCenterResources"
                                 :key="row.id"
                             >
-                                <td>{{row.serviceResourceName}}</td>
+                                <td><router-link :to="{name: 'serviceResource', params: {id: id }}">{{row.serviceResourceName}}</router-link></td>
                                 <td>{{row.workCenterName}}</td>
                                 <td>{{row.workTypeName}}</td>
                                 <td>{{row.preferenceType__c}}</td>
@@ -49,10 +51,9 @@
                             </tr>
                         </tbody>
                     </table>
-
+                </div>
             </div>
-        </div>
-
+   
     </div>
 </template>
 
@@ -75,7 +76,9 @@
             return  {
                 pageTitle: 'Work Center Record Detail',
                 loading: true,
-                workCenter: {},
+                workCenter: {
+                    workCenterResources: [],
+                },
             }
         },
 

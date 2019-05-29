@@ -23,8 +23,10 @@
                 </div>
             </div>
 
-            <div class="primary-section" v-if="serviceTerritory.serviceTerritoryResources.length > 0">
-
+            <div v-if="serviceTerritory.serviceTerritoryResources.length > 0">
+                
+                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
+                    <h2 class="slds-text-heading_small slds-m-bottom_small">Service Resources</h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
@@ -47,7 +49,7 @@
                             </tr>
                         </tbody>
                     </table>
-
+                </div>
             </div>
 
         </div>
