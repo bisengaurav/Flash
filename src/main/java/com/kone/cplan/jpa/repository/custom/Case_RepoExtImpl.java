@@ -80,7 +80,7 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 		queryBuilder.addSimpleCondition("createdDate", ">=", new Timestamp(1546290000000L));
 
 		queryBuilder.addSimpleCondition("recordTypeId", "=", "012w0000000V9MrAAK");
-		queryBuilder.addSimpleCondition("status", "IN", Arrays.asList("Cancelled", "Completed"));
+		queryBuilder.addSimpleCondition("status", "NOT IN", Arrays.asList("Cancelled", "Completed"));
 
 		queryBuilder.setPageRequest(pageRequest);
 
