@@ -24,7 +24,7 @@
         </div>
 
         <div class="main-scroll">
-            <div class="main">
+            <div class="main" popover-boundary>
                 <slot></slot>
             </div>
         </div>

@@ -23,7 +23,7 @@ public class ServiceTerritory implements Serializable {
 	@Id
 	private Integer id;
 
-	@Column
+	@Column(unique = true)
 	private String sfid;
 
 	@Column

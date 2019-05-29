@@ -197,7 +197,7 @@
                                         ].reduce((r, c) => r.concat([c, c]), []).join(',')
                                     },
                                     preventOverflow: {
-                                        boundariesElement: document.querySelector('.cmp-app_main')
+                                        boundariesElement: document.querySelector('[popover-boundary]')
                                     }
                                 },
                                 onCreate: () => {

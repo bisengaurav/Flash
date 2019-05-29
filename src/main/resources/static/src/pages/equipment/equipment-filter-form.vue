@@ -2,19 +2,16 @@
     <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-end slds-wrap">
 
         <form-element label="Country" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
-            <!-- <input
-                v-model="innerValue.installationCountry__c"
-                id="country"
-                class="slds-input"
-            /> -->
-            <select-loader
-                    :source="$API.equipment.getUniqueCountries"
-                    valueParam="value"
-                    :allowEmpty="true"
-                    v-model="innerValue.installationCountry__c"
-                    id="equipment_type"
-                    class="slds-select"
-            />
+            <div class="slds-select_container">
+                <select-loader
+                        :source="$API.equipment.getUniqueCountries"
+                        valueParam="value"
+                        :allowEmpty="true"
+                        v-model="innerValue.installationCountry__c"
+                        id="equipment_type"
+                        class="slds-select"
+                />
+            </div>
         </form-element>
 
         <form-element label="Equipment Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="equipment_type">
@@ -108,7 +105,7 @@
         </form-element>
 
         <div class="slds-col slds-size_1-of-1 slds-p-top_small">
-            <button class="slds-button slds-button_brand" @click="apply" :disabled="disableButton">Apply</button>
+            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters">Apply</button>
             <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
         </div>
     </div>
@@ -136,13 +133,6 @@
                     fsmLastValidCliEndDate__c: null
                 }
             }
-        },
-
-        computed: {
-            disableButton: function() {
-                return !Object.keys(this.appliedFilters).length;
-            }
         }
-
     }
  </script>

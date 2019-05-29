@@ -38,14 +38,20 @@ public class WorkCenterResource {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp endDate__c;
 
-	@Column
-	private Integer serviceResource_id;
+	@Column(name = "workcenter_id")
+	private Integer workCenterId;
+
+	@Column(name = "workcenter_name")
+	private String workCenterName;
 
 	@Column
-	private String serviceResource_name;
+	private Integer serviceResourceId;
 
 	@Column
-	private String workType_name;
+	private String serviceResourceName;
+
+	@Column
+	private String workTypeName;
 	//
 
 	//
@@ -67,16 +73,24 @@ public class WorkCenterResource {
 		return endDate__c;
 	}
 
-	public Integer getServiceResource_id() {
-		return serviceResource_id;
+	public Integer getWorkCenterId() {
+		return workCenterId;
 	}
 
-	public String getServiceResource_name() {
-		return serviceResource_name;
+	public String getWorkCenterName() {
+		return workCenterName;
 	}
 
-	public String getWorkType_name() {
-		return workType_name;
+	public Integer getServiceResourceId() {
+		return serviceResourceId;
+	}
+
+	public String getServiceResourceName() {
+		return serviceResourceName;
+	}
+
+	public String getWorkTypeName() {
+		return workTypeName;
 	}
 	//
 }

@@ -28,6 +28,7 @@
                         <thead>
                             <tr class="slds-line-height_reset">
                                 <th>Service Resource</th>
+                                <th>Work Center</th>
                                 <th>Work Type</th>
                                 <th>Preference Type</th>
                                 <th>Start Time</th>
@@ -39,8 +40,9 @@
                                 v-for="row in workCenter.workCenterResources"
                                 :key="row.id"
                             >
-                                <td>{{row.serviceResource_name}}</td>
-                                <td>{{row.workType_name}}</td>
+                                <td>{{row.serviceResourceName}}</td>
+                                <td>{{row.workCenterName}}</td>
+                                <td>{{row.workTypeName}}</td>
                                 <td>{{row.preferenceType__c}}</td>
                                 <td>{{row.startDate__c|formatDate}}</td>
                                 <td>{{row.endDate__c|formatDate}}</td>
