@@ -20,7 +20,7 @@ let API = {
     },
     workCenter: {
         getById: (id) => {
-            return Query('/ui-api/workCenter__c/getById', {id});
+            return Query('/ui-api/workCenter/getById', {id});
         }
     },
     serviceTerritory: {
