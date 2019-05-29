@@ -62,7 +62,7 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 			filter.getDueDate__c());
 		queryBuilder.addSimpleConditionIfNotNull("maintenanceActivityTypeCode__c", "=",
 			filter.getMaintenanceActivityTypeCode__c(), false);
-		queryBuilder.addCondition_FieldContains("assembly__c",
+		queryBuilder.addSimpleConditionIfNotNull("assembly__c", "=",
 			filter.getAssembly__c(), false);
 		queryBuilder.addCondition_FieldContains("appointmentNumber",
 			filter.getAppointmentNumber(), false);
