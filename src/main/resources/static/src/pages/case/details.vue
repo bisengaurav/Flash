@@ -69,7 +69,7 @@
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label">Asset</span>
                             <div class="slds-form-element__static">
-                                --
+                               <router-link :to="{name: '', params: {id: caseData.assetId }}">{{caseData.assetName}}</router-link>
                             </div>
                         </div>
 

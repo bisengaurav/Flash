@@ -32,7 +32,8 @@
         data() {
             return  {
                 pageTitle: 'Service Appointment Record Detail',
-                loading: true
+                loading: true,
+                serviceAppointment: {}
             }
         },
 
@@ -49,6 +50,13 @@
                 }
 
                 // data
+                  this.$API.serviceAppointment.getById(this.id)
+                    .then(data => {                    
+                        this.loading = false;
+                        this.serviceAppointment = data;
+                        console.log(data);
+                        if (this.autoRefreshOn) this.initAutoRefresh();
+                    });
             }
         },
 

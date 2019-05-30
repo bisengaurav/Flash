@@ -33,8 +33,8 @@
                     class="slds-select"
                 >
                     <option></option>
-                    <option value="true">true</option>
-                    <option value="false">false</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select>
             </div>
         </form-element>
@@ -47,8 +47,8 @@
                     class="slds-select"
                 >
                     <option></option>
-                    <option value="true">true</option>
-                    <option value="false">false</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select>
             </div>
         </form-element>
@@ -61,8 +61,8 @@
                     class="slds-select"
                 >
                     <option></option>
-                    <option value="true">true</option>
-                    <option value="false">false</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select>
             </div>
         </form-element>
@@ -131,13 +131,45 @@
             />
         </form-element>
 
-        <form-element label="Assembly Code" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <!-- <form-element label="Assembly Code" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
              <input
                 id="assembly_code"
                 v-model="innerValue.assemblyNumber__c"
                 class="slds-input"
             />
+        </form-element> -->
+
+         <form-element label="Assembly Code" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="assembly_code">
+            <div class="slds-select_container">
+                <select-loader
+                    :source="$API.case.getUniqueAssemblies"
+                    :allowEmpty="true"
+                    v-model="innerValue.assemblyNumber__c"
+                    id="assembly_code"
+                    class="slds-select"
+                />
+            </div>
         </form-element>
+
+        <form-element label="Maintenance Activity Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="maintenance_activity_type">
+            <div class="slds-select_container">
+                <select-loader
+                    :source="$API.case.getUniqueMaintenanceActivityTypeCodes"
+                    :allowEmpty="true"
+                    v-model="innerValue.maintenanceActivityTypeCode__c"
+                    id="maintenance_activity_type"
+                    class="slds-select"
+                />
+            </div>
+        </form-element>
+
+        <!-- <form-element label="Maintenance Activity Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+             <input
+                id="maintenance_activity_type"
+                v-model="innerValue.maintenanceActivityTypeCode__c "
+                class="slds-input"
+            />
+        </form-element> -->
 
         <!-- <form-element label="Maintenance Activity Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
              <input
@@ -234,6 +266,7 @@
                     callerName__c: null,
                     workOrderNumber: null,
                     assemblyNumber__c: null,
+                    maintenanceActivityTypeCode__c: null,
                     appointmentNumber: null,
                     serviceAppointmentStatus: null,
                     serviceResourceName: null,
