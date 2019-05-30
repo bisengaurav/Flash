@@ -1,8 +1,11 @@
 package com.kone.cplan.utils.session;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.servlet.LocaleResolver;
 
 import com.kone.cplan.helpers.datatype.StringUtils;
 import com.kone.cplan.jpa.repository.UserRepository;
@@ -20,6 +23,11 @@ public class AppSessionContext
 	//
 	//Variables
 	//
+	@Autowired
+	private LocaleResolver localeResolver;
+	@Autowired
+	private HttpServletRequest request;
+	
 	@Autowired
 	private UserRepository userRepo;
 	
@@ -43,6 +51,9 @@ public class AppSessionContext
 		if (StringUtils.isNotEmpty(userSfId))
 		{
 			this.sessionInfo = new AppSessionInfo(userRepo.findBySfId(userSfId));
+			//change current locale for the session
+			localeResolver.setLocale(this.request, null,
+				this.sessionInfo.getL10nParams().buildLocale());
 		}
 	}
 	//

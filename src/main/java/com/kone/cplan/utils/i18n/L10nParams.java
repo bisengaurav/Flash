@@ -1,5 +1,7 @@
 package com.kone.cplan.utils.i18n;
 
+import java.util.Locale;
+
 import com.kone.cplan.config.AppSettings;
 import com.kone.cplan.jpa.entity.User;
 
@@ -75,6 +77,14 @@ public class L10nParams {
 		this.languageCode = AppSettings.DEFAULT_LOCALE.getLanguage();
 		this.countryCode = AppSettings.DEFAULT_LOCALE.getCountry();
 		this.timeZoneId = AppSettings.DEFAULT_TIME_ZONE_ID;
+	}
+	//
+	
+	//
+	//Public methods
+	//
+	public Locale buildLocale() {
+		return new Locale(this.languageCode, this.countryCode);
 	}
 	//
 }

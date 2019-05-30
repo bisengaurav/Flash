@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 			.formLogin().loginPage("/login").permitAll()
 			.and()
 			.logout().logoutRequestMatcher(
-				new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/logoutSuccess").permitAll();
+				new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
 		
 		//http.csrf().disable();
 	}
@@ -70,7 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 		return new InMemoryUserDetailsManager(testUser);
 	}
 	
-	//TODO: temp code
+	//TODO: temp code that changes session context
 	@Override
 	public void onApplicationEvent(InteractiveAuthenticationSuccessEvent event) {
 		sessionContext.changeUser("00520000001WPqfAAG");//Gary Thomas
