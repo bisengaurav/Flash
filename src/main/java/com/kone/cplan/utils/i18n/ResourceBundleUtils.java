@@ -65,11 +65,11 @@ public class ResourceBundleUtils {
 		//key (for example, "strings_en_US.properties")
 		long fileSize = tryGetResourceFileSize(locale);
 		
-		//STEP #2: if a file with the exact name was not found AND language key is complex, then we
-		//try to find a file by a simpler key (for example, "strings_en.properties")
+		//STEP #2: if a file with the exact name was not found AND language code is complex, then
+		//we try to find a file by a simpler key (for example, "strings_en.properties")
 		if (fileSize == 0 && locale != null && locale.getLanguage().contains("_")) {
-			String moreCommonLanguageKey = locale.getLanguage().split("_")[0];
-			Locale guessedLocale = new Locale(moreCommonLanguageKey, locale.getCountry());
+			String moreCommonLanguageCode = locale.getLanguage().split("_")[0];
+			Locale guessedLocale = new Locale(moreCommonLanguageCode, locale.getCountry());
 			fileSize = tryGetResourceFileSize(guessedLocale);
 		}
 

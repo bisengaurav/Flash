@@ -31,6 +31,7 @@ public class AppSettings {
 	public static final int DEFAULT_PAGE_SIZE = 100;
 	
 	public static final Locale DEFAULT_LOCALE = Locale.US;
+	public static final String DEFAULT_TIME_ZONE_ID = "GMT";
 	//
 	
 	//
