@@ -3,9 +3,8 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
             <back-button to="callouts" class="slds-m-right_medium" />
-            {{pageTitle}}
+            {{pageTitle}} - {{caseData.caseNumber}}
         </h1>
-
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
               <div class="slds-col slds-size_1-of-1">
@@ -155,7 +154,7 @@
                                     v-for="row in caseData.workOrders"
                                     :key="row.id"
                                 >
-                                <td><router-link :to="{name: '', params: {id: id }}">{{row.workOrderNumber}}</router-link></td>
+                                <td><router-link :to="{name: 'workOrder', params: {id: row.id }}">{{row.workOrderNumber}}</router-link></td>
                                 <td>{{row.status}}</td>
                                 <td>{{row.earliestStartDate__c|formatDate}}</td>
                                 <td>{{row.dueDate__c|formatDate}}</td>
