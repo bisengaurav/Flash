@@ -1,7 +1,7 @@
 package com.kone.cplan.api.ui;
 
 import com.kone.cplan.helpers.dto.OperationResults;
-import com.kone.cplan.utils.i18n.L10nInfo;
+import com.kone.cplan.utils.i18n.L10nData;
 import com.kone.cplan.utils.i18n.LanguageData;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,26 +24,25 @@ public class I18nApi {
 	//
 	/**
 	 * 
-	 * @param languageKey - code of a language (for example, ru, en_US, but not ru_RU)
-	 * @param countryKey - code of a country (for example, ru, US)
-	 * @return {@link OperationResults} with the {@link L10nInfo} instance.
+	 * @param languageCode - code of a language (for example, ru, en_US, but not ru_RU)
+	 * @param countryCode - code of a country (for example, ru, US)
+	 * @return {@link OperationResults} with the {@link L10nData} instance.
 	 */
-	@GetMapping(value = "getL10nInfo")
-	public OperationResults getL10nInfo(@RequestParam String languageKey,
-		@RequestParam String countryKey)
+	@GetMapping(value = "getL10nData")
+	public OperationResults getL10nData(@RequestParam String languageCode,
+		@RequestParam String countryCode)
 	{
-		return OperationResults.newSuccess(L10nInfo.buildNew(languageKey, countryKey));
+		return OperationResults.newSuccess(L10nData.buildNew(languageCode, countryCode));
 	}
 	
 	/**
 	 * 
-	 * @param languageKey - code of a language (for example, ru, en_US, but not ru_RU)
+	 * @param languageCode - code of a language (for example, ru, en_US, but not ru_RU)
 	 * @return {@link OperationResults} with the {@link LanguageData} instance.
 	 */
 	@GetMapping(value = "getLanguageData")
-	public OperationResults getLanguageData(@RequestParam String languageKey)
-	{
-		return OperationResults.newSuccess(LanguageData.buildNew(languageKey));
+	public OperationResults getLanguageData(@RequestParam String languageCode) {
+		return OperationResults.newSuccess(LanguageData.buildNew(languageCode));
 	}
 	//
 }

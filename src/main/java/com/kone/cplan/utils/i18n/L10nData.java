@@ -9,13 +9,13 @@ import com.kone.cplan.helpers.datatype.StringUtils;
  * @author Gennadiy Pervukhin
  * @created 29-05-2019
  */
-public class L10nInfo {
+public class L10nData {
 
 	//
 	//Constructors
 	//
-	private L10nInfo(String countryKey) {
-		this.countryKey = countryKey;
+	private L10nData(String countryCode) {
+		this.countryCode = countryCode;
 	}
 	//
 	
@@ -23,7 +23,7 @@ public class L10nInfo {
 	//Variables
 	//
 	//examples: RU, US
-	private String countryKey;
+	private String countryCode;
 	
 	private String dateTimePattern;
 	private String datePattern;
@@ -35,8 +35,8 @@ public class L10nInfo {
 	//
 	//Properties
 	//
-	public String getCountryKey() {
-		return countryKey;
+	public String getCountryCode() {
+		return countryCode;
 	}
 	
 	public String getDateTimePattern() {
@@ -57,14 +57,14 @@ public class L10nInfo {
 	//
 	//Public static methods
 	//
-	public static L10nInfo buildNew(String languageKey, String countryKey) {
+	public static L10nData buildNew(String languageCode, String countryCode) {
 		
-		languageKey = StringUtils.emptyIfNull(languageKey);
-		countryKey = StringUtils.emptyIfNull(countryKey);
+		languageCode = StringUtils.emptyIfNull(languageCode);
+		countryCode = StringUtils.emptyIfNull(countryCode);
 		
 		//- initialize a new L10nInfo and Locale
-		L10nInfo l10nInfo = new L10nInfo(countryKey);
-		Locale locale = new Locale(languageKey, countryKey);
+		L10nData l10nInfo = new L10nData(countryCode);
+		Locale locale = new Locale(languageCode, countryCode);
 		
 		//- set patterns
 		l10nInfo.dateTimePattern = FormatUtils.getDateTimePattern(locale);
@@ -72,7 +72,7 @@ public class L10nInfo {
 		l10nInfo.timePattern = FormatUtils.getTimePattern(locale);
 		
 		//- initialize and set language data
-		l10nInfo.languageData = LanguageData.buildNew(languageKey);
+		l10nInfo.languageData = LanguageData.buildNew(languageCode);
 		
 		return l10nInfo;
 	}

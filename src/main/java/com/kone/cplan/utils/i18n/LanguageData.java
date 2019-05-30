@@ -16,8 +16,8 @@ public class LanguageData {
 	//
 	//Constructors
 	//
-	private LanguageData(String languageKey) {
-		this.languageKey = languageKey;
+	private LanguageData(String languageCode) {
+		this.languageCode = languageCode;
 	}
 	//
 	
@@ -25,7 +25,7 @@ public class LanguageData {
 	//Variables
 	//
 	//examples: ru, en-US
-	private String languageKey;
+	private String languageCode;
 	
 	private String stringsHashCode;
 	private Map<String, String> stringsMap;
@@ -34,8 +34,8 @@ public class LanguageData {
 	//
 	//Properties
 	//
-	public String getLanguageKey() {
-		return languageKey;
+	public String getLanguageCode() {
+		return languageCode;
 	}
 	
 	public String getStringsHashCode() {
@@ -49,13 +49,13 @@ public class LanguageData {
 	//
 	//Public static methods
 	//
-	public static LanguageData buildNew(String languageKey) {
+	public static LanguageData buildNew(String languageCode) {
 		
-		languageKey = StringUtils.emptyIfNull(languageKey);
+		languageCode = StringUtils.emptyIfNull(languageCode);
 		
 		//- initialize a new LanguageData and Locale
-		LanguageData languageData = new LanguageData(languageKey);
-		Locale locale = new Locale(languageKey);
+		LanguageData languageData = new LanguageData(languageCode);
+		Locale locale = new Locale(languageCode);
 		
 		//- set string resources
 		languageData.stringsHashCode = ResourceBundleUtils.getStringsHashCode(locale);
