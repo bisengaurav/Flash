@@ -26,6 +26,11 @@ public class StringUtils {
 		return (!isEmpty(sourceString));
 	}
 	
+	public static String emptyIfNull(String value)
+	{
+		return (value != null ? value : EMPTY);
+	}
+	
 	public static String toLowerCase(String sourceString) {
 		return (sourceString != null ? sourceString.toLowerCase() : null);
 	}

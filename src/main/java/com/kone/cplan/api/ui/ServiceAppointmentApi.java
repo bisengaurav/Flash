@@ -2,6 +2,7 @@ package com.kone.cplan.api.ui;
 
 import com.kone.cplan.api.JpaUtilsForApi;
 import com.kone.cplan.helpers.dto.OperationResults;
+import com.kone.cplan.jpa.repository.ServiceAppointmentDetailsRepository;
 import com.kone.cplan.jpa.repository.ServiceAppointmentRepository;
 import com.kone.cplan.utils.dto.SelectOption;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class ServiceAppointmentApi {
 	//
 	@Autowired
 	private ServiceAppointmentRepository serviceAppointmentRepo;
+	@Autowired
+	private ServiceAppointmentDetailsRepository serviceAppointmentDetailsRepo;
 	//
 
 	//
@@ -36,7 +39,7 @@ public class ServiceAppointmentApi {
 	 */
 	@GetMapping(value = "getById")
 	public OperationResults getById(@RequestParam Integer id) {
-		return JpaUtilsForApi.findById(serviceAppointmentRepo, id);
+		return JpaUtilsForApi.findById(serviceAppointmentDetailsRepo, id);
 	}
 
 	/**

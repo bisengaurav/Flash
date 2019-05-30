@@ -15,6 +15,7 @@
                     <router-link :to="{name: 'callouts'}" active-class="nav-active" @click="close">Callouts</router-link>
                     <router-link :to="{name: 'equipment'}" active-class="nav-active" @click="close">Equipment</router-link>
                     <router-link :to="{name: 'serviceResources'}" active-class="nav-active" @click="close">Service Resources</router-link>
+                    <a href="/logout">Logout</a>
                 </div>
             </div>
 

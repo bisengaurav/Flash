@@ -40,12 +40,12 @@ public class ResourceBundleUtils {
 		return map;
 	}
 	
-	private static long getResourceFileSize(Locale locale) {
+	private static long tryGetResourceFileSize(Locale locale) {
 		
 		//STEP #1: build name of the file
 		String fileName = AppSettings.getMessagesBaseName();
 		if (locale != null) {
-			fileName += "_" + locale.toString();
+			fileName += "_" + locale.getLanguage();
 		}
 		fileName += ".properties";
 		
@@ -58,11 +58,29 @@ public class ResourceBundleUtils {
 			return 0;
 		}
 	}
+	
+	private static long findResourceFileSize(Locale locale) {
+		
+		//STEP #1: try to find size of a file, name of which explicitly corresponds to the language
+		//key (for example, "strings_en_US.properties")
+		long fileSize = tryGetResourceFileSize(locale);
+		
+		//STEP #2: if a file with the exact name was not found AND language key is complex, then we
+		//try to find a file by a simpler key (for example, "strings_en.properties")
+		if (fileSize == 0 && locale != null && locale.getLanguage().contains("_")) {
+			String moreCommonLanguageKey = locale.getLanguage().split("_")[0];
+			Locale guessedLocale = new Locale(moreCommonLanguageKey, locale.getCountry());
+			fileSize = tryGetResourceFileSize(guessedLocale);
+		}
+
+		return fileSize;
+	}
 	//
 	
 	//
 	//Public static methods
 	//
+	/*
 	public static Map<String, String> getStringsMap(Locale locale) {
 		
 		if (locale == null) { return (new HashMap<>()); }
@@ -77,12 +95,17 @@ public class ResourceBundleUtils {
 		
 		return mapOfStrings;
 	}
+	*/
+	
+	public static Map<String, String> getStringsMap(Locale locale) {
+		return (locale != null ? readMapOfStrings(locale) : new HashMap<>());
+	}
 	
 	public static String getStringsHashCode(Locale locale) {
 		//since the map of strings is based on 2 resource files (default one and localized one), we
 		//should consider both of them, when we generate the hash code
-		long defaultResourceSize = getResourceFileSize(null);
-		long localizedResourceSize = getResourceFileSize(locale);
+		long defaultResourceSize = tryGetResourceFileSize(null);
+		long localizedResourceSize = findResourceFileSize(locale);
 		return (defaultResourceSize + "_" + localizedResourceSize);
 	}
 	//

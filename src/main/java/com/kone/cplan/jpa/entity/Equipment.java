@@ -12,4 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_equipment")
 public class Equipment extends AbstractEquipment {
+
+	//
+	//Constructors
+	//
+	/*For JPA and JSON-deserialization*/
+	public Equipment() {};
+	//
 }

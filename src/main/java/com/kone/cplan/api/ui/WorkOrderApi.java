@@ -2,9 +2,7 @@ package com.kone.cplan.api.ui;
 
 import com.kone.cplan.api.JpaUtilsForApi;
 import com.kone.cplan.helpers.dto.OperationResults;
-import com.kone.cplan.jpa.repository.WorkCenterRepository;
-import com.kone.cplan.jpa.repository.WorkOrderRepository;
-import com.kone.cplan.utils.dto.SelectOption;
+import com.kone.cplan.jpa.repository.WorkOrderDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +23,7 @@ public class WorkOrderApi {
 	//Constants
 	//
 	@Autowired
-	private WorkOrderRepository workOrderRepo;
+	private WorkOrderDetailsRepository workOrderDetailsRepo;
 	//
 
 	//
@@ -37,7 +35,7 @@ public class WorkOrderApi {
 	 */
 	@GetMapping(value = "getById")
 	public OperationResults getById(@RequestParam Integer id) {
-		return JpaUtilsForApi.findById(workOrderRepo, id);
+		return JpaUtilsForApi.findById(workOrderDetailsRepo, id);
 	}
 	//
 }
