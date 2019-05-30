@@ -37,12 +37,26 @@ let API = {
         },
         getUniqueSalesOrganizations: () => {
             return Query('/ui-api/case/getUniqueSalesOrganizations');
-        }  
+        },
+        getUniqueMaintenanceActivityTypeCodes: () => {
+            return Query('/ui-api/case/getUniqueMaintenanceActivityTypeCodes');
+        },
+        getUniqueAssemblies: () => {
+            return Query('/ui-api/case/getUniqueAssemblies');
+        }
     },
     serviceAppointment: {
+        getById: (id) => {
+            return Query('/ui-api/serviceAppointment/getById', {id});
+        },
         getUniqueStatuses: () => {
             return Query('/ui-api/serviceAppointment/getUniqueStatuses');
         } 
+    },
+    workOrder: {
+        getById: (id) => {
+            return Query('/ui-api/workOrder/getById', {id});
+        }
     }
 };
 

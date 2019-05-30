@@ -32,7 +32,8 @@
         data() {
             return  {
                 pageTitle: 'Work Order Record Detail',
-                loading: true
+                loading: true,
+                workOrder: {}
             }
         },
 
@@ -49,6 +50,13 @@
                 }
 
                 // data
+                  this.$API.workOrder.getById(this.id)
+                    .then(data => {                    
+                        this.loading = false;
+                        this.workOrder = data;
+                        console.log(data);
+                        if (this.autoRefreshOn) this.initAutoRefresh();
+                    });
             }
         },
 

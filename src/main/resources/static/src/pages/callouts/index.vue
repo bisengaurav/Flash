@@ -38,24 +38,24 @@
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'case', params: {id: row.id }}">{{row.caseNumber}}</router-link></td>
-                    <td>{{row.createdDate}}</td>
-                    <td>{{row.npxResponseDueDate__c}}</td>
-                    <td>{{row.entrapment__c}}</td>
-                    <td>{{row.hazard__c}}</td>
-                    <td>{{row.injury__c}}</td>
-                    <td>{{row.assetName}}</td>
+                    <td>{{row.createdDate|formatDate}}</td>
+                    <td>{{row.npxResponseDueDate__c|formatDate}}</td>
+                    <td>{{ row.entrapment__c ? 'Yes' : '' }} {{ row.entrapment__c === false ? 'No' : '' }}</td>
+                    <td>{{ row.hazard__c ? 'Yes' : '' }} {{ row.hazard__c === false ? 'No' : '' }}</td>
+                    <td>{{ row.injury__c ? 'Yes' : '' }} {{ row.injury__c === false ? 'No' : '' }}</td>
+                    <td><router-link :to="{name: '', params: {id: row.assetId }}">{{row.assetName}}</router-link></td> 
                     <td>{{row.locationName}}</td>
                     <td>{{row.street__c}}</td>
                     <td>{{row.city__c}}</td>
                     <td>{{row.stateProvince__c}}</td>
                     <td>{{row.contactName}}</td>
                     <td>{{row.callerName__c}}</td>
-                    <td>{{row.workOrderNumber}}</td>
+                    <td><router-link :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
                     <td>{{row.assemblyNumber__c}}</td>
-                    <td>{{row.appointmentNumber}}</td>
+                    <td><router-link :to="{name: 'serviceAppointment', params: {id: row.serviceAppointmentId }}">{{row.appointmentNumber}}</router-link></td> 
                     <td>{{row.serviceAppointmentStatus}}</td>
-                    <td>{{row.serviceResourceName}}</td>
-                    <td>{{row.serviceTerritoryName}}</td>
+                    <td><router-link :to="{name: '', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
+                    <td><router-link :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
                     <td></td>
                 </template>
             </data-table-basic>

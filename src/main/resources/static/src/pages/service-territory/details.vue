@@ -3,9 +3,9 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
             <back-button to="equipment" class="slds-m-right_medium" />
-            {{serviceTerritory.name}}
+            Service Territory Detail
         </h1>
-
+        <h2 class="slds-text-heading_medium slds-m-bottom_large">{{serviceTerritory.name}}</h2>
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
 
@@ -30,6 +30,7 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
+                                <th>Service Resource</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Title</th>
@@ -41,6 +42,7 @@
                                 v-for="row in serviceTerritory.serviceTerritoryResources"
                                 :key="row.id"
                             >
+                                <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResource_id }}">{{row.serviceResource_name}}</router-link></td>
                                 <td>{{row.effectiveStartDate|formatDate}}</td>
                                 <td>{{row.effectiveEndDate|formatDate}}</td>
                                 <td>{{row.serviceResource_name}}</td>
