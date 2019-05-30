@@ -3,9 +3,8 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
             <back-button to="equipment" class="slds-m-right_medium" />
-            Work Center Detail
+            {{pageTitle}} - {{workCenter.name}}
         </h1>
-        <h2 class="slds-text-heading_medium slds-m-bottom_large">{{workCenter.name}}</h2>
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
             <!-- <div class="slds-col slds-size_1-of-1">

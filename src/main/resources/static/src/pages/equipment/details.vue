@@ -3,7 +3,7 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
             <back-button to="equipment" class="slds-m-right_medium" />
-            {{pageTitle}}
+            {{pageTitle}} - {{equipment.name}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
