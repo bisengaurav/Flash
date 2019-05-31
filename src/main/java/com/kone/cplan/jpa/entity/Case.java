@@ -20,7 +20,6 @@ public class Case extends AbstractCase {
 	//
 	//Variables
 	//
-
 	@Column
 	private String street__c;
 
