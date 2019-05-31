@@ -1,9 +1,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+//
+// install plugin
+//
+
 Vue.use(VueRouter);
 
 
+//
+// create config
+//
 
 let routes = [];
 
@@ -158,8 +165,6 @@ routes.push({
 });
 
 
-
-
 // 404
 import NotFound from '../pages/404/';
 routes.push({
@@ -174,9 +179,15 @@ routes.push({
     redirect: {name: '404'}
 });
 
-export default new VueRouter({
+
+
+//
+// init CONST and export
+//
+
+const router = new VueRouter({
     routes,
     mode: 'history'
 });
 
-
+export default router;

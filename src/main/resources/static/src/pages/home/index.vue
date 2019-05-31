@@ -1,6 +1,20 @@
 <template>
     <section>
 
+        <p>{{$sessionId}}</p>
+        <p>{{$lang}}</p>
+        <p>{{$timezone}}</p>
+        <br/>
+        <div>ja message.hello: {{ $t('message.common.operation-completed') }}</div>
+        <div>ja message.hello: <span v-t="'warning.common.w1'" /></div>
+        <br/>
+        <p>null date: {{ $d(new Date(), 'date') }}</p>
+        <p>null datetime: {{ $d(new Date(), 'datetime') }}</p>
+        <p>null time: {{ $d(new Date(), 'time') }}</p>
+
+        <button @click="setSS">Clear Lang</button>
+        <button @click="getSS">Get Lang</button>
+
         <div class="slds-container_large">
             <h1 class="slds-text-heading_large slds-m-bottom_large">Branding</h1>
 
@@ -104,8 +118,19 @@
         //
         data() {
             return {
+                version: 1,
+                value: '',
                 pageTitle: 'Home'
             }
+        },
+        methods: {
+            setSS() {
+                this.$ls.getVersionedCache(this.$lang, 111)
+            },
+            getSS() {
+                console.log(this.$ls.getVersionedCache(this.$lang, this.$langVersion));
+            }
         }
+
     }
 </script>

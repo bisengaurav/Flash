@@ -8,8 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 
-public interface EquipmentRepository extends JpaRepository<Equipment, Integer>,
-	Equipment_RepoExt {
+public interface EquipmentRepository extends JpaRepository<Equipment, Integer>, Equipment_RepoExt {
 
 	// TODO: ask KONE about filter by Sales Org
 	@Query("SELECT e.installationCountry__c FROM Equipment e" +

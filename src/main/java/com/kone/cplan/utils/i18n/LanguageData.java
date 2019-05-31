@@ -58,8 +58,8 @@ public class LanguageData {
 		Locale locale = new Locale(languageCode);
 		
 		//- set string resources
-		languageData.stringsHashCode = ResourceBundleUtils.getStringsHashCode(locale);
-		languageData.stringsMap = ResourceBundleUtils.getStringsMap(locale);
+		languageData.stringsHashCode = LanguageBundleUtils.getStringsHashCode(locale);
+		languageData.stringsMap = LanguageBundleUtils.getStringsMap(locale);
 		
 		return languageData;
 	}

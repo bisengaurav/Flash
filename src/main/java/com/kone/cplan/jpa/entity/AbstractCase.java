@@ -60,7 +60,7 @@ abstract class AbstractCase implements Serializable {
 	private String contactName;
 
 	@Column
-	private String salesOrganization__c;
+	private String salesOrganizations__c;
 	//
 
 	//
@@ -118,8 +118,8 @@ abstract class AbstractCase implements Serializable {
 		return contactName;
 	}
 
-	public String getSalesOrganization__c() {
-		return salesOrganization__c;
+	public String getSalesOrganizations__c() {
+		return salesOrganizations__c;
 	}
 	//
 }
