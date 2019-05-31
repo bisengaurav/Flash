@@ -2,15 +2,15 @@
     <div>
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="users" class="slds-m-right_medium" />
-            {{pageTitle}} - {{serviceAppointment.appointmentNumber}}
+            <back-button class="slds-m-right_medium" />
+            {{pageTitle}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
 
              <div class="slds-card slds-p-around_medium">
-                 
+
                     <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
@@ -57,11 +57,11 @@
                     </div>
 
                     <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
-                         
+
 
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label">Account ID</span>
-                            <div class="slds-form-element__static">  
+                            <div class="slds-form-element__static">
                                 {{serviceAppointment.accountId}}
                             </div>
                         </div>
@@ -133,7 +133,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Service Appointment Record Detail',
+                pageTitle: 'Service Appointment',
                 loading: true,
                 serviceAppointment: {}
             }
@@ -153,11 +153,10 @@
 
                 // data
                   this.$API.serviceAppointment.getById(this.id)
-                    .then(data => {                    
+                    .then(data => {
                         this.loading = false;
                         this.serviceAppointment = data;
-                        console.log(data);
-                        if (this.autoRefreshOn) this.initAutoRefresh();
+                        this.pageTitle = 'Service Appointment — '+ this.serviceAppointment.appointmentNumber;
                     });
             }
         },

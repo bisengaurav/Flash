@@ -86,6 +86,7 @@
                 ))
                     .then(data => {
                         this.highlightedId = id;
+                        console.log(data);
                         this.data = data;
                         this.loading = false;
                     });

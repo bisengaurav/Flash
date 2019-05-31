@@ -4,10 +4,9 @@
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">{{pageTitle}}</h1>
 
         <callouts-filter-form v-model="filters"></callouts-filter-form>
-        
+
          <div class="primary-section">
             <data-table-basic
-                    ref="caseTable"
                     key-field="serviceAppointmentId"
                     :action="$API.case.getAllByFilter"
                     :filters="filters"
@@ -43,7 +42,7 @@
                     <td>{{ row.entrapment__c ? 'Yes' : '' }} {{ row.entrapment__c === false ? 'No' : '' }}</td>
                     <td>{{ row.hazard__c ? 'Yes' : '' }} {{ row.hazard__c === false ? 'No' : '' }}</td>
                     <td>{{ row.injury__c ? 'Yes' : '' }} {{ row.injury__c === false ? 'No' : '' }}</td>
-                    <td><router-link :to="{name: '', params: {id: row.assetId }}">{{row.assetName}}</router-link></td> 
+                    <td><router-link :to="{name: '', params: {id: row.assetId }}">{{row.assetName}}</router-link></td>
                     <td>{{row.locationName}}</td>
                     <td>{{row.street__c}}</td>
                     <td>{{row.city__c}}</td>
@@ -52,7 +51,7 @@
                     <td>{{row.callerName__c}}</td>
                     <td><router-link :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
                     <td>{{row.assemblyNumber__c}}</td>
-                    <td><router-link :to="{name: 'serviceAppointment', params: {id: row.serviceAppointmentId }}">{{row.appointmentNumber}}</router-link></td> 
+                    <td><router-link :to="{name: 'serviceAppointment', params: {id: row.serviceAppointmentId }}">{{row.appointmentNumber}}</router-link></td>
                     <td>{{row.serviceAppointmentStatus}}</td>
                     <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
                     <td><router-link :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
@@ -66,7 +65,7 @@
 
 <script>
     import Page from '../../components/page.vue';
-     import CalloutsFilterForm from './callouts-filter-form.vue';
+    import CalloutsFilterForm from './callouts-filter-form.vue';
 
     export default {
         extends: Page,
@@ -74,13 +73,14 @@
         components: {
             CalloutsFilterForm
         },
+
         //
         // PARAMS: porps, data, computed
         //
         data() {
             return {
                 pageTitle: 'Callouts',
-                 filters: {}
+                filters: {}
             }
         }
     }

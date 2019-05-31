@@ -3,11 +3,10 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">{{pageTitle}}</h1>
 
-        <equpment-filter-form v-model="filters"></equpment-filter-form>
+        <equipment-filter-form v-model="filters"></equipment-filter-form>
 
         <div class="primary-section">
             <data-table-basic
-                    ref="equipmentTable"
                     :action="$API.equipment.getAllByFilter"
                     :filters="filters"
                     :immediateRefresh="false"
@@ -52,13 +51,13 @@
 
 <script>
     import Page from '../../components/page.vue';
-    import EqupmentFilterForm from './equipment-filter-form.vue';
+    import EquipmentFilterForm from './equipment-filter-form.vue';
 
     export default {
         extends: Page,
 
         components: {
-            EqupmentFilterForm
+            EquipmentFilterForm
         },
 
         //

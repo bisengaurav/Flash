@@ -12,10 +12,10 @@ let API = {
             return Query('/ui-api/equipment/getById', {id});
         },
         getUniqueCountries: () => {
-            return Query('/ui-api/equipment/getUniqueCountries');
+            return Query('/ui-api/equipment/getUniqueCountries', null, 'GET', false, 'session');
         },
         getEquipmentTypes: () => {
-            return Query('/ui-api/equipment/getUniqueEquipmentTypes');
+            return Query('/ui-api/equipment/getUniqueEquipmentTypes', null, 'GET', false, 'session');
         }
     },
     case: {
@@ -43,6 +43,8 @@ let API = {
             return Query('/ui-api/serviceAppointment/getUniqueStatuses');
         }
     },
+
+
     workCenter: {
         getById: (id) => {
             return Query('/ui-api/workCenter/getById', {id});
@@ -68,6 +70,8 @@ let API = {
             return Query('/ui-api/user/getUserInfo');
         }
     },
+
+
     session: {
         getInfo: () => {
             return Query('/ui-api/session/getInfo');

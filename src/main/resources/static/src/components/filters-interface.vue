@@ -37,15 +37,17 @@
             },
 
             apply() {
-                console.log(this.innerValue, this.appliedFilters);
-                this.$v.$touch();
-                if (this.$v.$invalid) return;
+                // prevent action, if button enabled - force validate all fields
+                if (this.$v !== undefined) {
+                    this.$v.$touch();
+                    if (this.$v.$invalid) return;
+                }
+
                 this.$emit('input', this.appliedFilters);
             },
 
             clearAll() {
                 this.init();
-//                this.apply();
             }
         },
 
@@ -54,18 +56,6 @@
         //
         created() {
             this.init();
-        },
-
-        //
-        // WATCHERS
-        //
-        // watch: {
-        //     innerValue: function() {
-        //         console.log('innerValue');
-        //     //   this.disableButton = this.innerValue !== {} ? true : false;
-        //     },
-        //     deep: true
-        // }
-
+        }
     }
 </script>

@@ -2,13 +2,13 @@
     <div>
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="equipment" class="slds-m-right_medium" />
-            {{pageTitle}} - {{equipment.name}}
+            <back-button class="slds-m-right_medium" />
+            {{pageTitle}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
-            
+
             <div class="slds-col slds-size_1-of-1">
 
                 <div class="slds-card slds-p-around_medium">
@@ -97,7 +97,7 @@
                             <div class="slds-form-element__static">
                                 <router-link :to="{name: 'workCenter', params: {id: equipment.workCenterId }}">{{equipment.workCenterName}}</router-link>
                             </div>
-                        </div>  
+                        </div>
                     </div>
 
                 </div>
@@ -105,7 +105,7 @@
             </div>
 
             <div v-if="equipment.activeSLAs.length > 0">
-                
+
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
                         <h2 class="slds-text-heading_small slds-m-bottom_small">SLAs</h2>
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -119,7 +119,7 @@
                                     <th>Response Time</th>
                                     <th>Response Time After Hours</th>
                                     <th>Callout Hours</th>
-                                    <th>Service Hours</th>           
+                                    <th>Service Hours</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -165,7 +165,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Equipment Record Detail',
+                pageTitle: 'Equipment',
                 loading: true,
                 equipment: {},
             }
@@ -179,8 +179,6 @@
                 this.loading = true;
 
                 // wrong Job ID
-                console.log('init');
-
                 if (!this.id) {
                     throw new Error('Wrong ID');
                 }
@@ -188,12 +186,9 @@
                 // data
                 this.$API.equipment.getById(this.id)
                     .then(data => {
-                       
-                        console.log(data);
                         this.equipment = data;
                         this.loading = false;
-                        // run auto refresh
-                        if (this.autoRefreshOn) this.initAutoRefresh();
+                        this.pageTitle = 'Equipment — '+ this.equipment.name;
                     });
             }
         },

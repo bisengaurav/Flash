@@ -15,9 +15,19 @@
         // EVENTS
         //
         mounted() {
-            document.title = this.pageTitle;
-
             this.$EM.$emit(CLEAR);
+        },
+
+        //
+        // WATCHERS
+        //
+        watch: {
+            pageTitle: {
+                handler: function() {
+                    document.title = this.pageTitle;
+                },
+                immediate: true
+            }
         }
     }
 </script>

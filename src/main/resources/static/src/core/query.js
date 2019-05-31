@@ -2,18 +2,22 @@ import EM from './event-emitter.js';
 import {PUSH} from '../components/alert-emitter/events';
 import {SHOW, HIDE} from '../components/page-loader/events';
 
+import LocalStorage from './local-storage';
+
+
 /**
  * Wrapper for native fetch() method
  *
  * @param url [String]
- * @param data [Object/Array]
+ * @param data [Object | Array]
  * - for GET method: data will be converted to query string and must be Object (pairs name/value)
  * - for POST method: data will be stringify to JSON and may be any type of data
  * @param method [String] default 'GET'
  * @param loading [Boolean] default false - if true: global page loader will shown during request process
+ * @param cacheType [false | 'session' | {ageCount, ageUnit}] default false - set caching for specific url. Required method GET
  * @return Promise
  */
-function Query(url, data, method = 'GET', loading = false) {
+function Query(url, data, method = 'GET', loading = false, cacheType = false) {
     //
     // process Headers
     //
@@ -58,6 +62,24 @@ function Query(url, data, method = 'GET', loading = false) {
     //
     if (loading) EM.$emit(SHOW);
 
+
+    //
+    // process caching
+    //
+    if (method === 'GET' && cacheType) {
+        if (cacheType === 'session') {
+            let cachedData = LocalStorage.getSessionCache(url);
+
+            if (cachedData) {
+                return Promise.resolve(cachedData);
+            }
+        }
+        if (typeof cacheType === 'object') {
+            // TBD
+        }
+    }
+
+
     return fetch(url, init)
         //
         // process standard http/fetch response
@@ -81,6 +103,17 @@ function Query(url, data, method = 'GET', loading = false) {
         //
         .then(json => {
             if (json.isSuccessful) {
+
+                // process caching
+                if (method === 'GET' && cacheType) {
+                    if (cacheType === 'session') {
+                        LocalStorage.setSessionCache(url, json.returnedObject);
+                    }
+                    if (typeof cacheType === 'object') {
+                        // TBD
+                    }
+                }
+
                 return json.returnedObject;
 
             } else {

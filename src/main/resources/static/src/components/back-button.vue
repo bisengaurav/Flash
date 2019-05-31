@@ -1,7 +1,10 @@
 <template>
-    <router-link :to="{name: to}" class="cmp-back-button" title="Back">
+    <router-link v-if="type === 'route'" :to="{name: to}" class="cmp-back-button" title="Back">
         <icon icon="arrow-left" class="slds-icon slds-icon_small" />
     </router-link>
+    <button v-else-if="type === 'history'" @click="back" class="cmp-back-button" title="Back">
+        <icon icon="arrow-left" class="slds-icon slds-icon_small" />
+    </button>
 </template>
 
 <script>
@@ -15,11 +18,35 @@
         //
         props: {
             to: {
-                type: String,
-                required: true
+                type: String
+            }
+        },
+        data() {
+            return  {
+                type: null // route | history | null
+            }
+        },
+
+        //
+        // EVENTS
+        //
+        mounted() {
+            if (this.$props.to) {
+                this.type = 'route';
+            }
+            else if (window.history.length > 1 && window.history.state) {
+                this.type = 'history';
+            }
+        },
+
+        //
+        // METHODS
+        //
+        methods: {
+            back() {
+                window.history.back();
             }
         }
-
     }
 </script>
 

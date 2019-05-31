@@ -2,8 +2,8 @@
     <div>
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="users" class="slds-m-right_medium" />
-            {{pageTitle}} - {{workOrder.workOrderNumber}}
+            <back-button class="slds-m-right_medium" />
+            {{pageTitle}}
         </h1>
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
@@ -63,11 +63,11 @@
                     </div>
 
                     <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
-                         
+
 
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label">Asset</span>
-                            <div class="slds-form-element__static">  
+                            <div class="slds-form-element__static">
                                 <router-link :to="{name: '', params: {id: workOrder.assetId }}">{{workOrder.assetName}}</router-link>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label">Location</span>
                             <div class="slds-form-element__static">
-                                {{workOrder.locationName}}  
+                                {{workOrder.locationName}}
                             </div>
                         </div>
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
@@ -112,7 +112,7 @@
             </div>
 
               <div v-if="workOrder.serviceAppointments.length > 0">
-                
+
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
                         <h2 class="slds-text-heading_small slds-m-bottom_small">Work orders of the case</h2>
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -121,8 +121,8 @@
                                     <th>Service Appointment ID</th>
                                     <th>Status</th>
                                     <th>Service resource</th>
-                                    <th>Scheduled Start Date</th>     
-                                    <th>Scheduled End Date</th>     
+                                    <th>Scheduled Start Date</th>
+                                    <th>Scheduled End Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -163,7 +163,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Work Order Record Detail',
+                pageTitle: 'Work Order',
                 loading: true,
                 workOrder: {
                     serviceAppointments: []
@@ -185,11 +185,10 @@
 
                 // data
                   this.$API.workOrder.getById(this.id)
-                    .then(data => {                    
+                    .then(data => {
                         this.loading = false;
                         this.workOrder = data;
-                        console.log(data);
-                        if (this.autoRefreshOn) this.initAutoRefresh();
+                        this.pageTitle = 'Work Order — '+ this.workOrder.workOrderNumber;
                     });
             }
         },

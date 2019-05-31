@@ -1,9 +1,12 @@
 <template>
     <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-start slds-wrap">
 
-        <form-element label="Country" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="country"
-             :validator="$v.innerValue.installationCountry__c"
-            >
+        <form-element
+            label="Country"
+            class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small"
+            for="country"
+            :validator="$v.innerValue.installationCountry__c"
+        >
             <div class="slds-select_container">
                 <select-loader
                         :source="$API.equipment.getUniqueCountries"
@@ -17,8 +20,11 @@
             </div>
         </form-element>
 
-        <form-element label="Equipment Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="equipment_type"
-             :validator="$v.innerValue.equipmentType__c"
+        <form-element
+            label="Equipment Type"
+            class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small"
+            for="equipment_type"
+            :validator="$v.innerValue.equipmentType__c"
         >
             <div class="slds-select_container">
                 <select-loader
@@ -111,7 +117,7 @@
         </form-element>
 
         <div class="slds-col slds-size_1-of-1 slds-p-top_small">
-            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters">Apply</button>
+            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters || $v.$invalid">Apply</button>
             <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
         </div>
     </div>
@@ -153,7 +159,7 @@
                 equipmentType__c: {
                     required
                 }
-            } 
+            }
         }
     }
  </script>

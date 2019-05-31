@@ -117,8 +117,6 @@
         //
         data() {
             return {
-                version: 1,
-                value: '',
                 pageTitle: 'Home'
             }
         },
