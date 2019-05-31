@@ -32,6 +32,8 @@ public class L10nParams {
 	private String languageCode;
 	private String countryCode;
 	private String timeZoneId;
+	
+	private String languageDataHashCode;
 	//
 	
 	//
@@ -45,6 +47,10 @@ public class L10nParams {
 	}
 	public String getTimeZoneId() {
 		return timeZoneId;
+	}
+	
+	public String getLanguageDataHashCode() {
+		return languageDataHashCode;
 	}
 	//
 	
@@ -71,12 +77,17 @@ public class L10nParams {
 		
 		//- set time zone key
 		this.timeZoneId = user.getTimezoneSidKey();
+		
+		//- set hash code of language data
+		this.languageDataHashCode = LanguageBundleUtils.getStringsHashCode(this.buildLocale());
 	}
 	
 	private void initializeDefault() {
 		this.languageCode = AppSettings.DEFAULT_LOCALE.getLanguage();
 		this.countryCode = AppSettings.DEFAULT_LOCALE.getCountry();
 		this.timeZoneId = AppSettings.DEFAULT_TIME_ZONE_ID;
+		this.languageDataHashCode = LanguageBundleUtils.getStringsHashCode(
+			AppSettings.DEFAULT_LOCALE);
 	}
 	//
 	

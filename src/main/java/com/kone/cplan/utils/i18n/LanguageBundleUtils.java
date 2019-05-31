@@ -18,7 +18,7 @@ import com.kone.cplan.config.AppSettings;
  * @author Gennadiy Pervukhin
  * @created 28-05-2019
  */
-public class ResourceBundleUtils {
+public class LanguageBundleUtils {
 
 	//
 	//Private static methods
