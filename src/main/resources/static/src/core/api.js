@@ -43,8 +43,6 @@ let API = {
             return Query('/ui-api/serviceAppointment/getUniqueStatuses');
         }
     },
-
-
     workCenter: {
         getById: (id) => {
             return Query('/ui-api/workCenter/getById', {id});

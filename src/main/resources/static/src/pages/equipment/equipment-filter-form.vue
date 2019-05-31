@@ -1,25 +1,31 @@
 <template>
-    <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-end slds-wrap">
+    <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-start slds-wrap">
 
-        <form-element label="Country" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Country" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="country"
+             :validator="$v.innerValue.installationCountry__c"
+            >
             <div class="slds-select_container">
                 <select-loader
                         :source="$API.equipment.getUniqueCountries"
                         valueParam="value"
                         :allowEmpty="true"
                         v-model="innerValue.installationCountry__c"
-                        id="equipment_type"
+                        @blur.native="$v.innerValue.installationCountry__c.$touch()"
+                        id="country"
                         class="slds-select"
                 />
             </div>
         </form-element>
 
-        <form-element label="Equipment Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="equipment_type">
+        <form-element label="Equipment Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="equipment_type"
+             :validator="$v.innerValue.equipmentType__c"
+        >
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.equipment.getEquipmentTypes"
                     :allowEmpty="true"
                     v-model="innerValue.equipmentType__c"
+                    @blur.native="$v.innerValue.equipmentType__c.$touch()"
                     id="equipment_type"
                     class="slds-select"
                 />
@@ -113,6 +119,7 @@
 
 <script>
     import FiltersInterface from '../../components/filters-interface.vue';
+    import {required} from 'vuelidate/lib/validators';
 
     export default {
         extends: FiltersInterface,
@@ -133,6 +140,20 @@
                     fsmLastValidCliEndDate__c: null
                 }
             }
+        },
+
+        //
+        // VALIDATION
+        //
+        validations: {
+            innerValue: {
+                installationCountry__c: {
+                    required
+                },
+                equipmentType__c: {
+                    required
+                }
+            } 
         }
     }
  </script>

@@ -78,19 +78,26 @@
                             </div>
                         </div>
 
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
+                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label">Location</span>
                             <div class="slds-form-element__static">
                                 {{equipment.locationName}}
                             </div>
                         </div>
 
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
+                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label">Service territory</span>
                             <div class="slds-form-element__static">
-                                {{equipment.serviceTerritoryName}}
+                                <router-link :to="{name: 'serviceTerritory', params: {id: equipment.serviceTerritoryId }}">{{equipment.serviceTerritoryName}}</router-link>
                             </div>
-                        </div>   
+                        </div>
+
+                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
+                            <span class="slds-form-element__label">Work center</span>
+                            <div class="slds-form-element__static">
+                                <router-link :to="{name: 'workCenter', params: {id: equipment.workCenterId }}">{{equipment.workCenterName}}</router-link>
+                            </div>
+                        </div>  
                     </div>
 
                 </div>

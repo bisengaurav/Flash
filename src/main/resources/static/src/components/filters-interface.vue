@@ -10,8 +10,7 @@
         data() {
             return {
                 innerValue: {},
-                metadata: {},
-
+                metadata: {}
             }
         },
         computed: {
@@ -39,6 +38,8 @@
 
             apply() {
                 console.log(this.innerValue, this.appliedFilters);
+                this.$v.$touch();
+                if (this.$v.$invalid) return;
                 this.$emit('input', this.appliedFilters);
             },
 

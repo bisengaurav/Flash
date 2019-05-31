@@ -144,7 +144,7 @@
                                 <td>{{row.status}}</td>
                                 <td>{{row.scheduledStartOriginal__c|formatDate}}</td>
                                 <td>{{row.scheduledEndOriginal__c|formatDate}}</td>
-                                <td>{{ row.fslPinned__c ? 'Yes' : '' }} {{ row.fslPinned__c === false ? 'No' : '' }}</td>
+                                <td>{{row.fslPinned__c ? 'Yes' : '' }} {{row.fslPinned__c === false ? 'No' : '' }}</td>
                                 <td><router-link :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
                                 <td>{{row.earliestStartDate__c|formatDate}}</td>
                                 <td>{{row.dueDate__c|formatDate}}</td>
