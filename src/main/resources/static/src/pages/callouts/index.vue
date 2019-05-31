@@ -54,7 +54,7 @@
                     <td>{{row.assemblyNumber__c}}</td>
                     <td><router-link :to="{name: 'serviceAppointment', params: {id: row.serviceAppointmentId }}">{{row.appointmentNumber}}</router-link></td> 
                     <td>{{row.serviceAppointmentStatus}}</td>
-                    <td><router-link :to="{name: '', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
+                    <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
                     <td><router-link :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
                     <td></td>
                 </template>

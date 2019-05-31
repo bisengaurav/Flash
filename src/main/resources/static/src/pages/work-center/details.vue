@@ -41,7 +41,7 @@
                                 v-for="row in workCenter.workCenterResources"
                                 :key="row.id"
                             >
-                                <td><router-link :to="{name: 'serviceResource', params: {id: id }}">{{row.serviceResourceName}}</router-link></td>
+                                <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
                                 <td>{{row.workCenterName}}</td>
                                 <td>{{row.workTypeName}}</td>
                                 <td>{{row.preferenceType__c}}</td>

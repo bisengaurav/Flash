@@ -57,6 +57,11 @@ let API = {
         getById: (id) => {
             return Query('/ui-api/workOrder/getById', {id});
         }
+    },
+    serviceResource: {
+        getById: (id) => {
+            return Query('/ui-api/serviceResource/getById', {id});
+        }
     }
 };
 
