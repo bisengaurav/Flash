@@ -7,13 +7,6 @@ class DateService {
 	constructor() {
 	}
 
-	/*
-	* @param {Object}
-	* @param {string} date
-	* @param {string} format default DEFAULT_FORMAT
-	* @param {boolean} useLocal default true
-	* @return {string}
-	*/
 	formatUTCDateToLocal({date, format = DEFAULT_FORMAT, useLocal = true}) {
         if (!date) return '';
 
@@ -22,12 +15,6 @@ class DateService {
 		return d.format(format);
 	}
 
-	/*
-	* @param {Object}
-	* @param {string} startTime
-	* @param {string} endTime
-	* @return {string} - Totaltime
-	*/
 	diffBetweenDates(startTime, endTime) {
 	    if (!startTime || !endTime) return '';
 
@@ -47,6 +34,23 @@ class DateService {
 
 		return result.join(' ');
 	}
+
+
+    install(Vue) {
+	    const _this = this;
+
+
+        Vue.prototype.$date = _this;
+
+        Vue.filter("formatDate", function(value, format, useLocal) {
+            return _this.formatUTCDateToLocal({
+                date: value,
+                format,
+                useLocal
+            });
+        });
+    }
+
 }
 
 export default new DateService();

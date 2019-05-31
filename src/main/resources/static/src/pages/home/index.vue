@@ -1,6 +1,19 @@
 <template>
     <section>
 
+        <p>Lang: {{$lang}}</p>
+        <br/>
+        <div>message.common.operation-completed: <b>{{ $t('message.common.operation-completed') }}</b></div>
+        <div>message.from-lang-component: <b>{{ $t('message.from-lang-component') }}</b></div>
+        <div>message.from-lang-pages: <b>{{ $t('message.from-lang-pages') }}</b></div>
+        <div>warning.common.w1: <b v-t="'warning.common.w1'" /></div>
+        <br/>
+        <p>date: {{ $d(new Date(), 'date') }}</p>
+        <p>datetime: {{ $d(new Date(), 'datetime') }}</p>
+        <p>time: {{ $d(new Date(), 'time') }}</p>
+
+        <button @click="setSS" class="slds-button slds-button_success">Clear Lang Cache</button>
+
         <div class="slds-container_large">
             <h1 class="slds-text-heading_large slds-m-bottom_large">Branding</h1>
 
@@ -104,8 +117,16 @@
         //
         data() {
             return {
+                version: 1,
+                value: '',
                 pageTitle: 'Home'
             }
+        },
+        methods: {
+            setSS() {
+                this.$ls.getVersionedCache(this.$lang, 0)
+            }
         }
+
     }
 </script>

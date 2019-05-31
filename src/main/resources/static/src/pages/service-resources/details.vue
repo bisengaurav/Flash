@@ -3,11 +3,163 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_x-large">
             <back-button to="users" class="slds-m-right_medium" />
-            {{pageTitle}}
+            {{pageTitle}} - {{serviceResource.name}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
+            <div class="slds-card slds-p-around_medium">
+                 
+                <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
+
+                    <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
+                        <span class="slds-form-element__label">Phone</span>
+                        <div class="slds-form-element__static">
+                           {{serviceResource.phone__c}}
+                        </div>
+                    </div>
+
+                    <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
+                        <span class="slds-form-element__label">Sales organization</span>
+                        <div class="slds-form-element__static">
+                           {{serviceResource.salesOrganization__c}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div v-if="serviceResource.serviceResourceTerritories.length > 0">
+                
+                <div class="slds-card slds-p-around_medium slds-m-top_medium">
+                    <h2 class="slds-text-heading_small slds-m-bottom_small">Service Territories</h2>
+                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th>Name</th>
+                                <th>Territory Type</th>
+                                <th>Shift Type</th>
+                                <th>Start Date</th>         
+                                <th>End Date</th>         
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="row in serviceResource.serviceResourceTerritories"
+                                :key="row.id"
+                            >
+                                <td><router-link :to="{name: 'serviceTerritory', params: {id: row.id }}">{{row.name}}</router-link></td>
+                                <td>{{row.territoryType}}</td>
+                                <td>{{row.shiftType__c}}</td>
+                                <td>{{row.effectiveStartDate|formatDate}}</td>
+                                <td>{{row.effectiveEndDate|formatDate}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div v-if="serviceResource.serviceResourceWorkCenters.length > 0">
+                
+                <div class="slds-card slds-p-around_medium slds-m-top_medium">
+                    <h2 class="slds-text-heading_small slds-m-bottom_small">Work Centers</h2>
+                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th>Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="row in serviceResource.serviceResourceWorkCenters"
+                                :key="row.id"
+                            >
+                                <td><router-link :to="{name: 'workCenter', params: {id: row.id }}">{{row.name}}</router-link></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div v-if="serviceResource.resourceAbsences.length > 0">
+                
+                <div class="slds-card slds-p-around_medium slds-m-top_medium">
+                    <h2 class="slds-text-heading_small slds-m-bottom_small">Absencess</h2>
+                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th>Start time</th>
+                                <th>End time</th>
+                                <th>Record Type</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="row in serviceResource.resourceAbsences"
+                                :key="row.id"
+                            >
+                                <td>{{row.start|formatDate}}</td>
+                                <td>{{row.end|formatDate}}</td>
+                                <td>{{row.recordType__c}}</td>
+                                <td>{{row.type}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div v-if="serviceResource.serviceResourceAppointments.length > 0">
+                
+                <div class="slds-card slds-p-around_medium slds-m-top_medium">
+                    <h2 class="slds-text-heading_small slds-m-bottom_small">Absencess</h2>
+                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th>Service Appointment</th>
+                                <th>SA Status</th>
+                                <th>Scheduled Start</th>
+                                <th>Scheduled End</th>
+                                <th>Pinned</th>
+                                <th>Work Order</th>
+                                <th>Earliest Start Date</th>
+                                <th>Due Date</th>
+                                <th>Activity Type</th>
+                                <th>Assembly</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Street</th>
+                                <th>City</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="row in serviceResource.serviceResourceAppointments"
+                                :key="row.id"
+                            >
+                                 <td><router-link :to="{name: 'serviceAppointment', params: {id: row.id }}">{{row.appointmentNumber}}</router-link></td>
+                                <td>{{row.status}}</td>
+                                <td>{{row.scheduledStartOriginal__c|formatDate}}</td>
+                                <td>{{row.scheduledEndOriginal__c|formatDate}}</td>
+                                <td>{{ row.fslPinned__c ? 'Yes' : '' }} {{ row.fslPinned__c === false ? 'No' : '' }}</td>
+                                <td><router-link :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
+                                <td>{{row.earliestStartDate__c|formatDate}}</td>
+                                <td>{{row.dueDate__c|formatDate}}</td>
+                                <td>{{row.maintenanceActivityType__c}}</td>
+                                <td>{{row.assembly__c}}</td>
+                                <td>{{row.description__c}}</td>
+                                <td>{{row.locationName}}</td>
+                                <td>{{row.installationStreet__c}}</td>
+                                <td>{{row.installationCity__c}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
 
         </div>
 
@@ -32,7 +184,13 @@
         data() {
             return  {
                 pageTitle: 'Service Resource Record Detail',
-                loading: true
+                loading: true,
+                serviceResource: {
+                    serviceResourceTerritories: [],
+                    serviceResourceWorkCenters: [],
+                    resourceAbsences: [],
+                    serviceResourceAppointments: []
+                }
             }
         },
 
@@ -48,7 +206,14 @@
                     throw new Error('Wrong ID');
                 }
 
-                // data
+                  // data
+                this.$API.serviceResource.getById(this.id)
+                .then(data => {                    
+                    this.loading = false;
+                    this.serviceResource = data;
+                    console.log(data);
+                    if (this.autoRefreshOn) this.initAutoRefresh();
+                });
             }
         },
 

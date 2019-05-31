@@ -62,10 +62,10 @@
                     numeric: 'A value should be a number.',
                     integer: 'A value should be an integer number.',
                     decimal: 'A value should be a decimal number.',
-                    email: 'A value sholud be a valid email.',
-                    macAddress: 'A value sholud be a valid MAC address.',
-                    ipAddress: 'A value sholud be a valid IP address.',
-                    url: 'A value sholud be a valid url.'
+                    email: 'A value should be a valid email.',
+                    macAddress: 'A value should be a valid MAC address.',
+                    ipAddress: 'A value should be a valid IP address.',
+                    url: 'A value should be a valid url.'
                 }
             };
         },

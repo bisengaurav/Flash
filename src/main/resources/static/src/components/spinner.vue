@@ -12,6 +12,6 @@
 
 <style>
     .cmp-spinner {
-        fill: #e71c50;
+        fill: #0071b9;
     }
 </style>

@@ -82,6 +82,16 @@ Vue.component('HelpPointer', HelpPointer);
 
 
 //
+// global Formats
+//
+
+import numeral from 'numeral';
+Vue.filter("formatNumber", function(value, format) {
+    return numeral(value).format(format || '0,0');
+});
+
+
+//
 // global Modules
 //
 import Vuelidate from 'vuelidate';
@@ -90,36 +100,110 @@ Vue.use(Vuelidate);
 import Prompt from './components/prompt.vue';
 Vue.use(Prompt);
 
+import VueI18n from 'vue-i18n';
+Vue.use(VueI18n);
 
-
-//
-// global Formats
-//
 import DateService from './core/date-service.js';
-Vue.filter("formatDate", function(value, format, useLocal) {
-    return DateService.formatUTCDateToLocal({
-        date: value,
-        format,
-        useLocal
-    });
-});
+Vue.use(DateService);
 
-import numeral from 'numeral';
-Vue.filter("formatNumber", function(value, format) {
-    return numeral(value).format(format || '0,0');
-});
+import LocalStorage from './core/local-storage';
+Vue.use(LocalStorage);
+
+import router from './core/router.js'; // contains Vue.use()
+
+import store from './store'; // contains Vue.use()
 
 
 
 //
-// import root Vue component (App.vue) and Routes instanse
-// init app
+// load top level data and init app
 //
-import router from './core/router.js';
+
 import app from './components/app.vue';
 
-new Vue({
-    el: '#app',
-    render: h => h(app),
-    router
-});
+import messagesCmp from './core/tmp-lang-components.js';
+import messagesPages from './core/tmp-lang-pages.js';
+
+// load session data
+
+API.session.getInfo()
+    .then(session => {
+        // save session data to Store
+        store.commit('setSession', session);
+
+
+        // init Localization
+
+        if (!store.state.$lang)
+            throw new Error("Can't resolve language settings");
+
+        const i18n = new VueI18n({
+            silentTranslationWarn: (process.env.NODE_ENV === 'production'),
+            silentFallbackWarn: (process.env.NODE_ENV === 'production'),
+            locale: store.state.$lang,
+            /*messages: {
+                [store.state.$lang]: {}
+            },*/
+            dateTimeFormats: {
+                [store.state.$lang]: {
+                    date: {
+                        year: 'numeric', month: 'numeric', day: 'numeric'
+                    },
+                    datetime: {
+                        year: 'numeric', month: 'numeric', day: 'numeric',
+                        hour: 'numeric', minute: 'numeric'
+                    },
+                    time: {
+                        hour: 'numeric', minute: 'numeric'
+                    }
+                }
+            },
+            missing: (locale, key, vm) => {
+                return '...';
+            }
+        });
+
+
+        // check cached language data
+
+        let cachedLangData = null;
+        if (store.state.$langVersion)
+            cachedLangData = LocalStorage.getVersionedCache(store.state.$lang, store.state.$langVersion);
+
+        if (cachedLangData) {
+            // no cached data or no lang version
+            i18n.setLocaleMessage(store.state.$lang, cachedLangData);
+
+        } else {
+            // async load language data
+
+            API.i18n.getLanguageData(session.l10nParams.languageCode)
+                .then(data => {
+                    if (!data.stringsMap)
+                        throw new Error("Can't resolve language data");
+
+                    i18n.setLocaleMessage(
+                        store.state.$lang,
+                        Object.assign({}, messagesCmp, messagesPages, data.stringsMap)
+                    );
+                    LocalStorage.setVersionedCache(
+                        store.state.$lang,
+                        data.stringsHashCode,
+                        Object.assign({}, messagesCmp, messagesPages, data.stringsMap)
+                    );
+                });
+        }
+
+
+        // init APP
+
+        new Vue({
+            el: '#app',
+            render: h => h(app),
+            router,
+            store,
+            i18n
+        });
+
+
+    });
