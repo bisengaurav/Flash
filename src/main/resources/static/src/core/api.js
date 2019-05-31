@@ -16,16 +16,6 @@ let API = {
         },
         getEquipmentTypes: () => {
             return Query('/ui-api/equipment/getUniqueEquipmentTypes');
-        } 
-    },
-    workCenter: {
-        getById: (id) => {
-            return Query('/ui-api/workCenter/getById', {id});
-        }
-    },
-    serviceTerritory: {
-        getById: (id) => {
-            return Query('/ui-api/serviceTerritory/getById', {id});
         }
     },
     case: {
@@ -51,12 +41,50 @@ let API = {
         },
         getUniqueStatuses: () => {
             return Query('/ui-api/serviceAppointment/getUniqueStatuses');
-        } 
+        }
+    },
+
+
+    workCenter: {
+        getById: (id) => {
+            return Query('/ui-api/workCenter/getById', {id});
+        }
+    },
+    serviceTerritory: {
+        getById: (id) => {
+            return Query('/ui-api/serviceTerritory/getById', {id});
+        }
+    },
+    serviceResource: {
+        getById: (id) => {
+            return Query('/ui-api/serviceResource/getById', {id});
+        }
     },
     workOrder: {
         getById: (id) => {
             return Query('/ui-api/workOrder/getById', {id});
         }
+    },
+    user: {
+        getUserInfo: (id) => {
+            return Query('/ui-api/user/getUserInfo');
+        }
+    },
+
+
+    session: {
+        getInfo: () => {
+            return Query('/ui-api/session/getInfo');
+        }
+    },
+    i18n: {
+        getL10nData: (languageCode, countryCode) => {
+            return Query('/ui-api/i18n/getL10nData', {languageCode, countryCode});
+        },
+        getLanguageData: (languageCode) => {
+            return Query('/ui-api/i18n/getLanguageData', {languageCode});
+        }
+
     }
 };
 

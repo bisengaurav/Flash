@@ -2,7 +2,7 @@
     <div>
 
         <div class="z-level4" :class="{'nav-expanded': isOpen}">
-            <div class="slds-backdrop nav-backdrop" @click="close"></div>
+            <div class="slds-backdrop" @click="close"></div>
 
             <div class="nav-panel">
                 <div class="logo">
@@ -84,10 +84,6 @@
     .main {
         padding: 40px 50px;
         margin-left: 90px;
-    }
-
-    .nav-backdrop {
-        background: rgba(255,255,255,.6);
     }
 
 
