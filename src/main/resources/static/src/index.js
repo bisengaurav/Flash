@@ -121,13 +121,14 @@ import store from './store'; // contains Vue.use()
 
 import app from './components/app.vue';
 
+import messagesCmp from './core/tmp-lang-components.js';
+import messagesPages from './core/tmp-lang-pages.js';
 
 // load session data
 
 API.session.getInfo()
     .then(session => {
         // save session data to Store
-
         store.commit('setSession', session);
 
 
@@ -141,7 +142,7 @@ API.session.getInfo()
             silentFallbackWarn: (process.env.NODE_ENV === 'production'),
             locale: store.state.$lang,
             /*messages: {
-                [lng]: data.stringsMap
+                [store.state.$lang]: {}
             },*/
             dateTimeFormats: {
                 [store.state.$lang]: {
@@ -181,10 +182,15 @@ API.session.getInfo()
                     if (!data.stringsMap)
                         throw new Error("Can't resolve language data");
 
-                setTimeout(() => {
-                    i18n.setLocaleMessage(store.state.$lang, data.stringsMap);
-                    LocalStorage.setVersionedCache(store.state.$lang, store.state.$langVersion, data.stringsMap);
-                }, 2000);
+                    i18n.setLocaleMessage(
+                        store.state.$lang,
+                        Object.assign({}, messagesCmp, messagesPages, data.stringsMap)
+                    );
+                    LocalStorage.setVersionedCache(
+                        store.state.$lang,
+                        data.stringsHashCode,
+                        Object.assign({}, messagesCmp, messagesPages, data.stringsMap)
+                    );
                 });
         }
 

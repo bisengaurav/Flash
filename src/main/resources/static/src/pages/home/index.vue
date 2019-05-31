@@ -1,19 +1,18 @@
 <template>
     <section>
 
-        <p>{{$sessionId}}</p>
-        <p>{{$lang}}</p>
-        <p>{{$timezone}}</p>
+        <p>Lang: {{$lang}}</p>
         <br/>
-        <div>ja message.hello: {{ $t('message.common.operation-completed') }}</div>
-        <div>ja message.hello: <span v-t="'warning.common.w1'" /></div>
+        <div>message.common.operation-completed: <b>{{ $t('message.common.operation-completed') }}</b></div>
+        <div>message.from-lang-component: <b>{{ $t('message.from-lang-component') }}</b></div>
+        <div>message.from-lang-pages: <b>{{ $t('message.from-lang-pages') }}</b></div>
+        <div>warning.common.w1: <b v-t="'warning.common.w1'" /></div>
         <br/>
-        <p>null date: {{ $d(new Date(), 'date') }}</p>
-        <p>null datetime: {{ $d(new Date(), 'datetime') }}</p>
-        <p>null time: {{ $d(new Date(), 'time') }}</p>
+        <p>date: {{ $d(new Date(), 'date') }}</p>
+        <p>datetime: {{ $d(new Date(), 'datetime') }}</p>
+        <p>time: {{ $d(new Date(), 'time') }}</p>
 
-        <button @click="setSS">Clear Lang</button>
-        <button @click="getSS">Get Lang</button>
+        <button @click="setSS" class="slds-button slds-button_success">Clear Lang Cache</button>
 
         <div class="slds-container_large">
             <h1 class="slds-text-heading_large slds-m-bottom_large">Branding</h1>
@@ -125,10 +124,7 @@
         },
         methods: {
             setSS() {
-                this.$ls.getVersionedCache(this.$lang, 111)
-            },
-            getSS() {
-                console.log(this.$ls.getVersionedCache(this.$lang, this.$langVersion));
+                this.$ls.getVersionedCache(this.$lang, 0)
             }
         }
 
