@@ -74,8 +74,8 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 			filter.getServiceTerritoryName(), false);
 		queryBuilder.addCondition_FieldContains("caseOwnerTxt__c",
 			filter.getCaseOwnerTxt__c(), false);
-		queryBuilder.addCondition_FieldContains("salesOrganization__c",
-			filter.getSalesOrganization__c(), false);
+		queryBuilder.addCondition_FieldContains("salesOrganizations__c",
+			filter.getSalesOrganizations__c(), false);
 
 
 		// TODO: change created date to yesterday or today
