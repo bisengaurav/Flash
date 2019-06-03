@@ -21,7 +21,7 @@
                     <th>Entrap.</th>
                     <th>Hazard</th>
                     <th>Injury</th>
-                    <th>Asset</th>
+                    <th>Equipment</th>
                     <th>Location</th>
                     <th>Street</th>
                     <th>City</th>

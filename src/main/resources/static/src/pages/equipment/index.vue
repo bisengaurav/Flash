@@ -31,7 +31,7 @@
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'equipmentDetails', params: {id: id }}">{{row.name}}</router-link></td>
-                    <td>{{row.equipmentType__c}}</td>
+                    <td>{{row.equipmentTypeValue}}</td>
                     <td>{{row.customerAssetName__c}}</td>
                     <td>{{row.equipmentPhoneNumber__c}}</td>
                     <td>{{row.accountName}}</td>

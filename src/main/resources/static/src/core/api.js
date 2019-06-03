@@ -58,6 +58,9 @@ let API = {
     serviceResource: {
         getById: (id) => {
             return Query('/ui-api/serviceResource/getById', {id});
+        },
+        getAllByFilter: (params) => {
+            return Query('/ui-api/serviceResource/getAllByFilter', params, 'GET', true);
         }
     },
     workOrder: {
