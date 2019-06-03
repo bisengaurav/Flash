@@ -6,7 +6,7 @@ import Query from './query.js';
 let API = {
     equipment: {
         getAllByFilter: (params) => {
-            return Query('/ui-api/equipment/getAllByFilter', params, 'GET', true, {ageCount: 2, ageUnit: 'm'});
+            return Query('/ui-api/equipment/getAllByFilter', params, 'GET', true, {ageCount: 10, ageUnit: 'm'});
         },
         getById: (id) => {
             return Query('/ui-api/equipment/getById', {id});
@@ -26,7 +26,7 @@ let API = {
             return Query('/ui-api/case/getAllByFilter', params, 'GET', true);
         },
         getUniqueSalesOrganizations: () => {
-            return Query('/ui-api/case/getUniqueSalesOrganizations');
+            return Query('/ui-api/case/getUniqueSalesOrganizations', null, 'GET', false, 'session');
         },
         getUniqueMaintenanceActivityTypeCodes: () => {
             return Query('/ui-api/case/getUniqueMaintenanceActivityTypeCodes', null, 'GET', false, 'session');
