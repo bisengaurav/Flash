@@ -39,7 +39,7 @@
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'case', params: {id: row.id }}">{{row.caseNumber}}</router-link></td>
                     <td>{{ $dtz(row.createdDate, 'datetime') }}</td>
-                    <td>{{ $dtz(row.npxResponseDueDate__c, 'datetime') }}</td>
+                    <td>{{ $dtz(row.dueDate__c, 'datetime') }}</td>
                     <td>{{ row.entrapment__c|yesNo }}</td>
                     <td>{{ row.hazard__c|yesNo }}</td>
                     <td>{{ row.injury__c|yesNo }}</td>
