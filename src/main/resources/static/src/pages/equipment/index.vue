@@ -3,7 +3,7 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_large">{{pageTitle}}</h1>
 
-        <equipment-filter-form v-model="filters" cacheUniqueKey="equipment-page"></equipment-filter-form>
+        <equipment-filter-form v-model="filters" cacheUniqueKey="equipment-page" :applyOnCacheLoad="true"></equipment-filter-form>
 
         <div class="primary-section slds-m-top_x-large">
             <data-table-basic

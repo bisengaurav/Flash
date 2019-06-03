@@ -9,6 +9,10 @@
             value: {}, // ignored for now
             cacheUniqueKey: {
                 type: String
+            },
+            applyOnCacheLoad: {
+                type: Boolean,
+                default: false
             }
         },
 
@@ -79,7 +83,7 @@
             // load cached data
             if (this.$props.cacheUniqueKey && this._loadCache()) {
                 this.innerValue = Object.assign({}, this.metadata, this._loadCache());
-                this.apply();
+                if (this.$props.applyOnCacheLoad) this.apply();
             }
         }
     }
