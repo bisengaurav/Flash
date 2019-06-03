@@ -136,7 +136,7 @@
                 <select-loader
                     :source="$API.case.getUniqueAssemblies"
                     :allowEmpty="true"
-                    v-model="innerValue.assemblyNumber__c"
+                    v-model="innerValue.assembly__c"
                     id="assembly_code"
                     class="slds-select"
                 />
@@ -204,7 +204,7 @@
                 <select-loader
                     :source="$API.case.getUniqueSalesOrganizations"
                     :allowEmpty="true"
-                    v-model="innerValue.salesOrganization__c"
+                    v-model="innerValue.salesOrganizations__c"
                     id="sales_org"
                     class="slds-select"
                 />
@@ -241,14 +241,14 @@
                     contactName: null,
                     callerName__c: null,
                     workOrderNumber: null,
-                    assemblyNumber__c: null,
+                    assembly__c: null,
                     maintenanceActivityTypeCode__c: null,
                     appointmentNumber: null,
                     serviceAppointmentStatus: null,
                     serviceResourceName: null,
                     serviceTerritoryName: null,
                     caseOwnerTxt__c: null,
-                    salesOrganization__c: null,
+                    salesOrganizations__c: null,
                 }
             }
         }
