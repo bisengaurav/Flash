@@ -5,12 +5,21 @@
         //
         // PARAMS: porps, data, computed
         //
-        props: ['value'],
+        props: {
+            value: {}, // ignored for now
+            cacheUniqueKey: {
+                type: String
+            }
+        },
 
         data() {
             return {
                 innerValue: {},
-                metadata: {}
+                metadata: {},
+
+                gridClass: 'slds-grid slds-gutters_direct slds-grid_vertical-align-start slds-wrap',
+                gridItemClass: 'slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_x-small',
+                buttonsClass: 'slds-col slds-size_1-of-1 slds-p-top_small'
             }
         },
         computed: {
@@ -35,7 +44,17 @@
             init() {
                 this.innerValue = Object.assign({}, this.metadata);
             },
+            _loadCache() {
+                return this.$ls.getSessionCache(this._cacheKey());
+            },
+            _saveCache() {
+                this.$ls.setSessionCache(this._cacheKey(), this.appliedFilters);
+            },
+            _cacheKey() {
+                return 'filters-cache_'+ this.$props.cacheUniqueKey;
+            },
 
+            // buttons actions
             apply() {
                 // prevent action, if button enabled - force validate all fields
                 if (this.$v !== undefined) {
@@ -44,8 +63,8 @@
                 }
 
                 this.$emit('input', this.appliedFilters);
+                if (this.$props.cacheUniqueKey) this._saveCache();
             },
-
             clearAll() {
                 this.init();
             }
@@ -56,6 +75,9 @@
         //
         created() {
             this.init();
+
+            // load cached data
+            if (this.$props.cacheUniqueKey) this.innerValue = Object.assign({}, this.metadata, this._loadCache());
         }
     }
 </script>

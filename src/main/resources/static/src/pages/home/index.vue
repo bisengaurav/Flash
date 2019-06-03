@@ -1,18 +1,17 @@
 <template>
     <section>
 
-        <p>Lang: {{$lang}}</p>
+        <h1 class="slds-text-heading_large slds-m-bottom_large">Translation</h1>
+        <p><b>Lang:</b> {{$lang}}</p>
+        <p><b>Timezone:</b> {{$timezone}}</p>
         <br/>
-        <div>message.common.operation-completed: <b>{{ $t('message.common.operation-completed') }}</b></div>
-        <div>message.from-lang-component: <b>{{ $t('message.from-lang-component') }}</b></div>
-        <div>message.from-lang-pages: <b>{{ $t('message.from-lang-pages') }}</b></div>
-        <div>warning.common.w1: <b v-t="'warning.common.w1'" /></div>
+        <div><b>message.from-lang-component:</b> <span>{{ $t('message.from-lang-component') }}</span></div>
+        <div><b>warning.common.w1:</b> <span v-t="'warning.common.w1'" /></div>
         <br/>
-        <p>date: {{ $d(new Date(), 'date') }}</p>
-        <p>datetime: {{ $d(new Date(), 'datetime') }}</p>
-        <p>time: {{ $d(new Date(), 'time') }}</p>
-
-        <button @click="setSS" class="slds-button slds-button_success">Clear Lang Cache</button>
+        <p><b>date:</b> {{ $dtz(new Date(), 'date') }}</p>
+        <p><b>datetime:</b> {{ $dtz(new Date(), 'datetime') }}</p>
+        <p><b>time:</b> {{ $dtz(new Date(), 'time') }}</p>
+        <br/><br/>
 
         <div class="slds-container_large">
             <h1 class="slds-text-heading_large slds-m-bottom_large">Branding</h1>
@@ -118,11 +117,6 @@
         data() {
             return {
                 pageTitle: 'Home'
-            }
-        },
-        methods: {
-            setSS() {
-                this.$ls.getVersionedCache(this.$lang, 0)
             }
         }
 

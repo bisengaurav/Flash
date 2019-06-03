@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_x-large">{{pageTitle}}</h1>
+        <h1 class="slds-text-heading_large slds-m-bottom_large">{{pageTitle}}</h1>
 
         <div>
         </div>

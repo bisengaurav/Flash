@@ -1,9 +1,9 @@
 <template>
-    <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-start slds-wrap">
+    <div :class="gridClass">
 
         <form-element
             label="Country"
-            class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small"
+            :class="gridItemClass"
             for="country"
             :validator="$v.innerValue.installationCountry__c"
         >
@@ -22,7 +22,7 @@
 
         <form-element
             label="Equipment Type"
-            class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small"
+            :class="gridItemClass"
             for="equipment_type"
             :validator="$v.innerValue.equipmentType__c"
         >
@@ -38,7 +38,7 @@
             </div>
         </form-element>
 
-        <form-element label="Customer Asset Name" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Customer Asset Name" :class="gridItemClass">
             <input
                 id="customer_asset_name"
                 v-model="innerValue.customerAssetName__c"
@@ -46,7 +46,7 @@
             />
         </form-element>
 
-        <form-element label="Phone" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Phone" :class="gridItemClass">
             <input
                 id="phone"
                 v-model="innerValue.equipmentPhoneNumber__c"
@@ -54,7 +54,7 @@
             />
         </form-element>
 
-        <form-element label="Account" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Account" :class="gridItemClass">
             <input
                 id="account"
                 v-model="innerValue.accountName"
@@ -62,7 +62,7 @@
             />
         </form-element>
 
-        <form-element label="Sold to" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Sold to" :class="gridItemClass">
             <input
                 id="sold_to"
                 v-model="innerValue.soldToName"
@@ -70,7 +70,7 @@
             />
         </form-element>
 
-        <form-element label="Location" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Location" :class="gridItemClass">
             <input
                 id="location"
                 v-model="innerValue.locationName"
@@ -78,7 +78,7 @@
             />
         </form-element>
 
-        <form-element label="Street" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Street" :class="gridItemClass">
             <input
                 id="street"
                 v-model="innerValue.installationStreet__c"
@@ -86,7 +86,7 @@
             />
         </form-element>
 
-        <form-element label="City" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="City" :class="gridItemClass">
             <input
                 id="сity"
                 v-model="innerValue.installationCity__c"
@@ -94,7 +94,7 @@
             />
         </form-element>
 
-        <form-element label="State/Province" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="State/Province" :class="gridItemClass">
             <input
                 id="stateProvince"
                 v-model="innerValue.installationStateProvince__c"
@@ -102,7 +102,7 @@
             />
         </form-element>
 
-        <form-element label="Valid Contract" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="valid_contract">
+        <form-element label="Valid Contract" :class="gridItemClass" for="valid_contract">
             <div class="slds-select_container">
                 <select
                     v-model="innerValue.fsmLastValidCliEndDate__c"
@@ -116,7 +116,7 @@
             </div>
         </form-element>
 
-        <div class="slds-col slds-size_1-of-1 slds-p-top_small">
+        <div :class="buttonsClass">
             <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters || $v.$invalid">Apply</button>
             <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
         </div>

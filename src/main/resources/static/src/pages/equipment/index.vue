@@ -1,16 +1,17 @@
 <template>
     <div>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_x-large">{{pageTitle}}</h1>
+        <h1 class="slds-text-heading_large slds-m-bottom_large">{{pageTitle}}</h1>
 
-        <equipment-filter-form v-model="filters"></equipment-filter-form>
+        <equipment-filter-form v-model="filters" cacheUniqueKey="equipment-page"></equipment-filter-form>
 
-        <div class="primary-section">
+        <div class="primary-section slds-m-top_x-large">
             <data-table-basic
                     :action="$API.equipment.getAllByFilter"
                     :filters="filters"
                     :immediateRefresh="false"
                     :useLoading="false"
+                    cacheUniqueKey="equipment-page"
                 >
                 <template #head>
                     <th>Equipment</th>

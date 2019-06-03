@@ -1,17 +1,18 @@
 <template>
     <div>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_x-large">{{pageTitle}}</h1>
+        <h1 class="slds-text-heading_large slds-m-bottom_large">{{pageTitle}}</h1>
 
-        <callouts-filter-form v-model="filters"></callouts-filter-form>
+        <callouts-filter-form v-model="filters" cacheUniqueKey="callouts-page"></callouts-filter-form>
 
-         <div class="primary-section">
+        <div class="primary-section slds-m-top_x-large">
             <data-table-basic
                     key-field="serviceAppointmentId"
                     :action="$API.case.getAllByFilter"
                     :filters="filters"
                     :immediateRefresh="false"
                     :useLoading="false"
+                    cacheUniqueKey="callouts-page"
                 >
                 <template #head>
                     <th>Case ID</th>
@@ -37,11 +38,11 @@
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'case', params: {id: row.id }}">{{row.caseNumber}}</router-link></td>
-                    <td>{{row.createdDate|formatDate}}</td>
-                    <td>{{row.npxResponseDueDate__c|formatDate}}</td>
-                    <td>{{ row.entrapment__c ? 'Yes' : '' }} {{ row.entrapment__c === false ? 'No' : '' }}</td>
-                    <td>{{ row.hazard__c ? 'Yes' : '' }} {{ row.hazard__c === false ? 'No' : '' }}</td>
-                    <td>{{ row.injury__c ? 'Yes' : '' }} {{ row.injury__c === false ? 'No' : '' }}</td>
+                    <td>{{ $dtz(row.createdDate, 'datetime') }}</td>
+                    <td>{{ $dtz(row.npxResponseDueDate__c, 'datetime') }}</td>
+                    <td>{{ row.entrapment__c|yesNo }}</td>
+                    <td>{{ row.hazard__c|yesNo }}</td>
+                    <td>{{ row.injury__c|yesNo }}</td>
                     <td><router-link :to="{name: '', params: {id: row.assetId }}">{{row.assetName}}</router-link></td>
                     <td>{{row.locationName}}</td>
                     <td>{{row.street__c}}</td>

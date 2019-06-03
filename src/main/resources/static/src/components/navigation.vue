@@ -92,7 +92,7 @@
         overflow-y: auto;
     }
     .main {
-        padding: 40px 50px;
+        padding: 30px 40px;
         margin-left: 90px;
     }
 
