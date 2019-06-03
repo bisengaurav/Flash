@@ -11,7 +11,6 @@
                     :filters="filters"
                     :immediateRefresh="false"
                     :useLoading="false"
-                    cacheUniqueKey="equipment-page"
                 >
                 <template #head>
                     <th>Equipment</th>
