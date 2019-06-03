@@ -217,16 +217,18 @@ public class JpaQueryBuilder<EntityT> {
 	//Public methods
 	//
 	public void addSimpleCondition(String field, String operator, Object value) {
-		this.addCondition(field, value, T_SIMPLE_CONDITION_CASE_SENSITIVE, field, operator, this.getIndexOfNewParam());
+		addSimpleCondition(field, operator, value, true);
 	}
 
 	public void addSimpleCondition(String field, String operator, Object value, boolean isCaseSensitive) {
-		this.addCondition(field, value, T_SIMPLE_CONDITION_CASE_INSENSITIVE, field, operator, this.getIndexOfNewParam());
+		this.addCondition(field, value,
+			isCaseSensitive ? T_SIMPLE_CONDITION_CASE_SENSITIVE : T_SIMPLE_CONDITION_CASE_INSENSITIVE,
+			field, operator, this.getIndexOfNewParam());
 	}
 
 	public void addSimpleConditionIfNotNull(String field, String operator, Object value) {
 		if (value != null) {
-			this.addSimpleCondition(field, operator, value);
+			this.addSimpleCondition(field, operator, value, true);
 		}
 	}
 

@@ -35,9 +35,9 @@ public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 		JpaQueryBuilder<Equipment> queryBuilder =
 			new JpaQueryBuilder<>(entityManager, Equipment.class);
 		queryBuilder.addSimpleConditionIfNotNull("installationCountry__c", "=",
-			filter.getInstallationCountry__c());
+			filter.getInstallationCountry__c(), true);
 		queryBuilder.addSimpleConditionIfNotNull("equipmentType__c", "=",
-			filter.getEquipmentType__c(), false);
+			filter.getEquipmentType__c(), true);
 		queryBuilder.addCondition_FieldContains("customerAssetName__c",
 			filter.getCustomerAssetName__c(), false);
 		queryBuilder.addCondition_FieldContains("equipmentPhoneNumber__c",
