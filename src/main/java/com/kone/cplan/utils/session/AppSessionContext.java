@@ -40,6 +40,10 @@ public class AppSessionContext
 	public AppSessionInfo getSessionInfo() {
 		return sessionInfo;
 	}
+	
+	public AppSessionInfo.UserInfo getCurrentUserInfo() {
+		return (this.sessionInfo != null ? this.sessionInfo.getUserInfo() : null);
+	}
 	//
 	
 	//

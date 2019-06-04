@@ -2,9 +2,12 @@ package com.kone.cplan.utils.session;
 
 import org.springframework.web.context.request.RequestContextHolder;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.kone.cplan.jpa.entity.User;
 import com.kone.cplan.utils.i18n.L10nParams;
 import com.kone.cplan.utils.i18n.Strings;
+import com.kone.cplan.utils.security.SecurityUtils;
 
 /**
  * This class encapsulates details of a session.
@@ -68,6 +71,8 @@ public class AppSessionInfo {
 	 * This class encapsulates details of a User that can be publicly available. We don't want to
 	 * make the User entity publicly available, because of security.
 	 */
+	@JsonAutoDetect(fieldVisibility = Visibility.ANY, getterVisibility = Visibility.NONE,
+		isGetterVisibility = Visibility.NONE)
 	public static class UserInfo
 	{
 		//
@@ -77,10 +82,12 @@ public class AppSessionInfo {
 			if (user != null) {
 				this.sfId = user.getSfId();
 				this.fullName = user.getName();
+				this.salesOrg = user.getSalesOrganization__c();
 			}
 			else {
 				this.fullName = Strings.get("label.guest-user-name");
 			}
+			this.isAdmin = SecurityUtils.isAdminUser(user);
 		}
 		//
 		
@@ -89,6 +96,8 @@ public class AppSessionInfo {
 		//
 		private String sfId;
 		private String fullName;
+		private String salesOrg;
+		private boolean isAdmin = false;
 		//
 		
 		//
@@ -97,8 +106,17 @@ public class AppSessionInfo {
 		public String getSfId() {
 			return sfId;
 		}
+		
 		public String getFullName() {
 			return fullName;
+		}
+		
+		public String getSalesOrg() {
+			return salesOrg;
+		}
+		
+		public boolean isAdmin() {
+			return isAdmin;
 		}
 		//
 	}
