@@ -4,10 +4,13 @@ import com.kone.cplan.api.JpaUtilsForApi;
 import com.kone.cplan.api.ui.utils.pagination.PagingUtils;
 import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.helpers.serialization.JsonUtils;
+import com.kone.cplan.jpa.entity.Equipment;
+import com.kone.cplan.jpa.entity.EquipmentType;
 import com.kone.cplan.jpa.filter.EquipmentFilter;
 import com.kone.cplan.jpa.repository.EquipmentDetailsRepository;
 import com.kone.cplan.jpa.repository.EquipmentRepository;
 import com.kone.cplan.utils.dto.SelectOption;
+import com.kone.cplan.utils.i18n.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -15,6 +18,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * This class provides endpoints for UI API that work with Equipments.
@@ -33,17 +40,17 @@ public class EquipmentApi {
 	private EquipmentRepository equipmentRepo;
 	@Autowired
 	private EquipmentDetailsRepository equipmentDetailsRepo;
-
-	private static final String EMPTY_FILTER = "Please clarify your search request by applying at" +
-		" least one filter.";
 	//
 
 	//
 	//Private static methods
 	//
-	private static Sort getDefaultSort() {
-		return Sort.by(Sort.Direction.ASC, "installationCity__c", "installationStreet__c",
-			"accountName", "equipmentType__c", "name");
+	private static List<SelectOption> convertToSelectOptions(List<EquipmentType> equipmentTypes) {
+		List<SelectOption> result = new ArrayList<>(equipmentTypes.size());
+		for (EquipmentType equipmentType : equipmentTypes) {
+			result.add(new SelectOption(equipmentType.getValue(), equipmentType.getApiName()));
+		}
+		return result;
 	}
 	//
 
@@ -69,13 +76,22 @@ public class EquipmentApi {
 		//- deserialize parameters
 		EquipmentFilter filter = JsonUtils.deserialize_typed(filterJson, EquipmentFilter.class);
 		if (filter == null || filter.isEmpty()) {
-			return OperationResults.newError(EMPTY_FILTER);
+			return OperationResults.newError(Strings.get("message.assets.empty-filter"));
 		}
 
-		Pageable pageRequest = PagingUtils.extractOrGetDefaultPageRequest(getDefaultSort());
+		Pageable pageRequest = PagingUtils.extractOrGetDefaultPageRequest(Sort.unsorted());
 
-		//- get and return data
-		return OperationResults.newSuccess(equipmentRepo.findByFilter(filter, pageRequest));
+		//- get data
+		List<Equipment> result = equipmentRepo.findByFilter(filter, pageRequest);
+		//- sort data
+		result.sort(Comparator
+			.comparing(Equipment::getInstallationCity__c, String.CASE_INSENSITIVE_ORDER)
+			.thenComparing(Equipment::getInstallationStreet__c, String.CASE_INSENSITIVE_ORDER)
+			.thenComparing(Equipment::getAccountName, String.CASE_INSENSITIVE_ORDER)
+			.thenComparing(Equipment::getName, String.CASE_INSENSITIVE_ORDER)
+		);
+
+		return OperationResults.newSuccess(result);
 	}
 
 	/**
@@ -96,9 +112,7 @@ public class EquipmentApi {
 	@GetMapping(value = "getUniqueEquipmentTypes")
 	public OperationResults getUniqueEquipmentTypes()
 	{
-		return OperationResults.newSuccess(
-			SelectOption.generateList(equipmentRepo.getUniqueEquipmentTypes().toArray())
-		);
+		return OperationResults.newSuccess(convertToSelectOptions(equipmentRepo.getUniqueEquipmentTypes()));
 	}
 	//
 }

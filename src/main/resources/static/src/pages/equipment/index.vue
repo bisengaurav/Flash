@@ -1,13 +1,12 @@
 <template>
     <div>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_x-large">{{pageTitle}}</h1>
+        <h1 class="slds-text-heading_large slds-m-bottom_large">{{pageTitle}}</h1>
 
-        <equpment-filter-form v-model="filters"></equpment-filter-form>
+        <equipment-filter-form v-model="filters" cacheUniqueKey="equipment-page" :applyOnCacheLoad="true"></equipment-filter-form>
 
-        <div class="primary-section">
+        <div class="primary-section slds-m-top_x-large">
             <data-table-basic
-                    ref="equipmentTable"
                     :action="$API.equipment.getAllByFilter"
                     :filters="filters"
                     :immediateRefresh="false"
@@ -31,7 +30,7 @@
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'equipmentDetails', params: {id: id }}">{{row.name}}</router-link></td>
-                    <td>{{row.equipmentType__c}}</td>
+                    <td>{{row.equipmentTypeValue}}</td>
                     <td>{{row.customerAssetName__c}}</td>
                     <td>{{row.equipmentPhoneNumber__c}}</td>
                     <td>{{row.accountName}}</td>
@@ -52,13 +51,13 @@
 
 <script>
     import Page from '../../components/page.vue';
-    import EqupmentFilterForm from './equipment-filter-form.vue';
+    import EquipmentFilterForm from './equipment-filter-form.vue';
 
     export default {
         extends: Page,
 
         components: {
-            EqupmentFilterForm
+            EquipmentFilterForm
         },
 
         //

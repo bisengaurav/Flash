@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_x-large">
+        <h1 class="slds-text-heading_large slds-m-bottom_large">
             <back-button to="users" class="slds-m-right_medium" />
             {{pageTitle}}
         </h1>

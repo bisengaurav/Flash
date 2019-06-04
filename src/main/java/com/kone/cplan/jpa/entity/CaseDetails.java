@@ -23,8 +23,8 @@ public class CaseDetails extends AbstractCase {
 	//
 	//Variables
 	//
-	@Column(name = "caseownertxt__c")
-	private String caseOwnerTxt__c;
+	@Column
+	private String subject;
 
 	@Column
 	private Integer accountId;
@@ -52,8 +52,8 @@ public class CaseDetails extends AbstractCase {
 	//
 	//Properties
 	//
-	public String getCaseOwnerTxt__c() {
-		return caseOwnerTxt__c;
+	public String getSubject() {
+		return subject;
 	}
 
 	public Integer getAccountId() {

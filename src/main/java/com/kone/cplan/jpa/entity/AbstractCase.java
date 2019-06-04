@@ -28,6 +28,9 @@ abstract class AbstractCase implements Serializable {
 	@Column(name = "casenumber")
 	private String caseNumber;
 
+	@Column(name = "caseownertxt__c")
+	private String caseOwnerTxt__c;
+
 	@Column(name = "createddate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp createdDate;
@@ -76,6 +79,10 @@ abstract class AbstractCase implements Serializable {
 
 	public String getCaseNumber() {
 		return caseNumber;
+	}
+
+	public String getCaseOwnerTxt__c() {
+		return caseOwnerTxt__c;
 	}
 
 	public Timestamp getCreatedDate() {

@@ -10,7 +10,7 @@ class LocalStorage {
 
     _checkStorage() {
         try {
-            const storage = window.localStorage,
+            let storage = window.localStorage,
                 x = '__test__';
 
             storage.setItem(x, x);
@@ -41,6 +41,10 @@ class LocalStorage {
 
         let storage = window.localStorage;
         storage.setItem(key, JSON.stringify(value));
+    }
+    clear() {
+        let storage = window.localStorage;
+        storage.clear();
     }
 
 

@@ -1,9 +1,9 @@
 <template>
     <div>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="equipment" class="slds-m-right_medium" />
-            Service Territory Detail - {{serviceTerritory.name}}
+        <h1 class="slds-text-heading_large slds-m-bottom_large">
+            <back-button class="slds-m-right_medium" />
+            {{pageTitle}}
         </h1>
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
@@ -23,7 +23,7 @@
             </div>
 
             <div v-if="serviceTerritory.serviceTerritoryResources.length > 0">
-                
+
                  <div class="slds-card slds-p-around_medium slds-m-top_medium">
                     <h2 class="slds-text-heading_small slds-m-bottom_small">Service Resources</h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -45,7 +45,7 @@
                                 <td>{{row.effectiveEndDate|formatDate}}</td>
                                 <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResource_id }}">{{row.serviceResource_name}}</router-link></td>
                                 <td>{{row.phone__c}}</td>
-                               
+
                             </tr>
                         </tbody>
                     </table>
@@ -73,7 +73,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Service Territory Record Detail',
+                pageTitle: 'Service Territory',
                 loading: true,
                 serviceTerritory: {},
             }
@@ -95,9 +95,8 @@
                  this.$API.serviceTerritory.getById(this.id)
                     .then(data => {
                         this.loading = false;
-                        console.log(data);
                         this.serviceTerritory = data;
-                        if (this.autoRefreshOn) this.initAutoRefresh();
+                        this.pageTitle = 'Service Territory — '+ this.serviceTerritory.name;
                     });
             }
         },

@@ -212,16 +212,7 @@ html {
 
 /* Table */
 
-.slds-table--bordered,
-.slds-table_bordered {
-	border-top: none;
-}
-
 .slds-table thead th {
-	/*background-color: #fff;*/
-    color: #747d88;
-    /*color: #f4802a;*/
-
     font-size: .75rem;
 
 	padding-top: .6rem;

@@ -43,6 +43,8 @@
                 type: Function,
                 required: true
             },
+
+            // behavior params
             immediateRefresh: {
                 type: Boolean,
                 default: true
@@ -50,6 +52,9 @@
             useLoading: {
                 type: Boolean,
                 default: true
+            },
+            cacheUniqueKey: {
+                type: String
             },
 
             // "static" external params, not used in logic
@@ -88,7 +93,18 @@
                         this.highlightedId = id;
                         this.data = data;
                         this.loading = false;
+
+                        if (this.$props.cacheUniqueKey) this._saveCache();
                     });
+            },
+            _loadCache() {
+                return this.$ls.getSessionCache(this._cacheKey());
+            },
+            _saveCache() {
+                this.$ls.setSessionCache(this._cacheKey(), this.data);
+            },
+            _cacheKey() {
+                return 'table-cache_'+ this.$props.cacheUniqueKey;
             }
         },
 
@@ -96,6 +112,14 @@
         // EVENTS
         //
         mounted() {
+            if (this.$props.cacheUniqueKey) {
+                let data = this._loadCache();
+                if (data) {
+                    this.data = data;
+                    return;
+                }
+            }
+
             if (this.$props.immediateRefresh) this.refresh();
         },
 

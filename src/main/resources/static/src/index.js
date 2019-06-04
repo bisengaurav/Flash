@@ -82,16 +82,6 @@ Vue.component('HelpPointer', HelpPointer);
 
 
 //
-// global Formats
-//
-
-import numeral from 'numeral';
-Vue.filter("formatNumber", function(value, format) {
-    return numeral(value).format(format || '0,0');
-});
-
-
-//
 // global Modules
 //
 import Vuelidate from 'vuelidate';
@@ -112,6 +102,23 @@ Vue.use(LocalStorage);
 import router from './core/router.js'; // contains Vue.use()
 
 import store from './store'; // contains Vue.use()
+
+
+
+//
+// global |formats and $functions()
+//
+
+import numeral from 'numeral';
+Vue.filter("formatNumber", function(value, format) {
+    return numeral(value).format(format || '0,0');
+});
+
+Vue.filter("yesNo", function(value) {
+    if (value) return 'Yes';
+    if (value === false) return 'No';
+    return '';
+});
 
 
 
@@ -147,13 +154,16 @@ API.session.getInfo()
             dateTimeFormats: {
                 [store.state.$lang]: {
                     date: {
-                        year: 'numeric', month: 'numeric', day: 'numeric'
+                        timeZone: store.state.$timezone,
+                        year: 'numeric', month: '2-digit', day: '2-digit'
                     },
                     datetime: {
-                        year: 'numeric', month: 'numeric', day: 'numeric',
+                        timeZone: store.state.$timezone,
+                        year: 'numeric', month: '2-digit', day: '2-digit',
                         hour: 'numeric', minute: 'numeric'
                     },
                     time: {
+                        timeZone: store.state.$timezone,
                         hour: 'numeric', minute: 'numeric'
                     }
                 }
@@ -162,6 +172,18 @@ API.session.getInfo()
                 return '...';
             }
         });
+
+
+        // create $d alias function
+
+        Vue.prototype.$dtz = function(value, key) {
+            if (!value) return '';
+
+            var date = Date.parse(value);
+            if (!date || typeof date != 'number' || date === NaN) return '';
+
+            return i18n.d(date, key);
+        };
 
 
         // check cached language data

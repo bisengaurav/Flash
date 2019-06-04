@@ -30,6 +30,9 @@ abstract class AbstractEquipment implements Serializable {
 	private String equipmentType__c;
 
 	@Column
+	private String equipmentTypeValue;
+
+	@Column
 	private String customerAssetName__c;
 
 	@Column
@@ -99,6 +102,10 @@ abstract class AbstractEquipment implements Serializable {
 
 	public String getEquipmentType__c() {
 		return equipmentType__c;
+	}
+
+	public String getEquipmentTypeValue() {
+		return equipmentTypeValue;
 	}
 
 	public String getCustomerAssetName__c() {

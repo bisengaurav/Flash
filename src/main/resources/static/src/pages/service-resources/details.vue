@@ -1,15 +1,15 @@
 <template>
     <div>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="users" class="slds-m-right_medium" />
-            {{pageTitle}} - {{serviceResource.name}}
+        <h1 class="slds-text-heading_large slds-m-bottom_large">
+            <back-button class="slds-m-right_medium" />
+            {{pageTitle}}
         </h1>
 
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
             <div class="slds-card slds-p-around_medium">
-                 
+
                 <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
 
                     <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
@@ -30,7 +30,7 @@
             </div>
 
             <div v-if="serviceResource.serviceResourceTerritories.length > 0">
-                
+
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
                     <h2 class="slds-text-heading_small slds-m-bottom_small">Service Territories</h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -39,8 +39,8 @@
                                 <th>Name</th>
                                 <th>Territory Type</th>
                                 <th>Shift Type</th>
-                                <th>Start Date</th>         
-                                <th>End Date</th>         
+                                <th>Start Date</th>
+                                <th>End Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,7 +61,7 @@
             </div>
 
             <div v-if="serviceResource.serviceResourceWorkCenters.length > 0">
-                
+
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
                     <h2 class="slds-text-heading_small slds-m-bottom_small">Work Centers</h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -84,7 +84,7 @@
             </div>
 
             <div v-if="serviceResource.resourceAbsences.length > 0">
-                
+
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
                     <h2 class="slds-text-heading_small slds-m-bottom_small">Absencess</h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -113,7 +113,7 @@
             </div>
 
             <div v-if="serviceResource.serviceResourceAppointments.length > 0">
-                
+
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
                     <h2 class="slds-text-heading_small slds-m-bottom_small">Absencess</h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -144,7 +144,7 @@
                                 <td>{{row.status}}</td>
                                 <td>{{row.scheduledStartOriginal__c|formatDate}}</td>
                                 <td>{{row.scheduledEndOriginal__c|formatDate}}</td>
-                                <td>{{ row.fslPinned__c ? 'Yes' : '' }} {{ row.fslPinned__c === false ? 'No' : '' }}</td>
+                                <td>{{row.fslPinned__c ? 'Yes' : '' }} {{row.fslPinned__c === false ? 'No' : '' }}</td>
                                 <td><router-link :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
                                 <td>{{row.earliestStartDate__c|formatDate}}</td>
                                 <td>{{row.dueDate__c|formatDate}}</td>
@@ -183,7 +183,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Service Resource Record Detail',
+                pageTitle: 'Service Resource',
                 loading: true,
                 serviceResource: {
                     serviceResourceTerritories: [],
@@ -208,11 +208,10 @@
 
                   // data
                 this.$API.serviceResource.getById(this.id)
-                .then(data => {                    
+                .then(data => {
                     this.loading = false;
                     this.serviceResource = data;
-                    console.log(data);
-                    if (this.autoRefreshOn) this.initAutoRefresh();
+                    this.pageTitle = 'Service Resource — '+ this.serviceResource.name;
                 });
             }
         },

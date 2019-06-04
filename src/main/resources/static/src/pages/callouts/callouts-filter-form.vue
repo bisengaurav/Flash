@@ -1,7 +1,7 @@
 <template>
-     <div class="slds-grid slds-gutters_direct slds-grid_vertical-align-end slds-wrap">
+     <div :class="gridClass">
 
-          <form-element label="Case ID" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+          <form-element label="Case ID" :class="gridItemClass">
             <input
                 id="case_id"
                 v-model="innerValue.caseNumber"
@@ -9,7 +9,7 @@
             />
         </form-element>
 
-        <form-element label="Created after" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Created after" :class="gridItemClass">
              <input
                 id="created_after"
                 v-model="innerValue.createdDate"
@@ -17,7 +17,7 @@
             />
         </form-element>
 
-        <form-element label="Due Date after" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Due Date after" :class="gridItemClass">
              <input
                 id="due_date_after"
                 v-model="innerValue.npxResponseDueDate__c"
@@ -25,7 +25,7 @@
             />
         </form-element>
 
-       <form-element label="Entrapment" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="entrapment">
+       <form-element label="Entrapment" :class="gridItemClass" for="entrapment">
             <div class="slds-select_container">
                 <select
                     id="entrapment"
@@ -39,7 +39,7 @@
             </div>
         </form-element>
 
-        <form-element label="Hazard" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="hazard">
+        <form-element label="Hazard" :class="gridItemClass" for="hazard">
             <div class="slds-select_container">
                 <select
                     id="hazard"
@@ -53,7 +53,7 @@
             </div>
         </form-element>
 
-        <form-element label="Injury" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="injury">
+        <form-element label="Injury" :class="gridItemClass" for="injury">
             <div class="slds-select_container">
                 <select
                     id="injury"
@@ -67,7 +67,7 @@
             </div>
         </form-element>
 
-        <form-element label="Asset" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Asset" :class="gridItemClass">
              <input
                 id="asset"
                 v-model="innerValue.assetName"
@@ -75,7 +75,7 @@
             />
         </form-element>
 
-        <form-element label="Location" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Location" :class="gridItemClass">
              <input
                 id="location"
                 v-model="innerValue.locationName"
@@ -83,7 +83,7 @@
             />
         </form-element>
 
-        <form-element label="Street" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Street" :class="gridItemClass">
              <input
                 id="street"
                 v-model="innerValue.street__c"
@@ -91,7 +91,7 @@
             />
         </form-element>
 
-        <form-element label="City" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="City" :class="gridItemClass">
              <input
                 id="city"
                 v-model="innerValue.city__c"
@@ -99,7 +99,7 @@
             />
         </form-element>
 
-        <form-element label="State / Province" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="State / Province" :class="gridItemClass">
              <input
                 id="state_province"
                 v-model="innerValue.stateProvince__c"
@@ -107,7 +107,7 @@
             />
         </form-element>
 
-        <form-element label="Contact" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Contact" :class="gridItemClass">
              <input
                 id="contact"
                 v-model="innerValue.contactName"
@@ -115,7 +115,7 @@
             />
         </form-element>
 
-        <form-element label="Caller name" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Caller name" :class="gridItemClass">
              <input
                 id="caller_name"
                 v-model="innerValue.callerName__c"
@@ -123,7 +123,7 @@
             />
         </form-element>
 
-        <form-element label="Work order" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Work order" :class="gridItemClass">
              <input
                 id="work_order"
                 v-model="innerValue.workOrderNumber"
@@ -131,27 +131,19 @@
             />
         </form-element>
 
-        <!-- <form-element label="Assembly Code" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
-             <input
-                id="assembly_code"
-                v-model="innerValue.assemblyNumber__c"
-                class="slds-input"
-            />
-        </form-element> -->
-
-         <form-element label="Assembly Code" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="assembly_code">
+         <form-element label="Assembly Code" :class="gridItemClass" for="assembly_code">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.case.getUniqueAssemblies"
                     :allowEmpty="true"
-                    v-model="innerValue.assemblyNumber__c"
+                    v-model="innerValue.assembly__c"
                     id="assembly_code"
                     class="slds-select"
                 />
             </div>
         </form-element>
 
-        <form-element label="Maintenance Activity Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="maintenance_activity_type">
+        <form-element label="Maintenance Activity Type" :class="gridItemClass" for="maintenance_activity_type">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.case.getUniqueMaintenanceActivityTypeCodes"
@@ -163,23 +155,7 @@
             </div>
         </form-element>
 
-        <!-- <form-element label="Maintenance Activity Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
-             <input
-                id="maintenance_activity_type"
-                v-model="innerValue.maintenanceActivityTypeCode__c "
-                class="slds-input"
-            />
-        </form-element> -->
-
-        <!-- <form-element label="Maintenance Activity Type" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
-             <input
-                id="maintenance_activity_type"
-                v-model="innerValue"
-                class="slds-input"
-            />
-        </form-element> -->
-
-        <form-element label="Service appointment" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Service appointment" :class="gridItemClass">
              <input
                 id="service_appointment"
                 v-model="innerValue.appointmentNumber"
@@ -187,7 +163,7 @@
             />
         </form-element>
 
-        <form-element label="SA status." class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="sa_status">
+        <form-element label="SA status" :class="gridItemClass" for="sa_status">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.serviceAppointment.getUniqueStatuses"
@@ -199,7 +175,7 @@
             </div>
         </form-element>
 
-        <form-element label="Service Resource" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Service Resource" :class="gridItemClass">
              <input
                 id="service_resource"
                 v-model="innerValue.serviceResourceName"
@@ -207,7 +183,7 @@
             />
         </form-element>
 
-        <form-element label="Service territory" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Service territory" :class="gridItemClass">
              <input
                 id="service_territory"
                 v-model="innerValue.serviceTerritoryName"
@@ -215,7 +191,7 @@
             />
         </form-element>
 
-        <form-element label="Case Owner" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small">
+        <form-element label="Case Owner" :class="gridItemClass">
              <input
                 id="case_owner"
                 v-model="innerValue.caseOwnerTxt__c"
@@ -223,19 +199,19 @@
             />
         </form-element>
 
-        <form-element label="Sales org." class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-6 slds-m-bottom_small" for="sales_org">
+        <form-element label="Sales org." :class="gridItemClass" for="sales_org">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.case.getUniqueSalesOrganizations"
                     :allowEmpty="true"
-                    v-model="innerValue.salesOrganization__c"
+                    v-model="innerValue.salesOrganizations__c"
                     id="sales_org"
                     class="slds-select"
                 />
             </div>
         </form-element>
 
-        <div class="slds-col slds-size_1-of-1 slds-p-top_small">
+        <div :class="buttonsClass">
             <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters">Apply</button>
             <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
         </div>
@@ -265,14 +241,14 @@
                     contactName: null,
                     callerName__c: null,
                     workOrderNumber: null,
-                    assemblyNumber__c: null,
+                    assembly__c: null,
                     maintenanceActivityTypeCode__c: null,
                     appointmentNumber: null,
                     serviceAppointmentStatus: null,
                     serviceResourceName: null,
                     serviceTerritoryName: null,
                     caseOwnerTxt__c: null,
-                    salesOrganization__c: null,
+                    salesOrganizations__c: null,
                 }
             }
         }

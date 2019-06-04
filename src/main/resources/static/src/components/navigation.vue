@@ -15,7 +15,17 @@
                     <router-link :to="{name: 'callouts'}" active-class="nav-active" @click="close">Callouts</router-link>
                     <router-link :to="{name: 'equipment'}" active-class="nav-active" @click="close">Equipment</router-link>
                     <router-link :to="{name: 'serviceResources'}" active-class="nav-active" @click="close">Service Resources</router-link>
-                    <a href="/logout">Logout</a>
+
+                    <div class="nav-user">
+                        <a @click="clearCache">
+                            <icon icon="trash-alt" class="slds-icon slds-icon_xx-small slds-m-right_x-small" />
+                            <span>Clear All Cache</span>
+                        </a>
+                        <a href="/logout">
+                            <icon icon="key" class="slds-icon slds-icon_xx-small slds-m-right_x-small" />
+                            <span>Logout</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -35,8 +45,8 @@
 
 <script>
     import Icons from '../core/icons.js';
-    import {faBars, faUserAlt} from '@fortawesome/free-solid-svg-icons/';
-    Icons.add(faBars, faUserAlt);
+    import {faBars, faTrashAlt, faKey} from '@fortawesome/free-solid-svg-icons/';
+    Icons.add(faBars, faTrashAlt, faKey);
 
     export default {
         //
@@ -57,6 +67,10 @@
             },
             close() {
                 this.isOpen = false;
+            },
+            clearCache() {
+                this.$ls.clear();
+                location.reload();
             }
         },
 
@@ -82,7 +96,7 @@
         overflow-y: auto;
     }
     .main {
-        padding: 40px 50px;
+        padding: 30px 40px;
         margin-left: 90px;
     }
 
@@ -126,7 +140,7 @@
 
     .logo {
         position: absolute;
-        left: 31px;
+        left: -200px;
         top: 40px;
 
         z-index: 2;
@@ -173,6 +187,14 @@
         background-color: #1990dc;
     }
 
+    .nav-user {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #057cc8;
+    }
+    .nav-user a {
+        text-transform: none;
+    }
 
 
     /* Expand */
@@ -191,6 +213,7 @@
         display:none;
     }
     .nav-expanded .logo {
+        left: 31px;
         opacity: 1;
         transition: opacity 0.5s;
         transition-delay: 0.3s

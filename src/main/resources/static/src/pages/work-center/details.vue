@@ -1,9 +1,9 @@
 <template>
     <div>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_x-large">
-            <back-button to="equipment" class="slds-m-right_medium" />
-            {{pageTitle}} - {{workCenter.name}}
+        <h1 class="slds-text-heading_large slds-m-bottom_large">
+            <back-button class="slds-m-right_medium" />
+            {{pageTitle}}
         </h1>
         <loader v-if="loading" type="block" :height="400" />
         <div v-else>
@@ -52,7 +52,7 @@
                     </table>
                 </div>
             </div>
-   
+
     </div>
 </template>
 
@@ -73,7 +73,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Work Center Record Detail',
+                pageTitle: 'Work Center',
                 loading: true,
                 workCenter: {
                     workCenterResources: [],
@@ -95,10 +95,10 @@
 
                 // data
                   this.$API.workCenter.getById(this.id)
-                    .then(data => {                    
+                    .then(data => {
                         this.loading = false;
                         this.workCenter = data;
-                        if (this.autoRefreshOn) this.initAutoRefresh();
+                        this.pageTitle = 'Work Center — '+ this.workCenter.name;
                     });
             }
         },
