@@ -62,19 +62,21 @@ public class L10nData {
 		languageCode = StringUtils.emptyIfNull(languageCode);
 		countryCode = StringUtils.emptyIfNull(countryCode);
 		
-		//- initialize a new L10nInfo and Locale
-		L10nData l10nInfo = new L10nData(countryCode);
+		//- initialize a new L10nData and Locale
+		L10nData l10nData = new L10nData(countryCode);
 		Locale locale = new Locale(languageCode, countryCode);
 		
 		//- set patterns
-		l10nInfo.dateTimePattern = FormatUtils.getDateTimePattern(locale);
-		l10nInfo.datePattern = FormatUtils.getDatePattern(locale);
-		l10nInfo.timePattern = FormatUtils.getTimePattern(locale);
+		//TODO: Talk to Alex and decide whether we need this.
+		Formatters formatters = new Formatters(locale);
+		l10nData.dateTimePattern = formatters.forDateTime().toPattern();
+		l10nData.datePattern = formatters.forDate().toPattern();
+		l10nData.timePattern = formatters.forTime().toPattern();
 		
 		//- initialize and set language data
-		l10nInfo.languageData = LanguageData.buildNew(languageCode);
+		l10nData.languageData = LanguageData.buildNew(languageCode);
 		
-		return l10nInfo;
+		return l10nData;
 	}
 	//
 }
