@@ -48,10 +48,10 @@ Vue.component('Checkbox', Checkbox);
 
 import CheckboxToggle from './components/checkbox-toggle.vue';
 Vue.component('CheckboxToggle', CheckboxToggle);
-
+/*
 import PeriodDuration from './components/period-duration.vue';
 Vue.component('PeriodDuration', PeriodDuration);
-
+*/
 import CollapsibleSection from './components/collapsible-section.vue';
 Vue.component('CollapsibleSection', CollapsibleSection);
 
@@ -63,10 +63,10 @@ Vue.component('FormElement', FormElement);
 
 import DataTableBasic from './components/data-table-basic.vue';
 Vue.component('DataTableBasic', DataTableBasic);
-
+/*
 import DataTablePagination from './components/data-table-pagination.vue';
 Vue.component('DataTablePagination', DataTablePagination);
-
+*/
 import Popover from './components/popover.vue';
 Vue.component('Popover', Popover);
 

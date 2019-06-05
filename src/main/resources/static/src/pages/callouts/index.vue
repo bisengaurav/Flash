@@ -7,11 +7,13 @@
 
         <div class="primary-section slds-m-top_x-large">
             <data-table-basic
-                    key-field="serviceAppointmentId"
-                    :action="$API.case.getAllByFilter"
-                    :filters="filters"
-                    :immediateRefresh="false"
-                >
+                :keyField="(row) => {
+                    return row.serviceAppointmentId +'_'+ row.workOrderId +'_'+ row.id;
+                }"
+                :action="$API.case.getAllByFilter"
+                :filters="filters"
+                :immediateRefresh="false"
+            >
                 <template #head>
                     <th>Case ID</th>
                     <th>Created</th>
