@@ -1,7 +1,5 @@
 package com.kone.cplan.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kone.cplan.helpers.datatype.DatetimeUtils;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.*;
@@ -41,11 +39,9 @@ public class SLA {
 	private String coverage__c;
 
 	@Column
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Date startdate;
 
 	@Column
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Date enddate;
 
 	@Column

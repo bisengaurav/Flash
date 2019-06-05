@@ -1,14 +1,12 @@
 package com.kone.cplan.jpa.filter;
 
-import java.lang.reflect.Field;
-
 /**
  * This class represents a filter for the Equipment entities.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019
  */
-public class EquipmentFilter {
+public class EquipmentFilter implements Filter {
 
 	//
 	//Variables
@@ -114,24 +112,6 @@ public class EquipmentFilter {
 	}
 	public void setFsmLastValidCliEndDate__c(Boolean fsmLastValidCliEndDate__c) {
 		this.fsmLastValidCliEndDate__c = fsmLastValidCliEndDate__c;
-	}
-	//
-
-	//
-	//Public Methods
-	//
-	public boolean isEmpty() {
-		for (Field f : getClass().getDeclaredFields()) {
-			f.setAccessible(true);
-			try {
-				if (f.get(this) != null) {
-					return false;
-				}
-			} catch (IllegalAccessException error) {
-				error.printStackTrace();
-			}
-		}
-		return true;
 	}
 	//
 }

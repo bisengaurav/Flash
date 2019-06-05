@@ -1,7 +1,5 @@
 package com.kone.cplan.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kone.cplan.helpers.datatype.DatetimeUtils;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.Column;
@@ -25,11 +23,9 @@ public class ResourceAbsence {
 	private Integer id;
 
 	@Column
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp start;
 
 	@Column
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp end;
 
 	@Column

@@ -1,7 +1,5 @@
 package com.kone.cplan.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kone.cplan.helpers.datatype.DatetimeUtils;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.Column;
@@ -31,11 +29,9 @@ public class WorkCenterResource {
 	private String preferenceType__c;
 
 	@Column
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp startDate__c;
 
 	@Column
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp endDate__c;
 
 	@Column(name = "workcenter_id")

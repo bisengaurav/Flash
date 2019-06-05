@@ -1,8 +1,5 @@
 package com.kone.cplan.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kone.cplan.helpers.datatype.DatetimeUtils;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -81,7 +78,6 @@ abstract class AbstractEquipment implements Serializable {
 	private String workCenterName;
 
 	@Column
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Date fsmLastValidCliEndDate__c;
 	//
 

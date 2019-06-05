@@ -1,7 +1,5 @@
 package com.kone.cplan.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kone.cplan.helpers.datatype.DatetimeUtils;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.Column;
@@ -25,7 +23,6 @@ public class ServiceAppointmentDetails extends AbstractServiceAppointment implem
 	//Variables
 	//
 	@Column(name = "lastmodifieddate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp lastModifiedDate;
 
 	@Column(name = "fsl__pinned__c")

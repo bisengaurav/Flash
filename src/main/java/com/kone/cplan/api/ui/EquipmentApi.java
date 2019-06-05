@@ -10,7 +10,6 @@ import com.kone.cplan.jpa.filter.EquipmentFilter;
 import com.kone.cplan.jpa.repository.EquipmentDetailsRepository;
 import com.kone.cplan.jpa.repository.EquipmentRepository;
 import com.kone.cplan.utils.dto.SelectOption;
-import com.kone.cplan.utils.i18n.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -76,14 +75,21 @@ public class EquipmentApi {
 		//- deserialize parameters
 		EquipmentFilter filter = JsonUtils.deserialize_typed(filterJson, EquipmentFilter.class);
 		if (filter == null || filter.isEmpty()) {
-			return OperationResults.newError(Strings.get("message.assets.empty-filter"));
+			return OperationResults.newErrorByKey("message.assets.empty-filter");
 		}
 
 		Pageable pageRequest = PagingUtils.extractOrGetDefaultPageRequest(Sort.unsorted());
 
 		//- get data
 		List<Equipment> result = equipmentRepo.findByFilter(filter, pageRequest);
+
 		//- sort data
+		/*
+		  We decided to use server-side sorting instead of DB-side because of significant difference
+		  in speed. We have limitation of 100 records on page, and does not matter whether these
+		  records will be taken after sorting or before. In this case we can take 100 first available
+		  records and sort them instead of sorting millions of records and taking first 100.
+		 */
 		result.sort(Comparator
 			.comparing(Equipment::getInstallationCity__c, String.CASE_INSENSITIVE_ORDER)
 			.thenComparing(Equipment::getInstallationStreet__c, String.CASE_INSENSITIVE_ORDER)

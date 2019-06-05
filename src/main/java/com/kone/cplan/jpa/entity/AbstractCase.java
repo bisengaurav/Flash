@@ -1,10 +1,6 @@
 package com.kone.cplan.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kone.cplan.helpers.datatype.DatetimeUtils;
-
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -19,9 +15,6 @@ abstract class AbstractCase implements Serializable {
 	//
 	//Variables
 	//
-	@Id
-	private Integer id;
-
 	@Column
 	private String sfid;
 
@@ -32,7 +25,6 @@ abstract class AbstractCase implements Serializable {
 	private String caseOwnerTxt__c;
 
 	@Column(name = "createddate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp createdDate;
 
 	@Column
@@ -69,10 +61,6 @@ abstract class AbstractCase implements Serializable {
 	//
 	//Properties
 	//
-	public Integer getId() {
-		return id;
-	}
-
 	public String getSfid() {
 		return sfid;
 	}
