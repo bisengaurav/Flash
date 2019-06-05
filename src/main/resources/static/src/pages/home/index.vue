@@ -107,6 +107,7 @@
     import Icons from '../../core/icons.js';
     import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons/';
     Icons.add(faExclamationTriangle);
+//    import moment from 'moment-timezone';
 
     export default {
         extends: Page,
@@ -118,7 +119,33 @@
             return {
                 pageTitle: 'Home'
             }
-        }
+        }/*,
+        mounted() {
+            let stringUTCInput = '2019-05-13T07:46:28.000Z';
+            console.log(stringUTCInput);
+            console.log('\nDEFAULT');
+            console.log(moment(stringUTCInput).format());
+            console.log(moment(stringUTCInput).utcOffset(), moment(stringUTCInput).format('Z z'));
+            console.log(moment(stringUTCInput));
+            console.log('\nLOCAL');
+            console.log(moment(stringUTCInput).local().format());
+            console.log(moment(stringUTCInput).local().utcOffset(), moment(stringUTCInput).local().format('Z z'));
+            console.log(moment(stringUTCInput).local());
+            console.log('\nUTC');
+            console.log(moment(stringUTCInput).utc().format());
+            console.log(moment(stringUTCInput).utc().utcOffset(), moment(stringUTCInput).utc().format('Z z'));
+            console.log(moment(stringUTCInput).utc());
+            console.log('\nTIMEZONE ADD');
+            console.log(moment(stringUTCInput).tz(this.$timezone).format());
+            console.log(moment(stringUTCInput).tz(this.$timezone).utcOffset(), moment(stringUTCInput).tz(this.$timezone).format('Z z'));
+            console.log(moment(stringUTCInput).tz(this.$timezone));
+            console.log('\nTIMEZONE CREATE');
+            console.log(moment.tz(stringUTCInput, this.$timezone).format());
+            console.log(moment.tz(stringUTCInput, this.$timezone).utcOffset(), moment.tz(stringUTCInput, this.$timezone).format('Z z'));
+            console.log(moment.tz(stringUTCInput, this.$timezone));
+
+        }*/
+
 
     }
 </script>

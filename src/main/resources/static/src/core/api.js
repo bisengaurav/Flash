@@ -6,7 +6,7 @@ import Query from './query.js';
 let API = {
     equipment: {
         getAllByFilter: (params) => {
-            return Query('/ui-api/equipment/getAllByFilter', params, 'GET', true, {ageCount: 10, ageUnit: 'm'});
+            return Query('/ui-api/equipment/getAllByFilter', params);
         },
         getById: (id) => {
             return Query('/ui-api/equipment/getById', {id});
@@ -23,7 +23,7 @@ let API = {
             return Query('/ui-api/case/getById', {id});
         },
         getAllByFilter: (params) => {
-            return Query('/ui-api/case/getAllByFilter', params, 'GET', true);
+            return Query('/ui-api/case/getAllByFilter', params);
         },
         getUniqueSalesOrganizations: () => {
             return Query('/ui-api/case/getUniqueSalesOrganizations', null, 'GET', false, 'session');
@@ -40,7 +40,7 @@ let API = {
             return Query('/ui-api/serviceResource/getById', {id});
         },
         getAllByFilter: (params) => {
-            return Query('/ui-api/serviceResource/getAllByFilter', params, 'GET', true);
+            return Query('/ui-api/serviceResource/getAllByFilter', params);
         }
     },
 

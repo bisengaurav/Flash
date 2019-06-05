@@ -10,7 +10,6 @@
                     :action="$API.serviceResource.getAllByFilter"
                     :filters="filters"
                     :immediateRefresh="false"
-                    :useLoading="false"
                 >
                 <template #head>
                     <th>Title</th>
