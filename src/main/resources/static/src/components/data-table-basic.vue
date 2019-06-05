@@ -108,7 +108,6 @@
                         }
                         this.data = data;
 
-                        console.log(this.data);
                         this.loading = false;
 
                         if (this.$props.cacheUniqueKey) this._saveCache();

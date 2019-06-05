@@ -8,7 +8,7 @@
         <div class="primary-section slds-m-top_x-large">
             <data-table-basic
                 :keyField="(row) => {
-                    return row.serviceAppointmentId +'_'+ row.workOrderId +'_'+ row.id;
+                    return  row.compositeKey.id +'_'+ row.compositeKey.serviceAppointmentId +'_'+ row.compositeKey.workOrderId;
                 }"
                 :action="$API.case.getAllByFilter"
                 :filters="filters"
