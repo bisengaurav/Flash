@@ -8,12 +8,6 @@ import java.util.Optional;
 public class JpaUtilsForApi {
 	
 	//
-	//Constants
-	//
-	private static final String E_RECORD_NOT_FOUND = "Record not found.";
-	//
-	
-	//
 	//Public static methods
 	//
 	public static <IdType> OperationResults findById(CrudRepository<?, IdType> repository,
@@ -22,7 +16,7 @@ public class JpaUtilsForApi {
 		Optional<?> optionalResult = repository.findById(entityId);
 		return (optionalResult.isPresent()
 			? OperationResults.newSuccess(optionalResult.get())
-			: OperationResults.newError(E_RECORD_NOT_FOUND));
+			: OperationResults.newErrorByKey("message.common.record-not-found"));
 	}
 	//
 }

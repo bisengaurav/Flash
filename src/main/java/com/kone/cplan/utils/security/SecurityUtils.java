@@ -18,6 +18,7 @@ public class SecurityUtils {
 	//
 	private static final Set<String> ADMIN_PROFILES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 	static {
+		//TODO: clarify whether we can hard code these values
 		//ADMIN_PROFILES_IDs.add("00ew0000001V7qqAAC"); //KONE: KC3 Agent
 		//ADMIN_PROFILES_IDs.add("00e1r000001mw9oAAA"); //KONE: External KC3 Agent
 		ADMIN_PROFILES_IDs.add("00ew0000001V7q9AAC"); //KONE: Field Service Administrator

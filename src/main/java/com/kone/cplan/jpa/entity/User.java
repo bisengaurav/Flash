@@ -53,7 +53,7 @@ public class User implements Serializable {
 	
 	/**
 	 * This SF field stores language code, country code and may store additional parameters. But
-	 * sometimes the values store only some of these codes. These are the examples of data that we
+	 * sometimes the values contain only some of these codes. These are examples of values that we
 	 * found in SF DB: ru, ru_RU, en_US (but not "en"), fr_FR_EURO.
 	 */
 	@Column(name = "localesidkey")

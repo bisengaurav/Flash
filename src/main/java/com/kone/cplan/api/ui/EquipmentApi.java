@@ -75,7 +75,7 @@ public class EquipmentApi {
 		//- deserialize parameters
 		EquipmentFilter filter = JsonUtils.deserialize_typed(filterJson, EquipmentFilter.class);
 		if (filter == null || filter.isEmpty()) {
-			return OperationResults.newErrorByKey("message.assets.empty-filter");
+			return OperationResults.newErrorByKey("message.common.empty-filter");
 		}
 
 		Pageable pageRequest = PagingUtils.extractOrGetDefaultPageRequest(Sort.unsorted());

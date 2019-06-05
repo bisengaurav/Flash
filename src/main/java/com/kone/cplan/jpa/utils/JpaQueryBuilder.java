@@ -2,6 +2,7 @@ package com.kone.cplan.jpa.utils;
 
 import com.kone.cplan.helpers.datatype.StringUtils;
 import com.kone.cplan.helpers.exception.AppRuntimeException;
+import com.kone.cplan.utils.i18n.Strings;
 import com.kone.cplan.utils.reflection.ReflectionUtils;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -39,8 +40,6 @@ public class JpaQueryBuilder<EntityT> {
 	//
 	//Constants
 	//
-	private static final String E_FIELD_NOT_FOUND = "Field %s is not found in %s";
-
 	private static final String T_OBJECT_ALIAS = "o";
 	private static final String T_FIELDS_QUERY = ("SELECT %s FROM %s " + T_OBJECT_ALIAS);
 	private static final String T_COUNT_QUERY = ("SELECT count(" + T_OBJECT_ALIAS + ") FROM %s "
@@ -94,8 +93,8 @@ public class JpaQueryBuilder<EntityT> {
 
 	private void checkFieldInEntity(String field) {
 		if (!ReflectionUtils.fieldExists(this.entityType, field)) {
-			throw (new IllegalArgumentException(
-				String.format(E_FIELD_NOT_FOUND, field, this.entityType.getName())));
+			throw (new IllegalArgumentException(Strings.getAndFormat(
+				"message.common.field-not-found-in-object", field, this.entityType.getName())));
 		}
 	}
 
