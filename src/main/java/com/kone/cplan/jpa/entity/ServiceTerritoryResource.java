@@ -1,7 +1,5 @@
 package com.kone.cplan.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kone.cplan.helpers.datatype.DatetimeUtils;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.Column;
@@ -28,11 +26,9 @@ public class ServiceTerritoryResource {
 	private Integer id;
 
 	@Column(name = "effectivestartdate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp effectiveStartDate;
 
 	@Column(name = "effectiveenddate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
 	private Timestamp effectiveEndDate;
 
 	@Column

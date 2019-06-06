@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * @author Andrey Gribanov (Cervello)
  * @created 27-05-2019
  */
-public class CaseFilter {
+public class CaseFilter implements Filter {
 
 	//
 	//Variables

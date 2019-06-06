@@ -3,17 +3,17 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_large">{{pageTitle}}</h1>
 
-        <callouts-filter-form v-model="filters" cacheUniqueKey="callouts-page"></callouts-filter-form>
+        <callouts-filter-form v-model="filters" cacheUniqueKey="callouts-page" :applyOnCacheLoad="true"></callouts-filter-form>
 
         <div class="primary-section slds-m-top_x-large">
             <data-table-basic
-                    key-field="serviceAppointmentId"
-                    :action="$API.case.getAllByFilter"
-                    :filters="filters"
-                    :immediateRefresh="false"
-                    :useLoading="false"
-                    cacheUniqueKey="callouts-page"
-                >
+                :keyField="(row) => {
+                    return  row.compositeKey.id +'_'+ row.compositeKey.serviceAppointmentId +'_'+ row.compositeKey.workOrderId;
+                }"
+                :action="$API.case.getAllByFilter"
+                :filters="filters"
+                :immediateRefresh="false"
+            >
                 <template #head>
                     <th v-t="'field.case.casenumber.label'"></th>
                     <th v-t="'field.case.createddate.label'"></th>

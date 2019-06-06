@@ -3,16 +3,13 @@
 
         <h1 class="slds-text-heading_large slds-m-bottom_large">{{pageTitle}}</h1>
 
-        <service-resources-filter-form  v-model="filters"></service-resources-filter-form> 
-       
+        <service-resources-filter-form v-model="filters" cacheUniqueKey="service-resources-page" :applyOnCacheLoad="true"></service-resources-filter-form>
+
          <div class="primary-section slds-m-top_x-large">
             <data-table-basic
-                    key-field="serviceAppointmentId"
                     :action="$API.serviceResource.getAllByFilter"
                     :filters="filters"
                     :immediateRefresh="false"
-                    :useLoading="false"
-                    cacheUniqueKey="callouts-page"
                 >
                 <template #head>
                     <th v-t="'field.serviceresource.name.label'"></th>

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface CaseRepository extends JpaRepository<Case, Integer>, Case_RepoExt {
+public interface CaseRepository extends JpaRepository<Case, Case.CaseCompositeKey>, Case_RepoExt {
 
 	@Query("SELECT c.salesOrganizations__c FROM Case c" +
 		" WHERE c.salesOrganizations__c IS NOT NULL" +

@@ -6,7 +6,7 @@ import Query from './query.js';
 let API = {
     equipment: {
         getAllByFilter: (params) => {
-            return Query('/ui-api/equipment/getAllByFilter', params, 'GET', true);
+            return Query('/ui-api/equipment/getAllByFilter', params);
         },
         getById: (id) => {
             return Query('/ui-api/equipment/getById', {id});
@@ -23,24 +23,24 @@ let API = {
             return Query('/ui-api/case/getById', {id});
         },
         getAllByFilter: (params) => {
-            return Query('/ui-api/case/getAllByFilter', params, 'GET', true);
+            return Query('/ui-api/case/getAllByFilter', params);
         },
         getUniqueSalesOrganizations: () => {
-            return Query('/ui-api/case/getUniqueSalesOrganizations');
+            return Query('/ui-api/case/getUniqueSalesOrganizations', null, 'GET', false, 'session');
         },
         getUniqueMaintenanceActivityTypeCodes: () => {
-            return Query('/ui-api/case/getUniqueMaintenanceActivityTypeCodes');
+            return Query('/ui-api/case/getUniqueMaintenanceActivityTypeCodes', null, 'GET', false, 'session');
         },
         getUniqueAssemblies: () => {
-            return Query('/ui-api/case/getUniqueAssemblies');
+            return Query('/ui-api/case/getUniqueAssemblies', null, 'GET', false, 'session');
         }
     },
-    serviceAppointment: {
+    serviceResource: {
         getById: (id) => {
-            return Query('/ui-api/serviceAppointment/getById', {id});
+            return Query('/ui-api/serviceResource/getById', {id});
         },
-        getUniqueStatuses: () => {
-            return Query('/ui-api/serviceAppointment/getUniqueStatuses');
+        getAllByFilter: (params) => {
+            return Query('/ui-api/serviceResource/getAllByFilter', params);
         }
     },
 
@@ -55,15 +55,18 @@ let API = {
             return Query('/ui-api/serviceTerritory/getById', {id});
         }
     },
-    serviceResource: {
+    serviceAppointment: {
         getById: (id) => {
-            return Query('/ui-api/serviceResource/getById', {id});
+            return Query('/ui-api/serviceAppointment/getById', {id});
         },
         getAllByFilter: (params) => {
             return Query('/ui-api/serviceResource/getAllByFilter', params, 'GET', true);
         },
         getUniqueSalesOrganizations: () => {
             return Query('/ui-api/serviceResource/getUniqueSalesOrganizations');
+        },
+        getUniqueStatuses: () => {
+            return Query('/ui-api/serviceAppointment/getUniqueStatuses', null, 'GET', false, 'session');
         }
     },
     workOrder: {

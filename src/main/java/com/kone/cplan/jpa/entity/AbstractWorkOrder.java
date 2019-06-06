@@ -1,8 +1,5 @@
 package com.kone.cplan.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kone.cplan.helpers.datatype.DatetimeUtils;
-
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -31,10 +28,10 @@ abstract class AbstractWorkOrder implements Serializable {
 	@Column
 	private String status;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
+	@Column
 	private Timestamp earliestStartDate__c;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatetimeUtils.ISO_DATETIME_FORMAT)
+	@Column
 	private Timestamp dueDate__c;
 	//
 

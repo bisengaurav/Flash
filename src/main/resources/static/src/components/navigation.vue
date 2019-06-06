@@ -17,7 +17,7 @@
                     <router-link :to="{name: 'serviceResources'}" active-class="nav-active" @click="close">Service Resources</router-link>
 
                     <div class="nav-user">
-                        <a @click="$ls.clear()">
+                        <a @click="clearCache">
                             <icon icon="trash-alt" class="slds-icon slds-icon_xx-small slds-m-right_x-small" />
                             <span>Clear All Cache</span>
                         </a>
@@ -67,6 +67,10 @@
             },
             close() {
                 this.isOpen = false;
+            },
+            clearCache() {
+                this.$ls.clear();
+                location.reload();
             }
         },
 

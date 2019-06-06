@@ -9,6 +9,7 @@ import org.springframework.web.servlet.LocaleResolver;
 
 import com.kone.cplan.helpers.datatype.StringUtils;
 import com.kone.cplan.jpa.repository.UserRepository;
+import com.kone.cplan.utils.i18n.L10nParams;
 
 /**
  * This bean provides utilities for user session.
@@ -39,6 +40,16 @@ public class AppSessionContext
 	//
 	public AppSessionInfo getSessionInfo() {
 		return sessionInfo;
+	}
+	
+	public AppSessionInfo.UserInfo getCurrentUserInfo() {
+		return (this.sessionInfo != null ? this.sessionInfo.getUserInfo()
+			: new AppSessionInfo.UserInfo(null));
+	}
+	
+	public L10nParams getCurrentL10nParams() {
+		return (this.sessionInfo != null ? this.sessionInfo.getL10nParams()
+			: new L10nParams(null));
 	}
 	//
 	

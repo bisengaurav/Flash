@@ -3,6 +3,7 @@ package com.kone.cplan.helpers.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kone.cplan.helpers.exception.ExceptionUtils;
+import com.kone.cplan.utils.i18n.Strings;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -129,6 +130,16 @@ public class OperationResults {
 	{
 		String errorMessage = (startMessage + " " + ExceptionUtils.extractMessage(error));
 		return (new OperationResults(false, errorMessage));
+	}
+	
+	public static OperationResults newErrorByKey(String errorKey)
+	{
+		return (new OperationResults(false, Strings.get(errorKey)));
+	}
+	
+	public static OperationResults newErrorByKey(String errorKey, Object... params)
+	{
+		return (new OperationResults(false, Strings.getAndFormat(errorKey, params)));
 	}
 	
 	//TODO: we should remove this method later

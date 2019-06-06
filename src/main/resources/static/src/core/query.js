@@ -67,15 +67,17 @@ function Query(url, data, method = 'GET', loading = false, cacheType = false) {
     // process caching
     //
     if (method === 'GET' && cacheType) {
+        let cachedData = null;
         if (cacheType === 'session') {
-            let cachedData = LocalStorage.getSessionCache(url);
-
-            if (cachedData) {
-                return Promise.resolve(cachedData);
-            }
+            cachedData = LocalStorage.getSessionCache(url);
         }
         if (typeof cacheType === 'object') {
-            // TBD
+            cachedData = LocalStorage.getDatedCache(url, cacheType.ageCount, cacheType.ageUnit);
+        }
+
+        if (cachedData) {
+            if (loading) EM.$emit(HIDE);
+            return Promise.resolve(cachedData);
         }
     }
 
@@ -110,7 +112,7 @@ function Query(url, data, method = 'GET', loading = false, cacheType = false) {
                         LocalStorage.setSessionCache(url, json.returnedObject);
                     }
                     if (typeof cacheType === 'object') {
-                        // TBD
+                        LocalStorage.setDatedCache(url, json.returnedObject);
                     }
                 }
 

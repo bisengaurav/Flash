@@ -23,6 +23,9 @@ public class CaseDetails extends AbstractCase {
 	//
 	//Variables
 	//
+	@Id
+	private Integer id;
+
 	@Column
 	private String subject;
 
@@ -52,6 +55,10 @@ public class CaseDetails extends AbstractCase {
 	//
 	//Properties
 	//
+	public Integer getId() {
+		return id;
+	}
+
 	public String getSubject() {
 		return subject;
 	}

@@ -10,13 +10,13 @@
         <tbody>
             <tr
                 v-for="row in data"
-                :key="row[$props.keyField]"
+                :key="row[key]"
                 :class="[
                     $props.rowClass && $props.rowClass(row),
-                    {'slds-table_row-highlight': highlightedId === row[$props.keyField]}
+                    {'slds-table_row-highlight': highlightedId === row[key]}
                 ]"
             >
-                <slot name="row" :row="row" :id="row[$props.keyField]"></slot>
+                <slot name="row" :row="row" :id="row[key]"></slot>
             </tr>
         </tbody>
     </table>
@@ -36,7 +36,6 @@
         props: {
             // query params
             keyField: {
-                type: String,
                 default: 'id'
             },
             action: {
@@ -76,6 +75,15 @@
                 highlightedId: null
             }
         },
+        computed: {
+            key() {
+                if (typeof this.$props.keyField == 'function')
+                    return '_rowKey';
+
+                if (typeof this.$props.keyField == 'string')
+                    return this.$props.keyField;
+            }
+        },
 
         //
         // METHODS
@@ -91,12 +99,21 @@
                 ))
                     .then(data => {
                         this.highlightedId = id;
+
+                        if (typeof this.$props.keyField == 'function') {
+                            data = data.map((row) => {
+                                row._rowKey = this.$props.keyField(row);
+                                return row;
+                            });
+                        }
                         this.data = data;
+
                         this.loading = false;
 
                         if (this.$props.cacheUniqueKey) this._saveCache();
                     });
             },
+
             _loadCache() {
                 return this.$ls.getSessionCache(this._cacheKey());
             },
