@@ -13,14 +13,14 @@
                 <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
 
                     <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                        <span class="slds-form-element__label">Phone</span>
+                        <span class="slds-form-element__label" v-t="'field.serviceresource.phone__c.label'"></span>
                         <div class="slds-form-element__static">
                            {{serviceResource.phone__c}}
                         </div>
                     </div>
 
                     <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                        <span class="slds-form-element__label">Sales organization</span>
+                        <span class="slds-form-element__label" v-t="'field.serviceresource.salesorganization__c.label'"></span>
                         <div class="slds-form-element__static">
                            {{serviceResource.salesOrganization__c}}
                         </div>
@@ -32,15 +32,15 @@
             <div v-if="serviceResource.serviceResourceTerritories.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                    <h2 class="slds-text-heading_small slds-m-bottom_small">Service Territories</h2>
+                    <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.service-resource.service-resource-territories'"></h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th>Name</th>
-                                <th>Territory Type</th>
-                                <th>Shift Type</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
+                                <th v-t="'field.serviceresource.serviceresourceterritories.name.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceterritories.territorytype.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceterritories.shifttype__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceterritories.effectivestartdate.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceterritories.effectiveenddate.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,8 +51,8 @@
                                 <td><router-link :to="{name: 'serviceTerritory', params: {id: row.id }}">{{row.name}}</router-link></td>
                                 <td>{{row.territoryType}}</td>
                                 <td>{{row.shiftType__c}}</td>
-                                <td>{{row.effectiveStartDate|formatDate}}</td>
-                                <td>{{row.effectiveEndDate|formatDate}}</td>
+                                <td>{{ $dtz(row.effectiveStartDate, 'datetime') }}</td>
+                                <td>{{ $dtz(row.effectiveEndDate, 'datetime') }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -63,11 +63,11 @@
             <div v-if="serviceResource.serviceResourceWorkCenters.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                    <h2 class="slds-text-heading_small slds-m-bottom_small">Work Centers</h2>
+                    <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.service-resource.work-centers'"></h2> 
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th>Title</th>
+                                <th v-t="'field.serviceresource.serviceresourceworkcenters.name.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,14 +86,14 @@
             <div v-if="serviceResource.resourceAbsences.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                    <h2 class="slds-text-heading_small slds-m-bottom_small">Absencess</h2>
+                    <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.service-resource.resource-absences'"></h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th>Start time</th>
-                                <th>End time</th>
-                                <th>Record Type</th>
-                                <th>Type</th>
+                                <th v-t="'field.serviceresource.resourceabsences.start.label'"></th>
+                                <th v-t="'field.serviceresource.resourceabsences.end.label'"></th>
+                                <th v-t="'field.serviceresource.resourceabsences.recordtype__c.label'"></th>
+                                <th v-t="'field.serviceresource.resourceabsences.type.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -101,8 +101,8 @@
                                 v-for="row in serviceResource.resourceAbsences"
                                 :key="row.id"
                             >
-                                <td>{{row.start|formatDate}}</td>
-                                <td>{{row.end|formatDate}}</td>
+                                <td>{{ $dtz(row.start, 'datetime') }}</td>
+                                <td>{{ $dtz(row.end, 'datetime') }}</td>
                                 <td>{{row.recordType__c}}</td>
                                 <td>{{row.type}}</td>
                             </tr>
@@ -115,24 +115,24 @@
             <div v-if="serviceResource.serviceResourceAppointments.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                    <h2 class="slds-text-heading_small slds-m-bottom_small">Absencess</h2>
+                    <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.service-resource.service-resource-appointments'"></h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th>Service Appointment</th>
-                                <th>SA Status</th>
-                                <th>Scheduled Start</th>
-                                <th>Scheduled End</th>
-                                <th>Pinned</th>
-                                <th>Work Order</th>
-                                <th>Earliest Start Date</th>
-                                <th>Due Date</th>
-                                <th>Activity Type</th>
-                                <th>Assembly</th>
-                                <th>Description</th>
-                                <th>Location</th>
-                                <th>Street</th>
-                                <th>City</th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.appointmentnumber.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.status.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.scheduledstartoriginal__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.scheduledendoriginal__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.fslpinned__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.workordernumber.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.earlieststartdate__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.duedate__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.maintenanceactivitytype__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.assembly__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.description__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.locationname.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.installationstreet__c.label'"></th>
+                                <th v-t="'field.serviceresource.serviceresourceappointments.installationcity__c.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -142,12 +142,12 @@
                             >
                                  <td><router-link :to="{name: 'serviceAppointment', params: {id: row.id }}">{{row.appointmentNumber}}</router-link></td>
                                 <td>{{row.status}}</td>
-                                <td>{{row.scheduledStartOriginal__c|formatDate}}</td>
-                                <td>{{row.scheduledEndOriginal__c|formatDate}}</td>
-                                <td>{{row.fslPinned__c ? 'Yes' : '' }} {{row.fslPinned__c === false ? 'No' : '' }}</td>
+                                <td>{{ $dtz(row.scheduledStartOriginal__c, 'datetime') }}</td>
+                                <td>{{ $dtz(row.scheduledEndOriginal__c, 'datetime') }}</td>
+                                <td>{{  row.fslPinned__c |yesNo }}</td>
                                 <td><router-link :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
-                                <td>{{row.earliestStartDate__c|formatDate}}</td>
-                                <td>{{row.dueDate__c|formatDate}}</td>
+                                <td>{{ $dtz(row.earliestStartDate__c, 'datetime') }}</td>
+                                <td>{{ $dtz(row.dueDate__c, 'datetime') }}</td>
                                 <td>{{row.maintenanceActivityType__c}}</td>
                                 <td>{{row.assembly__c}}</td>
                                 <td>{{row.description__c}}</td>
@@ -183,7 +183,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Service Resource',
+                pageTitle: this.$t('label.service-resource'),  
                 loading: true,
                 serviceResource: {
                     serviceResourceTerritories: [],
@@ -211,7 +211,7 @@
                 .then(data => {
                     this.loading = false;
                     this.serviceResource = data;
-                    this.pageTitle = 'Service Resource — '+ this.serviceResource.name;
+                    this.pageTitle =  this.$t('label.service-resource') +' — '+ this.serviceResource.name;
                 });
             }
         },

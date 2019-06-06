@@ -1,7 +1,7 @@
 <template>
      <div :class="gridClass">
 
-          <form-element label="Case ID" :class="gridItemClass">
+          <form-element :label="$t('filter.case.case-id.label')" :class="gridItemClass">
             <input
                 id="case_id"
                 v-model="innerValue.caseNumber"
@@ -9,7 +9,7 @@
             />
         </form-element>
 
-        <form-element label="Created after" :class="gridItemClass">
+        <form-element :label="$t('filter.case.created-after.label')" :class="gridItemClass">
              <input
                 id="created_after"
                 v-model="innerValue.createdDate"
@@ -17,7 +17,7 @@
             />
         </form-element>
 
-        <form-element label="Due Date after" :class="gridItemClass">
+        <form-element :label="$t('filter.case.due-date-after.label')" :class="gridItemClass">
              <input
                 id="due_date_after"
                 v-model="innerValue.npxResponseDueDate__c"
@@ -25,7 +25,7 @@
             />
         </form-element>
 
-       <form-element label="Entrapment" :class="gridItemClass" for="entrapment">
+       <form-element :label="$t('filter.case.entrapment.label')" :class="gridItemClass" for="entrapment">
             <div class="slds-select_container">
                 <select
                     id="entrapment"
@@ -33,13 +33,13 @@
                     class="slds-select"
                 >
                     <option></option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="true">{{ $t('label.common.yes') }}</option>
+                    <option value="false">{{ $t('label.common.no') }}</option>
                 </select>
             </div>
         </form-element>
 
-        <form-element label="Hazard" :class="gridItemClass" for="hazard">
+        <form-element :label="$t( 'filter.case.hazard.label')" :class="gridItemClass" for="hazard">
             <div class="slds-select_container">
                 <select
                     id="hazard"
@@ -47,13 +47,13 @@
                     class="slds-select"
                 >
                     <option></option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="true">{{ $t('label.common.yes') }}</option>
+                    <option value="false">{{ $t('label.common.no') }}</option>
                 </select>
             </div>
         </form-element>
 
-        <form-element label="Injury" :class="gridItemClass" for="injury">
+        <form-element :label="$t('filter.case.Injury.label')" :class="gridItemClass" for="injury">
             <div class="slds-select_container">
                 <select
                     id="injury"
@@ -61,13 +61,13 @@
                     class="slds-select"
                 >
                     <option></option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="true">{{ $t('label.common.yes') }}</option>
+                    <option value="false">{{ $t('label.common.no') }}</option>
                 </select>
             </div>
         </form-element>
 
-        <form-element label="Asset" :class="gridItemClass">
+        <form-element :label="$t('filter.case.Injury.label')" :class="gridItemClass">
              <input
                 id="asset"
                 v-model="innerValue.assetName"
@@ -75,7 +75,7 @@
             />
         </form-element>
 
-        <form-element label="Location" :class="gridItemClass">
+        <form-element :label="$t('filter.asset.location.label')" :class="gridItemClass"> 
              <input
                 id="location"
                 v-model="innerValue.locationName"
@@ -83,7 +83,7 @@
             />
         </form-element>
 
-        <form-element label="Street" :class="gridItemClass">
+        <form-element :label="$t('filter.asset.street.label')" :class="gridItemClass">
              <input
                 id="street"
                 v-model="innerValue.street__c"
@@ -91,7 +91,7 @@
             />
         </form-element>
 
-        <form-element label="City" :class="gridItemClass">
+        <form-element :label="$t('filter.asset.city.label')" :class="gridItemClass">
              <input
                 id="city"
                 v-model="innerValue.city__c"
@@ -99,7 +99,7 @@
             />
         </form-element>
 
-        <form-element label="State / Province" :class="gridItemClass">
+        <form-element :label="$t('filter.asset.state-province.label')" :class="gridItemClass">
              <input
                 id="state_province"
                 v-model="innerValue.stateProvince__c"
@@ -107,7 +107,7 @@
             />
         </form-element>
 
-        <form-element label="Contact" :class="gridItemClass">
+        <form-element :label="$t('filter.case.contact.label')" :class="gridItemClass"> 
              <input
                 id="contact"
                 v-model="innerValue.contactName"
@@ -115,7 +115,7 @@
             />
         </form-element>
 
-        <form-element label="Caller name" :class="gridItemClass">
+        <form-element :label="$t('filter.case.caller-name.label')" :class="gridItemClass">
              <input
                 id="caller_name"
                 v-model="innerValue.callerName__c"
@@ -123,7 +123,7 @@
             />
         </form-element>
 
-        <form-element label="Work order" :class="gridItemClass">
+        <form-element :label="$t('filter.case.caller-name.label')" :class="gridItemClass"> 
              <input
                 id="work_order"
                 v-model="innerValue.workOrderNumber"
@@ -131,7 +131,7 @@
             />
         </form-element>
 
-         <form-element label="Assembly Code" :class="gridItemClass" for="assembly_code">
+         <form-element :label="$t('filter.case.assembly-code.label')" :class="gridItemClass" for="assembly_code">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.case.getUniqueAssemblies"
@@ -143,7 +143,7 @@
             </div>
         </form-element>
 
-        <form-element label="Maintenance Activity Type" :class="gridItemClass" for="maintenance_activity_type">
+        <form-element :label="$t('filter.case.maintenance-activity-type.label')" :class="gridItemClass" for="maintenance_activity_type">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.case.getUniqueMaintenanceActivityTypeCodes"
@@ -155,7 +155,7 @@
             </div>
         </form-element>
 
-        <form-element label="Service appointment" :class="gridItemClass">
+        <form-element :label="$t('filter.case.service-appointment.label')" :class="gridItemClass">
              <input
                 id="service_appointment"
                 v-model="innerValue.appointmentNumber"
@@ -163,7 +163,7 @@
             />
         </form-element>
 
-        <form-element label="SA status" :class="gridItemClass" for="sa_status">
+        <form-element :label="$t('filter.case.sa-status.label')" :class="gridItemClass" for="sa_status"> 
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.serviceAppointment.getUniqueStatuses"
@@ -175,7 +175,7 @@
             </div>
         </form-element>
 
-        <form-element label="Service Resource" :class="gridItemClass">
+        <form-element :label="$t('filter.asset.service-resource.label')" :class="gridItemClass">
              <input
                 id="service_resource"
                 v-model="innerValue.serviceResourceName"
@@ -183,7 +183,7 @@
             />
         </form-element>
 
-        <form-element label="Service territory" :class="gridItemClass">
+        <form-element :label="$t('filter.case.service-territory.label')" :class="gridItemClass">
              <input
                 id="service_territory"
                 v-model="innerValue.serviceTerritoryName"
@@ -191,7 +191,7 @@
             />
         </form-element>
 
-        <form-element label="Case Owner" :class="gridItemClass">
+        <form-element :label="$t('filter.case.case-owner.label')" :class="gridItemClass"> 
              <input
                 id="case_owner"
                 v-model="innerValue.caseOwnerTxt__c"
@@ -199,7 +199,7 @@
             />
         </form-element>
 
-        <form-element label="Sales org." :class="gridItemClass" for="sales_org">
+        <form-element :label="$t('filter.asset.sales-org.label')" :class="gridItemClass" for="sales_org">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.case.getUniqueSalesOrganizations"
@@ -212,8 +212,8 @@
         </form-element>
 
         <div :class="buttonsClass">
-            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters">Apply</button>
-            <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
+            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters" v-t="'label.button.apply'"></button>
+            <button class="slds-button slds-button_neutral" @click="clearAll" v-t="'label.button.clear-all'"></button>
         </div>
     </div>
 </template>

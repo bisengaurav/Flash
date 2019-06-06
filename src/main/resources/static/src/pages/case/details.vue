@@ -20,44 +20,44 @@
                         </div> -->
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Status</span>
+                            <span class="slds-form-element__label" v-t="'field.case.status.label'"></span>
                             <div class="slds-form-element__static">
                                 {{caseData.status}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Owner</span>
-                            <div class="slds-form-element__static">
+                            <span class="slds-form-element__label" v-t="'field.case.caseownertxt__c.label'"></span>
+                            <div class="slds-form-element__static" >
                                 {{caseData.caseOwnerTxt__c}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Created in FSM</span>
+                            <span class="slds-form-element__label" v-t="'field.case.createddate.label'"></span>
                             <div class="slds-form-element__static">
-                                 {{caseData.caseOwnerTxt__c}}
+                                 {{ $dtz(caseData.createdDate, 'datetime')}} 
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Entrapment</span>
+                            <span class="slds-form-element__label" v-t="'field.case.entrapment__c.label'"></span>
                             <div class="slds-form-element__static">
-                               {{ caseData.entrapment__c ? 'Yes' : '' }} {{ caseData.entrapment__c === false ? 'No' : '' }}
+                                {{ caseData.entrapment__c |yesNo }}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Hazard</span>
+                            <span class="slds-form-element__label" v-t="'field.case.hazard__c.label'"></span>
                             <div class="slds-form-element__static">
-                               {{ caseData.hazard__c ? 'Yes' : '' }} {{ caseData.hazard__c === false ? 'No' : '' }}
+                                {{ caseData.hazard__c |yesNo }}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Injury</span>
+                            <span class="slds-form-element__label" v-t="'field.case.injury__c.label'"></span>
                             <div class="slds-form-element__static">
-                                {{ caseData.injury__c ? 'Yes' : '' }} {{ caseData.injury__c === false ? 'No' : '' }}
+                                {{ caseData.injury__c |yesNo }}
                             </div>
                         </div>
                     </div>
@@ -66,41 +66,41 @@
 
 
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Asset</span>
+                            <span class="slds-form-element__label" v-t="'field.case.assetname.label'"></span>
                             <div class="slds-form-element__static">
-                               <router-link :to="{name: '', params: {id: caseData.assetId }}">{{caseData.assetName}}</router-link>
+                               <router-link :to="{name: 'equipmentDetails', params: {id: caseData.assetId }}">{{caseData.assetName}}</router-link>
                             </div>
                         </div>
 
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Account ID</span>
+                            <span class="slds-form-element__label" v-t="'field.case.accountid.label'"></span>
                             <div class="slds-form-element__static">
                                 {{caseData.accountId}}
                             </div>
                         </div>
 
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Account name</span>
+                            <span class="slds-form-element__label" v-t="'field.case.accountname.label'"></span>
                             <div class="slds-form-element__static">
                                  {{caseData.accountName}}
                             </div>
                         </div>
 
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Contact</span>
+                            <span class="slds-form-element__label" v-t="'field.case.contactname.label'"></span>
                             <div class="slds-form-element__static">
                                  {{caseData.contactName}}
                             </div>
                         </div>
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Contact phone</span>
+                            <span class="slds-form-element__label" v-t="'field.case.contactphone.label'"></span>
                             <div class="slds-form-element__static">
                                  {{caseData.contactPhone}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
-                            <span class="slds-form-element__label">Caller name</span>
+                            <span class="slds-form-element__label" v-t=" 'field.case.callername__c.label'"></span>
                             <div class="slds-form-element__static">
                                {{caseData.callerName__c}}
                             </div>
@@ -110,28 +110,28 @@
                     <div class="slds-grid slds-wrap slds-grid_pull-padded">
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Caller phone</span>
+                            <span class="slds-form-element__label" v-t="'field.case.callerphonenumber__c.label'"></span>
                             <div class="slds-form-element__static">
                                {{caseData.callerPhoneNumber__c}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Passenger</span>
+                            <span class="slds-form-element__label" v-t="'field.case.fsmcontactIspassenger__c.label'"></span>
                             <div class="slds-form-element__static">
-                                 {{ caseData.fsmContactIsPassenger__c ? 'Yes' : '' }} {{ caseData.fsmContactIsPassenger__c === false ? 'No' : '' }}
+                                 {{ caseData.fsmContactIsPassenger__c |yesNo }}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Sales organization</span>
+                            <span class="slds-form-element__label" v-t="'field.case.salesorganization__c.label'"></span>
                             <div class="slds-form-element__static">
                                 {{caseData.salesOrganization__c}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label">Case title</span>
+                            <span class="slds-form-element__label" v-t="'field.case.subject.label'"></span>
                             <div class="slds-form-element__static">
                                 {{caseData.subject}}
                             </div>
@@ -145,14 +145,14 @@
              <div v-if="caseData.workOrders.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                        <h2 class="slds-text-heading_small slds-m-bottom_small">Work orders of the case</h2>
+                        <h2 class="slds-text-heading_small slds-m-bottom_small"  v-t="'label.case.work-orders'"></h2>
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                             <thead>
                                 <tr class="slds-line-height_reset">
-                                    <th>Work order ID</th>
-                                    <th>Status</th>
-                                    <th>Earliest Start Date</th>
-                                    <th>Due Date</th>
+                                    <th v-t="'field.case.workorders.workordernumber'"></th>
+                                    <th v-t="'field.case.workorders.status'"></th>
+                                    <th v-t="'field.case.workorders.earlieststartdate__c'"></th>
+                                    <th v-t="'field.case.workorders.duedate__c'"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -162,8 +162,8 @@
                                 >
                                 <td><router-link :to="{name: 'workOrder', params: {id: row.id }}">{{row.workOrderNumber}}</router-link></td>
                                 <td>{{row.status}}</td>
-                                <td>{{row.earliestStartDate__c|formatDate}}</td>
-                                <td>{{row.dueDate__c|formatDate}}</td>
+                                <td>{{ $dtz(row.earliestStartDate__c, 'datetime') }}</td>
+                                <td>{{ $dtz(row.dueDate__c, 'datetime') }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -193,7 +193,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Case',
+                pageTitle: this.$t('label.case'),
                 loading: true,
                 caseData: {}
             }
@@ -216,7 +216,7 @@
                     .then(data => {
                         this.loading = false;
                         this.caseData = data;
-                        this.pageTitle = 'Case — '+ this.caseData.caseNumber;
+                        this.pageTitle =  this.$t('label.case') +' — '+ this.caseData.caseNumber;
                     });
             }
         },
