@@ -75,7 +75,7 @@ let API = {
         }
     },
     user: {
-        getUserInfo: (id) => {
+        getUserInfo: () => {
             return Query('/ui-api/user/getUserInfo');
         }
     },

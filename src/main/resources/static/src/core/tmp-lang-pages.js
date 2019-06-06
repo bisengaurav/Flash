@@ -30,8 +30,11 @@ export default {
     'label.work-order': 'Work Order',
     'label.work-order.service-appointments': 'Work orders of the case',
 
-    //Service Appointment
+    //service appointment title
     'label.service-appointment': 'Service Appointment',
+
+    //user management
+    'label.users': 'User Management',
 
     //equipment filters
     'filter.equipment.country.label': 'Country',
@@ -210,12 +213,12 @@ export default {
     //asset fields
     'field.asset.accountname.label': 'Account name',
     'field.asset.locationname.label': 'Location',
-    'field.asset.installationstreet__c.label': 'Street',
-    'field.asset.installationcity__c.label': 'City',
-    'field.asset.installationstateprovince__c.label': 'State / Province',
+    'field.asset.installationstreet__c.label': 'Street',//---
+    'field.asset.installationcity__c.label': 'City',//---
+    'field.asset.installationstateprovince__c.label': 'State / Province',//---
     'field.asset.serviceterritoryname.label': 'Service Territory',
-    'field.asset.workcentername.label': 'Work Center',
-    'field.asset.accountid.label': 'Account ID',
+    'field.asset.workcentername.label': 'Work Center',//---
+    'field.asset.accountid.label': 'Account ID',//---
 
     //Buttons
     'label.button.apply': 'Apply',
