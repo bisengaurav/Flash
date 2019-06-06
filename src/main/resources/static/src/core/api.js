@@ -61,6 +61,9 @@ let API = {
         },
         getAllByFilter: (params) => {
             return Query('/ui-api/serviceResource/getAllByFilter', params, 'GET', true);
+        },
+        getUniqueSalesOrganizations: () => {
+            return Query('/ui-api/serviceResource/getUniqueSalesOrganizations');
         }
     },
     workOrder: {

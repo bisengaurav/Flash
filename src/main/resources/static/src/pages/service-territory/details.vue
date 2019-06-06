@@ -13,7 +13,7 @@
                      <!-- slds-p-bottom_mediumslds-border_bottom -->
                     <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
                         <div class="slds-size_1-of-6 slds-col_padded">
-                            <span class="slds-form-element__label">Sales organization</span>
+                            <span class="slds-form-element__label" v-t="'field.serviceterritory.salesorganization__c.label'"></span>
                             <div class="slds-form-element__static">
                                 {{serviceTerritory.salesOrganization__c}}
                             </div>
@@ -25,15 +25,14 @@
             <div v-if="serviceTerritory.serviceTerritoryResources.length > 0">
 
                  <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                    <h2 class="slds-text-heading_small slds-m-bottom_small">Service Resources</h2>
+                    <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.service-territory.service-resources'"></h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <!-- <th>Service Resource</th> -->
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Title</th>
-                                <th>Phone</th>
+                                <th v-t="'field.serviceterritory.serviceterritoryresources.effectivestartdate.label'"></th>
+                                <th v-t="'field.serviceterritory.serviceterritoryresources.effectiveenddate.label'"></th>
+                                <th v-t="'field.serviceterritory.serviceterritoryresources.serviceresource_name.label'"></th>
+                                <th v-t="'field.serviceterritory.serviceterritoryresources.phone__c.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,11 +40,10 @@
                                 v-for="row in serviceTerritory.serviceTerritoryResources"
                                 :key="row.id"
                             >
-                                <td>{{row.effectiveStartDate|formatDate}}</td>
-                                <td>{{row.effectiveEndDate|formatDate}}</td>
+                                <td>{{ $dtz(row.effectiveStartDate, 'datetime') }}</td>
+                                <td>{{ $dtz(row.effectiveEndDate, 'datetime') }}</td>
                                 <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResource_id }}">{{row.serviceResource_name}}</router-link></td>
                                 <td>{{row.phone__c}}</td>
-
                             </tr>
                         </tbody>
                     </table>
@@ -73,7 +71,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Service Territory',
+                pageTitle: this.$t('label.service-territory'),
                 loading: true,
                 serviceTerritory: {},
             }
@@ -96,7 +94,7 @@
                     .then(data => {
                         this.loading = false;
                         this.serviceTerritory = data;
-                        this.pageTitle = 'Service Territory — '+ this.serviceTerritory.name;
+                        this.pageTitle =  this.$t('label.service-territory') +' — '+ this.serviceTerritory.name;
                     });
             }
         },

@@ -15,26 +15,25 @@
                     cacheUniqueKey="callouts-page"
                 >
                 <template #head>
-                    <th>Case ID</th>
-                    <th>Created</th>
-                    <th>Due Date</th>
-                    <th>Entrap.</th>
-                    <th>Hazard</th>
-                    <th>Injury</th>
-                    <th>Equipment</th>
-                    <th>Location</th>
-                    <th>Street</th>
-                    <th>City</th>
-                    <th>State / Province</th>
-                    <th>Contact</th>
-                    <th>Caller name</th>
-                    <th>Work order</th>
-                    <th>Assembly Code</th>
-                    <th>Service appointment</th>
-                    <th>SA status</th>
-                    <th>Service resource</th>
-                    <th>Service territory</th>
-                    <th></th>
+                    <th v-t="'field.case.casenumber.label'"></th>
+                    <th v-t="'field.case.createddate.label'"></th>
+                    <th v-t="'field.case.duedate__c.label'"></th>
+                    <th v-t="'field.case.entrapment__c.label'"></th>
+                    <th v-t="'field.case.hazard__c.label'"></th>
+                    <th v-t="'field.case.injury__c.label'"></th>
+                    <th v-t="'field.case.assetname.label'"></th>
+                    <th v-t="'field.asset.locationname.label'"></th>
+                    <th v-t="'field.case.street__c.label'"></th>
+                    <th v-t="'field.case.city__c.label'"></th>
+                    <th v-t="'field.case.stateprovince__c.label'"></th>
+                    <th v-t="'field.case.contactname.label'"></th>
+                    <th v-t="'field.case.callername__c.label'"></th>
+                    <th v-t="'field.case.workordernumber.label'"></th>
+                    <th v-t="'field.case.assemblynumber__c.label'"></th>
+                    <th v-t="'field.case.appointmentnumber.label'"></th>
+                    <th v-t="'field.case.serviceappointmentstatus.label'"></th>
+                    <th v-t="'field.case.serviceresourcename.label'"></th>
+                    <th v-t="'field.asset.serviceterritoryname.label'"></th>
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'case', params: {id: row.id }}">{{row.caseNumber}}</router-link></td>
@@ -43,7 +42,7 @@
                     <td>{{ row.entrapment__c|yesNo }}</td>
                     <td>{{ row.hazard__c|yesNo }}</td>
                     <td>{{ row.injury__c|yesNo }}</td>
-                    <td><router-link :to="{name: '', params: {id: row.assetId }}">{{row.assetName}}</router-link></td>
+                    <td><router-link :to="{name: 'equipmentDetails', params: {id: row.assetId }}">{{row.assetName}}</router-link></td>
                     <td>{{row.locationName}}</td>
                     <td>{{row.street__c}}</td>
                     <td>{{row.city__c}}</td>
@@ -56,7 +55,6 @@
                     <td>{{row.serviceAppointmentStatus}}</td>
                     <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
                     <td><router-link :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
-                    <td></td>
                 </template>
             </data-table-basic>
         </div>
@@ -80,7 +78,7 @@
         //
         data() {
             return {
-                pageTitle: 'Callouts',
+                pageTitle: this.$t('label.callouts'), 
                 filters: {}
             }
         }

@@ -1,15 +1,15 @@
 <template>
     <div :class="gridClass">
 
-        <form-element label="Service Resource" :class="gridItemClass">
+        <form-element :label="$t('filter.asset.service-resource.label')" :class="gridItemClass"> 
             <input
-                id="phone"
+                id="service_resource"
                 v-model="innerValue.name"
                 class="slds-input"
             />
         </form-element>
 
-        <form-element label="Phone" :class="gridItemClass">
+        <form-element :label="$t('filter.asset.phone.label')" :class="gridItemClass">
             <input
                 id="phone"
                 v-model="innerValue.phone__c"
@@ -17,10 +17,10 @@
             />
         </form-element>
 
-        <form-element label="Sales org." :class="gridItemClass" for="sales_org">
+        <form-element :label="$t('filter.asset.sales-org.label')" :class="gridItemClass" for="sales_org">  
             <div class="slds-select_container">
                 <select-loader
-                    :source="$API.case.getUniqueSalesOrganizations"
+                    :source="$API.serviceResource.getUniqueSalesOrganizations"
                     v-model="innerValue.salesOrganization__c"
                     :allowEmpty="true"
                     id="sales_org"
@@ -30,8 +30,8 @@
         </form-element>
 
         <div :class="buttonsClass">
-            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters">Apply</button>
-            <button class="slds-button slds-button_neutral" @click="clearAll">Clear All</button>
+            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters" v-t="'label.button.apply'"></button>
+            <button class="slds-button slds-button_neutral" @click="clearAll" v-t="'label.button.clear-all'"></button>
         </div>
     </div>
 </template>

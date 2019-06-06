@@ -28,12 +28,12 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th>Service Resource</th>
-                                <th>Work Center</th>
-                                <th>Work Type</th>
-                                <th>Preference Type</th>
-                                <th>Start Time</th>
-                                <th>End Time</th>
+                                <th v-t="'field.workcenter.workcenterresources.serviceresourcename.label'"></th> 
+                                <th v-t="'field.workcenter.workcenterresources.workcentername.label'"></th>
+                                <th v-t="'field.workcenter.workcenterresources.worktypename.label'"></th>
+                                <th v-t="'field.workcenter.workcenterresources.preferencetype__c.label'"></th>
+                                <th v-t="'field.workcenter.workcenterresources.startdate__c.label'"></th>
+                                <th v-t="'field.workcenter.workcenterresources.enddate__c.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,8 +45,8 @@
                                 <td>{{row.workCenterName}}</td>
                                 <td>{{row.workTypeName}}</td>
                                 <td>{{row.preferenceType__c}}</td>
-                                <td>{{row.startDate__c|formatDate}}</td>
-                                <td>{{row.endDate__c|formatDate}}</td>
+                                <td>{{ $dtz(row.startDate__c, 'datetime') }}</td>
+                                <td>{{ $dtz(row.endDate__c, 'datetime') }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -73,7 +73,7 @@
         },
         data() {
             return  {
-                pageTitle: 'Work Center',
+                pageTitle: this.$t('label.work-center'),
                 loading: true,
                 workCenter: {
                     workCenterResources: [],
@@ -98,7 +98,7 @@
                     .then(data => {
                         this.loading = false;
                         this.workCenter = data;
-                        this.pageTitle = 'Work Center — '+ this.workCenter.name;
+                        this.pageTitle = this.$t('label.work-center')+' — '+ this.workCenter.name;
                     });
             }
         },
