@@ -209,6 +209,13 @@ export default {
     'field.serviceappointment.assetname.label': 'Equipment',
     'field.serviceappointment.serviceterritoryname.label': 'Service territory',
     'field.serviceappointment.salesorganization__c.label': 'Sales organization',
+
+    //users fields
+    'field.users.name.label': 'Name',
+    'field.users.profileid.label': 'Profile',
+    'field.users.timezonesidkey.label': 'Time zone',
+    'field.users.languagelocalekey.label': 'Language',
+    'field.users.isadmin.label': 'Admin',
   
     //asset fields
     'field.asset.accountname.label': 'Account name',

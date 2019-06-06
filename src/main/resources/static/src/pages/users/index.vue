@@ -11,14 +11,14 @@
 
                     <div class="slds-grid slds-wrap slds-grid_pull-padded">
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.equipment.equipmenttype__c.label'"></span>
+                            <span class="slds-form-element__label" v-t="'field.users.name.label'"></span>
                             <div class="slds-form-element__static">
                                 {{userData.name}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.equipment.fsmlastvalidclienddate__c.label'"></span>
+                            <span class="slds-form-element__label" v-t="'field.users.profileid.label'"></span>
                             <div class="slds-form-element__static">
                                 {{ userData.profileId }}
                             </div>
@@ -27,23 +27,23 @@
                        
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.asset.accountid.label'"></span>
+                            <span class="slds-form-element__label" v-t="'field.users.timezonesidkey.label'"></span>
                             <div class="slds-form-element__static">
                                 {{userData.timezoneSidKey}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.asset.accountid.label'"></span>
+                            <span class="slds-form-element__label" v-t="'field.users.languagelocalekey.label'"></span>
                             <div class="slds-form-element__static">
                                 {{userData.languageLocaleKey}}
                             </div>
                         </div>
 
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.equipment.customerassetname__c.label'"></span>
+                            <span class="slds-form-element__label" v-t="'field.users.isadmin.label'"></span>
                             <div class="slds-form-element__static">
-                                {{ userData.isAdmin |yesNo }}
+                                <!-- {{ userData.isAdmin |yesNo }} -->
                             </div>
                         </div>
 
