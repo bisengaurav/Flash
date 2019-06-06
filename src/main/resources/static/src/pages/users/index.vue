@@ -43,7 +43,7 @@
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label" v-t="'field.users.isadmin.label'"></span>
                             <div class="slds-form-element__static">
-                                <!-- {{ userData.isAdmin |yesNo }} -->
+                                {{ userData.isAdmin |yesNo }}
                             </div>
                         </div>
 
