@@ -12,7 +12,7 @@
             <div class="slds-col slds-size_1-of-1">
 
                 <div class="slds-card slds-p-around_medium">
-                     <!-- slds-p-bottom_mediumslds-border_bottom -->
+                     
                     <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
                             <span class="slds-form-element__label" v-t="'field.equipment.equipmenttype__c.label'"></span>

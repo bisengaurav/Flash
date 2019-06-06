@@ -20,7 +20,7 @@
         <form-element :label="$t('filter.case.due-date-after.label')" :class="gridItemClass">
              <input
                 id="due_date_after"
-                v-model="innerValue.npxResponseDueDate__c"
+                v-model="innerValue.dueDate__c"
                 class="slds-input"
             />
         </form-element>
@@ -229,7 +229,7 @@
                 metadata: {
                     caseNumber:  null,
                     createdDate: null,
-                    npxResponseDueDate__c: null,
+                    dueDate__c: null,
                     entrapment__c: null,
                     hazard__c: null,
                     injury__c: null,
