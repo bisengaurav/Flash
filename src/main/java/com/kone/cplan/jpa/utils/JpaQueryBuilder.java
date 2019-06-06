@@ -94,7 +94,7 @@ public class JpaQueryBuilder<EntityT> {
 	private void checkFieldInEntity(String field) {
 		if (!ReflectionUtils.fieldExists(this.entityType, field)) {
 			throw (new IllegalArgumentException(Strings.getAndFormat(
-				"message.common.field-not-found-in-object", field, this.entityType.getName())));
+				"message.common.field-not-found-in-object.java", field, this.entityType.getName())));
 		}
 	}
 
