@@ -55,7 +55,7 @@ public class CaseFilter implements Filter {
 
 	private String caseOwnerTxt__c;
 
-	private String salesOrganizations__c;
+	private String salesOrganization__c;
 	//
 
 	//
@@ -205,11 +205,11 @@ public class CaseFilter implements Filter {
 		this.caseOwnerTxt__c = caseOwnerTxt__c;
 	}
 
-	public String getSalesOrganizations__c() {
-		return salesOrganizations__c;
+	public String getSalesOrganization__c() {
+		return salesOrganization__c;
 	}
-	public void setSalesOrganizations__c(String salesOrganization__c) {
-		this.salesOrganizations__c = salesOrganization__c;
+	public void setSalesOrganization__c(String salesOrganization__c) {
+		this.salesOrganization__c = salesOrganization__c;
 	}
 	//
 }
