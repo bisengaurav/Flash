@@ -16,6 +16,9 @@ let API = {
         },
         getEquipmentTypes: () => {
             return Query('/ui-api/equipment/getUniqueEquipmentTypes', null, 'GET', false, 'session');
+        },
+        getUniqueSalesOrganizations: () => {
+            return Query('/ui-api/equipment/getUniqueSalesOrganizations', null, 'GET', false, 'session');
         }
     },
     case: {

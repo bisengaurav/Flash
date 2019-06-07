@@ -113,6 +113,18 @@
             </div>
         </form-element>
 
+        <form-element :label="$t('filter.asset.sales-org.label')" :class="gridItemClass" for="sales_org">
+            <div class="slds-select_container">
+                <select-loader
+                    :source="$API.equipment.getUniqueSalesOrganizations"
+                    :allowEmpty="true"
+                    v-model="innerValue.salesOrganization__c"
+                    id="sales_org"
+                    class="slds-select"
+                />
+            </div>
+        </form-element>
+
         <div :class="buttonsClass">
             <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters || $v.$invalid" v-t="'label.button.apply'"></button>
             <button class="slds-button slds-button_neutral" @click="clearAll" v-t="'label.button.clear-all'"></button>
@@ -145,7 +157,8 @@
                     installationStreet__c: null,
                     installationCity__c: null,
                     installationStateProvince__c: null,
-                    fsmLastValidCliEndDate__c: null
+                    fsmLastValidCliEndDate__c: null,
+                    salesOrganization__c: null,
                 }
 
             }
