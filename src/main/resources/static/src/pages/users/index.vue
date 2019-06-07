@@ -13,14 +13,14 @@
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
                             <span class="slds-form-element__label" v-t="'field.user.name.label'"></span>
                             <div class="slds-form-element__static">
-                                {{userData.name}}
+                                {{userData.user.name}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label" v-t="'field.user.profileid.label'"></span>
                             <div class="slds-form-element__static">
-                                {{ userData.profileId }}
+                                {{ userData.user.profileId }}
                             </div>
                         </div>
 
@@ -29,14 +29,14 @@
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label" v-t="'field.user.timezonesidkey.label'"></span>
                             <div class="slds-form-element__static">
-                                {{userData.timezoneSidKey}}
+                                {{userData.user.timezoneSidKey}}
                             </div>
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label" v-t="'field.user.languagelocalekey.label'"></span>
                             <div class="slds-form-element__static">
-                                {{userData.languageLocaleKey}}
+                                {{userData.user.languageLocaleKey}}
                             </div>
                         </div>
 
@@ -46,8 +46,6 @@
                                 {{ userData.isAdmin |yesNo }}
                             </div>
                         </div>
-
-
 
                     </div>
                 </div>
@@ -80,14 +78,12 @@
         //
         methods: {
             init() {
-                console.log('init');
                 this.loading = true;
 
                 // data
                 this.$API.user.getUserInfo().then(data => {
                     this.loading = false;
                     this.userData = data;
-                    this.pageTitle = this.$t('text.users.heading')+' — '+ this.workCenter.name;
                 });
             }
         },

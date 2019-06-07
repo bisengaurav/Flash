@@ -229,5 +229,5 @@ export default {
     'label.button.clear-all': 'Clear All',
 
     //messsages
-    'message.related-lest.no-related-record': 'No Related Records',
+    'message.common.no-related-record': 'No Related Records',
 }

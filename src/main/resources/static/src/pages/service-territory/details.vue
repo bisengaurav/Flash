@@ -22,11 +22,15 @@
                 </div>
             </div>
 
-            <div v-if="serviceTerritory.serviceTerritoryResources.length > 0">
-
+            <div>
                  <div class="slds-card slds-p-around_medium slds-m-top_medium">
                     <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.service-territory.service-resources'"></h2>
-                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+
+                    <div v-if="serviceTerritory.serviceTerritoryResources.length <= 0" class="slds-p-around_medium">
+                        <alert type="static" :showIcon="false" :animate="false" :closable="false" v-t="'message.common.no-related-record'" />
+                    </div>
+                        
+                    <table v-else class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
                                 <th v-t="'field.serviceterritoryresource.effectivestartdate.label'"></th>

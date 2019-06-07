@@ -22,10 +22,15 @@
             </div> -->
         </div>
 
-        <div v-if="workCenter.workCenterResources.length > 0">
+        <div>
 
                 <div class="slds-card slds-p-around_medium">
-                    <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    
+                    <div v-if="workCenter.workCenterResources.length <= 0" class="slds-p-around_medium">
+                        <alert type="static" :showIcon="false" :animate="false" :closable="false" v-t="'message.common.no-related-record'" />
+                    </div>
+                        
+                    <table v-else class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
                                 <th v-t="'field.workcenterresource.serviceresourcename.label'"></th>
