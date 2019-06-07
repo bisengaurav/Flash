@@ -8,7 +8,7 @@
         <div class="primary-section slds-m-top_x-large">
             <data-table-basic
                 :keyField="(row) => {
-                    return  row.compositeKey.id +'_'+ row.compositeKey.serviceAppointmentId +'_'+ row.compositeKey.workOrderId;
+                    return  row.compositeKey;
                 }"
                 :action="$API.case.getAllByFilter"
                 :filters="filters"
@@ -49,12 +49,12 @@
                     <td>{{row.stateProvince__c}}</td>
                     <td>{{row.contactName}}</td>
                     <td>{{row.callerName__c}}</td>
-                    <td><router-link :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
+                    <td><router-link v-if="row.workOrderNumber" :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
                     <td>{{row.assemblyNumber__c}}</td>
-                    <td><router-link :to="{name: 'serviceAppointment', params: {id: row.serviceAppointmentId }}">{{row.appointmentNumber}}</router-link></td>
+                    <td><router-link v-if="row.appointmentNumber" :to="{name: 'serviceAppointment', params: {id: row.serviceAppointmentId }}">{{row.appointmentNumber}}</router-link></td>
                     <td>{{row.serviceAppointmentStatus}}</td>
-                    <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
-                    <td><router-link :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
+                    <td><router-link v-if="row.serviceResourceName" :to="{name: 'serviceResource', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
+                    <td><router-link v-if="row.serviceTerritoryName" :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
                 </template>
             </data-table-basic>
         </div>
