@@ -32,6 +32,8 @@ public class EquipmentFilter implements Filter {
 	private String installationStateProvince__c;
 
 	private Boolean fsmLastValidCliEndDate__c;
+
+	private String salesOrganization__c;
 	//
 
 	//
@@ -112,6 +114,13 @@ public class EquipmentFilter implements Filter {
 	}
 	public void setFsmLastValidCliEndDate__c(Boolean fsmLastValidCliEndDate__c) {
 		this.fsmLastValidCliEndDate__c = fsmLastValidCliEndDate__c;
+	}
+
+	public String getSalesOrganization__c() {
+		return salesOrganization__c;
+	}
+	public void setSalesOrganization__c(String salesOrganization__c) {
+		this.salesOrganization__c = salesOrganization__c;
 	}
 	//
 }

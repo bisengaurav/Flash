@@ -10,6 +10,8 @@ import com.kone.cplan.jpa.filter.EquipmentFilter;
 import com.kone.cplan.jpa.repository.EquipmentDetailsRepository;
 import com.kone.cplan.jpa.repository.EquipmentRepository;
 import com.kone.cplan.utils.dto.SelectOption;
+import com.kone.cplan.utils.session.AppSessionContext;
+import com.kone.cplan.utils.session.AppSessionInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -19,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * This class provides endpoints for UI API that work with Equipments.
@@ -39,6 +43,8 @@ public class EquipmentApi {
 	private EquipmentRepository equipmentRepo;
 	@Autowired
 	private EquipmentDetailsRepository equipmentDetailsRepo;
+	@Autowired
+	private AppSessionContext appSessionContext;
 	//
 
 	//
@@ -91,13 +97,40 @@ public class EquipmentApi {
 		  records and sort them instead of sorting millions of records and taking first 100.
 		 */
 		result.sort(Comparator
-			.comparing(Equipment::getInstallationCity__c, String.CASE_INSENSITIVE_ORDER)
-			.thenComparing(Equipment::getInstallationStreet__c, String.CASE_INSENSITIVE_ORDER)
-			.thenComparing(Equipment::getAccountName, String.CASE_INSENSITIVE_ORDER)
-			.thenComparing(Equipment::getName, String.CASE_INSENSITIVE_ORDER)
+			.comparing(Equipment::getInstallationCity__c, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER))
+			.thenComparing(Equipment::getInstallationStreet__c, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER))
+			.thenComparing(Equipment::getAccountName, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER))
+			.thenComparing(Equipment::getName, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER))
 		);
 
 		return OperationResults.newSuccess(result);
+	}
+
+	/**
+	 * @return OperationResults with list of the SelectOptions
+	 */
+	@GetMapping(value = "getUniqueSalesOrganizations")
+	public OperationResults getUniqueSalesOrganizations()
+	{
+		AppSessionInfo.UserInfo userInfo = appSessionContext.getCurrentUserInfo();
+		//- If current user's profile is C-Plan Admin then all SalesOrgs are available to him.
+		// In other case only his SalesOrg is available.
+		if (userInfo.isAdmin()) {
+			return OperationResults.newSuccess(
+				//- Account's Sales_Organizations__c field, which is used for filtering records by
+				// sales org, may contain several sales orgs separated by comma. We need to parse
+				// all the fields and extract all sales orgs.
+				SelectOption.generateList(equipmentRepo.getUniqueSalesOrganizations().stream()
+					.flatMap(Pattern.compile(",")::splitAsStream)
+					.distinct()
+					.toArray(String[]::new)
+				)
+			);
+		} else {
+			return OperationResults.newSuccess(userInfo.getSalesOrg() != null
+				? Arrays.asList(new SelectOption(userInfo.getSalesOrg()))
+				: new ArrayList<SelectOption>());
+		}
 	}
 
 	/**

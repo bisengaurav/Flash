@@ -11,6 +11,12 @@ import java.util.List;
 
 public interface EquipmentRepository extends JpaRepository<Equipment, Integer>, Equipment_RepoExt {
 
+	@Query("SELECT e.salesOrganizations__c FROM Equipment e" +
+		" WHERE e.salesOrganizations__c IS NOT NULL" +
+		" GROUP BY e.salesOrganizations__c" +
+		" ORDER BY e.salesOrganizations__c")
+	List<String> getUniqueSalesOrganizations();
+
 	@Query("SELECT e.installationCountry__c FROM Equipment e" +
 		" WHERE e.installationCountry__c IS NOT NULL" +
 		" GROUP BY e.installationCountry__c" +

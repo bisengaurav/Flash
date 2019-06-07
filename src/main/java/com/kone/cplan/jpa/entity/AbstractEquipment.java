@@ -79,6 +79,9 @@ abstract class AbstractEquipment implements Serializable {
 
 	@Column
 	private Date fsmLastValidCliEndDate__c;
+
+	@Column
+	private String salesOrganizations__c;
 	//
 
 	//
@@ -171,6 +174,10 @@ abstract class AbstractEquipment implements Serializable {
 	public Boolean getFsmLastValidCliEndDate__c() {
 		if (fsmLastValidCliEndDate__c == null) { return null; }
 		return fsmLastValidCliEndDate__c.getTime() >= System.currentTimeMillis();
+	}
+
+	public String getSalesOrganizations__c() {
+		return salesOrganizations__c;
 	}
 	//
 }
