@@ -16,8 +16,8 @@
 
             <span class="slds-checkbox_faux_container">
                 <span class="slds-checkbox_faux"></span>
-                <span class="slds-checkbox_on">{{onLabel}}</span>
-                <span class="slds-checkbox_off">{{offLabel}}</span>
+                <span class="slds-checkbox_on">{{innerOnLabel}}</span>
+                <span class="slds-checkbox_off">{{innerOffLabel}}</span>
             </span>
         </label>
     </div>
@@ -34,13 +34,20 @@
         //
         props: {
             onLabel: {
-                type: String,
-                default: 'On'
+                type: String
             },
             offLabel: {
-                type: String,
-                default: 'Off'
+                type: String
+            }
+        },
+        computed: {
+            innerOnLabel() {
+                return this.$props.onLabel || this.$t('label.button.on');
+            },
+            innerOffLabel() {
+                return this.$props.offLabel || this.$t('label.button.off');
             }
         }
+
     }
 </script>

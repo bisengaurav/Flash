@@ -65,7 +65,7 @@
                     this.processOptions(this.innerSource);
                     this.loading = false;
                 }
-                // unsupperted type
+                // unsupported type
                 else {
                     throw new Error('Unsupported type of "source" parameter: must be Function or Array');
                 }

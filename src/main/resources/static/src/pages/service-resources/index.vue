@@ -28,11 +28,11 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
     import ServiceResourcesFilterForm from './service-resources-filter-form.vue';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         components: {
             ServiceResourcesFilterForm

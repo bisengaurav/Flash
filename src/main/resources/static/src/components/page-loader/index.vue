@@ -1,8 +1,8 @@
 <template>
     <div class="z-level9" v-show="queue > 0">
-        <div class="slds-backdrop slds-backdrop_open cmp-page-loader_overlay"></div>
+        <div class="slds-backdrop slds-backdrop_open page-loader_overlay"></div>
 
-        <spinner class="cmp-page-loader_spinner" />
+        <spinner class="page-loader_spinner" />
     </div>
 </template>
 
@@ -40,11 +40,11 @@
 </script>
 
 <style>
-    .cmp-page-loader_overlay {
+    .page-loader_overlay {
         z-index: 10000 !important;
     }
 
-    .cmp-page-loader_spinner {
+    .page-loader_spinner {
         position: fixed;
         top: 50%;
         left: 50%;

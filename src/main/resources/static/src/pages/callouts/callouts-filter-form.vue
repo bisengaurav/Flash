@@ -25,45 +25,36 @@
             />
         </form-element>
 
-       <form-element :label="$t('filter.case.entrapment.label')" :class="gridItemClass" for="entrapment">
+       <form-element :label="$t('filter.case.entrapment.label')" :class="gridItemClass">
             <div class="slds-select_container">
-                <select
-                    id="entrapment"
+                <select-boolean
                     v-model="innerValue.entrapment__c"
+                    :allowEmpty="true"
+                    id="entrapment"
                     class="slds-select"
-                >
-                    <option></option>
-                    <option value="true">{{ $t('label.common.yes') }}</option>
-                    <option value="false">{{ $t('label.common.no') }}</option>
-                </select>
+                />
             </div>
         </form-element>
 
-        <form-element :label="$t( 'filter.case.hazard.label')" :class="gridItemClass" for="hazard">
+        <form-element :label="$t( 'filter.case.hazard.label')" :class="gridItemClass">
             <div class="slds-select_container">
-                <select
-                    id="hazard"
+                <select-boolean
                     v-model="innerValue.hazard__c"
+                    :allowEmpty="true"
+                    id="hazard"
                     class="slds-select"
-                >
-                    <option></option>
-                    <option value="true">{{ $t('label.common.yes') }}</option>
-                    <option value="false">{{ $t('label.common.no') }}</option>
-                </select>
+                />
             </div>
         </form-element>
 
-        <form-element :label="$t('filter.case.Injury.label')" :class="gridItemClass" for="injury">
+        <form-element :label="$t('filter.case.Injury.label')" :class="gridItemClass">
             <div class="slds-select_container">
-                <select
-                    id="injury"
+                <select-boolean
                     v-model="innerValue.injury__c"
+                    :allowEmpty="true"
+                    id="injury"
                     class="slds-select"
-                >
-                    <option></option>
-                    <option value="true">{{ $t('label.common.yes') }}</option>
-                    <option value="false">{{ $t('label.common.no') }}</option>
-                </select>
+                />
             </div>
         </form-element>
 
@@ -75,7 +66,7 @@
             />
         </form-element>
 
-        <form-element :label="$t('filter.asset.location.label')" :class="gridItemClass"> 
+        <form-element :label="$t('filter.asset.location.label')" :class="gridItemClass">
              <input
                 id="location"
                 v-model="innerValue.locationName"
@@ -107,7 +98,7 @@
             />
         </form-element>
 
-        <form-element :label="$t('filter.case.contact.label')" :class="gridItemClass"> 
+        <form-element :label="$t('filter.case.contact.label')" :class="gridItemClass">
              <input
                 id="contact"
                 v-model="innerValue.contactName"
@@ -123,7 +114,7 @@
             />
         </form-element>
 
-        <form-element :label="$t('filter.case.caller-name.label')" :class="gridItemClass"> 
+        <form-element :label="$t('filter.case.caller-name.label')" :class="gridItemClass">
              <input
                 id="work_order"
                 v-model="innerValue.workOrderNumber"
@@ -163,7 +154,7 @@
             />
         </form-element>
 
-        <form-element :label="$t('filter.case.sa-status.label')" :class="gridItemClass" for="sa_status"> 
+        <form-element :label="$t('filter.case.sa-status.label')" :class="gridItemClass" for="sa_status">
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.serviceAppointment.getUniqueStatuses"
@@ -191,7 +182,7 @@
             />
         </form-element>
 
-        <form-element :label="$t('filter.case.case-owner.label')" :class="gridItemClass"> 
+        <form-element :label="$t('filter.case.case-owner.label')" :class="gridItemClass">
              <input
                 id="case_owner"
                 v-model="innerValue.caseOwnerTxt__c"
@@ -220,9 +211,14 @@
 
 <script>
     import FiltersInterface from '../../components/filters-interface.vue';
+    import SelectBoolean from '../../components/select-boolean.vue';
 
     export default {
         extends: FiltersInterface,
+
+        components: {
+            SelectBoolean
+        },
 
         data() {
             return {

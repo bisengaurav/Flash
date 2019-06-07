@@ -1,7 +1,7 @@
 <template>
     <div class="slds-form-element" :class="{'slds-has-error': (validator && validator.$error)}">
         <div v-if="label" class="slds-form-element__label">
-            <abbr v-if="required" class="slds-required" title="Required">* </abbr>
+            <abbr v-if="required" class="slds-required" :title="$t('label.common.required')">* </abbr>
             <label :for="id">
                 {{label}}
             </label>
@@ -46,26 +46,26 @@
                 required: false,
                 errors: [],
                 messages: {
-                    required: 'This field is required.',
-                    requiredIf: 'This field is required.',
-                    requiredUnless: 'This field is required.',
+                    required: this.$t('message.validation.required'),
+                    requiredIf: this.$t('message.validation.required'),
+                    requiredUnless: this.$t('message.validation.required'),
 
-                    minLength: ({min}) => `A value should be a minimum ${min} character(s) length, inclusive.`,
-                    maxLength: ({max}) => `A value should be a maximum ${max} characters length, inclusive.`,
-                    minValue: ({min}) => `A value should be greater than ${min}.`,
-                    maxValue: ({max}) => `A value should be less than ${max}.`,
+                    minLength: ({min}) => this.$t('message.validation.minLength.vue', {min}),
+                    maxLength: ({max}) => this.$t('message.validation.maxLength.vue', {max}),
+                    minValue: ({min}) => this.$t('message.validation.minValue.vue', {min}),
+                    maxValue: ({max}) => this.$t('message.validation.maxValue.vue', {max}),
 
-                    between: ({min, max}) => `A value should be greater than ${min} and less than ${max}, both inclusive.`,
+                    between: ({min, max}) => this.$t('message.validation.between.vue', {min, max}),
 
-                    alpha: 'A value should contains only alphabet characters.',
-                    alphaNum: 'A value should contains only alphanumeric characters.',
-                    numeric: 'A value should be a number.',
-                    integer: 'A value should be an integer number.',
-                    decimal: 'A value should be a decimal number.',
-                    email: 'A value should be a valid email.',
-                    macAddress: 'A value should be a valid MAC address.',
-                    ipAddress: 'A value should be a valid IP address.',
-                    url: 'A value should be a valid url.'
+                    alpha: this.$t('message.validation.alpha'),
+                    alphaNum: this.$t('message.validation.alphaNum'),
+                    numeric: this.$t('message.validation.numeric'),
+                    integer: this.$t('message.validation.integer'),
+                    decimal: this.$t('message.validation.decimal'),
+                    email: this.$t('message.validation.email'),
+                    macAddress: this.$t('message.validation.macAddress'),
+                    ipAddress: this.$t('message.validation.ipAddress'),
+                    url: this.$t('message.validation.url')
                 }
             };
         },

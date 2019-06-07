@@ -22,9 +22,7 @@
     </table>
 
     <div v-else class="slds-p-around_medium">
-        <alert type="static" :showIcon="false" :animate="false" :closable="false">
-            No data found
-        </alert>
+        <alert type="static" :showIcon="false" :animate="false" :closable="false" v-t="'message.common.no-data'" />
     </div>
 </template>
 

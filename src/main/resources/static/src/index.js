@@ -28,9 +28,11 @@ Vue.prototype.$EM = EM;
 //
 // global Components
 //
+
+/*
 import Modal from './components/modal.vue';
 Vue.component('Modal', Modal);
-
+*/
 import Spinner from './components/spinner.vue';
 Vue.component('Spinner', Spinner);
 
@@ -48,10 +50,7 @@ Vue.component('Checkbox', Checkbox);
 
 import CheckboxToggle from './components/checkbox-toggle.vue';
 Vue.component('CheckboxToggle', CheckboxToggle);
-/*
-import PeriodDuration from './components/period-duration.vue';
-Vue.component('PeriodDuration', PeriodDuration);
-*/
+
 import CollapsibleSection from './components/collapsible-section.vue';
 Vue.component('CollapsibleSection', CollapsibleSection);
 
@@ -90,14 +89,10 @@ Vue.use(Vuelidate);
 import Prompt from './components/prompt.vue';
 Vue.use(Prompt);
 
-import VueI18n from 'vue-i18n';
-Vue.use(VueI18n);
-
-import DateService from './core/date-service.js';
-Vue.use(DateService);
-
 import LocalStorage from './core/local-storage';
 Vue.use(LocalStorage);
+
+import i18n from './core/i18n'; // contains Vue.use()
 
 import router from './core/router.js'; // contains Vue.use()
 
@@ -108,15 +103,15 @@ import store from './store'; // contains Vue.use()
 //
 // global |formats and $functions()
 //
-
+/*
 import numeral from 'numeral';
 Vue.filter("formatNumber", function(value, format) {
     return numeral(value).format(format || '0,0');
 });
-
+*/
 Vue.filter("yesNo", function(value) {
-    if (value) return 'Yes';
-    if (value === false) return 'No';
+    if (value) return i18n.t('label.common.yes');
+    if (value === false) return i18n.t('label.common.no');
     return '';
 });
 
@@ -126,12 +121,17 @@ Vue.filter("yesNo", function(value) {
 // load top level data and init app
 //
 
-import app from './components/app.vue';
+import App from './components/app.vue';
+import AppLoader from './components/app-loader.vue';
 
 import messagesCmp from './core/tmp-lang-components.js';
 import messagesPages from './core/tmp-lang-pages.js';
 
+
+
+//
 // load session data
+//
 
 API.session.getInfo()
     .then(session => {
@@ -144,46 +144,22 @@ API.session.getInfo()
         if (!store.state.$lang)
             throw new Error("Can't resolve language settings");
 
-        const i18n = new VueI18n({
-            silentTranslationWarn: (process.env.NODE_ENV === 'production'),
-            silentFallbackWarn: (process.env.NODE_ENV === 'production'),
-            locale: store.state.$lang,
-            /*messages: {
-                [store.state.$lang]: {}
-            },*/
-            dateTimeFormats: {
-                [store.state.$lang]: {
-                    date: {
-                        timeZone: store.state.$timezone,
-                        year: 'numeric', month: '2-digit', day: '2-digit'
-                    },
-                    datetime: {
-                        timeZone: store.state.$timezone,
-                        year: 'numeric', month: '2-digit', day: '2-digit',
-                        hour: 'numeric', minute: 'numeric'
-                    },
-                    time: {
-                        timeZone: store.state.$timezone,
-                        hour: 'numeric', minute: 'numeric'
-                    }
-                }
+        i18n.locale = store.state.$lang;
+        i18n.setDateTimeFormat(store.state.$lang, {
+            date: {
+                timeZone: store.state.$timezone,
+                year: 'numeric', month: '2-digit', day: '2-digit'
             },
-            missing: (locale, key, vm) => {
-                return '...';
+            datetime: {
+                timeZone: store.state.$timezone,
+                year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: 'numeric', minute: 'numeric'
+            },
+            time: {
+                timeZone: store.state.$timezone,
+                hour: 'numeric', minute: 'numeric'
             }
         });
-
-
-        // create $d alias function
-
-        Vue.prototype.$dtz = function(value, key) {
-            if (!value) return '';
-
-            var date = Date.parse(value);
-            if (!date || typeof date != 'number' || date === NaN) return '';
-
-            return i18n.d(date, key);
-        };
 
 
         // check cached language data
@@ -192,11 +168,15 @@ API.session.getInfo()
         if (store.state.$langVersion)
             cachedLangData = LocalStorage.getVersionedCache(store.state.$lang, store.state.$langVersion);
 
+
         if (cachedLangData) {
             // no cached data or no lang version
             i18n.setLocaleMessage(store.state.$lang, cachedLangData);
+            init();
 
         } else {
+            createAppLoader();
+
             // async load language data
 
             API.i18n.getLanguageData(session.l10nParams.languageCode)
@@ -213,19 +193,31 @@ API.session.getInfo()
                         data.stringsHashCode,
                         Object.assign({}, messagesCmp, messagesPages, data.stringsMap)
                     );
+                    init();
                 });
         }
-
-
-        // init APP
-
-        new Vue({
-            el: '#app',
-            render: h => h(app),
-            router,
-            store,
-            i18n
-        });
-
-
     });
+
+
+
+// global init functions
+
+function createAppLoader() {
+    const loaderDiv = document.createElement('div');
+    document.querySelector('#app').appendChild(loaderDiv);
+
+    new Vue({
+        el: loaderDiv,
+        render: h => h(AppLoader)
+    });
+}
+
+function init() {
+    new Vue({
+        el: '#app',
+        render: h => h(App),
+        router,
+        store,
+        i18n
+    });
+}

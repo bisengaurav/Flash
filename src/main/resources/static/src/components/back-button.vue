@@ -1,10 +1,12 @@
 <template>
-    <router-link v-if="type === 'route'" :to="{name: to}" class="cmp-back-button" title="Back">
-        <icon icon="arrow-left" class="slds-icon slds-icon_small" />
-    </router-link>
-    <button v-else-if="type === 'history'" @click="back" class="cmp-back-button" title="Back">
-        <icon icon="arrow-left" class="slds-icon slds-icon_small" />
-    </button>
+    <tooltip v-if="type" :content="innerTooltip" :offset="3" position="right">
+        <router-link v-if="type === 'route'" :to="{name: to}" class="cmp-back-button">
+            <icon icon="arrow-left" class="slds-icon slds-icon_small" />
+        </router-link>
+        <button v-else-if="type === 'history'" @click="back" class="cmp-back-button">
+            <icon icon="arrow-left" class="slds-icon slds-icon_small" />
+        </button>
+    </tooltip>
 </template>
 
 <script>
@@ -19,11 +21,19 @@
         props: {
             to: {
                 type: String
+            },
+            tooltip: {
+                type: String
             }
         },
         data() {
             return  {
-                type: null // route | history | null
+                type: null, // route | history | null
+            }
+        },
+        computed: {
+            innerTooltip() {
+                return this.$props.label || this.$t('label.button.back');
             }
         },
 
