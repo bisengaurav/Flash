@@ -111,11 +111,11 @@
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                             <thead>
                                 <tr class="slds-line-height_reset">
-                                    <th v-t="'field.workorder.serviceappointments.appointmentnumber.label'"></th>
-                                    <th v-t="'field.workorder.serviceappointments.status.label'"></th>
-                                    <th v-t="'field.workorder.serviceappointments.serviceresourcename.label'"></th>
-                                    <th v-t="'field.workorder.serviceappointments.scheduledstartoriginal__c.label'"></th>
-                                    <th v-t="'field.workorder.serviceappointments.scheduledendoriginal__c.label'"></th>
+                                    <th v-t="'field.workorder.appointmentnumber.label'"></th>
+                                    <th v-t="'field.workorder.status.label'"></th>
+                                    <th v-t="'field.workorder.serviceresourcename.label'"></th>
+                                    <th v-t="'field.workorder.scheduledstartoriginal__c.label'"></th>
+                                    <th v-t="'field.workorder.scheduledendoriginal__c.label'"></th>
                                 </tr>
                             </thead>
                             <tbody>

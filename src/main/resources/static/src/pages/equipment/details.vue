@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.asset.accountid.label'"></span>
+                            <span class="slds-form-element__label" v-t="'field.equipment.accountid.label'"></span>
                             <div class="slds-form-element__static">
                                 {{equipment.accountId}}
                             </div>
@@ -65,7 +65,7 @@
                         </div>
 
                          <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.asset.installationcity__c.label'"></span>
+                            <span class="slds-form-element__label" v-t="'field.equipment.installationcity__c.label'"></span>
                             <div class="slds-form-element__static">
                                 {{equipment.installationCity__c}}
                             </div>
@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t=" 'field.asset.workcentername.label'"></span>
+                            <span class="slds-form-element__label" v-t=" 'field.equipment.workcentername.label'"></span>
                             <div class="slds-form-element__static">
                                 <router-link :to="{name: 'workCenter', params: {id: equipment.workCenterId }}">{{equipment.workCenterName}}</router-link>
                             </div>
@@ -111,15 +111,15 @@
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                             <thead>
                                 <tr class="slds-line-height_reset">
-                                    <th v-t="'field.equipment.activeslas.name.label'"></th>
-                                    <th v-t="'field.equipment.activeslas.coverage__c.label'"></th>
-                                    <th v-t="'field.equipment.activeslas.startdate.label'"></th>
-                                    <th v-t="'field.equipment.activeslas.enddate.label'"></th>
-                                    <th v-t="'field.equipment.activeslas.status.label'"></th>
-                                    <th v-t="'field.equipment.activeslas.responseTime__c.label'"></th>
-                                    <th v-t="'field.equipment.activeslas.responseTimeAfterHours__c.label'"></th>
-                                    <th v-t="'field.equipment.activeslas.calloutHours__c.label'"></th>
-                                    <th v-t="'field.equipment.activeslas.serviceHours__c.label'"></th>
+                                    <th v-t="'field.equipment.name.label'"></th>
+                                    <th v-t="'field.equipment.coverage__c.label'"></th>
+                                    <th v-t="'field.equipment.startdate.label'"></th>
+                                    <th v-t="'field.equipment.enddate.label'"></th>
+                                    <th v-t="'field.equipment.status.label'"></th>
+                                    <th v-t="'field.equipment.responseTime__c.label'"></th>
+                                    <th v-t="'field.equipment.responseTimeAfterHours__c.label'"></th>
+                                    <th v-t="'field.equipment.calloutHours__c.label'"></th>
+                                    <th v-t="'field.equipment.serviceHours__c.label'"></th>
                                 </tr>
                             </thead>
                             <tbody>

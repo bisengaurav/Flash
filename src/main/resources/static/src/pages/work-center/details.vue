@@ -28,12 +28,12 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.workcenter.workcenterresources.serviceresourcename.label'"></th>
-                                <th v-t="'field.workcenter.workcenterresources.workcentername.label'"></th>
-                                <th v-t="'field.workcenter.workcenterresources.worktypename.label'"></th>
-                                <th v-t="'field.workcenter.workcenterresources.preferencetype__c.label'"></th>
-                                <th v-t="'field.workcenter.workcenterresources.startdate__c.label'"></th>
-                                <th v-t="'field.workcenter.workcenterresources.enddate__c.label'"></th>
+                                <th v-t="'field.workcenter.serviceresourcename.label'"></th>
+                                <th v-t="'field.workcenter.workcentername.label'"></th>
+                                <th v-t="'field.workcenter.worktypename.label'"></th>
+                                <th v-t="'field.workcenter.preferencetype__c.label'"></th>
+                                <th v-t="'field.workcenter.startdate__c.label'"></th>
+                                <th v-t="'field.workcenter.enddate__c.label'"></th>
                             </tr>
                         </thead>
                         <tbody>

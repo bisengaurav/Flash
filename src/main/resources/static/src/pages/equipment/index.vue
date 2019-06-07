@@ -19,11 +19,11 @@
                     <th v-t="'field.asset.accountname.label'"></th>
                     <th v-t="'field.equipment.soldtoname.label'"></th>
                     <th v-t="'field.asset.locationname.label'"></th>
-                    <th v-t="'field.asset.installationstreet__c.label'"></th>
-                    <th v-t="'field.asset.installationcity__c.label'"></th>
-                    <th v-t="'field.asset.installationstateprovince__c.label'"></th>
+                    <th v-t="'field.equipment.installationstreet__c.label'"></th>
+                    <th v-t="'field.equipment.installationcity__c.label'"></th>
+                    <th v-t="'field.equipment.installationstateprovince__c.label'"></th>
                     <th v-t="'field.asset.serviceterritoryname.label'"></th>
-                    <th v-t="'field.asset.workcentername.label'"></th>
+                    <th v-t="'field.equipment.workcentername.label'"></th>
                     <th v-t="'field.equipment.fsmlastvalidclienddate__c.label'"></th>
                 </template>
                 <template #row="{row, id}">

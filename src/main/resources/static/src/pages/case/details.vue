@@ -149,10 +149,10 @@
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                             <thead>
                                 <tr class="slds-line-height_reset">
-                                    <th v-t="'field.case.workorders.workordernumber'"></th>
-                                    <th v-t="'field.case.workorders.status'"></th>
-                                    <th v-t="'field.case.workorders.earlieststartdate__c'"></th>
-                                    <th v-t="'field.case.workorders.duedate__c'"></th>
+                                    <th v-t="'field.case.workordernumber.label'"></th>
+                                    <th v-t="'field.case.status.label'"></th>
+                                    <th v-t="'field.case.earlieststartdate__c.label'"></th>
+                                    <th v-t="'field.case.duedate__c.label'"></th>
                                 </tr>
                             </thead>
                             <tbody>
