@@ -27,13 +27,13 @@
                         'style': 'height: '+ this.height +'px'
                     }],
                     ['input', {
-                        'class': 'slds-input slds-grid slds-grid_vertical-align-center slds-grid_align-center cmp-loader-control',
-                        'spinnerClass': 'slds-icon_xx-small cmp-loader-control-spinner',
+                        'class': 'slds-input slds-grid slds-grid_vertical-align-center slds-grid_align-center loader-control',
+                        'spinnerClass': 'slds-icon_xx-small loader-control-spinner',
                         'style': ''
                     }],
                     ['textarea', {
-                        'class': 'slds-textarea slds-grid slds-grid_vertical-align-center slds-grid_align-center cmp-loader-control',
-                        'spinnerClass': 'slds-icon_xx-small cmp-loader-control-spinner',
+                        'class': 'slds-textarea slds-grid slds-grid_vertical-align-center slds-grid_align-center loader-control',
+                        'spinnerClass': 'slds-icon_xx-small loader-control-spinner',
                         'style': 'height: '+ this.height +'px'
                     }]
                 ]),
@@ -49,10 +49,10 @@
 </script>
 
 <style>
-    .cmp-loader-control {
+    .loader-control {
         background-color: #f2f2f3;
     }
-    .cmp-loader-control .cmp-loader-control-spinner {
+    .loader-control .loader-control-spinner {
         fill: #b0adab;
     }
 </style>

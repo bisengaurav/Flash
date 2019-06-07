@@ -25,25 +25,28 @@
         </table>
 
         <div v-else class="slds-p-around_medium">
-            <alert type="static" :showIcon="false" :animate="false" :closable="false">
-                No data found
-            </alert>
+            <alert type="static" :showIcon="false" :animate="false" :closable="false" v-t="'message.common.no-data'" />
         </div>
 
 
-        <div v-if="data.length > 0 && showPagination" class="slds-p-horizontal--medium slds-p-vertical--small">
+        <div v-if="data.length > 0 && showPagination" class="slds-p-horizontal_medium slds-p-vertical_small">
             <div class="slds-pagination slds-grid slds-grid_vertical-align-center">
 
                 <div class="slds-col_bump-right">
-					<span v-if="totalItems > 0" class="slds-text-body_small slds-text-nowrap">
-						{{(currentPage-1)*pageSize +1}} — {{totalItems > currentPage*pageSize ? currentPage*pageSize : totalItems}} of {{totalItems}} items
-					</span>
+					<span v-if="totalItems > 0" class="slds-text-body_small slds-text-nowrap" v-t="{
+					    path: 'label.pagination.info.vue',
+					    args: {
+					        from: (currentPage-1)*pageSize +1,
+					        to: (totalItems > currentPage*pageSize ? currentPage*pageSize : totalItems),
+					        total: totalItems
+					    }
+					}" />
                 </div>
 
                 <template v-if="totalPages > 1">
                     <button
                         class="slds-button slds-button_icon slds-button_icon-container"
-                        title="Previous Page"
+                        :title="$t('label.pagination.previous-page')"
                         @click="currentPage--"
                         :disabled="currentPage == 1"
                     >
@@ -65,23 +68,19 @@
                         </div>
 
                         <div v-else class="slds-pagination_page-selector slds-grid slds-grid_vertical-align-center">
-                            <span class="slds-text-body_small slds-pagination_page-text slds-m-right_x-small">
-                                Page
-                            </span>
+                            <span class="slds-text-body_small slds-pagination_page-text slds-m-right_x-small" v-t="'label.pagination.page'" />
                             <input
                                 v-model.lazy.number="currentPage"
                                 autocomplete="false"
                                 class="slds-input"
                             />
-                            <span class="slds-text-body_small slds-pagination_page-text slds-m-left_x-small">
-                                of {{totalPages}}
-                            </span>
+                            <span class="slds-text-body_small slds-pagination_page-text slds-m-left_x-small" v-t="{path: 'label.pagination.of-total.vue', args: {total: totalPages}}" />
                         </div>
                     </div>
 
                     <button
                         class="slds-button slds-button_icon slds-button_icon-container"
-                        title="Next Page"
+                        :title="$t('label.pagination.next-page')"
                         @click="currentPage++"
                         :disabled="currentPage == totalPages"
                     >

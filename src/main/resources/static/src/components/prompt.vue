@@ -63,15 +63,3 @@
         }
     }
 </script>
-
-<style>
-    .cmp-prompt_highlight {
-
-    }
-    .cmp-prompt_highlight-warning {
-
-    }
-    .cmp-prompt_highlight-error {
-
-    }
-</style>

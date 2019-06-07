@@ -1,6 +1,6 @@
 <template>
     <span>
-        <tooltip :content="content" maxWidth="300">
+        <tooltip v-if="$props.content" :content="$props.content" maxWidth="300">
             <icon icon="info-circle" class="slds-icon slds-icon_xx-small slds-icon-text-light" />
         </tooltip>
     </span>

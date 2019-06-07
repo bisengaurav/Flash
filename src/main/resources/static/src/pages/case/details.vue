@@ -36,7 +36,7 @@
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label" v-t="'field.case.createddate.label'"></span>
                             <div class="slds-form-element__static">
-                                 {{ $dtz(caseData.createdDate, 'datetime')}} 
+                                 {{ $dtz(caseData.createdDate, 'datetime')}}
                             </div>
                         </div>
 
@@ -177,10 +177,10 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         //
         // PARAMS: porps, data, computed

@@ -25,10 +25,9 @@
                     <th v-t="'field.asset.serviceterritoryname.label'"></th>
                     <th v-t="'field.asset.workcentername.label'"></th>
                     <th v-t="'field.equipment.fsmlastvalidclienddate__c.label'"></th>
-                    <th></th>
                 </template>
                 <template #row="{row, id}">
-                    <td><router-link :to="{name: 'equipmentDetails', params: {id: id }}">{{row.name}}</router-link></td> 
+                    <td><router-link :to="{name: 'equipmentDetails', params: {id: id }}">{{row.name}}</router-link></td>
                     <td>{{row.equipmentTypeValue}}</td>
                     <td>{{row.customerAssetName__c}}</td>
                     <td>{{row.equipmentPhoneNumber__c}}</td>
@@ -40,7 +39,7 @@
                     <td>{{row.installationStateProvince__c}}</td>
                     <td><router-link :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
                     <td><router-link :to="{name: 'workCenter', params: {id: row.workCenterId }}">{{row.workCenterName}}</router-link></td>
-                    <td>{{  row.fsmLastValidCliEndDate__c |yesNo }}</td>
+                    <td>{{row.fsmLastValidCliEndDate__c|yesNo}}</td>
                 </template>
             </data-table-basic>
         </div>
@@ -49,11 +48,11 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
     import EquipmentFilterForm from './equipment-filter-form.vue';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         components: {
             EquipmentFilterForm

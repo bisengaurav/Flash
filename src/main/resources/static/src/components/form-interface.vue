@@ -31,7 +31,7 @@
                 getAction: null,
                 saveAction: null,
 
-                successMessage: 'Data saved successfully'
+                successMessage: this.$t('message.common.data-saved')
             }
         },
 

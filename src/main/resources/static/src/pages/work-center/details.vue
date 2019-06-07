@@ -28,7 +28,7 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.workcenter.workcenterresources.serviceresourcename.label'"></th> 
+                                <th v-t="'field.workcenter.workcenterresources.serviceresourcename.label'"></th>
                                 <th v-t="'field.workcenter.workcenterresources.workcentername.label'"></th>
                                 <th v-t="'field.workcenter.workcenterresources.worktypename.label'"></th>
                                 <th v-t="'field.workcenter.workcenterresources.preferencetype__c.label'"></th>
@@ -57,10 +57,10 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         //
         // PARAMS: porps, data, computed

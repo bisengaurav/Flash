@@ -3,6 +3,7 @@ import {PUSH} from '../components/alert-emitter/events';
 import {SHOW, HIDE} from '../components/page-loader/events';
 
 import LocalStorage from './local-storage';
+import i18n from './i18n';
 
 
 /**
@@ -95,9 +96,13 @@ function Query(url, data, method = 'GET', loading = false, cacheType = false) {
             } else {
                 console.log(response);
                 throw new Error(
-                    'status: ' +response.status
-                    +(response.statusText && ', message: ' +response.statusText)
+                    i18n.tdef('message', 'label.http.response-status') +': '+response.status
+
+                    +(response.statusText &&
+                        ', '+i18n.tdef('response', 'label.http.response-message') +': '+response.statusText
+                    )
                 );
+
             }
         })
         //
@@ -121,7 +126,7 @@ function Query(url, data, method = 'GET', loading = false, cacheType = false) {
             } else {
                 console.log(json);
                 throw new Error(
-                    json.messages.length > 0 ? json.messages.join(', ') : 'API query error'
+                    json.messages.length > 0 ? json.messages.join(', ') : i18n.tdef('API query error', 'message.api.undefined-error')
                 );
             }
         })
@@ -129,10 +134,8 @@ function Query(url, data, method = 'GET', loading = false, cacheType = false) {
         // process any errors from response and 2 "then" above
         //
         .catch(error => {
-            console.log(error);
-
             let message = `
-                <h2 class="slds-text-heading_small">ERROR</h2>
+                <h2 class="slds-text-heading_small">`+i18n.tdef('ERROR', 'label.common.error-title')+`</h2>
                 <p>${error.message}</p>
             `;
             EM.$emit(PUSH, {

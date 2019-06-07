@@ -55,10 +55,10 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         //
         // PARAMS: porps, data, computed

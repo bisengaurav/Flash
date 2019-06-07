@@ -1,5 +1,5 @@
 <template>
-    <icon icon="spinner" pulse class="slds-icon cmp-spinner" />
+    <icon icon="spinner" pulse class="slds-icon spinner" />
 </template>
 
 <script>
@@ -11,7 +11,7 @@
 </script>
 
 <style>
-    .cmp-spinner {
+    .spinner {
         fill: #0071b9;
     }
 </style>

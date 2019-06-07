@@ -140,10 +140,10 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         //
         // PARAMS: porps, data, computed
@@ -156,7 +156,7 @@
         },
         data() {
             return  {
-                pageTitle: this.$t('label.work-order'),  
+                pageTitle: this.$t('label.work-order'),
                 loading: true,
                 workOrder: {
                     serviceAppointments: []

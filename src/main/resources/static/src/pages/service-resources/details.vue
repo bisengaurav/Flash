@@ -63,7 +63,7 @@
             <div v-if="serviceResource.serviceResourceWorkCenters.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                    <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.service-resource.work-centers'"></h2> 
+                    <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.service-resource.work-centers'"></h2>
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
@@ -167,10 +167,10 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         //
         // PARAMS: porps, data, computed
@@ -183,7 +183,7 @@
         },
         data() {
             return  {
-                pageTitle: this.$t('label.service-resource'),  
+                pageTitle: this.$t('label.service-resource'),
                 loading: true,
                 serviceResource: {
                     serviceResourceTerritories: [],

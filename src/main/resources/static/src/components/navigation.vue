@@ -6,24 +6,24 @@
 
             <div class="nav-panel">
                 <div class="logo">
-                    <img alt="Cervello" src="/assets/img/logo-white.png" />
+                    <img :alt="$t('label.app-name')" src="/assets/img/logo-white.png" />
                 </div>
 
                 <div class="nav">
-                    <router-link :to="{name: 'home'}" exact active-class="nav-active" @click="close">Home</router-link>
-                    <router-link :to="{name: 'users'}" active-class="nav-active" @click="close">User Management</router-link>
-                    <router-link :to="{name: 'callouts'}" active-class="nav-active" @click="close">Callouts</router-link>
-                    <router-link :to="{name: 'equipment'}" active-class="nav-active" @click="close">Equipment</router-link>
-                    <router-link :to="{name: 'serviceResources'}" active-class="nav-active" @click="close">Service Resources</router-link>
+                    <router-link :to="{name: 'home'}" exact active-class="nav-active" @click="close" v-t="'navigation.home.label'" />
+                    <router-link :to="{name: 'users'}" active-class="nav-active" @click="close" v-t="'navigation.users.label'" />
+                    <router-link :to="{name: 'callouts'}" active-class="nav-active" @click="close" v-t="'navigation.cases.label'" />
+                    <router-link :to="{name: 'equipment'}" active-class="nav-active" @click="close" v-t="'navigation.assets.label'" />
+                    <router-link :to="{name: 'serviceResources'}" active-class="nav-active" @click="close" v-t="'navigation.service-resources.label'" />
 
                     <div class="nav-user">
                         <a @click="clearCache">
                             <icon icon="trash-alt" class="slds-icon slds-icon_xx-small slds-m-right_x-small" />
-                            <span>Clear All Cache</span>
+                            <span v-t="'navigation.clear-cache.label'" />
                         </a>
                         <a href="/logout">
                             <icon icon="key" class="slds-icon slds-icon_xx-small slds-m-right_x-small" />
-                            <span>Logout</span>
+                            <span v-t="'navigation.logout.label'" />
                         </a>
                     </div>
                 </div>
@@ -90,6 +90,7 @@
     body {
         overflow: hidden;
     }
+
     .main-scroll {
         height: 100vh;
         /*overflow: hidden;*/

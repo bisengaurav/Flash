@@ -5,9 +5,6 @@
         <p><b>Lang:</b> {{$lang}}</p>
         <p><b>Timezone:</b> {{$timezone}}</p>
         <br/>
-        <div><b>message.from-lang-component:</b> <span>{{ $t('message.from-lang-component') }}</span></div>
-        <div><b>warning.common.w1:</b> <span v-t="'warning.common.w1'" /></div>
-        <br/>
         <p><b>date:</b> {{ $dtz(new Date(), 'date') }}</p>
         <p><b>datetime:</b> {{ $dtz(new Date(), 'datetime') }}</p>
         <p><b>time:</b> {{ $dtz(new Date(), 'time') }}</p>
@@ -102,7 +99,7 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
 
     import Icons from '../../core/icons.js';
     import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons/';
@@ -110,7 +107,7 @@
 //    import moment from 'moment-timezone';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         //
         // PARAMS: porps, data, computed

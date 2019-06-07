@@ -63,11 +63,11 @@
 </template>
 
 <script>
-    import Page from '../../components/page.vue';
+    import PageInterface from '../../components/page-interface.vue';
     import CalloutsFilterForm from './callouts-filter-form.vue';
 
     export default {
-        extends: Page,
+        extends: PageInterface,
 
         components: {
             CalloutsFilterForm
@@ -78,7 +78,7 @@
         //
         data() {
             return {
-                pageTitle: this.$t('label.callouts'), 
+                pageTitle: this.$t('label.callouts'),
                 filters: {}
             }
         }

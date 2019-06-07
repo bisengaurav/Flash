@@ -41,7 +41,7 @@
         <form-element :label="$t('filter.equipment.customer-asset-name.label')" :class="gridItemClass">
             <input
                 id="customer_asset_name"
-                v-model="innerValue.customerAssetName__c" 
+                v-model="innerValue.customerAssetName__c"
                 class="slds-input"
             />
         </form-element>
@@ -102,17 +102,14 @@
             />
         </form-element>
 
-        <form-element :label="$t('filter.equipment.valid-contract.label')" :class="gridItemClass" for="valid_contract">
+        <form-element :label="$t('filter.equipment.valid-contract.label')" :class="gridItemClass">
             <div class="slds-select_container">
-                <select
+                <select-boolean
                     v-model="innerValue.fsmLastValidCliEndDate__c"
+                    :allowEmpty="true"
                     id="valid_contract"
                     class="slds-select"
-                >
-                    <option></option>
-                    <option value="true">{{ $t('label.common.yes') }}</option>
-                    <option value="false">{{ $t('label.common.no') }}</option>
-                </select>
+                />
             </div>
         </form-element>
 
@@ -126,13 +123,14 @@
 <script>
     import FiltersInterface from '../../components/filters-interface.vue';
     import {required} from 'vuelidate/lib/validators';
-
-    const messages = {
-        required: "Field is required 11",
-    };
+    import SelectBoolean from '../../components/select-boolean.vue';
 
     export default {
         extends: FiltersInterface,
+
+        components: {
+            SelectBoolean
+        },
 
         data() {
             return {
@@ -149,7 +147,7 @@
                     installationStateProvince__c: null,
                     fsmLastValidCliEndDate__c: null
                 }
-                
+
             }
         },
 
