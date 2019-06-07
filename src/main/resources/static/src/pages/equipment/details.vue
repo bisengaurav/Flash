@@ -111,15 +111,15 @@
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                             <thead>
                                 <tr class="slds-line-height_reset">
-                                    <th v-t="'field.activeslas.name.label'"></th>
-                                    <th v-t="'field.activeslas.coverage__c.label'"></th>
-                                    <th v-t="'field.activeslas.startdate.label'"></th>
-                                    <th v-t="'field.activeslas.enddate.label'"></th>
-                                    <th v-t="'field.activeslas.status.label'"></th>
-                                    <th v-t="'field.activeslas.responseTime__c.label'"></th>
-                                    <th v-t="'field.activeslas.responseTimeAfterHours__c.label'"></th>
-                                    <th v-t="'field.activeslas.calloutHours__c.label'"></th>
-                                    <th v-t="'field.activeslas.serviceHours__c.label'"></th>
+                                    <th v-t="'field.activesla.name.label'"></th>
+                                    <th v-t="'field.activesla.coverage__c.label'"></th>
+                                    <th v-t="'field.activesla.startdate.label'"></th>
+                                    <th v-t="'field.activesla.enddate.label'"></th>
+                                    <th v-t="'field.activesla.status.label'"></th>
+                                    <th v-t="'field.activesla.responseTime__c.label'"></th>
+                                    <th v-t="'field.activesla.responseTimeAfterHours__c.label'"></th>
+                                    <th v-t="'field.activesla.calloutHours__c.label'"></th>
+                                    <th v-t="'field.activesla.serviceHours__c.label'"></th>
                                 </tr>
                             </thead>
                             <tbody>

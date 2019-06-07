@@ -36,11 +36,11 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.serviceresourceterritories.name.label'"></th>
-                                <th v-t="'field.serviceresourceterritories.territorytype.label'"></th>
-                                <th v-t="'field.serviceresourceterritories.shifttype__c.label'"></th>
-                                <th v-t="'field.serviceresourceterritories.effectivestartdate.label'"></th>
-                                <th v-t="'field.serviceresourceterritories.effectiveenddate.label'"></th>
+                                <th v-t="'field.serviceresourceterritory.name.label'"></th>
+                                <th v-t="'field.serviceresourceterritory.territorytype.label'"></th>
+                                <th v-t="'field.serviceresourceterritory.shifttype__c.label'"></th>
+                                <th v-t="'field.serviceresourceterritory.effectivestartdate.label'"></th>
+                                <th v-t="'field.serviceresourceterritory.effectiveenddate.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +67,7 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.serviceresourceworkcenters.name.label'"></th>
+                                <th v-t="'field.serviceresourceworkcenter.name.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,10 +90,10 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.resourceabsences.start.label'"></th>
-                                <th v-t="'field.resourceabsences.end.label'"></th>
-                                <th v-t="'field.resourceabsences.recordtype__c.label'"></th>
-                                <th v-t="'field.resourceabsences.type.label'"></th>
+                                <th v-t="'field.resourceabsence.start.label'"></th>
+                                <th v-t="'field.resourceabsence.end.label'"></th>
+                                <th v-t="'field.resourceabsence.recordtype__c.label'"></th>
+                                <th v-t="'field.resourceabsence.type.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -119,20 +119,20 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.serviceresourceappointments.appointmentnumber.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.status.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.scheduledstartoriginal__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.scheduledendoriginal__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.fslpinned__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.workordernumber.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.earlieststartdate__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.duedate__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.maintenanceactivitytype__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.assembly__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.description__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.locationname.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.installationstreet__c.label'"></th>
-                                <th v-t="'field.serviceresourceappointments.installationcity__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.appointmentnumber.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.status.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.scheduledstartoriginal__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.scheduledendoriginal__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.fslpinned__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.workordernumber.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.earlieststartdate__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.duedate__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.maintenanceactivitytype__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.assembly__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.description__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.locationname.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.installationstreet__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointment.installationcity__c.label'"></th>
                             </tr>
                         </thead>
                         <tbody>

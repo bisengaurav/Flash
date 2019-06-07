@@ -89,64 +89,64 @@ export default {
     'field.equipment.accountid.label': 'Account ID',
 
     //equipment slas fields
-    'field.activeslas.name.label': 'SLA',
-    'field.activeslas.coverage__c.label': 'Coverage',
-    'field.activeslas.startdate.label': 'Start Date',
-    'field.activeslas.enddate.label': 'End Date',
-    'field.activeslas.status.label': 'Status',
-    'field.activeslas.responseTime__c.label': 'Response Time',
-    'field.activeslas.responseTimeAfterHours__c.label': 'Response Time After Hours',
-    'field.activeslas.calloutHours__c.label': 'Callout Hours',
-    'field.activeslas.serviceHours__c.label': 'Service Hours',
+    'field.activesla.name.label': 'SLA',
+    'field.activesla.coverage__c.label': 'Coverage',
+    'field.activesla.startdate.label': 'Start Date',
+    'field.activesla.enddate.label': 'End Date',
+    'field.activesla.status.label': 'Status',
+    'field.activesla.responseTime__c.label': 'Response Time',
+    'field.activesla.responseTimeAfterHours__c.label': 'Response Time After Hours',
+    'field.activesla.calloutHours__c.label': 'Callout Hours',
+    'field.activesla.serviceHours__c.label': 'Service Hours',
 
     //service territory fields
     'field.serviceterritory.salesorganization__c.label': 'Sales organization',
 
-    'field.serviceterritoryresources.effectivestartdate.label': 'Start Date',
-    'field.serviceterritoryresources.effectiveenddate.label': 'End Date',
-    'field.serviceterritoryresources.serviceresource_name.label': 'Title',
-    'field.serviceterritoryresources.phone__c.label': 'Phone',
+    'field.serviceterritoryresource.effectivestartdate.label': 'Start Date',
+    'field.serviceterritoryresource.effectiveenddate.label': 'End Date',
+    'field.serviceterritoryresource.serviceresource_name.label': 'Title',
+    'field.serviceterritoryresource.phone__c.label': 'Phone',
 
     //work center fields
-    'field.workcenterresources.serviceresourcename.label': 'Service Resource',
-    'field.workcenterresources.workcentername.label': 'Work Center',
-    'field.workcenterresources.worktypename.label': 'Work Type',
-    'field.workcenterresources.preferencetype__c.label': 'Preference Type',
-    'field.workcenterresources.startdate__c.label': 'Start Time',
-    'field.workcenterresources.enddate__c.label': 'End Time',
+    'field.workcenterresource.serviceresourcename.label': 'Service Resource',
+    'field.workcenterresource.workcentername.label': 'Work Center',
+    'field.workcenterresource.worktypename.label': 'Work Type',
+    'field.workcenterresource.preferencetype__c.label': 'Preference Type',
+    'field.workcenterresource.startdate__c.label': 'Start Time',
+    'field.workcenterresource.enddate__c.label': 'End Time',
 
     //service resource fields
     'field.serviceresource.name.label': 'Title',
     'field.serviceresource.phone__c.label': 'Phone',
     'field.serviceresource.salesorganization__c.label': 'Sales organization',
 
-    'field.serviceresourceterritories.name.label': 'Name',
-    'field.serviceresourceterritories.territorytype.label': 'Territory Type',
-    'field.serviceresourceterritories.shifttype__c.label': 'Shift Type',
-    'field.serviceresourceterritories.effectivestartdate.label': 'Start Date',
-    'field.serviceresourceterritories.effectiveenddate.label': 'End Date',
+    'field.serviceresourceterritory.name.label': 'Name',
+    'field.serviceresourceterritory.territorytype.label': 'Territory Type',
+    'field.serviceresourceterritory.shifttype__c.label': 'Shift Type',
+    'field.serviceresourceterritory.effectivestartdate.label': 'Start Date',
+    'field.serviceresourceterritory.effectiveenddate.label': 'End Date',
 
-    'field.serviceresourceworkcenters.name.label': 'Title',
+    'field.serviceresourceworkcenter.name.label': 'Title',
 
-    'field.resourceabsences.start.label': 'Start time',
-    'field.resourceabsences.end.label': 'End time',
-    'field.resourceabsences.recordtype__c.label': 'Record Type',
-    'field.resourceabsences.type.label': 'Type',
+    'field.resourceabsence.start.label': 'Start time',
+    'field.resourceabsence.end.label': 'End time',
+    'field.resourceabsence.recordtype__c.label': 'Record Type',
+    'field.resourceabsence.type.label': 'Type',
     
-    'field.serviceresourceappointments.appointmentnumber.label': 'Service Appointment',
-    'field.serviceresourceappointments.status.label': 'SA Status',
-    'field.serviceresourceappointments.scheduledstartoriginal__c.label': 'Scheduled Start',
-    'field.serviceresourceappointments.scheduledendoriginal__c.label': 'Scheduled End',
-    'field.serviceresourceappointments.fslpinned__c.label': 'Pinned',
-    'field.serviceresourceappointments.workordernumber.label': 'Work Order',
-    'field.serviceresourceappointments.earlieststartdate__c.label': 'Earliest Start Date',
-    'field.serviceresourceappointments.duedate__c.label': 'Due Date',
-    'field.serviceresourceappointments.maintenanceactivitytype__c.label': 'Activity Type',
-    'field.serviceresourceappointments.assembly__c.label': 'Assembly',
-    'field.serviceresourceappointments.description__c.label': 'Description',
-    'field.serviceresourceappointments.locationname.label': 'Location',
-    'field.serviceresourceappointments.installationstreet__c.label': 'Street',
-    'field.serviceresourceappointments.installationcity__c.label': 'City',
+    'field.serviceresourceappointment.appointmentnumber.label': 'Service Appointment',
+    'field.serviceresourceappointment.status.label': 'SA Status',
+    'field.serviceresourceappointment.scheduledstartoriginal__c.label': 'Scheduled Start',
+    'field.serviceresourceappointment.scheduledendoriginal__c.label': 'Scheduled End',
+    'field.serviceresourceappointment.fslpinned__c.label': 'Pinned',
+    'field.serviceresourceappointment.workordernumber.label': 'Work Order',
+    'field.serviceresourceappointment.earlieststartdate__c.label': 'Earliest Start Date',
+    'field.serviceresourceappointment.duedate__c.label': 'Due Date',
+    'field.serviceresourceappointment.maintenanceactivitytype__c.label': 'Activity Type',
+    'field.serviceresourceappointment.assembly__c.label': 'Assembly',
+    'field.serviceresourceappointment.description__c.label': 'Description',
+    'field.serviceresourceappointment.locationname.label': 'Location',
+    'field.serviceresourceappointment.installationstreet__c.label': 'Street',
+    'field.serviceresourceappointment.installationcity__c.label': 'City',
 
     //case fields
     'field.case.casenumber.label': 'Case ID',
@@ -178,12 +178,8 @@ export default {
     'field.case.salesorganization__c.label': 'Sales organization',
     'field.case.subject.label': 'Case title',
 
-    'field.workorders.workordernumber.label': 'Work order ID',
-    'field.workorders.status.label': 'Status',
-    'field.workorders.earlieststartdate__c.label': 'Earliest Start Date',
-    'field.workorders.duedate__c.label': 'Due Date',
-
     //work orders fields
+    'field.workorder.workordernumber.label': 'Work order ID',
     'field.workorder.status.label': 'Status',
     'field.workorder.lastmodifieddate.label': 'Last updated in FSM',
     'field.workorder.earlieststartdate__c.label': 'Earliest Start Date',
@@ -217,11 +213,11 @@ export default {
     'field.serviceappointment.salesorganization__c.label': 'Sales organization',
 
     //users fields
-    'field.users.name.label': 'Name',
-    'field.users.profileid.label': 'Profile',
-    'field.users.timezonesidkey.label': 'Time zone',
-    'field.users.languagelocalekey.label': 'Language',
-    'field.users.isadmin.label': 'Admin',
+    'field.user.name.label': 'Name',
+    'field.user.profileid.label': 'Profile',
+    'field.user.timezonesidkey.label': 'Time zone',
+    'field.user.languagelocalekey.label': 'Language',
+    'field.user.isadmin.label': 'Admin',
   
     //asset fields
     'field.asset.accountname.label': 'Account name',
@@ -230,5 +226,8 @@ export default {
 
     //Buttons
     'label.button.apply': 'Apply',
-    'label.button.clear-all': 'Clear All'
+    'label.button.clear-all': 'Clear All',
+
+    //messsages
+    'message.related-lest.no-related-record': 'No Related Records',
 }
