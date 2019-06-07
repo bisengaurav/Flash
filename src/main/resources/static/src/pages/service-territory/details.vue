@@ -29,10 +29,10 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.serviceterritory.effectivestartdate.label'"></th>
-                                <th v-t="'field.serviceterritory.effectiveenddate.label'"></th>
-                                <th v-t="'field.serviceterritory.serviceresource_name.label'"></th>
-                                <th v-t="'field.serviceterritory.phone__c.label'"></th>
+                                <th v-t="'field.serviceterritoryresources.effectivestartdate.label'"></th>
+                                <th v-t="'field.serviceterritoryresources.effectiveenddate.label'"></th>
+                                <th v-t="'field.serviceterritoryresources.serviceresource_name.label'"></th>
+                                <th v-t="'field.serviceterritoryresources.phone__c.label'"></th>
                             </tr>
                         </thead>
                         <tbody>

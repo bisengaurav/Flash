@@ -36,11 +36,11 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.serviceresource.name.label'"></th>
-                                <th v-t="'field.serviceresource.territorytype.label'"></th>
-                                <th v-t="'field.serviceresource.shifttype__c.label'"></th>
-                                <th v-t="'field.serviceresource.effectivestartdate.label'"></th>
-                                <th v-t="'field.serviceresource.effectiveenddate.label'"></th>
+                                <th v-t="'field.serviceresourceterritories.name.label'"></th>
+                                <th v-t="'field.serviceresourceterritories.territorytype.label'"></th>
+                                <th v-t="'field.serviceresourceterritories.shifttype__c.label'"></th>
+                                <th v-t="'field.serviceresourceterritories.effectivestartdate.label'"></th>
+                                <th v-t="'field.serviceresourceterritories.effectiveenddate.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +67,7 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.serviceresource.serviceresourceworkcenters.name.label'"></th>
+                                <th v-t="'field.serviceresourceworkcenters.name.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,10 +90,10 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.serviceresource.start.label'"></th>
-                                <th v-t="'field.serviceresource.end.label'"></th>
-                                <th v-t="'field.serviceresource.recordtype__c.label'"></th>
-                                <th v-t="'field.serviceresource.type.label'"></th>
+                                <th v-t="'field.resourceabsences.start.label'"></th>
+                                <th v-t="'field.resourceabsences.end.label'"></th>
+                                <th v-t="'field.resourceabsences.recordtype__c.label'"></th>
+                                <th v-t="'field.resourceabsences.type.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -119,20 +119,20 @@
                     <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
-                                <th v-t="'field.serviceresource.appointmentnumber.label'"></th>
-                                <th v-t="'field.serviceresource.status.label'"></th>
-                                <th v-t="'field.serviceresource.scheduledstartoriginal__c.label'"></th>
-                                <th v-t="'field.serviceresource.scheduledendoriginal__c.label'"></th>
-                                <th v-t="'field.serviceresource.fslpinned__c.label'"></th>
-                                <th v-t="'field.serviceresource.workordernumber.label'"></th>
-                                <th v-t="'field.serviceresource.earlieststartdate__c.label'"></th>
-                                <th v-t="'field.serviceresource.duedate__c.label'"></th>
-                                <th v-t="'field.serviceresource.maintenanceactivitytype__c.label'"></th>
-                                <th v-t="'field.serviceresource.assembly__c.label'"></th>
-                                <th v-t="'field.serviceresource.description__c.label'"></th>
-                                <th v-t="'field.serviceresource.locationname.label'"></th>
-                                <th v-t="'field.serviceresource.installationstreet__c.label'"></th>
-                                <th v-t="'field.serviceresource.installationcity__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.appointmentnumber.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.status.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.scheduledstartoriginal__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.scheduledendoriginal__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.fslpinned__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.workordernumber.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.earlieststartdate__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.duedate__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.maintenanceactivitytype__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.assembly__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.description__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.locationname.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.installationstreet__c.label'"></th>
+                                <th v-t="'field.serviceresourceappointments.installationcity__c.label'"></th>
                             </tr>
                         </thead>
                         <tbody>
