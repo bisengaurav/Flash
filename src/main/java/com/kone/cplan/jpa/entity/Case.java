@@ -3,9 +3,7 @@ package com.kone.cplan.jpa.entity;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 /**
  * @author Andrey Gribanov (Cervello)
@@ -18,8 +16,8 @@ public class Case extends AbstractCase {
 	//
 	//Variables
 	//
-	@EmbeddedId
-	private CaseCompositeKey compositeKey;
+	@Id
+	private String compositeKey;
 
 	@Column
 	private String street__c;
@@ -29,6 +27,9 @@ public class Case extends AbstractCase {
 
 	@Column
 	private String stateProvince__c;
+
+	@Column(name = "serviceappointment_id")
+	private Integer serviceAppointmentId;
 
 	@Column(name = "appointmentnumber")
 	private String appointmentNumber;
@@ -54,6 +55,9 @@ public class Case extends AbstractCase {
 	@Column
 	private String locationName;
 
+	@Column(name = "workorder_id")
+	private Integer workOrderId;
+
 	@Column(name = "workorder_number")
 	private String workOrderNumber;
 
@@ -67,20 +71,8 @@ public class Case extends AbstractCase {
 	//
 	//Properties
 	//
-	public CaseCompositeKey getCompositeKey() {
+	public String getCompositeKey() {
 		return compositeKey;
-	}
-
-	public Integer getId() {
-		return compositeKey.getId();
-	}
-
-	public Integer getWorkOrderId() {
-		return compositeKey.getWorkOrderId();
-	}
-
-	public Integer getServiceAppointmentId() {
-		return compositeKey.getServiceAppointmentId();
 	}
 
 	public String getStreet__c() {
@@ -95,8 +87,8 @@ public class Case extends AbstractCase {
 		return stateProvince__c;
 	}
 
-	public Timestamp getDueDate__c() {
-		return dueDate__c;
+	public Integer getServiceAppointmentId() {
+		return serviceAppointmentId;
 	}
 
 	public String getAppointmentNumber() {
@@ -131,73 +123,20 @@ public class Case extends AbstractCase {
 		return locationName;
 	}
 
+	public Integer getWorkOrderId() {
+		return workOrderId;
+	}
+
 	public String getWorkOrderNumber() {
 		return workOrderNumber;
 	}
 
+	public Timestamp getDueDate__c() {
+		return dueDate__c;
+	}
+
 	public String getMaintenanceActivityTypeCode__c() {
 		return maintenanceActivityTypeCode__c;
-	}
-	//
-
-	//
-	//Data Types
-	//
-	@Embeddable
-	public static class CaseCompositeKey implements Serializable {
-
-		@Column(nullable = false)
-		private Integer id;
-
-		@Column(name = "workorder_id", nullable = false)
-		private Integer workOrderId;
-
-		@Column(name = "serviceappointment_id", nullable = false)
-		private Integer serviceAppointmentId;
-
-		public CaseCompositeKey() {}
-
-		public CaseCompositeKey(Integer id, Integer workOrderId, Integer serviceAppointmentId) {
-			this.id = id;
-			this.workOrderId = workOrderId;
-			this.serviceAppointmentId = serviceAppointmentId;
-		}
-
-		public Integer getId() {
-			return id;
-		}
-		public void setId(Integer id) {
-			this.id = id;
-		}
-
-		public Integer getWorkOrderId() {
-			return workOrderId;
-		}
-		public void setWorkOrderId(Integer workOrderId) {
-			this.workOrderId = workOrderId;
-		}
-
-		public Integer getServiceAppointmentId() {
-			return serviceAppointmentId;
-		}
-		public void setServiceAppointmentId(Integer serviceAppointmentId) {
-			this.serviceAppointmentId = serviceAppointmentId;
-		}
-
-		@Override
-		public boolean equals(Object o) {
-			if (this == o) return true;
-			if (o == null || getClass() != o.getClass()) return false;
-			CaseCompositeKey that = (CaseCompositeKey) o;
-			return id.equals(that.id) &&
-				workOrderId.equals(that.workOrderId) &&
-				serviceAppointmentId.equals(that.serviceAppointmentId);
-		}
-
-		@Override
-		public int hashCode() {
-			return Objects.hash(id, workOrderId, serviceAppointmentId);
-		}
 	}
 	//
 }
