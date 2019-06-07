@@ -195,7 +195,7 @@
                 <select-loader
                     :source="$API.case.getUniqueSalesOrganizations"
                     :allowEmpty="true"
-                    v-model="innerValue.salesOrganizations__c"
+                    v-model="innerValue.salesOrganization__c"
                     id="sales_org"
                     class="slds-select"
                 />
@@ -244,7 +244,7 @@
                     serviceResourceName: null,
                     serviceTerritoryName: null,
                     caseOwnerTxt__c: null,
-                    salesOrganizations__c: null,
+                    salesOrganization__c: null,
                 }
             }
         }

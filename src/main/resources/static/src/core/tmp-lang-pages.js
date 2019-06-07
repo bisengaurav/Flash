@@ -150,7 +150,7 @@ export default {
 
     //case fields
     'field.case.casenumber.label': 'Case ID',
-    'field.case.createddate.label': 'Created',
+    'field.case.createddate.label': 'Created Date',
     'field.case.duedate__c.label': 'Due Date',
     'field.case.entrapment__c.label': 'Entrap.',
     'field.case.hazard__c.label': 'Hazard',
@@ -169,7 +169,6 @@ export default {
     
     'field.case.status.label': 'Status',
     'field.case.caseownertxt__c.label': 'Owner',
-    'field.case.createddate.label': 'Created in FSM',
     'field.case.accountid.label': 'Account ID',
     'field.case.accountname.label': 'Account name',
     'field.case.contactphone.label': 'Contact phone',
@@ -192,7 +191,6 @@ export default {
     'field.workorder.description__c.label': 'Description',
 
     'field.workorder.appointmentnumber.label': 'Service Appointment ID',
-    'field.workorder.status.label': 'Status',
     'field.workorder.serviceresourcename.label': 'Service resource',
     'field.workorder.scheduledstartoriginal__c.label': 'Scheduled Start Date',
     'field.workorder.scheduledendoriginal__c.label': 'Scheduled End Date',
