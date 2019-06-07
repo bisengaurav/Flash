@@ -20,6 +20,9 @@ public class Case extends AbstractCase {
 	private String compositeKey;
 
 	@Column
+	private Integer id;
+
+	@Column
 	private String street__c;
 
 	@Column
@@ -73,6 +76,10 @@ public class Case extends AbstractCase {
 	//
 	public String getCompositeKey() {
 		return compositeKey;
+	}
+
+	public Integer getId() {
+		return id;
 	}
 
 	public String getStreet__c() {
