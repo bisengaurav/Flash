@@ -71,7 +71,7 @@
         },
         data() {
             return  {
-                pageTitle: this.$t('label.service-territory'),
+                pageTitle: this.$t('text.service-territory.heading'),
                 loading: true,
                 serviceTerritory: {},
             }
@@ -94,7 +94,7 @@
                     .then(data => {
                         this.loading = false;
                         this.serviceTerritory = data;
-                        this.pageTitle =  this.$t('label.service-territory') +' — '+ this.serviceTerritory.name;
+                        this.pageTitle =  this.$t('text.service-territory.heading') +' — '+ this.serviceTerritory.name;
                     });
             }
         },

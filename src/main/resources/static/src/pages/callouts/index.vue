@@ -78,7 +78,7 @@
         //
         data() {
             return {
-                pageTitle: this.$t('label.callouts'), 
+                pageTitle: this.$t('text.callouts.heading'),
                 filters: {}
             }
         }

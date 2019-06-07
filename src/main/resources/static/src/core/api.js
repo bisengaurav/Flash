@@ -40,7 +40,10 @@ let API = {
             return Query('/ui-api/serviceResource/getById', {id});
         },
         getAllByFilter: (params) => {
-            return Query('/ui-api/serviceResource/getAllByFilter', params);
+            return Query('/ui-api/serviceResource/getAllByFilter', params, 'GET', true);
+        },
+        getUniqueSalesOrganizations: () => {
+            return Query('/ui-api/serviceResource/getUniqueSalesOrganizations');
         }
     },
 
@@ -58,12 +61,6 @@ let API = {
     serviceAppointment: {
         getById: (id) => {
             return Query('/ui-api/serviceAppointment/getById', {id});
-        },
-        getAllByFilter: (params) => {
-            return Query('/ui-api/serviceResource/getAllByFilter', params, 'GET', true);
-        },
-        getUniqueSalesOrganizations: () => {
-            return Query('/ui-api/serviceResource/getUniqueSalesOrganizations');
         },
         getUniqueStatuses: () => {
             return Query('/ui-api/serviceAppointment/getUniqueStatuses', null, 'GET', false, 'session');

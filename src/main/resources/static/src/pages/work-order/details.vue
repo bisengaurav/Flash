@@ -107,7 +107,7 @@
               <div v-if="workOrder.serviceAppointments.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                        <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.work-order.service-appointments'"></h2>
+                        <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'text.work-order-service-appointments.heading'"></h2>
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                             <thead>
                                 <tr class="slds-line-height_reset">
@@ -156,7 +156,7 @@
         },
         data() {
             return  {
-                pageTitle: this.$t('label.work-order'),  
+                pageTitle: this.$t('text.work-order.heading'),  
                 loading: true,
                 workOrder: {
                     serviceAppointments: []
@@ -181,7 +181,7 @@
                     .then(data => {
                         this.loading = false;
                         this.workOrder = data;
-                        this.pageTitle = this.$t('label.work-order') +' — '+ this.workOrder.workOrderNumber;
+                        this.pageTitle = this.$t('text.work-order.heading') +' — '+ this.workOrder.workOrderNumber;
                     });
             }
         },

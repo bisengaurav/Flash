@@ -132,7 +132,7 @@
         },
         data() {
             return  {
-                pageTitle: this.$t('label.service-appointment'),
+                pageTitle: this.$t('text.service-appointment.heading'),
                 loading: true,
                 serviceAppointment: {}
             }
@@ -155,7 +155,7 @@
                     .then(data => {
                         this.loading = false;
                         this.serviceAppointment = data;
-                        this.pageTitle = this.$t('label.service-appointment') +' — '+ this.serviceAppointment.appointmentNumber;
+                        this.pageTitle = this.$t('text.service-appointment.heading') +' — '+ this.serviceAppointment.appointmentNumber;
                     });
             }
         },

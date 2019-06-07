@@ -107,7 +107,7 @@
             <div v-if="equipment.activeSLAs.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                        <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'label.equipment.slas'"></h2>
+                        <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'text.slas.heading'"></h2>
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                             <thead>
                                 <tr class="slds-line-height_reset">
@@ -165,7 +165,7 @@
         },
         data() {
             return  {
-                pageTitle: this.$t('label.equipment'),
+                pageTitle: this.$t('text.equipment.heading'),
                 loading: true,
                 equipment: {},
             }
@@ -188,7 +188,7 @@
                     .then(data => {
                         this.equipment = data;
                         this.loading = false;
-                        this.pageTitle = this.$t('label.equipment') +' — '+ this.equipment.name;
+                        this.pageTitle = this.$t('text.equipment.heading') +' — '+ this.equipment.name;
                     });
             }
         },

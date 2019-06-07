@@ -73,7 +73,7 @@
         },
         data() {
             return  {
-                pageTitle: this.$t('label.work-center'),
+                pageTitle: this.$t('text.work-center.heading'),
                 loading: true,
                 workCenter: {
                     workCenterResources: [],
@@ -98,7 +98,7 @@
                     .then(data => {
                         this.loading = false;
                         this.workCenter = data;
-                        this.pageTitle = this.$t('label.work-center')+' — '+ this.workCenter.name;
+                        this.pageTitle = this.$t('text.work-center.heading')+' — '+ this.workCenter.name;
                     });
             }
         },

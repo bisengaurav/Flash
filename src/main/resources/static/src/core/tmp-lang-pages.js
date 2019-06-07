@@ -2,39 +2,39 @@ export default {
     'message.from-lang-pages': 'From Lang Pages',
 
     //equipment title
-    'label.equipment': 'Equipment',
-    'label.equipment.slas': 'SLAs',
+    'text.equipment.heading': 'Equipment',
+    'text.slas.heading': 'SLAs',
 
     //service territory title
-    'label.service-territory': 'Service Territory',
-    'label.service-territory.service-resources': 'Service Resources',
+    'text.service-territory.heading': 'Service Territory',
+    'text.service-resources.heading': 'Service Resources',
 
     //work center title
-    'label.work-center': 'Work Center',
+    'text.work-center.heading': 'Work Center',
 
     //service resource title
-    'label.service-resource': 'Service Resource',
-    'label.service-resource.service-resource-territories': 'Service Territories',
-    'label.service-resource.work-centers': 'Work Centers',
-    'label.service-resource.resource-absences': 'Absencess',
-    'label.service-resource.service-resource-appointments': 'Service Appointments',
+    'text.service-resource.heading': 'Service Resource',
+    'text.service-resource-territories.heading': 'Service Territories',
+    'text.work-centers.heading': 'Work Centers',
+    'text.resource-absences.heading': 'Absencess',
+    'text.service-resource-appointments.heading': 'Service Appointments',
 
     //callouts title
-    'label.callouts': 'Callouts',
+    'text.callouts.heading': 'Callouts',
 
     //case title
-    'label.case': 'Case',
-    'label.case.work-orders': 'Work orders of the case',
+    'text.case.heading': 'Case',
+    'text.case-work-orders.heading': 'Work orders of the case',
 
     //work order title
-    'label.work-order': 'Work Order',
-    'label.work-order.service-appointments': 'Work orders of the case',
+    'text.work-order.heading': 'Work Order',
+    'text.work-order-service-appointments.heading': 'Work orders of the case',
 
     //service appointment title
-    'label.service-appointment': 'Service Appointment',
+    'text.service-appointment.heading': 'Service Appointment',
 
-    //user management
-    'label.users': 'User Management',
+    //user management title
+    'text.users.heading': 'User Management',
 
     //equipment filters
     'filter.equipment.country.label': 'Country',

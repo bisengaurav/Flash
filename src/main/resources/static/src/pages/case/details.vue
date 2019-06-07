@@ -145,7 +145,7 @@
              <div v-if="caseData.workOrders.length > 0">
 
                 <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                        <h2 class="slds-text-heading_small slds-m-bottom_small"  v-t="'label.case.work-orders'"></h2>
+                        <h2 class="slds-text-heading_small slds-m-bottom_small"  v-t="'text.case-work-orders.heading'"></h2>
                         <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
                             <thead>
                                 <tr class="slds-line-height_reset">
@@ -193,7 +193,7 @@
         },
         data() {
             return  {
-                pageTitle: this.$t('label.case'),
+                pageTitle: this.$t('text.case.heading'),
                 loading: true,
                 caseData: {}
             }
@@ -216,7 +216,7 @@
                     .then(data => {
                         this.loading = false;
                         this.caseData = data;
-                        this.pageTitle =  this.$t('label.case') +' — '+ this.caseData.caseNumber;
+                        this.pageTitle =  this.$t('text.case.heading') +' — '+ this.caseData.caseNumber;
                     });
             }
         },

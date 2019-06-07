@@ -69,7 +69,7 @@
         //
         data() {
             return {
-                pageTitle: this.$t('label.users'),
+                pageTitle: this.$t('text.users.heading'),
                 userData: {},
                 loading: true,
             }
@@ -87,7 +87,7 @@
                 this.$API.user.getUserInfo().then(data => {
                     this.loading = false;
                     this.userData = data;
-                    this.pageTitle = this.$t('label.users')+' — '+ this.workCenter.name;
+                    this.pageTitle = this.$t('text.users.heading')+' — '+ this.workCenter.name;
                 });
             }
         },

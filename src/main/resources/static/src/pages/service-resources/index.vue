@@ -42,7 +42,7 @@
         //
         data() {
             return {
-                pageTitle: this.$t('label.service-resource'),
+                pageTitle: this.$t('text.service-resources.heading'),
                 filters: {}
             }
         }

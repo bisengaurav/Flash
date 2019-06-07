@@ -64,7 +64,7 @@
         //
         data() {
             return {
-                pageTitle: this.$t('label.equipment'),
+                pageTitle: this.$t('text.equipment.heading'),
                 filters: {}
             }
         }
