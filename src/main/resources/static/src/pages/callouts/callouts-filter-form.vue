@@ -190,9 +190,9 @@
             />
         </form-element>
 
-        <form-element 
-            :label="$t('filter.asset.sales-org.label')" 
-            :class="gridItemClass" for="sales_org" 
+        <form-element
+            :label="$t('filter.asset.sales-org.label')"
+            :class="gridItemClass" for="sales_org"
             :validator="$v.innerValue.salesOrganization__c"
         >
             <div class="slds-select_container">
@@ -208,7 +208,7 @@
         </form-element>
 
         <div :class="buttonsClass">
-            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters || $v.$invalid || countOfAppliedFilters < 2" v-t="'label.button.apply'"></button>
+            <button class="slds-button slds-button_brand" @click="apply" :disabled="$v.$invalid || countOfAppliedFilters < 2" v-t="'label.button.apply'"></button>
             <button class="slds-button slds-button_neutral" @click="clearAll" v-t="'label.button.clear-all'"></button>
         </div>
     </div>
@@ -217,7 +217,7 @@
 <script>
     import FiltersInterface from '../../components/filters-interface.vue';
     import SelectBoolean from '../../components/select-boolean.vue';
-    import {required, minLength} from 'vuelidate/lib/validators';
+    import {required} from 'vuelidate/lib/validators';
 
     export default {
         extends: FiltersInterface,
@@ -263,9 +263,8 @@
                 salesOrganization__c: {
                     required
                 },
-            },
-            minLength: minLength(0)
-        },
-       
+            }
+        }
+
     }
  </script>
