@@ -126,7 +126,7 @@
                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
                             <span class="slds-form-element__label" v-t="'field.case.salesorganization__c.label'"></span>
                             <div class="slds-form-element__static">
-                                {{caseData.salesOrganization__c}}
+                                {{caseData.salesOrganizations__c}}
                             </div>
                         </div>
 

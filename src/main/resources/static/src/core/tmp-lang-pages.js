@@ -7,7 +7,7 @@ export default {
 
     //service territory title
     'text.service-territory.heading': 'Service Territory',
-    'text.service-resources.heading': 'Service Resources',
+    'text.service-resources.heading': 'Service Resources of Territory',
 
     //work center title
     'text.work-center.heading': 'Work Center',
