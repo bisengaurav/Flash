@@ -98,6 +98,25 @@
                                 {{workOrder.description__c}}
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
+
+                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
+                            <span class="slds-form-element__label" v-t="'field.workorder.sales_organization__c.label'"></span>
+                            <div class="slds-form-element__static">
+                                {{workOrder.sales_organization__c}}
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
+                            <span class="slds-form-element__label" v-t="'field.workorder.maintenanceActivityTypeCode__c.label'"></span>
+                            <div class="slds-form-element__static">
+                                {{workOrder.maintenanceActivityTypeCode__c}}
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

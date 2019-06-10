@@ -28,7 +28,7 @@ export default {
 
     //work order title
     'text.work-order.heading': 'Work Order',
-    'text.work-order-service-appointments.heading': 'Work orders of the case',
+    'text.work-order-service-appointments.heading': 'Service Appointments',
 
     //service appointment title
     'text.service-appointment.heading': 'Service Appointment',
@@ -50,8 +50,8 @@ export default {
     'filter.case.due-date-after.label': 'Due Date after',
     'filter.case.entrapment.label': 'Entrapment',
     'filter.case.hazard.label': 'Hazard',
-    'filter.case.Injury.label': 'Injury',
-    'filter.case.asset.label': 'Asset',
+    'filter.case.injury.label': 'Injury',
+    'filter.case.equipment.label': 'Equipment',
     'filter.case.contact.label': 'Contact',
     'filter.case.caller-name.label': 'Caller name',
     'filter.case.work-order.label': 'Work order',
@@ -166,6 +166,7 @@ export default {
     'field.case.appointmentnumber.label': 'Service appointment',
     'field.case.serviceappointmentstatus.label': 'SA status',
     'field.case.serviceresourcename.label': 'Service resource',
+    'field.case.description.label': 'Description',
     
     'field.case.status.label': 'Status',
     'field.case.caseownertxt__c.label': 'Owner',
@@ -189,6 +190,8 @@ export default {
     'field.workorder.serviceterritoryname.label': 'Service territory',
     'field.workorder.casenumber.label': 'Case',
     'field.workorder.description__c.label': 'Description',
+    'field.workorder.sales_organization__c.label': 'Sales organization',
+    'field.workorder.maintenanceActivityTypeCode__c.label': 'Maintenance Activity Type',
 
     'field.workorder.appointmentnumber.label': 'Service Appointment ID',
     'field.workorder.serviceresourcename.label': 'Service resource',

@@ -47,7 +47,7 @@
             </div>
         </form-element>
 
-        <form-element :label="$t('filter.case.Injury.label')" :class="gridItemClass">
+        <form-element :label="$t('filter.case.injury.label')" :class="gridItemClass">
             <div class="slds-select_container">
                 <select-boolean
                     v-model="innerValue.injury__c"
@@ -58,7 +58,7 @@
             </div>
         </form-element>
 
-        <form-element :label="$t('filter.case.Injury.label')" :class="gridItemClass">
+        <form-element :label="$t('filter.case.equipment.label')" :class="gridItemClass">
              <input
                 id="asset"
                 v-model="innerValue.assetName"
@@ -114,7 +114,7 @@
             />
         </form-element>
 
-        <form-element :label="$t('filter.case.caller-name.label')" :class="gridItemClass">
+        <form-element :label="$t('filter.case.work-order.label')" :class="gridItemClass">
              <input
                 id="work_order"
                 v-model="innerValue.workOrderNumber"
@@ -190,12 +190,17 @@
             />
         </form-element>
 
-        <form-element :label="$t('filter.asset.sales-org.label')" :class="gridItemClass" for="sales_org">
+        <form-element 
+            :label="$t('filter.asset.sales-org.label')" 
+            :class="gridItemClass" for="sales_org" 
+            :validator="$v.innerValue.salesOrganization__c"
+        >
             <div class="slds-select_container">
                 <select-loader
                     :source="$API.case.getUniqueSalesOrganizations"
                     :allowEmpty="true"
                     v-model="innerValue.salesOrganization__c"
+                    @blur.native="$v.innerValue.salesOrganization__c.$touch()"
                     id="sales_org"
                     class="slds-select"
                 />
@@ -203,7 +208,7 @@
         </form-element>
 
         <div :class="buttonsClass">
-            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters" v-t="'label.button.apply'"></button>
+            <button class="slds-button slds-button_brand" @click="apply" :disabled="!countOfAppliedFilters || $v.$invalid || countOfAppliedFilters < 2" v-t="'label.button.apply'"></button>
             <button class="slds-button slds-button_neutral" @click="clearAll" v-t="'label.button.clear-all'"></button>
         </div>
     </div>
@@ -212,6 +217,7 @@
 <script>
     import FiltersInterface from '../../components/filters-interface.vue';
     import SelectBoolean from '../../components/select-boolean.vue';
+    import {required, minLength} from 'vuelidate/lib/validators';
 
     export default {
         extends: FiltersInterface,
@@ -247,6 +253,19 @@
                     salesOrganization__c: null,
                 }
             }
-        }
+        },
+
+        //
+        // VALIDATION
+        //
+        validations: {
+            innerValue: {
+                salesOrganization__c: {
+                    required
+                },
+            },
+            minLength: minLength(0)
+        },
+       
     }
  </script>
