@@ -1,6 +1,7 @@
 package com.kone.cplan.jpa.entity;
 
 import com.kone.cplan.helpers.db.DbSchema;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -34,7 +35,8 @@ public class ServiceTerritory implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "serviceterritoryid", referencedColumnName = "sfid")
-	private Set<ServiceTerritoryResource> serviceTerritoryResources;
+	@Where(clause = "isactive = true")
+	private Set<ServiceTerritoryResource> activeServiceTerritoryResources;
 	//
 
 	//
@@ -56,8 +58,8 @@ public class ServiceTerritory implements Serializable {
 		return salesOrganization__c;
 	}
 
-	public Set<ServiceTerritoryResource> getServiceTerritoryResources() {
-		return serviceTerritoryResources;
+	public Set<ServiceTerritoryResource> getActiveServiceTerritoryResources() {
+		return activeServiceTerritoryResources;
 	}
 	//
 }
