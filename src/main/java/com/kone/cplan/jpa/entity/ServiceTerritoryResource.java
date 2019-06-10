@@ -39,6 +39,9 @@ public class ServiceTerritoryResource {
 
 	@Column
 	private String phone__c;
+
+	@Column(name = "isactive")
+	private Boolean isActive;
 	//
 
 	//
@@ -66,6 +69,10 @@ public class ServiceTerritoryResource {
 
 	public String getPhone__c() {
 		return phone__c;
+	}
+
+	public Boolean getActive() {
+		return isActive;
 	}
 	//
 }
