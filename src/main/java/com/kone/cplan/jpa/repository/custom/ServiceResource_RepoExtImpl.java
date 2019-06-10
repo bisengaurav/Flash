@@ -54,7 +54,7 @@ public class ServiceResource_RepoExtImpl implements ServiceResource_RepoExt {
 		}
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
-		query.orderBy(cb.desc(root.get("name")));
+		query.orderBy(cb.asc(root.get("name")));
 
 		TypedQuery<ServiceResource> typedQuery = entityManager.createQuery(query);
 		typedQuery.setMaxResults(pageRequest.getPageSize());
