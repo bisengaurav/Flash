@@ -2,53 +2,53 @@
     <entity-details-layout :title="pageTitle" :loading="loading" :data="data">
         <template #details>
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.equipmenttype__c.label')">{{data.equipmentType__c}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.equipmentTypeValue.label')">{{data.equipmentTypeValue}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.fsmlastvalidclienddate__c.label')">{{data.fsmLastValidCliEndDate__c |yesNo }}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.fsmLastValidCliEndDate__c.label')">{{data.fsmLastValidCliEndDate__c |yesNo }}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.customerassetname__c.label')">{{data.customerAssetName__c}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.customerAssetName__c.label')">{{data.customerAssetName__c}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.accountid.label')">{{data.accountId}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.accountId.label')">{{data.accountId}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.asset.accountname.label')">{{data.accountName}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.accountName.label')">{{data.accountName}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.soldtoid.label')">{{data.soldToId}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.soldToId.label')">{{data.soldToId}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.soldtoname.label')">{{data.soldToName}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.soldToName.label')">{{data.soldToName}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.installationcity__c.label')">{{data.installationCity__c}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.installationCity__c.label')">{{data.installationCity__c}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.installationcountry__c.label')">{{data.installationCountry__c}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.installationCountry__c.label')">{{data.installationCountry__c}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.asset.locationname.label')">{{data.locationName}}</form-element-static>
+                <form-element-static :label="$t('entity.Asset.locationName.label')">{{data.locationName}}</form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.asset.serviceterritoryname.label')">
+                <form-element-static :label="$t('entity.Asset.serviceTerritoryName.label')">
                     <router-link :to="{name: 'serviceTerritory', params: {id: data.serviceTerritoryId }}">{{data.serviceTerritoryName}}</router-link>
                 </form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.equipment.workcentername.label')">
+                <form-element-static :label="$t('entity.Asset.workCenterName.label')">
                     <router-link :to="{name: 'workCenter', params: {id: data.workCenterId }}">{{data.workCenterName}}</router-link>
                 </form-element-static>
             </grid-item>
@@ -56,18 +56,18 @@
 
 
         <template #relations>
-            <entity-relations :title="$t('text.asset.related-slas')">
+            <entity-relations :title="$t('text.asset.related-entitlements')">
                 <data-table-basic :source="data.activeSLAs">
                     <template #head>
-                        <th v-t="'entity.activesla.name.label'"></th>
-                        <th v-t="'entity.activesla.coverage__c.label'"></th>
-                        <th v-t="'entity.activesla.startdate.label'"></th>
-                        <th v-t="'entity.activesla.enddate.label'"></th>
-                        <th v-t="'entity.activesla.status.label'"></th>
-                        <th v-t="'entity.activesla.responseTime__c.label'"></th>
-                        <th v-t="'entity.activesla.responseTimeAfterHours__c.label'"></th>
-                        <th v-t="'entity.activesla.calloutHours__c.label'"></th>
-                        <th v-t="'entity.activesla.serviceHours__c.label'"></th>
+                        <th v-t="'entity.Entitlement.name.label'"></th>
+                        <th v-t="'entity.Entitlement.coverage__c.label'"></th>
+                        <th v-t="'entity.Entitlement.startdate.label'"></th>
+                        <th v-t="'entity.Entitlement.enddate.label'"></th>
+                        <th v-t="'entity.Entitlement.status.label'"></th>
+                        <th v-t="'entity.Entitlement.responseTime__c.label'"></th>
+                        <th v-t="'entity.Entitlement.responseTimeAfterHours__c.label'"></th>
+                        <th v-t="'entity.Entitlement.calloutHours__c.label'"></th>
+                        <th v-t="'entity.Entitlement.serviceHours__c.label'"></th>
                     </template>
                     <template #row="{row, id}">
                         <td>{{row.name}}</td>

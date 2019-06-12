@@ -1,7 +1,7 @@
 <template>
     <filters-page-layout :title="pageTitle">
         <template #filters>
-            <filters-form v-model="filters" cacheUniqueKey="equipment" />
+            <filters-form v-model="filters" cacheUniqueKey="assets" />
         </template>
 
         <template #table>
@@ -11,19 +11,19 @@
                 :immediateRefresh="false"
             >
                 <template #head>
-                    <th v-t="'entity.equipment.name.label'"></th>
-                    <th v-t="'entity.equipment.equipmenttype__c.label'"></th>
-                    <th v-t="'entity.equipment.customerassetname__c.label'"></th>
-                    <th v-t="'entity.equipment.equipmentphonenumber__c.label'"></th>
-                    <th v-t="'entity.asset.accountname.label'"></th>
-                    <th v-t="'entity.equipment.soldtoname.label'"></th>
-                    <th v-t="'entity.asset.locationname.label'"></th>
-                    <th v-t="'entity.equipment.installationstreet__c.label'"></th>
-                    <th v-t="'entity.equipment.installationcity__c.label'"></th>
-                    <th v-t="'entity.equipment.installationstateprovince__c.label'"></th>
-                    <th v-t="'entity.asset.serviceterritoryname.label'"></th>
-                    <th v-t="'entity.equipment.workcentername.label'"></th>
-                    <th v-t="'entity.equipment.fsmlastvalidclienddate__c.label'"></th>
+                    <th v-t="'entity.Asset.name.label'"></th>
+                    <th v-t="'entity.Asset.equipmentTypeValue.label'"></th>
+                    <th v-t="'entity.Asset.customerAssetName__c.label'"></th>
+                    <th v-t="'entity.Asset.equipmentPhoneNumber__c.label'"></th>
+                    <th v-t="'entity.Asset.accountName.label'"></th>
+                    <th v-t="'entity.Asset.soldToName.label'"></th>
+                    <th v-t="'entity.Asset.locationName.label'"></th>
+                    <th v-t="'entity.Asset.installationStreet__c.label'"></th>
+                    <th v-t="'entity.Asset.installationCity__c.label'"></th>
+                    <th v-t="'entity.Asset.installationStateProvince__c.label'"></th>
+                    <th v-t="'entity.Asset.serviceTerritoryName.label'"></th>
+                    <th v-t="'entity.Asset.workCenterName.label'"></th>
+                    <th v-t="'entity.Asset.fsmLastValidCliEndDate__c.label'"></th>
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'asset', params: {id: id }}">{{row.name}}</router-link></td>

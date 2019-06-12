@@ -1,7 +1,7 @@
 export default {
     // Assets
     'text.assets.page-title': 'Equipment',
-    'text.asset.related-slas': 'SLAs',
+    'text.asset.related-entitlements': 'SLAs',
 
     // Callouts
     'text.callouts.page-title': 'Callouts',

@@ -1,35 +1,39 @@
 export default {
-    //equipment fields
-    'entity.equipment.name.label': 'Equipment',
-    'entity.equipment.equipmentphonenumber__c.label': 'Phone',
-    'entity.equipment.customerassetname__c.label': 'Customer asset name',
-    'entity.equipment.equipmenttype__c.label': 'Equipment type',
-    'entity.equipment.soldtoname.label': 'Sold-to name',
-    'entity.equipment.fsmlastvalidclienddate__c.label': 'Valid contract',
-    'entity.equipment.soldtoid.label': 'Sold-to ID',
-    'entity.equipment.installationcountry__c.label': 'Country',
-    'entity.equipment.installationstreet__c.label': 'Street',
-    'entity.equipment.installationcity__c.label': 'City',
-    'entity.equipment.installationstateprovince__c.label': 'State / Province',
-    'entity.equipment.workcentername.label': 'Work Center',
-    'entity.equipment.accountid.label': 'Account ID',
+    // Asset
+    'entity.Asset.name.label': 'Equipment',
+    'entity.Asset.equipmentTypeValue.label': 'Equipment Type',
+    'entity.Asset.equipmentType__c.label': 'Equipment Type',
+    'entity.Asset.customerAssetName__c.label': 'Customer Asset Name',
+    'entity.Asset.equipmentPhoneNumber__c.label': 'Phone',
+    'entity.Asset.accountName.label': 'Account Name',
+    'entity.Asset.accountId.label': 'Account ID',
+    'entity.Asset.soldToName.label': 'Sold-to name',
+    'entity.Asset.soldToId.label': 'Sold-to ID',
+    'entity.Asset.locationName.label': 'Location',
+    'entity.Asset.installationCountry__c.label': 'Country',
+    'entity.Asset.installationStreet__c.label': 'Street',
+    'entity.Asset.installationCity__c.label': 'City',
+    'entity.Asset.installationStateProvince__c.label': 'State / Province',
+    'entity.Asset.serviceTerritoryName.label': 'Service Territory',
+    'entity.Asset.workCenterName.label': 'Work Center',
+    'entity.Asset.fsmLastValidCliEndDate__c.label': 'Valid Contract',
 
-    //asset fields
-    'entity.asset.accountname.label': 'Account name',
-    'entity.asset.locationname.label': 'Location',
-    'entity.asset.serviceterritoryname.label': 'Service Territory',
+    // Entitlement
+    'entity.Entitlement.name.label': 'SLA',
+    'entity.Entitlement.coverage__c.label': 'Coverage',
+    'entity.Entitlement.startdate.label': 'Start Date',
+    'entity.Entitlement.enddate.label': 'End Date',
+    'entity.Entitlement.status.label': 'Status',
+    'entity.Entitlement.responseTime__c.label': 'Response Time',
+    'entity.Entitlement.responseTimeAfterHours__c.label': 'Response Time After Hours',
+    'entity.Entitlement.calloutHours__c.label': 'Callout Hours',
+    'entity.Entitlement.serviceHours__c.label': 'Service Hours',
 
 
-    //equipment slas fields
-    'entity.activesla.name.label': 'SLA',
-    'entity.activesla.coverage__c.label': 'Coverage',
-    'entity.activesla.startdate.label': 'Start Date',
-    'entity.activesla.enddate.label': 'End Date',
-    'entity.activesla.status.label': 'Status',
-    'entity.activesla.responseTime__c.label': 'Response Time',
-    'entity.activesla.responseTimeAfterHours__c.label': 'Response Time After Hours',
-    'entity.activesla.calloutHours__c.label': 'Callout Hours',
-    'entity.activesla.serviceHours__c.label': 'Service Hours',
+
+
+
+
 
     //service territory fields
     'entity.serviceterritory.salesorganization__c.label': 'Sales organization',
@@ -148,6 +152,10 @@ export default {
 
 
 
+    //asset fields
+    'entity.asset.accountname.label': 'Account name',
+    'entity.asset.locationname.label': 'Location',
+    'entity.asset.serviceterritoryname.label': 'Service Territory',
 
 
     //users fields
