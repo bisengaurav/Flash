@@ -1,5 +1,5 @@
-<template>
-    <icon icon="spinner" pulse class="slds-icon spinner" />
+<template functional>
+    <icon icon="spinner" pulse :class="['slds-icon spinner', data.class, data.staticClass]" />
 </template>
 
 <script>

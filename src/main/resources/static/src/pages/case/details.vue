@@ -1,249 +1,112 @@
 <template>
-    <div>
+    <entity-details-layout :title="pageTitle" :loading="loading" :data="data">
+        <template #details>
+            <grid-item>
+                <form-element-static :label="$t('field.case.status.label')">{{data.status}}</form-element-static>
+            </grid-item>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_large">
-            <back-button class="slds-m-right_medium" />
-            {{pageTitle}}
-        </h1>
-        <loader v-if="loading" type="block" :height="400" />
-        <div v-else>
-              <div class="slds-col slds-size_1-of-1">
+            <grid-item>
+                <form-element-static :label="$t('field.case.caseownertxt__c.label')">{{data.caseOwnerTxt__c}}</form-element-static>
+            </grid-item>
 
-                <div class="slds-card slds-p-around_medium">
-                     <!-- slds-p-bottom_mediumslds-border_bottom -->
-                    <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
-                        <!-- <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
-                            <span class="slds-form-element__label">Case title</span>
-                            <div class="slds-form-element__static">
-                                {{caseData.caseOwnerTxt__c}}
-                            </div>
-                        </div> -->
+            <grid-item>
+                <form-element-static :label="$t('field.case.createddate.label')">{{ $dtz(data.createdDate, 'datetime')}}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.status.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{caseData.status}}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.case.entrapment__c.label')">{{ data.entrapment__c |yesNo }}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.caseownertxt__c.label'"></span>
-                            <div class="slds-form-element__static" >
-                                {{caseData.caseOwnerTxt__c}}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.case.hazard__c.label')">{{ data.hazard__c |yesNo }}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.createddate.label'"></span>
-                            <div class="slds-form-element__static">
-                                 {{ $dtz(caseData.createdDate, 'datetime')}}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.case.injury__c.label')">{{ data.injury__c |yesNo }}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.entrapment__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{ caseData.entrapment__c |yesNo }}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.case.assetname.label')">
+                    <router-link :to="{name: 'asset', params: {id: data.assetId }}">{{data.assetName}}</router-link>
+                </form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.hazard__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{ caseData.hazard__c |yesNo }}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.case.accountid.label')">{{data.accountId}}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.injury__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{ caseData.injury__c |yesNo }}
-                            </div>
-                        </div>
-                    </div>
+            <grid-item>
+                <form-element-static :label="$t('field.case.accountname.label')">{{data.accountName}}</form-element-static>
+            </grid-item>
 
-                    <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
+            <grid-item>
+                <form-element-static :label="$t('field.case.contactname.label')">{{data.contactName}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.case.contactphone.label')">{{data.contactPhone}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t( 'field.case.callername__c.label')">{{data.callerName__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.case.callerphonenumber__c.label')">{{data.callerPhoneNumber__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.case.fsmcontactIspassenger__c.label')">{{ data.fsmContactIsPassenger__c |yesNo }}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.case.salesorganization__c.label')">{{data.salesOrganizations__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.case.subject.label')">{{data.subject}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.case.description.label')">{{data.description}}</form-element-static>
+            </grid-item>
+        </template>
 
 
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.assetname.label'"></span>
-                            <div class="slds-form-element__static">
-                               <router-link :to="{name: 'equipmentDetails', params: {id: caseData.assetId }}">{{caseData.assetName}}</router-link>
-                            </div>
-                        </div>
-
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.accountid.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{caseData.accountId}}
-                            </div>
-                        </div>
-
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.accountname.label'"></span>
-                            <div class="slds-form-element__static">
-                                 {{caseData.accountName}}
-                            </div>
-                        </div>
-
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.contactname.label'"></span>
-                            <div class="slds-form-element__static">
-                                 {{caseData.contactName}}
-                            </div>
-                        </div>
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.contactphone.label'"></span>
-                            <div class="slds-form-element__static">
-                                 {{caseData.contactPhone}}
-                            </div>
-                        </div>
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
-                            <span class="slds-form-element__label" v-t=" 'field.case.callername__c.label'"></span>
-                            <div class="slds-form-element__static">
-                               {{caseData.callerName__c}}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slds-grid slds-wrap slds-grid_pull-padded">
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.callerphonenumber__c.label'"></span>
-                            <div class="slds-form-element__static">
-                               {{caseData.callerPhoneNumber__c}}
-                            </div>
-                        </div>
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.fsmcontactIspassenger__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                 {{ caseData.fsmContactIsPassenger__c |yesNo }}
-                            </div>
-                        </div>
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.salesorganization__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{caseData.salesOrganizations__c}}
-                            </div>
-                        </div>
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.subject.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{caseData.subject}}
-                            </div>
-                        </div>
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.case.description.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{caseData.description}}
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-             <div>
-
-                <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                        <h2 class="slds-text-heading_small slds-m-bottom_small"  v-t="'text.case-work-orders.heading'"></h2>
-
-                        <div v-if="caseData.workOrders.length <= 0" class="slds-p-around_medium">
-                            <alert type="static" :showIcon="false" :animate="false" :closable="false" v-t="'message.common.no-related-record'" />
-                        </div>
-                        
-                        <table v-else class="slds-table slds-table_cell-buffer slds-table_bordered">
-                            <thead>
-                                <tr class="slds-line-height_reset">
-                                    <th v-t="'field.workorder.workordernumber.label'"></th>
-                                    <th v-t="'field.workorder.status.label'"></th>
-                                    <th v-t="'field.workorder.earlieststartdate__c.label'"></th>
-                                    <th v-t="'field.workorder.duedate__c.label'"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                    v-for="row in caseData.workOrders"
-                                    :key="row.id"
-                                >
-                                <td><router-link :to="{name: 'workOrder', params: {id: row.id }}">{{row.workOrderNumber}}</router-link></td>
-                                <td>{{row.status}}</td>
-                                <td>{{ $dtz(row.earliestStartDate__c, 'datetime') }}</td>
-                                <td>{{ $dtz(row.dueDate__c, 'datetime') }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-            </div>
-
-        </div>
-
-    </div>
+        <template #relations>
+            <entity-relations :title="$t('text.case.related-work-orders')">
+                <data-table-basic :source="data.workOrders">
+                    <template #head>
+                        <th v-t="'field.workorder.workordernumber.label'"></th>
+                        <th v-t="'field.workorder.status.label'"></th>
+                        <th v-t="'field.workorder.earlieststartdate__c.label'"></th>
+                        <th v-t="'field.workorder.duedate__c.label'"></th>
+                    </template>
+                    <template #row="{row, id}">
+                        <td>
+                            <router-link :to="{name: 'workOrder', params: {id: row.id }}">{{row.workOrderNumber}}</router-link>
+                        </td>
+                        <td>{{row.status}}</td>
+                        <td>{{ $dtz(row.earliestStartDate__c, 'datetime') }}</td>
+                        <td>{{ $dtz(row.dueDate__c, 'datetime') }}</td>
+                    </template>
+                </data-table-basic>
+            </entity-relations>
+        </template>
+    </entity-details-layout>
 </template>
 
 <script>
-    import PageInterface from '../../components/page-interface.vue';
+    import EntityDetailsInterface from '../../interfaces/entity-details.js';
 
     export default {
-        extends: PageInterface,
+        extends: EntityDetailsInterface,
 
-        //
-        // PARAMS: porps, data, computed
-        //
-        props: {
-            id: {
-                type: Number,
-                default: null
-            }
-        },
         data() {
             return  {
-                pageTitle: this.$t('text.case.heading'),
-                loading: true,
-                caseData: {}
-            }
-        },
-
-        //
-        // METHODS
-        //
-        methods: {
-            init() {
-                this.loading = true;
-
-                // wrong Job ID
-                if (!this.id) {
-                    throw new Error('Wrong ID');
-                }
-
-                // data
-                this.$API.case.getById(this.id)
-                    .then(data => {
-                        this.loading = false;
-                        this.caseData = data;
-                        this.pageTitle =  this.$t('text.case.heading') +' — '+ this.caseData.caseNumber;
-                    });
-            }
-        },
-
-        //
-        // WATCHERS
-        //
-        watch: {
-            id: {
-                handler() {
-                    this.init();
-                },
-                immediate: true
+                action: this.$API.case.getById,
+                titleField: 'caseNumber'
             }
         }
-
     }
 </script>

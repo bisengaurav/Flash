@@ -1,226 +1,108 @@
 <template>
-    <div>
+    <entity-details-layout :title="pageTitle" :loading="loading" :data="data">
+        <template #details>
+            <grid-item>
+                <form-element-static :label="$t( 'field.workorder.status.label')">{{data.status}}</form-element-static>
+            </grid-item>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_large">
-            <back-button class="slds-m-right_medium" />
-            {{pageTitle}}
-        </h1>
-        <loader v-if="loading" type="block" :height="400" />
-        <div v-else>
-            <div class="slds-col slds-size_1-of-1">
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.lastmodifieddate.label')">{{ $dtz(data.lastModifiedDate, 'datetime') }}</form-element-static>
+            </grid-item>
 
-                <div class="slds-card slds-p-around_medium">
-                    <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.earlieststartdate__c.label')">{{ $dtz(data.earliestStartDate__c, 'datetime') }}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t=" 'field.workorder.status.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{workOrder.status}}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.duedate__c.label')">{{ $dtz(data.dueDate__c, 'datetime') }}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.lastmodifieddate.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{ $dtz(workOrder.lastModifiedDate, 'datetime') }}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.assembly__c.label')">{{data.assembly__c}}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.earlieststartdate__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{ $dtz(workOrder.earliestStartDate__c, 'datetime') }}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.asset.accountname.label')">{{data.accountName}}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.duedate__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{ $dtz(workOrder.dueDate__c, 'datetime') }}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.assetname.label')">
+                    <router-link :to="{name: 'asset', params: {id: data.assetId }}">{{data.assetName}}</router-link>
+                </form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.assembly__c.label'"></span>
-                            <div class="slds-form-element__static">
-                               {{workOrder.assembly__c}}
-                            </div>
-                        </div>
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.accountid.label')">{{data.accountId}}</form-element-static>
+            </grid-item>
 
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.asset.accountname.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{workOrder.accountName}}
-                            </div>
-                        </div>
-                    </div>
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.serviceterritoryname.label')">
+                    <router-link :to="{name: 'serviceTerritory', params: {id: data.serviceTerritoryId }}">{{data.serviceTerritoryName}}</router-link>
+                </form-element-static>
+            </grid-item>
 
-                    <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
+            <grid-item>
+                <form-element-static :label="$t('field.asset.locationname.label')">{{data.locationName}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.casenumber.label')">
+                    <router-link :to="{name: 'case', params: {id: data.caseId }}"> {{data.caseNumber}}</router-link>
+                </form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.description__c.label')">{{data.description__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.sales_organization__c.label')">{{data.sales_organization__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('field.workorder.maintenanceActivityTypeCode__c.label')">{{data.maintenanceActivityTypeCode__c}}</form-element-static>
+            </grid-item>
+        </template>
 
 
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.assetname.label'"></span>
-                            <div class="slds-form-element__static">
-                                <router-link :to="{name: '', params: {id: workOrder.assetId }}">{{workOrder.assetName}}</router-link>
-                            </div>
-                        </div>
-
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.accountid.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{workOrder.accountId}}
-                            </div>
-                        </div>
-
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.serviceterritoryname.label'"></span>
-                            <div class="slds-form-element__static">
-                                <router-link :to="{name: 'serviceTerritory', params: {id: workOrder.serviceTerritoryId }}">{{workOrder.serviceTerritoryName}}</router-link>
-                            </div>
-                        </div>
-
-                         <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.asset.locationname.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{workOrder.locationName}}
-                            </div>
-                        </div>
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6  slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.casenumber.label'"></span>
-                            <div class="slds-form-element__static">
-                                <router-link :to="{name: 'case', params: {id: workOrder.caseId }}"> {{workOrder.caseNumber}}</router-link>
-                            </div>
-                        </div>
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.description__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{workOrder.description__c}}
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-bottom_small">
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.sales_organization__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{workOrder.sales_organization__c}}
-                            </div>
-                        </div>
-
-                        <div class="slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-6 slds-col_padded">
-                            <span class="slds-form-element__label" v-t="'field.workorder.maintenanceActivityTypeCode__c.label'"></span>
-                            <div class="slds-form-element__static">
-                                {{workOrder.maintenanceActivityTypeCode__c}}
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-              <div>
-
-                <div class="slds-card slds-p-around_medium slds-m-top_medium">
-                        <h2 class="slds-text-heading_small slds-m-bottom_small" v-t="'text.work-order-service-appointments.heading'"></h2>
-                        
-                        <div v-if="workOrder.serviceAppointments.length <= 0" class="slds-p-around_medium">
-                            <alert type="static" :showIcon="false" :animate="false" :closable="false" v-t="'message.common.no-related-record'" />
-                        </div>
-                        
-                         <table v-else class="slds-table slds-table_cell-buffer slds-table_bordered">    
-                            <thead>
-                                <tr class="slds-line-height_reset">
-                                    <th v-t="'field.workorder.appointmentnumber.label'"></th>
-                                    <th v-t="'field.workorder.status.label'"></th>
-                                    <th v-t="'field.workorder.serviceresourcename.label'"></th>
-                                    <th v-t="'field.workorder.scheduledstartoriginal__c.label'"></th>
-                                    <th v-t="'field.workorder.scheduledendoriginal__c.label'"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                    v-for="row in workOrder.serviceAppointments"
-                                    :key="row.id"
-                                >
-                                    <td><router-link :to="{name: 'serviceAppointment', params: {id: row.id }}">{{row.appointmentNumber}}</router-link></td>
-                                    <td>{{row.status}}</td>
-                                    <td><router-link :to="{name: 'serviceResource', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link></td>
-                                    <td>{{ $dtz(row.scheduledStartOriginal__c, 'datetime') }}</td>
-                                    <td>{{ $dtz(row.scheduledEndOriginal__c, 'datetime') }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-            </div>
-        </div>
-
-    </div>
+        <template #relations>
+            <entity-relations :title="$t('text.work-order.related-appointments')">
+                <data-table-basic :source="data.serviceAppointments">
+                    <template #head>
+                        <th v-t="'field.workorder.appointmentnumber.label'"></th>
+                        <th v-t="'field.workorder.status.label'"></th>
+                        <th v-t="'field.workorder.serviceresourcename.label'"></th>
+                        <th v-t="'field.workorder.scheduledstartoriginal__c.label'"></th>
+                        <th v-t="'field.workorder.scheduledendoriginal__c.label'"></th>
+                    </template>
+                    <template #row="{row, id}">
+                        <td>
+                            <router-link :to="{name: 'serviceAppointment', params: {id: row.id }}">{{row.appointmentNumber}}</router-link>
+                        </td>
+                        <td>{{row.status}}</td>
+                        <td>
+                            <router-link :to="{name: 'serviceResource', params: {id: row.serviceResourceId }}">{{row.serviceResourceName}}</router-link>
+                        </td>
+                        <td>{{ $dtz(row.scheduledStartOriginal__c, 'datetime') }}</td>
+                        <td>{{ $dtz(row.scheduledEndOriginal__c, 'datetime') }}</td>
+                    </template>
+                </data-table-basic>
+            </entity-relations>
+        </template>
+    </entity-details-layout>
 </template>
 
 <script>
-    import PageInterface from '../../components/page-interface.vue';
+    import EntityDetailsInterface from '../../interfaces/entity-details.js';
 
     export default {
-        extends: PageInterface,
+        extends: EntityDetailsInterface,
 
-        //
-        // PARAMS: porps, data, computed
-        //
-        props: {
-            id: {
-                type: Number,
-                default: null
-            }
-        },
         data() {
             return  {
-                pageTitle: this.$t('text.work-order.heading'),  
-                loading: true,
-                workOrder: {
-                    serviceAppointments: []
-                }
-            }
-        },
-
-        //
-        // METHODS
-        //
-        methods: {
-            init() {
-                this.loading = true;
-
-                // wrong Job ID
-                if (!this.id) {
-                    throw new Error('Wrong ID');
-                }
-
-                // data
-                  this.$API.workOrder.getById(this.id)
-                    .then(data => {
-                        this.loading = false;
-                        this.workOrder = data;
-                        this.pageTitle = this.$t('text.work-order.heading') +' — '+ this.workOrder.workOrderNumber;
-                    });
-            }
-        },
-
-        //
-        // WATCHERS
-        //
-        watch: {
-            id: {
-                handler() {
-                    this.init();
-                },
-                immediate: true
+                action: this.$API.workOrder.getById,
+                titleField: 'workOrderNumber'
             }
         }
-
     }
 </script>

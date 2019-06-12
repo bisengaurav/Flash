@@ -1,13 +1,13 @@
 <template>
-    <div :class="{'cmp-collapsible-section_collapsed': state}">
-        <div @click="state = !state" class="slds-grid slds-grid_vertical-align-center cmp-collapsible-section_title">
-            <icon icon="chevron-right" class="slds-icon slds-icon_x-small cmp-collapsible-section_chevron" />
+    <div :class="{'collapsible-section_collapsed': state}">
+        <div @click="state = !state" class="slds-grid slds-grid_vertical-align-center collapsible-section_title">
+            <icon icon="chevron-right" class="slds-icon slds-icon_x-small collapsible-section_chevron" />
             <div class="slds-grow slds-m-left_x-small">
                 <div v-if="title" class="slds-text-heading_small">{{title}}</div>
                 <slot v-else name="title"></slot>
             </div>
         </div>
-        <div v-show="state" class="cmp-collapsible-section_body slds-p-top_small">
+        <div v-show="state" class="collapsible-section_body slds-p-top_small">
             <slot></slot>
         </div>
     </div>
@@ -20,7 +20,7 @@
 
     export default {
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             title: {
@@ -41,19 +41,19 @@
 </script>
 
 <style>
-    .cmp-collapsible-section_title {
+    .collapsible-section_title {
         cursor: pointer;
     }
-    .cmp-collapsible-section_body {
+    .collapsible-section_body {
 
     }
-    .cmp-collapsible-section_collapsed {}
+    .collapsible-section_collapsed {}
 
-    .cmp-collapsible-section_title .cmp-collapsible-section_chevron {
+    .collapsible-section_title .collapsible-section_chevron {
         fill: currentColor;
         transform: rotate(0deg);
     }
-    .cmp-collapsible-section_collapsed .cmp-collapsible-section_title .cmp-collapsible-section_chevron {
+    .collapsible-section_collapsed .collapsible-section_title .collapsible-section_chevron {
         transform: rotate(90deg);
     }
 </style>

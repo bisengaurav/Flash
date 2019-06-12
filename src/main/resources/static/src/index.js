@@ -26,13 +26,9 @@ Vue.prototype.$EM = EM;
 
 
 //
-// global Components
+// GLOBAL Components
 //
 
-/*
-import Modal from './components/modal.vue';
-Vue.component('Modal', Modal);
-*/
 import Spinner from './components/spinner.vue';
 Vue.component('Spinner', Spinner);
 
@@ -44,7 +40,7 @@ Vue.component('Alert', Alert);
 
 import SelectLoader from './components/select-loader.vue';
 Vue.component('SelectLoader', SelectLoader);
-
+/*
 import Checkbox from './components/checkbox.vue';
 Vue.component('Checkbox', Checkbox);
 
@@ -53,19 +49,19 @@ Vue.component('CheckboxToggle', CheckboxToggle);
 
 import CollapsibleSection from './components/collapsible-section.vue';
 Vue.component('CollapsibleSection', CollapsibleSection);
-
+*/
 import BackButton from './components/back-button.vue';
 Vue.component('BackButton', BackButton);
 
 import FormElement from './components/form-element.vue';
 Vue.component('FormElement', FormElement);
 
+import FormElementStatic from './components/form-element-static.vue';
+Vue.component('FormElementStatic', FormElementStatic);
+
 import DataTableBasic from './components/data-table-basic.vue';
 Vue.component('DataTableBasic', DataTableBasic);
 /*
-import DataTablePagination from './components/data-table-pagination.vue';
-Vue.component('DataTablePagination', DataTablePagination);
-*/
 import Popover from './components/popover.vue';
 Vue.component('Popover', Popover);
 
@@ -74,9 +70,32 @@ Vue.component('Dropdown', Dropdown);
 
 import Tooltip from './components/tooltip.vue';
 Vue.component('Tooltip', Tooltip);
-
+/*
 import HelpPointer from './components/help-pointer.vue';
 Vue.component('HelpPointer', HelpPointer);
+*/
+
+//
+// MARKUP Components
+//
+
+import Grid from './markup/grid.vue';
+Vue.component('Grid', Grid);
+
+import GridItem from './markup/grid-item.vue';
+Vue.component('GridItem', GridItem);
+
+import EntityDetailsLayout from './markup/entity-details-layout.vue';
+Vue.component('EntityDetailsLayout', EntityDetailsLayout);
+
+import EntityRelations from './markup/entity-relations.vue';
+Vue.component('EntityRelations', EntityRelations);
+
+import FiltersFormLayout from './markup/filters-form-layout.vue';
+Vue.component('FiltersFormLayout', FiltersFormLayout);
+
+import FiltersPageLayout from './markup/filters-page-layout.vue';
+Vue.component('FiltersPageLayout', FiltersPageLayout);
 
 
 
@@ -124,9 +143,13 @@ Vue.filter("yesNo", function(value) {
 import App from './components/app.vue';
 import AppLoader from './components/app-loader.vue';
 
-import messagesCmp from './core/tmp-lang-components.js';
-import messagesPages from './core/tmp-lang-pages.js';
-
+let _lang = {};
+import _text from './i18n/text.js';
+import _label from './i18n/label.js';
+import _message from './i18n/message.js';
+import _entity from './i18n/entity.js';
+import _filter from './i18n/filter.js';
+_lang = Object.assign({}, _text, _label, _message, _entity, _filter);
 
 
 //
@@ -186,12 +209,12 @@ API.session.getInfo()
 
                     i18n.setLocaleMessage(
                         store.state.$lang,
-                        Object.assign({}, messagesCmp, messagesPages, data.stringsMap)
+                        Object.assign({}, _lang, data.stringsMap)
                     );
                     LocalStorage.setVersionedCache(
                         store.state.$lang,
                         data.stringsHashCode,
-                        Object.assign({}, messagesCmp, messagesPages, data.stringsMap)
+                        Object.assign({}, _lang, data.stringsMap)
                     );
                     init();
                 });

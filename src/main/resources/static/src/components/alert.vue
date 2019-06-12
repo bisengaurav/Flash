@@ -37,7 +37,7 @@
 
     export default {
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             type: {

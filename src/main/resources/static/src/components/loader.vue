@@ -1,17 +1,23 @@
 <template>
-    <div :class="preset.class" :style="preset.style">
+    <div v-if="$props.loading" :class="preset.class" :style="preset.style">
         <spinner :class="preset.spinnerClass" />
     </div>
+
+    <div v-else><slot name="content"></slot></div>
 </template>
 
 <script>
     export default {
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             type: {
                 type: String
+            },
+            loading: {
+                type: Boolean,
+                default: true
             },
             height: {
                 type: Number,

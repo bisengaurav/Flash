@@ -30,7 +30,7 @@
         extends: Checkbox,
 
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             onLabel: {
@@ -42,10 +42,10 @@
         },
         computed: {
             innerOnLabel() {
-                return this.$props.onLabel || this.$t('label.button.on');
+                return this.$props.onLabel || this.$t('label.checkbox.on');
             },
             innerOffLabel() {
-                return this.$props.offLabel || this.$t('label.button.off');
+                return this.$props.offLabel || this.$t('label.checkbox.off');
             }
         }
 

@@ -11,12 +11,15 @@
 
                 <div class="nav">
                     <router-link :to="{name: 'home'}" exact active-class="nav-active" @click="close" v-t="'navigation.home.label'" />
-                    <router-link :to="{name: 'users'}" active-class="nav-active" @click="close" v-t="'navigation.users.label'" />
                     <router-link :to="{name: 'callouts'}" active-class="nav-active" @click="close" v-t="'navigation.cases.label'" />
-                    <router-link :to="{name: 'equipment'}" active-class="nav-active" @click="close" v-t="'navigation.assets.label'" />
+                    <router-link :to="{name: 'assets'}" active-class="nav-active" @click="close" v-t="'navigation.assets.label'" />
                     <router-link :to="{name: 'serviceResources'}" active-class="nav-active" @click="close" v-t="'navigation.service-resources.label'" />
 
                     <div class="nav-user">
+                        <router-link :to="{name: 'profile'}" active-class="nav-active" @click="close">
+                            <icon icon="user-alt" class="slds-icon slds-icon_xx-small slds-m-right_x-small" />
+                            <span v-t="'navigation.profile.label'"></span>
+                        </router-link>
                         <a @click="clearCache">
                             <icon icon="trash-alt" class="slds-icon slds-icon_xx-small slds-m-right_x-small" />
                             <span v-t="'navigation.clear-cache.label'" />
@@ -45,12 +48,12 @@
 
 <script>
     import Icons from '../core/icons.js';
-    import {faBars, faTrashAlt, faKey} from '@fortawesome/free-solid-svg-icons/';
-    Icons.add(faBars, faTrashAlt, faKey);
+    import {faBars, faTrashAlt, faKey, faUserAlt} from '@fortawesome/free-solid-svg-icons/';
+    Icons.add(faBars, faTrashAlt, faKey, faUserAlt);
 
     export default {
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         data() {
             return {
