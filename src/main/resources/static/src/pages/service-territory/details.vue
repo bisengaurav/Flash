@@ -2,7 +2,7 @@
     <entity-details-layout :title="pageTitle" :loading="loading" :data="data">
         <template #details>
             <grid-item x="1">
-                <form-element-static :label="$t('field.serviceterritory.salesorganization__c.label')">{{data.salesOrganization__c}}</form-element-static>
+                <form-element-static :label="$t('entity.serviceterritory.salesorganization__c.label')">{{data.salesOrganization__c}}</form-element-static>
             </grid-item>
         </template>
 
@@ -11,10 +11,10 @@
             <entity-relations :title="$t('text.service-territory.related-service-resources')">
                 <data-table-basic :source="data.activeServiceTerritoryResources">
                     <template #head>
-                        <th v-t="'field.serviceterritoryresource.effectivestartdate.label'"></th>
-                        <th v-t="'field.serviceterritoryresource.effectiveenddate.label'"></th>
-                        <th v-t="'field.serviceterritoryresource.serviceresource_name.label'"></th>
-                        <th v-t="'field.serviceterritoryresource.phone__c.label'"></th>
+                        <th v-t="'entity.serviceterritoryresource.effectivestartdate.label'"></th>
+                        <th v-t="'entity.serviceterritoryresource.effectiveenddate.label'"></th>
+                        <th v-t="'entity.serviceterritoryresource.serviceresource_name.label'"></th>
+                        <th v-t="'entity.serviceterritoryresource.phone__c.label'"></th>
                     </template>
                     <template #row="{row, id}">
                         <td>{{ $dtz(row.effectiveStartDate, 'datetime') }}</td>

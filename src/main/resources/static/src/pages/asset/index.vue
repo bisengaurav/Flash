@@ -11,19 +11,19 @@
                 :immediateRefresh="false"
             >
                 <template #head>
-                    <th v-t="'field.equipment.name.label'"></th>
-                    <th v-t="'field.equipment.equipmenttype__c.label'"></th>
-                    <th v-t="'field.equipment.customerassetname__c.label'"></th>
-                    <th v-t="'field.equipment.equipmentphonenumber__c.label'"></th>
-                    <th v-t="'field.asset.accountname.label'"></th>
-                    <th v-t="'field.equipment.soldtoname.label'"></th>
-                    <th v-t="'field.asset.locationname.label'"></th>
-                    <th v-t="'field.equipment.installationstreet__c.label'"></th>
-                    <th v-t="'field.equipment.installationcity__c.label'"></th>
-                    <th v-t="'field.equipment.installationstateprovince__c.label'"></th>
-                    <th v-t="'field.asset.serviceterritoryname.label'"></th>
-                    <th v-t="'field.equipment.workcentername.label'"></th>
-                    <th v-t="'field.equipment.fsmlastvalidclienddate__c.label'"></th>
+                    <th v-t="'entity.equipment.name.label'"></th>
+                    <th v-t="'entity.equipment.equipmenttype__c.label'"></th>
+                    <th v-t="'entity.equipment.customerassetname__c.label'"></th>
+                    <th v-t="'entity.equipment.equipmentphonenumber__c.label'"></th>
+                    <th v-t="'entity.asset.accountname.label'"></th>
+                    <th v-t="'entity.equipment.soldtoname.label'"></th>
+                    <th v-t="'entity.asset.locationname.label'"></th>
+                    <th v-t="'entity.equipment.installationstreet__c.label'"></th>
+                    <th v-t="'entity.equipment.installationcity__c.label'"></th>
+                    <th v-t="'entity.equipment.installationstateprovince__c.label'"></th>
+                    <th v-t="'entity.asset.serviceterritoryname.label'"></th>
+                    <th v-t="'entity.equipment.workcentername.label'"></th>
+                    <th v-t="'entity.equipment.fsmlastvalidclienddate__c.label'"></th>
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'asset', params: {id: id }}">{{row.name}}</router-link></td>

@@ -12,25 +12,25 @@
                 :immediateRefresh="false"
             >
                 <template #head>
-                    <th v-t="'field.case.casenumber.label'"></th>
-                    <th v-t="'field.case.createddate.label'"></th>
-                    <th v-t="'field.case.duedate__c.label'"></th>
-                    <th v-t="'field.case.entrapment__c.label'"></th>
-                    <th v-t="'field.case.hazard__c.label'"></th>
-                    <th v-t="'field.case.injury__c.label'"></th>
-                    <th v-t="'field.case.assetname.label'"></th>
-                    <th v-t="'field.asset.locationname.label'"></th>
-                    <th v-t="'field.case.street__c.label'"></th>
-                    <th v-t="'field.case.city__c.label'"></th>
-                    <th v-t="'field.case.stateprovince__c.label'"></th>
-                    <th v-t="'field.case.contactname.label'"></th>
-                    <th v-t="'field.case.callername__c.label'"></th>
-                    <th v-t="'field.case.workordernumber.label'"></th>
-                    <th v-t="'field.case.assemblynumber__c.label'"></th>
-                    <th v-t="'field.case.appointmentnumber.label'"></th>
-                    <th v-t="'field.case.serviceappointmentstatus.label'"></th>
-                    <th v-t="'field.case.serviceresourcename.label'"></th>
-                    <th v-t="'field.asset.serviceterritoryname.label'"></th>
+                    <th v-t="'entity.case.casenumber.label'"></th>
+                    <th v-t="'entity.case.createddate.label'"></th>
+                    <th v-t="'entity.case.duedate__c.label'"></th>
+                    <th v-t="'entity.case.entrapment__c.label'"></th>
+                    <th v-t="'entity.case.hazard__c.label'"></th>
+                    <th v-t="'entity.case.injury__c.label'"></th>
+                    <th v-t="'entity.case.assetname.label'"></th>
+                    <th v-t="'entity.asset.locationname.label'"></th>
+                    <th v-t="'entity.case.street__c.label'"></th>
+                    <th v-t="'entity.case.city__c.label'"></th>
+                    <th v-t="'entity.case.stateprovince__c.label'"></th>
+                    <th v-t="'entity.case.contactname.label'"></th>
+                    <th v-t="'entity.case.callername__c.label'"></th>
+                    <th v-t="'entity.case.workordernumber.label'"></th>
+                    <th v-t="'entity.case.assemblynumber__c.label'"></th>
+                    <th v-t="'entity.case.appointmentnumber.label'"></th>
+                    <th v-t="'entity.case.serviceappointmentstatus.label'"></th>
+                    <th v-t="'entity.case.serviceresourcename.label'"></th>
+                    <th v-t="'entity.asset.serviceterritoryname.label'"></th>
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'case', params: {id: row.id }}">{{row.caseNumber}}</router-link></td>
