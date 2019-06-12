@@ -1,4 +1,4 @@
-import PageInterface from './page';
+import PageInterface from './page.js';
 
 export default {
     extends: PageInterface,

@@ -62,14 +62,19 @@ routes.push({
 // Entity Details pages
 //
 
+//import EntityDetailsBuilder from '../components/entity-details-builder/';
+
+
 // Asset
 import AssetDetails from '../pages/asset/details.vue';
 routes.push({
     path: '/asset/:id',
     name: 'asset',
     component: AssetDetails,
+//    component: EntityDetailsBuilder,
     props(route) {
         return {
+//            entity: 'Asset',
             id: +route.params['id']
         }
     }

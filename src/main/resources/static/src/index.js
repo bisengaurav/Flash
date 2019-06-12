@@ -74,6 +74,8 @@ Vue.component('Tooltip', Tooltip);
 import HelpPointer from './components/help-pointer.vue';
 Vue.component('HelpPointer', HelpPointer);
 */
+import OutputField from './components/output-field.vue';
+Vue.component('OutputField', OutputField);
 
 //
 // MARKUP Components
