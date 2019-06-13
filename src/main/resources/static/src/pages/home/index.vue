@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1 class="slds-text-heading_large slds-m-bottom_large" v-t="'text.home.heading'"></h1>
+        <h1 class="slds-text-heading_large slds-m-bottom_large" v-t="'text.home.page-title'"></h1>
 
         <div class="cmp-home-page_wrapper" v-html="$t('text.home.html')">
         </div>

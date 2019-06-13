@@ -26,5 +26,9 @@ export default {
     'text.work-center.related-service-resources': 'Work Center Resources',
 
     // Work Order
-    'text.work-order.related-appointments': 'Service Appointments'
+    'text.work-order.related-appointments': 'Service Appointments',
+
+    // Home 
+    'text.home.page-title': 'FSM C-Plan', 
+    'text.home.html': '<p>C-Plan is the Business Continuity Solution for KONE Field Service operations.</p><br><h2>1. List of Ongoing Callouts and Immediate Service Needs</h2><br><ul><li>Use the Ongoing Callouts tab to see Callouts and Immediate Service Needs which were created in FSM before FSM went down.</li></ul><br><h2>2. Equipment List for New Callouts</h2><br><ul><li>The Equipment list is intended for KC3 agents for identifying the equipment for new callouts</li><li>Once you have identified the callout, drill into the Service Territory of the Equipment to find candidates</li><li>Dispatch new callouts by calling the technician</li></ul><br><h2>3. Scheduled Service Appointments for technicians</h2><br><ul><li>The Service Resources tab shows a list of technicians</li><li>Use this to see the contact information, planned absences and assigned service appointments per technician</li></ul>',
 }
