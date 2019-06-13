@@ -1,7 +1,8 @@
 package com.kone.cplan.jpa.repository.custom;
 
-import com.kone.cplan.jpa.entity.Case;
-import com.kone.cplan.jpa.filter.CaseFilter;
+import com.kone.cplan.jpa.entity.Callout;
+import com.kone.cplan.jpa.filter.CalloutFilter;
+import com.kone.cplan.jpa.filter.IFilter;
 import com.kone.cplan.jpa.utils.JpaUtils;
 import org.springframework.data.domain.Pageable;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Case_RepoExtImpl implements Case_RepoExt {
+public class Callout_RepoExtImpl implements Callout_RepoExt {
 
 	//
 	//Variables
@@ -30,15 +31,16 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 	//Public methods
 	//
 	@Override
-	public List<Case> findByFilter(CaseFilter filter, Pageable pageRequest) {
+	public List<Callout> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
-		if (filter == null) {
+		if (baseFilter == null || !(baseFilter instanceof CalloutFilter)) {
 			return (new ArrayList<>());
 		}
+		CalloutFilter filter = (CalloutFilter) baseFilter;
 
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Case> query = cb.createQuery(Case.class);
-		Root<Case> root = query.from(Case.class);
+		CriteriaQuery<Callout> query = cb.createQuery(Callout.class);
+		Root<Callout> root = query.from(Callout.class);
 
 		List<Predicate> predicates = new ArrayList<>();
 
@@ -48,6 +50,9 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 		}
 		if (filter.getCreatedDate() != null) {
 			predicates.add(cb.greaterThanOrEqualTo(root.get("createdDate"), filter.getCreatedDate()));
+		}
+		if (filter.getStatus() != null) {
+			predicates.add(cb.equal(root.get("status"), filter.getStatus()));
 		}
 		if (filter.getEntrapment__c() != null) {
 			predicates.add(cb.equal(root.get("entrapment__c"), filter.getEntrapment__c()));
@@ -139,7 +144,7 @@ public class Case_RepoExtImpl implements Case_RepoExt {
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
 		query.orderBy(cb.desc(root.get("createdDate")));
 
-		TypedQuery<Case> typedQuery = entityManager.createQuery(query);
+		TypedQuery<Callout> typedQuery = entityManager.createQuery(query);
 		typedQuery.setMaxResults(pageRequest.getPageSize());
 
 		return typedQuery.getResultList();

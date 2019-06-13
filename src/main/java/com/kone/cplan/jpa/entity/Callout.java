@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_case")
-public class Case extends AbstractCase {
+public class Callout extends AbstractCase {
 
 	//
 	//Variables

@@ -10,13 +10,13 @@ import javax.persistence.Table;
  * @created 22-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_equipment")
-public class Equipment extends AbstractEquipment {
+@Table(schema = DbSchema.C_PLAN, name = "view_asset")
+public class Asset extends AbstractAsset {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public Equipment() {};
+	public Asset() {};
 	//
 }

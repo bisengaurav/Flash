@@ -11,14 +11,14 @@ import java.util.Set;
  * @created 22-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_equipment")
-public class EquipmentDetails extends AbstractEquipment {
+@Table(schema = DbSchema.C_PLAN, name = "view_asset")
+public class AssetDetails extends AbstractAsset {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public EquipmentDetails() {};
+	public AssetDetails() {};
 	//
 
 	//
@@ -27,14 +27,14 @@ public class EquipmentDetails extends AbstractEquipment {
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "assetid", referencedColumnName = "sfid")
 	@Where(clause = "status = 'Active'")
-	private Set<SLA> activeSLAs;
+	private Set<Entitlement> activeEntitlements;
 	//
 
 	//
 	//Properties
 	//
-	public Set<SLA> getActiveSLAs() {
-		return activeSLAs;
+	public Set<Entitlement> getActiveEntitlements() {
+		return activeEntitlements;
 	}
 	//
 }

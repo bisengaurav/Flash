@@ -11,13 +11,13 @@ import java.sql.Date;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_entitlement")
-public class SLA {
+public class Entitlement {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public SLA() {};
+	public Entitlement() {};
 	//
 
 	//
@@ -29,8 +29,8 @@ public class SLA {
 	@Column(unique = true)
 	private String sfid;
 
-	@Column
-	private String assetid;
+	@Column(name = "assetid")
+	private String assetId;
 
 	@Column
 	private String name;
@@ -38,11 +38,11 @@ public class SLA {
 	@Column
 	private String coverage__c;
 
-	@Column
-	private Date startdate;
+	@Column(name = "startdate")
+	private Date startDate;
 
-	@Column
-	private Date enddate;
+	@Column(name = "enddate")
+	private Date endDate;
 
 	@Column
 	private String status;
@@ -71,6 +71,10 @@ public class SLA {
 		return sfid;
 	}
 
+	public String getAssetId() {
+		return assetId;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -79,12 +83,12 @@ public class SLA {
 		return coverage__c;
 	}
 
-	public Date getStartdate() {
-		return startdate;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public Date getEnddate() {
-		return enddate;
+	public Date getEndDate() {
+		return endDate;
 	}
 
 	public String getStatus() {

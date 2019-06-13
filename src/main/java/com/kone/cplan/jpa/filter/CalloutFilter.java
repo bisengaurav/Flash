@@ -3,12 +3,12 @@ package com.kone.cplan.jpa.filter;
 import java.sql.Timestamp;
 
 /**
- * This class represents a filter for the Case entities.
+ * This class represents a filter for the Callout entities.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 27-05-2019
  */
-public class CaseFilter implements Filter {
+public class CalloutFilter implements IFilter, IFilterWithSalesOrg {
 
 	//
 	//Variables
@@ -16,6 +16,8 @@ public class CaseFilter implements Filter {
 	private String caseNumber;
 
 	private Timestamp createdDate;
+
+	private String status;
 
 	private Boolean entrapment__c;
 
@@ -73,6 +75,13 @@ public class CaseFilter implements Filter {
 	}
 	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Boolean getEntrapment__c() {
@@ -155,6 +164,9 @@ public class CaseFilter implements Filter {
 	public Timestamp getDueDate__c() {
 		return dueDate__c;
 	}
+	public void setDueDate__c(Timestamp dueDate__c) {
+		this.dueDate__c = dueDate__c;
+	}
 
 	public String getMaintenanceActivityTypeCode__c() {
 		return maintenanceActivityTypeCode__c;
@@ -208,6 +220,7 @@ public class CaseFilter implements Filter {
 	public String getSalesOrganization__c() {
 		return salesOrganization__c;
 	}
+	@Override
 	public void setSalesOrganization__c(String salesOrganization__c) {
 		this.salesOrganization__c = salesOrganization__c;
 	}

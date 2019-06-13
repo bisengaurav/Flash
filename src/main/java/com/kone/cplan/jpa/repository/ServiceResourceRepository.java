@@ -1,6 +1,7 @@
 package com.kone.cplan.jpa.repository;
 
 import com.kone.cplan.jpa.entity.ServiceResource;
+import com.kone.cplan.jpa.repository.custom.IRepoForSalesOrg;
 import com.kone.cplan.jpa.repository.custom.ServiceResource_RepoExt;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ServiceResourceRepository extends JpaRepository<ServiceResource, Integer>,
-	ServiceResource_RepoExt {
+	ServiceResource_RepoExt, IRepoForSalesOrg {
 
 	@Query("SELECT s.salesOrganization__c" +
 		" FROM ServiceResource s" +

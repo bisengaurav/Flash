@@ -1,5 +1,7 @@
 package com.kone.cplan.jpa.entity;
 
+import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,7 +10,7 @@ import java.io.Serializable;
  * @created 30-05-2019
  */
 @MappedSuperclass
-abstract class AbstractServiceResource implements Serializable {
+public abstract class AbstractServiceResource implements Serializable, IEntityWithSalesOrg {
 
 	//
 	//Variables
@@ -24,6 +26,9 @@ abstract class AbstractServiceResource implements Serializable {
 
 	@Column
 	private String phone__c;
+
+	@Column(name = "isactive")
+	private Boolean isActive;
 
 	@Column
 	private String salesOrganization__c;
@@ -48,6 +53,11 @@ abstract class AbstractServiceResource implements Serializable {
 		return phone__c;
 	}
 
+	public Boolean getActive() {
+		return isActive;
+	}
+
+	@Override
 	public String getSalesOrganization__c() {
 		return salesOrganization__c;
 	}

@@ -1,6 +1,7 @@
 package com.kone.cplan.jpa.repository.custom;
 
 import com.kone.cplan.jpa.entity.ServiceResource;
+import com.kone.cplan.jpa.filter.IFilter;
 import com.kone.cplan.jpa.filter.ServiceResourceFilter;
 import com.kone.cplan.jpa.utils.JpaUtils;
 import org.springframework.data.domain.Pageable;
@@ -29,11 +30,12 @@ public class ServiceResource_RepoExtImpl implements ServiceResource_RepoExt {
 	//Public methods
 	//
 	@Override
-	public List<ServiceResource> findByFilter(ServiceResourceFilter filter, Pageable pageRequest) {
+	public List<ServiceResource> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
-		if (filter == null) {
+		if (baseFilter == null || !(baseFilter instanceof ServiceResourceFilter)) {
 			return (new ArrayList<>());
 		}
+		ServiceResourceFilter filter = (ServiceResourceFilter) baseFilter;
 
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ServiceResource> query = cb.createQuery(ServiceResource.class);
@@ -52,6 +54,8 @@ public class ServiceResource_RepoExtImpl implements ServiceResource_RepoExt {
 		if (filter.getSalesOrganization__c() != null) {
 			predicates.add(cb.equal(root.get("salesOrganization__c"), filter.getSalesOrganization__c()));
 		}
+
+		predicates.add(cb.equal(root.get("isActive"), true));
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
 		query.orderBy(cb.asc(root.get("name")));

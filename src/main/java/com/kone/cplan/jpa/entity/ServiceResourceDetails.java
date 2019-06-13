@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "serviceresource")
+@Table(schema = DbSchema.C_PLAN, name = "view_service_resource")
 public class ServiceResourceDetails extends AbstractServiceResource implements Serializable {
 
 	//
@@ -37,7 +37,7 @@ public class ServiceResourceDetails extends AbstractServiceResource implements S
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "resourceid", referencedColumnName = "sfid")
-	@Where(clause = "\"end\" >= '2019-01-01 00:00:00' OR \"end\" IS NULL")
+	@Where(clause = "recordtypeid != '012w0000000V96WAAS' AND (\"end\" >= '2019-01-01 00:00:00' OR \"end\" IS NULL)")
 	@OrderBy(clause = "start")
 	private Set<ResourceAbsence> resourceAbsences;
 

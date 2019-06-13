@@ -1,5 +1,7 @@
 package com.kone.cplan.jpa.entity;
 
+import com.kone.cplan.jpa.utils.IEntityWithSalesOrgs;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
@@ -10,7 +12,7 @@ import java.sql.Timestamp;
  * @created 27-05-2019
  */
 @MappedSuperclass
-abstract class AbstractCase implements Serializable {
+public abstract class AbstractCase implements Serializable, IEntityWithSalesOrgs {
 
 	//
 	//Variables
@@ -113,6 +115,7 @@ abstract class AbstractCase implements Serializable {
 		return contactName;
 	}
 
+	@Override
 	public String getSalesOrganizations__c() {
 		return salesOrganizations__c;
 	}

@@ -1,12 +1,12 @@
 package com.kone.cplan.jpa.filter;
 
 /**
- * This class represents a filter for the Equipment entities.
+ * This class represents a filter for the Asset entities.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019
  */
-public class EquipmentFilter implements Filter {
+public class AssetFilter implements IFilter, IFilterWithSalesOrg {
 
 	//
 	//Variables
@@ -119,6 +119,7 @@ public class EquipmentFilter implements Filter {
 	public String getSalesOrganization__c() {
 		return salesOrganization__c;
 	}
+	@Override
 	public void setSalesOrganization__c(String salesOrganization__c) {
 		this.salesOrganization__c = salesOrganization__c;
 	}

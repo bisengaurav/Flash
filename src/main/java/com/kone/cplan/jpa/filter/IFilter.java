@@ -2,7 +2,7 @@ package com.kone.cplan.jpa.filter;
 
 import java.lang.reflect.Field;
 
-public interface Filter {
+public interface IFilter {
 
 	default boolean isEmpty() {
 		for (Field f : getClass().getDeclaredFields()) {

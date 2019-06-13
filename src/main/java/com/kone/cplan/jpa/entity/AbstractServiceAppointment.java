@@ -1,5 +1,7 @@
 package com.kone.cplan.jpa.entity;
 
+import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -11,7 +13,7 @@ import java.sql.Timestamp;
  * @created 30-05-2019
  */
 @MappedSuperclass
-abstract class AbstractServiceAppointment implements Serializable {
+public abstract class AbstractServiceAppointment implements Serializable, IEntityWithSalesOrg {
 
 	//
 	//Variables
@@ -39,6 +41,9 @@ abstract class AbstractServiceAppointment implements Serializable {
 
 	@Column(name = "serviceresource_name")
 	private String serviceResourceName;
+
+	@Column
+	private String salesOrganization__c;
 	//
 
 	//
@@ -74,6 +79,10 @@ abstract class AbstractServiceAppointment implements Serializable {
 
 	public String getServiceResourceName() {
 		return serviceResourceName;
+	}
+
+	public String getSalesOrganization__c() {
+		return salesOrganization__c;
 	}
 	//
 }

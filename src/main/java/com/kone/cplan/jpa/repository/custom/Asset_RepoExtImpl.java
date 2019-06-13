@@ -1,7 +1,8 @@
 package com.kone.cplan.jpa.repository.custom;
 
-import com.kone.cplan.jpa.entity.Equipment;
-import com.kone.cplan.jpa.filter.EquipmentFilter;
+import com.kone.cplan.jpa.entity.Asset;
+import com.kone.cplan.jpa.filter.AssetFilter;
+import com.kone.cplan.jpa.filter.IFilter;
 import com.kone.cplan.jpa.utils.JpaUtils;
 import org.springframework.data.domain.Pageable;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Equipment_RepoExtImpl implements Equipment_RepoExt {
+public class Asset_RepoExtImpl implements Asset_RepoExt {
 
 	//
 	//Variables
@@ -30,15 +31,16 @@ public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 	//Public methods
 	//
 	@Override
-	public List<Equipment> findByFilter(EquipmentFilter filter, Pageable pageRequest) {
+	public List<Asset> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
-		if (filter == null) {
+		if (baseFilter == null || !(baseFilter instanceof AssetFilter)) {
 			return (new ArrayList<>());
 		}
+		AssetFilter filter = (AssetFilter) baseFilter;
 
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Equipment> query = cb.createQuery(Equipment.class);
-		Root<Equipment> root = query.from(Equipment.class);
+		CriteriaQuery<Asset> query = cb.createQuery(Asset.class);
+		Root<Asset> root = query.from(Asset.class);
 
 		List<Predicate> predicates = new ArrayList<>();
 
@@ -97,7 +99,7 @@ public class Equipment_RepoExtImpl implements Equipment_RepoExt {
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
 
-		TypedQuery<Equipment> typedQuery = entityManager.createQuery(query);
+		TypedQuery<Asset> typedQuery = entityManager.createQuery(query);
 		typedQuery.setMaxResults(pageRequest.getPageSize());
 
 		return typedQuery.getResultList();

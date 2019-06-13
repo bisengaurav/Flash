@@ -1,5 +1,7 @@
 package com.kone.cplan.jpa.entity;
 
+import com.kone.cplan.jpa.utils.IEntityWithSalesOrgs;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -9,7 +11,7 @@ import java.sql.Date;
  * @created 22-05-2019
  */
 @MappedSuperclass
-abstract class AbstractEquipment implements Serializable {
+public abstract class AbstractAsset implements Serializable, IEntityWithSalesOrgs {
 
 	//
 	//Variables
@@ -176,6 +178,7 @@ abstract class AbstractEquipment implements Serializable {
 		return fsmLastValidCliEndDate__c.getTime() >= System.currentTimeMillis();
 	}
 
+	@Override
 	public String getSalesOrganizations__c() {
 		return salesOrganizations__c;
 	}

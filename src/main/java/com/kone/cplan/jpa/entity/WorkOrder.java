@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "workorder")
+@Table(schema = DbSchema.C_PLAN, name = "view_workorder")
 public class WorkOrder extends AbstractWorkOrder implements Serializable {
 
 	//
