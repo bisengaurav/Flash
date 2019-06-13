@@ -12,6 +12,20 @@
             </grid-item>
 
             <grid-item>
+                <form-element :label="$t('filter.callouts.status.label')" for="status">
+                    <div class="slds-select_container">
+                        <select-loader
+                            :source="$API.callout.getUniqueStatuses"
+                            :allowEmpty="true"
+                            v-model="innerValue.status"
+                            id="status"
+                            class="slds-select"
+                        />
+                    </div>
+                </form-element>
+            </grid-item>
+
+            <grid-item>
                 <form-element :label="$t('filter.callouts.created-after.label')">
                     <input
                         id="created_after"
@@ -154,7 +168,7 @@
                 <form-element :label="$t('filter.callouts.assembly-code.label')" for="assembly_code">
                     <div class="slds-select_container">
                         <select-loader
-                            :source="$API.case.getUniqueAssemblies"
+                            :source="$API.callout.getUniqueAssemblies"
                             :allowEmpty="true"
                             v-model="innerValue.assembly__c"
                             id="assembly_code"
@@ -168,7 +182,7 @@
                 <form-element :label="$t('filter.callouts.maintenance-activity-type.label')" for="maintenance_activity_type">
                     <div class="slds-select_container">
                         <select-loader
-                            :source="$API.case.getUniqueMaintenanceActivityTypeCodes"
+                            :source="$API.callout.getUniqueMaintenanceActivityTypeCodes"
                             :allowEmpty="true"
                             v-model="innerValue.maintenanceActivityTypeCode__c"
                             id="maintenance_activity_type"
@@ -240,7 +254,7 @@
                 >
                     <div class="slds-select_container">
                         <select-loader
-                            :source="$API.case.getUniqueSalesOrganizations"
+                            :source="$API.callout.getUniqueSalesOrganizations"
                             :allowEmpty="true"
                             v-model="innerValue.salesOrganization__c"
                             @blur.native="$v.innerValue.salesOrganization__c.$touch()"
@@ -276,6 +290,7 @@
             return {
                 metadata: {
                     caseNumber:  null,
+                    status: null,
                     createdDate: null,
                     dueDate__c: null,
                     entrapment__c: null,
@@ -308,7 +323,7 @@
             innerValue: {
                 salesOrganization__c: {
                     required
-                },
+                }
             }
         }
 

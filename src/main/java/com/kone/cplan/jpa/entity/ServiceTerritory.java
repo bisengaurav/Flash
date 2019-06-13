@@ -1,6 +1,7 @@
 package com.kone.cplan.jpa.entity;
 
 import com.kone.cplan.helpers.db.DbSchema;
+import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
 import org.hibernate.annotations.Where;
 import org.hibernate.annotations.OrderBy;
 
@@ -9,8 +10,8 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "serviceterritory")
-public class ServiceTerritory implements Serializable {
+@Table(schema = DbSchema.C_PLAN, name = "view_service_territory")
+public class ServiceTerritory implements Serializable, IEntityWithSalesOrg {
 
 	//
 	//Constructors

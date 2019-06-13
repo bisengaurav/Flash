@@ -11,9 +11,9 @@
                 :immediateRefresh="false"
             >
                 <template #head>
-                    <th v-t="'entity.serviceresource.name.label'"></th>
-                    <th v-t="'entity.serviceresource.phone__c.label'"></th>
-                    <th v-t="'entity.serviceresource.salesorganization__c.label'"></th>
+                    <th v-t="'entity.ServiceResource.name.label'"></th>
+                    <th v-t="'entity.ServiceResource.phone__c.label'"></th>
+                    <th v-t="'entity.ServiceResource.salesOrganization__c.label'"></th>
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'serviceResource', params: {id: row.id }}">{{row.name}}</router-link></td>

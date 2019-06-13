@@ -54,9 +54,6 @@ public class ServiceAppointmentDetails extends AbstractServiceAppointment implem
 
 	@Column(name = "serviceterritory_name")
 	private String serviceTerritoryName;
-
-	@Column
-	private String salesOrganization__c;
 	//
 
 	//
@@ -104,10 +101,6 @@ public class ServiceAppointmentDetails extends AbstractServiceAppointment implem
 
 	public String getServiceTerritoryName() {
 		return serviceTerritoryName;
-	}
-
-	public String getSalesOrganization__c() {
-		return salesOrganization__c;
 	}
 	//
 }

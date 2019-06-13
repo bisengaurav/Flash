@@ -1,12 +1,12 @@
 package com.kone.cplan.jpa.repository.custom;
 
 import com.kone.cplan.jpa.entity.ServiceResource;
-import com.kone.cplan.jpa.filter.ServiceResourceFilter;
+import com.kone.cplan.jpa.filter.IFilter;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public interface ServiceResource_RepoExt {
+public interface ServiceResource_RepoExt extends BasicFindByFilter_RepoExt {
 
-	List<ServiceResource> findByFilter(ServiceResourceFilter filter, Pageable pageRequest);
+	List<ServiceResource> findByFilter(IFilter filter, Pageable pageRequest);
 }

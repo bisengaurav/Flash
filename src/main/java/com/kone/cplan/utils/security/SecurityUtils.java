@@ -4,6 +4,11 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import com.kone.cplan.jpa.entity.User;
+import com.kone.cplan.jpa.utils.IEntityWithAccessField;
+import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
+import com.kone.cplan.jpa.utils.IEntityWithSalesOrgs;
+import com.kone.cplan.utils.session.AppSessionInfo;
+import com.kone.cplan.utils.spring.AppContextHolder;
 
 /**
  * This class provides utilities for the application security.
@@ -30,6 +35,27 @@ public class SecurityUtils {
 	//
 	public static boolean isAdminUser(User user) {
 		return (user != null ? ADMIN_PROFILES_IDs.contains(user.getProfileId()) : false);
+	}
+
+	public static boolean userHasAccessToRecord(IEntityWithAccessField record)
+	{
+
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		if (!userInfo.isAdmin()) {
+			if (userInfo.getSalesOrg() == null) { return false; }
+
+			if (record instanceof IEntityWithSalesOrg) {
+				return ((IEntityWithSalesOrg)record).getSalesOrganization__c() != null
+					&& ((IEntityWithSalesOrg)record).getSalesOrganization__c()
+					.equals(userInfo.getSalesOrg());
+			}
+			else if (record instanceof IEntityWithSalesOrgs) {
+				return ((IEntityWithSalesOrgs) record).getSalesOrganizations__c() != null
+					&& ((IEntityWithSalesOrgs) record).getSalesOrganizations__c()
+					.matches("^(.*,|)" + userInfo.getSalesOrg() + "(,.*|)$");
+			}
+		}
+		return true;
 	}
 	//
 }

@@ -6,7 +6,7 @@ package com.kone.cplan.jpa.filter;
  * @author Andrey Gribanov (Cervello)
  * @created 31-05-2019
  */
-public class ServiceResourceFilter {
+public class ServiceResourceFilter implements IFilter, IFilterWithSalesOrg {
 
 	//
 	//Variables
@@ -24,7 +24,6 @@ public class ServiceResourceFilter {
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -32,7 +31,6 @@ public class ServiceResourceFilter {
 	public String getPhone__c() {
 		return phone__c;
 	}
-
 	public void setPhone__c(String phone__c) {
 		this.phone__c = phone__c;
 	}
@@ -40,7 +38,7 @@ public class ServiceResourceFilter {
 	public String getSalesOrganization__c() {
 		return salesOrganization__c;
 	}
-
+	@Override
 	public void setSalesOrganization__c(String salesOrganization__c) {
 		this.salesOrganization__c = salesOrganization__c;
 	}

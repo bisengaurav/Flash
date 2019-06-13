@@ -37,7 +37,7 @@ public class UserApi {
 	 * @return OperationResults with a User entity
 	 */
 	@GetMapping(value = "getUserInfo")
-	public OperationResults getById() {
+	public OperationResults getUserInfo() {
 		User currentUser = userRepo.findBySfId(appSessionContext.getCurrentUserInfo().getSfId());
 		if (currentUser == null) {
 			return OperationResults.newErrorByKey("message.common.record-not-found");

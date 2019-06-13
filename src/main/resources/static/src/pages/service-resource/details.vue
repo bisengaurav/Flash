@@ -2,11 +2,11 @@
     <entity-details-layout :title="pageTitle" :loading="loading" :data="data">
         <template #details>
             <grid-item x="2">
-                <form-element-static :label="$t('entity.serviceresource.phone__c.label')">{{data.phone__c}}</form-element-static>
+                <form-element-static :label="$t('entity.ServiceResource.phone__c.label')">{{data.phone__c}}</form-element-static>
             </grid-item>
 
             <grid-item x="2">
-                <form-element-static :label="$t('entity.serviceresource.salesorganization__c.label')">{{data.salesOrganization__c}}</form-element-static>
+                <form-element-static :label="$t('entity.ServiceResource.salesOrganization__c.label')">{{data.salesOrganization__c}}</form-element-static>
             </grid-item>
         </template>
 
@@ -15,11 +15,11 @@
             <entity-relations :title="$t('text.service-resource.related-territories')">
                 <data-table-basic :source="data.serviceResourceTerritories">
                     <template #head>
-                        <th v-t="'entity.serviceresourceterritory.name.label'"></th>
-                        <th v-t="'entity.serviceresourceterritory.territorytype.label'"></th>
-                        <th v-t="'entity.serviceresourceterritory.shifttype__c.label'"></th>
-                        <th v-t="'entity.serviceresourceterritory.effectivestartdate.label'"></th>
-                        <th v-t="'entity.serviceresourceterritory.effectiveenddate.label'"></th>
+                        <th v-t="'entity.ServiceTerritoryMember.name.label'"></th>
+                        <th v-t="'entity.ServiceTerritoryMember.territoryType.label'"></th>
+                        <th v-t="'entity.ServiceTerritoryMember.shiftType__c.label'"></th>
+                        <th v-t="'entity.ServiceTerritoryMember.effectiveStartDate.label'"></th>
+                        <th v-t="'entity.ServiceTerritoryMember.effectiveEndDate.label'"></th>
                     </template>
                     <template #row="{row, id}">
                         <td>
@@ -36,7 +36,7 @@
             <entity-relations :title="$t('text.service-resource.related-work-centers')">
                 <data-table-basic :source="data.serviceResourceWorkCenters">
                     <template #head>
-                        <th v-t="'entity.serviceresourceworkcenter.name.label'"></th>
+                        <th v-t="'entity.WorkCenterResource.name.label'"></th>
                     </template>
                     <template #row="{row, id}">
                         <td>
@@ -49,10 +49,10 @@
             <entity-relations :title="$t('text.service-resource.related-absences')">
                 <data-table-basic :source="data.resourceAbsences">
                     <template #head>
-                        <th v-t="'entity.resourceabsence.start.label'"></th>
-                        <th v-t="'entity.resourceabsence.end.label'"></th>
-                        <th v-t="'entity.resourceabsence.recordtype__c.label'"></th>
-                        <th v-t="'entity.resourceabsence.type.label'"></th>
+                        <th v-t="'entity.ResourceAbsence.start.label'"></th>
+                        <th v-t="'entity.ResourceAbsence.end.label'"></th>
+                        <th v-t="'entity.ResourceAbsence.recordType__c.label'"></th>
+                        <th v-t="'entity.ResourceAbsence.type.label'"></th>
                     </template>
                     <template #row="{row, id}">
                         <td>{{ $dtz(row.start, 'datetime') }}</td>
@@ -66,20 +66,20 @@
             <entity-relations :title="$t('text.service-resource.related-appointments')">
                 <data-table-basic :source="data.serviceResourceAppointments">
                     <template #head>
-                        <th v-t="'entity.serviceresourceappointment.appointmentnumber.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.status.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.scheduledstartoriginal__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.scheduledendoriginal__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.fslpinned__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.workordernumber.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.earlieststartdate__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.duedate__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.maintenanceactivitytype__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.assembly__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.locationname.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.installationstreet__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.installationcity__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.description__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.appointmentNumber.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.status.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.scheduledStartOriginal__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.scheduledEndOriginal__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.fslPinned__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.workOrderNumber.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.earliestStartDate__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.dueDate__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.maintenanceActivityType__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.assembly__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.locationName.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.installationStreet__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.installationCity__c.label'"></th>
+                        <th v-t="'entity.ServiceAppointment.description__c.label'"></th>
                     </template>
                     <template #row="{row, id}">
                         <td>

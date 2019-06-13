@@ -62,7 +62,7 @@ export const Asset = {
     relations: [
         {
             title: 'text.asset.related-entitlements',
-            dataField: 'activeSLAs',
+            dataField: 'activeEntitlements',
             entity: 'Entitlement',
             fields: [
                 {
@@ -74,11 +74,11 @@ export const Asset = {
                     type: 'text'
                 },
                 {
-                    field: 'startdate',
+                    field: 'startDate',
                     type: 'datetime'
                 },
                 {
-                    field: 'enddate',
+                    field: 'endDate',
                     type: 'datetime'
                 },
                 {
