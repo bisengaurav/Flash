@@ -7,11 +7,11 @@
 
         <loader type="block" :height="400" :loading="loading" #content>
             <div v-if="data">
-                <div v-if="scheme.fields.length > 0" class="slds-card slds-p-around_medium slds-m-bottom_x-large">
+                <div v-if="metadata.fields.length > 0" class="slds-card slds-p-around_medium slds-m-bottom_x-large">
                     <grid>
 
                         <grid-item
-                            v-for="f in scheme.fields"
+                            v-for="f in metadata.fields"
                             :key="f.field"
                         >
                             <form-element-static :label="$t('entity.'+$props.entity+'.'+f.field+'.label')">
@@ -33,7 +33,7 @@
 
 
                 <entity-relations
-                    v-for="r in scheme.relations"
+                    v-for="r in metadata.relations"
                     :key="r.entity"
                     :title="$t(r.title)"
                 >
@@ -78,7 +78,7 @@
 
 <script>
     import PageInterface from '../../interfaces/page.js';
-    import * as Schemes from './schemes.js';
+    import * as Metadata from './metadata.js';
 
     export default {
         extends: PageInterface,
@@ -98,7 +98,7 @@
         },
         data() {
             return  {
-                scheme: Schemes[this.$props.entity],
+                metadata: Metadata[this.$props.entity],
                 loading: true,
                 data: null
             }
@@ -117,12 +117,12 @@
                 }
 
                 // data
-                this.scheme.action(this.id)
+                this.metadata.action(this.id)
                     .then(data => {
                         this.loading = false;
                         this.data = data;
 
-                        this.pageTitle = this.data[this.scheme.title];
+                        this.pageTitle = this.data[this.metadata.title];
                     })
                     .catch(() => {
                         this.loading = false;
