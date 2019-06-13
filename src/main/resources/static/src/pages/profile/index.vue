@@ -9,7 +9,7 @@
                 </grid-item>
 
                 <grid-item x="2">
-                    <form-element-static :label="$t('entity.User.profileId.label')">{{data.user.profileId}}</form-element-static>
+                    <form-element-static :label="$t('entity.User.profileName.label')">{{data.user.profileName}}</form-element-static>
                 </grid-item>
 
                 <grid-item x="2">
