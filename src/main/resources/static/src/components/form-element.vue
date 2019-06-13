@@ -23,7 +23,7 @@
 <script>
     export default {
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             for: {
@@ -141,8 +141,10 @@
         mounted() {
             // recursively search input/select/textarea control and his id attr
             if (!this.$props.for) {
-                this.$slots.default.some(child => {
-                    return this.findControlIdRecursive(child);
+                this.$nextTick(() => {
+                    this.$slots.default.some(child => {
+                        return this.findControlIdRecursive(child);
+                    });
                 });
             }
 

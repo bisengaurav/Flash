@@ -5,7 +5,7 @@
         extends: SelectLoader,
 
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             trueLabel: {
@@ -19,11 +19,11 @@
             return {
                 innerSource: [
                     {
-                        label: this.$props.trueLabel || this.$t('label.common.true'),
+                        label: this.$props.trueLabel || this.$t('label.select-option.true'),
                         value: true
                     },
                     {
-                        label: this.$props.falseLabel || this.$t('label.common.false'),
+                        label: this.$props.falseLabel || this.$t('label.select-option.false'),
                         value: false
                     }
                 ]

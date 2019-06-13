@@ -1,12 +1,12 @@
 <template>
-    <tooltip v-if="type" :content="innerTooltip" :offset="3" position="right">
+    <!--tooltip v-if="type" :content="innerTooltip" :offset="3" position="right"-->
         <router-link v-if="type === 'route'" :to="{name: to}" class="cmp-back-button">
             <icon icon="arrow-left" class="slds-icon slds-icon_small" />
         </router-link>
         <button v-else-if="type === 'history'" @click="back" class="cmp-back-button">
             <icon icon="arrow-left" class="slds-icon slds-icon_small" />
         </button>
-    </tooltip>
+    <!--/tooltip-->
 </template>
 
 <script>
@@ -16,7 +16,7 @@
 
     export default {
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             to: {

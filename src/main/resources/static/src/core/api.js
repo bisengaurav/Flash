@@ -4,7 +4,7 @@ import Query from './query.js';
 // API methods
 //
 let API = {
-    equipment: {
+    asset: {
         getAllByFilter: (params) => {
             return Query('/ui-api/equipment/getAllByFilter', params);
         },
@@ -43,10 +43,10 @@ let API = {
             return Query('/ui-api/serviceResource/getById', {id});
         },
         getAllByFilter: (params) => {
-            return Query('/ui-api/serviceResource/getAllByFilter', params, 'GET', true);
+            return Query('/ui-api/serviceResource/getAllByFilter', params);
         },
         getUniqueSalesOrganizations: () => {
-            return Query('/ui-api/serviceResource/getUniqueSalesOrganizations');
+            return Query('/ui-api/serviceResource/getUniqueSalesOrganizations', null, 'GET', false, 'session');
         }
     },
 

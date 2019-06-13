@@ -1,6 +1,6 @@
-<template>
-    <span>
-        <tooltip v-if="$props.content" :content="$props.content" maxWidth="300">
+<template functional>
+    <span :class="[data.class, data.staticClass]">
+        <tooltip v-if="props.content" :content="props.content" maxWidth="300">
             <icon icon="info-circle" class="slds-icon slds-icon_xx-small slds-icon-text-light" />
         </tooltip>
     </span>
@@ -13,7 +13,7 @@
 
     export default {
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             content: {

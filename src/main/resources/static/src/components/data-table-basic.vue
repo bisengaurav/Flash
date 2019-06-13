@@ -1,13 +1,12 @@
 <template>
-    <loader v-if="loading" type="block" :height="200" />
-
-    <table v-else-if="data.length > 0" class="slds-table slds-table_cell-buffer slds-table_bordered">
-        <thead>
+    <loader type="block" :height="200" :loading="loading" #content>
+        <table v-if="data.length > 0" class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
             <tr class="slds-line-height_reset">
                 <slot name="head"></slot>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr
                 v-for="row in data"
                 :key="row[key]"
@@ -18,18 +17,21 @@
             >
                 <slot name="row" :row="row" :id="row[key]"></slot>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <div v-else class="slds-p-around_medium">
-        <alert type="static" :showIcon="false" :animate="false" :closable="false" v-t="'message.common.no-data'" />
-    </div>
+        <div v-else class="slds-p-around_medium">
+            <alert type="static" :showIcon="false" :animate="false" :closable="false">
+                {{innerNoDataMessage}}
+            </alert>
+        </div>
+    </loader>
 </template>
 
 <script>
     export default {
         //
-        // PARAMS: porps, data, computed
+        // PARAMS: props, data, computed
         //
         props: {
             // query params
@@ -37,12 +39,18 @@
                 default: 'id'
             },
             action: {
-                type: Function,
-                required: true
+                type: Function
+            },
+            source: {
+                type: Array
             },
 
             // behavior params
             immediateRefresh: {
+                type: Boolean,
+                default: true
+            },
+            autoRefresh: {
                 type: Boolean,
                 default: true
             },
@@ -64,13 +72,18 @@
                 default: () => ({})
             },
 
-            rowClass: null
+            // UI params
+            rowClass: null,
+            noDataMessage: {
+                type: String
+            }
         },
         data() {
             return {
                 loading: false,
                 data: [],
-                highlightedId: null
+                highlightedId: null,
+                innerNoDataMessage: this.$props.noDataMessage || this.$t('message.common.no-data')
             }
         },
         computed: {
@@ -88,28 +101,37 @@
         //
         methods: {
             refresh(id) {
-                this.loading = this.useLoading;
+                // static array
+                if (this.$props.source) {
+                    this.data = this.$props.source;
+                }
 
-                this.action(Object.assign(
-                    {},
-                    this.$props.params,
-                    {filter: JSON.stringify(this.$props.filters)},
-                ))
-                    .then(data => {
-                        this.highlightedId = id;
+                // async load action
+                if (this.$props.action) {
+                    this.loading = this.useLoading;
 
-                        if (typeof this.$props.keyField == 'function') {
-                            data = data.map((row) => {
-                                row._rowKey = this.$props.keyField(row);
-                                return row;
-                            });
-                        }
-                        this.data = data;
+                    this.action(Object.assign(
+                        {},
+                        this.$props.params,
+                        {filter: JSON.stringify(this.$props.filters)},
+                    ))
+                        .then(data => {
+                            this.highlightedId = id;
 
-                        this.loading = false;
 
-                        if (this.$props.cacheUniqueKey) this._saveCache();
-                    });
+                            if (typeof this.$props.keyField == 'function') {
+                                data = data.map((row) => {
+                                    row._rowKey = this.$props.keyField(row);
+                                    return row;
+                                });
+                            }
+                            this.data = data;
+                            this.loading = false;
+
+                            if (this.$props.cacheUniqueKey) this._saveCache();
+                        });
+
+                }
             },
 
             _loadCache() {
@@ -126,35 +148,32 @@
         //
         // EVENTS
         //
-        mounted() {
+        created() {
+            // use watchers
+            if (this.$props.autoRefresh) {
+                this.$watch(
+                    'params',
+                    this.refresh,
+                    {deep: true}
+                );
+                this.$watch(
+                    'filters',
+                    this.refresh,
+                    {deep: true}
+                );
+            }
+
+            // load cached data, if loaded
             if (this.$props.cacheUniqueKey) {
                 let data = this._loadCache();
                 if (data) {
                     this.data = data;
-                    return;
+                    return; // interrupt immediate refresh on load
                 }
             }
 
+            // immediate refresh on load
             if (this.$props.immediateRefresh) this.refresh();
-        },
-
-        //
-        // WATCHERS
-        //
-        watch: {
-            params: {
-                handler(val, oldVal) {
-                    this.refresh();
-                },
-                deep: true
-            },
-            filters: {
-                handler(val, oldVal) {
-                    this.refresh();
-                },
-                deep: true
-            }
         }
-
     }
 </script>
