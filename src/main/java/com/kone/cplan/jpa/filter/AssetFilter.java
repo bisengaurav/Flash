@@ -11,6 +11,8 @@ public class AssetFilter implements IFilter, IFilterWithSalesOrg {
 	//
 	//Variables
 	//
+	private String name;
+
 	private String installationCountry__c;
 
 	private String equipmentType__c;
@@ -39,6 +41,13 @@ public class AssetFilter implements IFilter, IFilterWithSalesOrg {
 	//
 	//Properties
 	//
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getInstallationCountry__c() {
 		return installationCountry__c;
 	}

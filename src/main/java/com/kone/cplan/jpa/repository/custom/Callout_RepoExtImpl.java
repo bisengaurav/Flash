@@ -3,6 +3,7 @@ package com.kone.cplan.jpa.repository.custom;
 import com.kone.cplan.jpa.entity.Callout;
 import com.kone.cplan.jpa.filter.CalloutFilter;
 import com.kone.cplan.jpa.filter.IFilter;
+import com.kone.cplan.jpa.utils.CaseUtils;
 import com.kone.cplan.jpa.utils.JpaUtils;
 import org.springframework.data.domain.Pageable;
 
@@ -15,7 +16,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Callout_RepoExtImpl implements Callout_RepoExt {
@@ -138,7 +138,7 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 
 		// TODO: change created date to yesterday or today
 		predicates.add(cb.greaterThanOrEqualTo(root.get("createdDate"), new Timestamp(1546290000000L)));
-		predicates.add(cb.equal(root.get("recordTypeId"), "012w0000000V9MrAAK"));
+		predicates.add(cb.equal(root.get("recordTypeId"), CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID));
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
 		query.orderBy(cb.desc(root.get("createdDate")));

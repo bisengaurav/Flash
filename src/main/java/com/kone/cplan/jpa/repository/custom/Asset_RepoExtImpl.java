@@ -44,6 +44,10 @@ public class Asset_RepoExtImpl implements Asset_RepoExt {
 
 		List<Predicate> predicates = new ArrayList<>();
 
+		if (filter.getName() != null) {
+			predicates.add(cb.like(cb.lower(root.get("name")),
+				JpaUtils.buildContainsPattern(filter.getName(), false)));
+		}
 		if (filter.getInstallationCountry__c() != null) {
 			predicates.add(cb.equal(root.get("installationCountry__c"), filter.getInstallationCountry__c()));
 		}
