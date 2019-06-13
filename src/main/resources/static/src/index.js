@@ -1,10 +1,10 @@
 //
 // import all CSS
 //
-import '../assets/css/slds-addons.css';
-import '../assets/css/slds-branding.css';
-import '../assets/css/slds-fontawesome-svg.css';
-import '../assets/css/z-levels.css';
+import '../static/css/slds-addons.css';
+import '../static/css/slds-branding.css';
+import '../static/css/slds-fontawesome-svg.css';
+import '../static/css/z-levels.css';
 
 
 //
