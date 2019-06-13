@@ -115,39 +115,39 @@ export default {
     'entity.case.subject.label': 'Case title',
 
     //work orders fields
-    'entity.workorder.workordernumber.label': 'Work order ID',
+    'entity.workorder.workordernumber.label': 'Work Order ID',
     'entity.workorder.status.label': 'Status',
-    'entity.workorder.lastmodifieddate.label': 'Last updated in FSM',
+    'entity.workorder.lastmodifieddate.label': 'Last Updated in FSM',
     'entity.workorder.earlieststartdate__c.label': 'Earliest Start Date',
     'entity.workorder.duedate__c.label': 'Due Date',
     'entity.workorder.assembly__c.label': 'Assembly Code',
     'entity.workorder.assetname.label': 'Equipment',
     'entity.workorder.accountid.label': 'Account ID',
-    'entity.workorder.serviceterritoryname.label': 'Service territory',
+    'entity.workorder.serviceterritoryname.label': 'Service Territory',
     'entity.workorder.casenumber.label': 'Case',
     'entity.workorder.description__c.label': 'Description',
-    'entity.workorder.sales_organization__c.label': 'Sales organization',
+    'entity.workorder.sales_organization__c.label': 'Sales Organization',
     'entity.workorder.maintenanceActivityTypeCode__c.label': 'Maintenance Activity Type',
 
     'entity.workorder.appointmentnumber.label': 'Service Appointment ID',
-    'entity.workorder.serviceresourcename.label': 'Service resource',
+    'entity.workorder.serviceresourcename.label': 'Service Resource',
     'entity.workorder.scheduledstartoriginal__c.label': 'Scheduled Start Date',
     'entity.workorder.scheduledendoriginal__c.label': 'Scheduled End Date',
 
     //service appointment fields
     'entity.serviceappointment.status.label': 'Status',
-    'entity.serviceappointment.lastmodifieddate.label': 'Last updated in FSM',
+    'entity.serviceappointment.lastmodifieddate.label': 'Last Updated in FSM',
     'entity.serviceappointment.scheduledstartoriginal__c.label': 'Scheduled Start Date',
     'entity.serviceappointment.duedate__c.label': 'Scheduled End Date',
     'entity.serviceappointment.fslpinned__c.label': 'Pinned',
-    'entity.serviceappointment.blockedreason__c.label': 'Blocked reason',
+    'entity.serviceappointment.blockedreason__c.label': 'Blocked Reason',
     'entity.serviceappointment.accountid.label': 'Account ID',
-    'entity.serviceappointment.accountname.label': 'Account name',
-    'entity.serviceappointment.serviceresourcename.label': 'Service resource',
-    'entity.serviceappointment.workordernumber.label': 'Work order',
+    'entity.serviceappointment.accountname.label': 'Account Name',
+    'entity.serviceappointment.serviceresourcename.label': 'Service Resource',
+    'entity.serviceappointment.workordernumber.label': 'Work Order',
     'entity.serviceappointment.assetname.label': 'Equipment',
-    'entity.serviceappointment.serviceterritoryname.label': 'Service territory',
-    'entity.serviceappointment.salesorganization__c.label': 'Sales organization',
+    'entity.serviceappointment.serviceterritoryname.label': 'Service Territory',
+    'entity.serviceappointment.salesorganization__c.label': 'Sales Organization',
 
 
 
@@ -163,6 +163,6 @@ export default {
     'entity.user.profileid.label': 'Profile',
     'entity.user.timezonesidkey.label': 'Time zone',
     'entity.user.languagelocalekey.label': 'Language',
-    'entity.user.isadmin.label': 'Admin',
+    'entity.user.isadmin.label': 'Global Admin',
 
 }
