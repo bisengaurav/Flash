@@ -56,7 +56,7 @@
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.Case.fsmContactIsPassenger__c .label')">{{ data.fsmContactIsPassenger__c |yesNo }}</form-element-static>
+                <form-element-static :label="$t('entity.Case.fsmContactIsPassenger__c.label')">{{ data.fsmContactIsPassenger__c |yesNo }}</form-element-static>
             </grid-item>
 
             <grid-item>
