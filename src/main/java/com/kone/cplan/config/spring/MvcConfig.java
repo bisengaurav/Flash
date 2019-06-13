@@ -18,7 +18,12 @@ public class MvcConfig implements WebMvcConfigurer {
 	//
 	//Constants
 	//
-	public static final List<String> STATIC_RESOURCE_FOLDERS = Arrays.asList("assets", "dist");
+	/**
+	 * This constant stores a list of sub-folders under the "/static" folder that contains static
+	 * resources of the application. In our case, these are "/static/static" and "/static/dist"
+	 * folders. 
+	 */
+	public static final List<String> STATIC_RESOURCE_FOLDERS = Arrays.asList("static", "dist");
 	//
 	
 	//
@@ -40,10 +45,10 @@ public class MvcConfig implements WebMvcConfigurer {
 		exceptionsToPath.add(appProps.getUiApiPath());
 		
 		//Example of expression that ignores 2 sub-paths:
-		//{pathWithExceptions:^(?!ui-api$|another-api$).*$}/**. The part in curly braces is a RegEx
+		//{pathWithExceptions:^(?!ui-api|another-api).*$}/**. The part in curly braces is a RegEx
 		//that uses negative lookahead
 		String allUrlsButExceptions = "/{pathWithExceptions:^(?!"
-			+ String.join("|", exceptionsToPath) + "$).*$}/**";
+			+ String.join("|", exceptionsToPath) + ").*$}/**";
 		return allUrlsButExceptions;
 	}
 	//
