@@ -1,7 +1,11 @@
 <template>
     <section>
+        <h1 class="slds-text-heading_large slds-m-bottom_large" v-t="'text.home.heading'"></h1>
 
-        <h1 class="slds-text-heading_large slds-m-bottom_large">Translation</h1>
+        <div class="cmp-home-page_wrapper" v-html="$t('text.home.html')">
+        </div>
+
+        <!-- <h1 class="slds-text-heading_large slds-m-bottom_large">Translation</h1>
         <p><b>Lang:</b> {{$lang}}</p>
         <p><b>Timezone:</b> {{$timezone}}</p>
         <br/>
@@ -93,7 +97,7 @@
                     <button class="slds-button slds-button_success" disabled>Success</button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </section>
 </template>
@@ -146,3 +150,17 @@
 
     }
 </script>
+
+<style scoped>
+
+    .cmp-home-page_wrapper >>>  h2 {
+        font-size: .95rem;
+        font-weight: 700;
+    }
+
+    .cmp-home-page_wrapper >>> ul {
+        margin-left: 1.5rem;
+        list-style: disc;
+    }
+
+</style>

@@ -217,7 +217,7 @@
 <script>
     import FiltersInterface from '../../components/filters-interface.vue';
     import SelectBoolean from '../../components/select-boolean.vue';
-    import {required, minLength} from 'vuelidate/lib/validators';
+    import {required} from 'vuelidate/lib/validators';
 
     export default {
         extends: FiltersInterface,
@@ -263,8 +263,7 @@
                 salesOrganization__c: {
                     required
                 },
-            },
-            minLength: minLength(0)
+            }
         },
        
     }
