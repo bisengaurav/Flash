@@ -76,10 +76,10 @@
                         <th v-t="'entity.serviceresourceappointment.duedate__c.label'"></th>
                         <th v-t="'entity.serviceresourceappointment.maintenanceactivitytype__c.label'"></th>
                         <th v-t="'entity.serviceresourceappointment.assembly__c.label'"></th>
-                        <th v-t="'entity.serviceresourceappointment.description__c.label'"></th>
                         <th v-t="'entity.serviceresourceappointment.locationname.label'"></th>
                         <th v-t="'entity.serviceresourceappointment.installationstreet__c.label'"></th>
                         <th v-t="'entity.serviceresourceappointment.installationcity__c.label'"></th>
+                        <th v-t="'entity.serviceresourceappointment.description__c.label'"></th>
                     </template>
                     <template #row="{row, id}">
                         <td>
@@ -96,10 +96,10 @@
                         <td>{{ $dtz(row.dueDate__c, 'datetime') }}</td>
                         <td>{{row.maintenanceActivityType__c}}</td>
                         <td>{{row.assembly__c}}</td>
-                        <td>{{row.description__c}}</td>
                         <td>{{row.locationName}}</td>
                         <td>{{row.installationStreet__c}}</td>
                         <td>{{row.installationCity__c}}</td>
+                        <td>{{row.description__c}}</td>
                     </template>
                 </data-table-basic>
             </entity-relations>
