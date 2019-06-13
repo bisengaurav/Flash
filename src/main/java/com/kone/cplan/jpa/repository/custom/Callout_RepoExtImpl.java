@@ -139,7 +139,6 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 		// TODO: change created date to yesterday or today
 		predicates.add(cb.greaterThanOrEqualTo(root.get("createdDate"), new Timestamp(1546290000000L)));
 		predicates.add(cb.equal(root.get("recordTypeId"), "012w0000000V9MrAAK"));
-		predicates.add(root.get("status").in(Arrays.asList("Cancelled", "Completed")).not());
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
 		query.orderBy(cb.desc(root.get("createdDate")));
