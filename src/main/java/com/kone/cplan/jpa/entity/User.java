@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(schema = DbSchema.C_PLAN)
+@Table(schema = DbSchema.C_PLAN, name = "view_user")
 public class User implements Serializable {
 
 	//
@@ -27,6 +27,8 @@ public class User implements Serializable {
 	private String sfId;
 	@Column(name = "profileid")
 	private String profileId;
+	@Column
+	private String profileName;
 	
 	@Column
 	private String name;
@@ -79,6 +81,9 @@ public class User implements Serializable {
 
 	public String getProfileId() {
 		return profileId;
+	}
+	public String getProfileName() {
+		return profileName;
 	}
 	public String getName() {
 		return name;

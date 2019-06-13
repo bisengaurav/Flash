@@ -7,33 +7,35 @@
         <template #table>
             <data-table-basic
                 keyField="compositeKey"
-                :action="$API.case.getAllByFilter"
+                :action="$API.callout.getAllByFilter"
                 :filters="filters"
                 :immediateRefresh="false"
             >
                 <template #head>
-                    <th v-t="'entity.case.casenumber.label'"></th>
-                    <th v-t="'entity.case.createddate.label'"></th>
-                    <th v-t="'entity.case.duedate__c.label'"></th>
-                    <th v-t="'entity.case.entrapment__c.label'"></th>
-                    <th v-t="'entity.case.hazard__c.label'"></th>
-                    <th v-t="'entity.case.injury__c.label'"></th>
-                    <th v-t="'entity.case.assetname.label'"></th>
-                    <th v-t="'entity.asset.locationname.label'"></th>
-                    <th v-t="'entity.case.street__c.label'"></th>
-                    <th v-t="'entity.case.city__c.label'"></th>
-                    <th v-t="'entity.case.stateprovince__c.label'"></th>
-                    <th v-t="'entity.case.contactname.label'"></th>
-                    <th v-t="'entity.case.callername__c.label'"></th>
-                    <th v-t="'entity.case.workordernumber.label'"></th>
-                    <th v-t="'entity.case.assemblynumber__c.label'"></th>
-                    <th v-t="'entity.case.appointmentnumber.label'"></th>
-                    <th v-t="'entity.case.serviceappointmentstatus.label'"></th>
-                    <th v-t="'entity.case.serviceresourcename.label'"></th>
-                    <th v-t="'entity.asset.serviceterritoryname.label'"></th>
+                    <th v-t="'entity.Callout.caseNumber.label'"></th>
+                    <th v-t="'entity.Callout.status.label'"></th>
+                    <th v-t="'entity.Callout.createdDate.label'"></th>
+                    <th v-t="'entity.Callout.dueDate__c.label'"></th>
+                    <th v-t="'entity.Callout.entrapment__c.label'"></th>
+                    <th v-t="'entity.Callout.hazard__c.label'"></th>
+                    <th v-t="'entity.Callout.injury__c.label'"></th>
+                    <th v-t="'entity.Callout.assetName.label'"></th>
+                    <th v-t="'entity.Callout.locationName.label'"></th>
+                    <th v-t="'entity.Callout.street__c.label'"></th>
+                    <th v-t="'entity.Callout.city__c.label'"></th>
+                    <th v-t="'entity.Callout.stateProvince__c.label'"></th>
+                    <th v-t="'entity.Callout.contactName.label'"></th>
+                    <th v-t="'entity.Callout.callerName__c.label'"></th>
+                    <th v-t="'entity.Callout.workOrderNumber.label'"></th>
+                    <th v-t="'entity.Callout.assemblyNumber__c.label'"></th>
+                    <th v-t="'entity.Callout.appointmentNumber.label'"></th>
+                    <th v-t="'entity.Callout.serviceAppointmentStatus.label'"></th>
+                    <th v-t="'entity.Callout.serviceResourceName.label'"></th>
+                    <th v-t="'entity.Callout.serviceTerritoryName.label'"></th>
                 </template>
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'case', params: {id: row.id }}">{{row.caseNumber}}</router-link></td>
+                    <td>{{row.status}}</td>
                     <td>{{ $dtz(row.createdDate, 'datetime') }}</td>
                     <td>{{ $dtz(row.dueDate__c, 'datetime') }}</td>
                     <td>{{ row.entrapment__c|yesNo }}</td>

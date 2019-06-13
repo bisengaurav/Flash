@@ -1,5 +1,7 @@
 package com.kone.cplan.jpa.entity;
 
+import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -11,7 +13,7 @@ import java.sql.Timestamp;
  * @created 30-05-2019
  */
 @MappedSuperclass
-abstract class AbstractWorkOrder implements Serializable {
+abstract class AbstractWorkOrder implements Serializable, IEntityWithSalesOrg {
 
 	//
 	//Variables
@@ -33,6 +35,9 @@ abstract class AbstractWorkOrder implements Serializable {
 
 	@Column
 	private Timestamp dueDate__c;
+
+	@Column
+	private String salesOrganization__c;
 	//
 
 	//
@@ -60,6 +65,11 @@ abstract class AbstractWorkOrder implements Serializable {
 
 	public Timestamp getDueDate__c() {
 		return dueDate__c;
+	}
+
+	@Override
+	public String getSalesOrganization__c() {
+		return salesOrganization__c;
 	}
 	//
 }

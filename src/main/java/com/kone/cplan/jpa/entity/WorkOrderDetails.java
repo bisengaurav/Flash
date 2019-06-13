@@ -35,9 +35,6 @@ public class WorkOrderDetails extends AbstractWorkOrder implements Serializable 
 	private String description__c;
 
 	@Column
-	private String sales_organization__c;
-
-	@Column
 	private Integer accountId;
 
 	@Column
@@ -86,10 +83,6 @@ public class WorkOrderDetails extends AbstractWorkOrder implements Serializable 
 
 	public String getDescription__c() {
 		return description__c;
-	}
-
-	public String getSales_organization__c() {
-		return sales_organization__c;
 	}
 
 	public Integer getAccountId() {

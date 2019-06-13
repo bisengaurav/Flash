@@ -6,36 +6,41 @@ import Query from './query.js';
 let API = {
     asset: {
         getAllByFilter: (params) => {
-            return Query('/ui-api/equipment/getAllByFilter', params);
+            return Query('/ui-api/asset/getAllByFilter', params);
         },
         getById: (id) => {
-            return Query('/ui-api/equipment/getById', {id});
+            return Query('/ui-api/asset/getById', {id});
         },
         getUniqueCountries: () => {
-            return Query('/ui-api/equipment/getUniqueCountries', null, 'GET', false, 'session');
+            return Query('/ui-api/asset/getUniqueCountries', null, 'GET', false, 'session');
         },
         getEquipmentTypes: () => {
-            return Query('/ui-api/equipment/getUniqueEquipmentTypes', null, 'GET', false, 'session');
+            return Query('/ui-api/asset/getUniqueEquipmentTypes', null, 'GET', false, 'session');
         },
         getUniqueSalesOrganizations: () => {
-            return Query('/ui-api/equipment/getUniqueSalesOrganizations', null, 'GET', false, 'session');
+            return Query('/ui-api/asset/getUniqueSalesOrganizations', null, 'GET', false, 'session');
         }
     },
     case: {
         getById: (id) => {
             return Query('/ui-api/case/getById', {id});
-        },
+        }
+    },
+    callout: {
         getAllByFilter: (params) => {
-            return Query('/ui-api/case/getAllByFilter', params);
+            return Query('/ui-api/callout/getAllByFilter', params);
         },
         getUniqueSalesOrganizations: () => {
-            return Query('/ui-api/case/getUniqueSalesOrganizations', null, 'GET', false, 'session');
+            return Query('/ui-api/callout/getUniqueSalesOrganizations', null, 'GET', false, 'session');
         },
         getUniqueMaintenanceActivityTypeCodes: () => {
-            return Query('/ui-api/case/getUniqueMaintenanceActivityTypeCodes', null, 'GET', false, 'session');
+            return Query('/ui-api/callout/getUniqueMaintenanceActivityTypeCodes', null, 'GET', false, 'session');
         },
         getUniqueAssemblies: () => {
-            return Query('/ui-api/case/getUniqueAssemblies', null, 'GET', false, 'session');
+            return Query('/ui-api/callout/getUniqueAssemblies', null, 'GET', false, 'session');
+        },
+        getUniqueStatuses: () => {
+            return Query('/ui-api/callout/getUniqueStatuses', null, 'GET', false, 'session');
         }
     },
     serviceResource: {

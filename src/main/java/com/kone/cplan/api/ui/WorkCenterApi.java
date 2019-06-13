@@ -1,6 +1,6 @@
 package com.kone.cplan.api.ui;
 
-import com.kone.cplan.api.JpaUtilsForApi;
+import com.kone.cplan.api.DataUtilsForApi;
 import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.jpa.repository.WorkCenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class WorkCenterApi {
 	 */
 	@GetMapping(value = "getById")
 	public OperationResults getById(@RequestParam Integer id) {
-		return JpaUtilsForApi.findById(workCenterRepo, id);
+		return DataUtilsForApi.findById(workCenterRepo, id);
 	}
 	//
 }

@@ -57,12 +57,12 @@
 
         <template #relations>
             <entity-relations :title="$t('text.asset.related-entitlements')">
-                <data-table-basic :source="data.activeSLAs">
+                <data-table-basic :source="data.activeEntitlements">
                     <template #head>
                         <th v-t="'entity.Entitlement.name.label'"></th>
                         <th v-t="'entity.Entitlement.coverage__c.label'"></th>
-                        <th v-t="'entity.Entitlement.startdate.label'"></th>
-                        <th v-t="'entity.Entitlement.enddate.label'"></th>
+                        <th v-t="'entity.Entitlement.startDate.label'"></th>
+                        <th v-t="'entity.Entitlement.endDate.label'"></th>
                         <th v-t="'entity.Entitlement.status.label'"></th>
                         <th v-t="'entity.Entitlement.responseTime__c.label'"></th>
                         <th v-t="'entity.Entitlement.responseTimeAfterHours__c.label'"></th>
@@ -72,8 +72,8 @@
                     <template #row="{row, id}">
                         <td>{{row.name}}</td>
                         <td>{{row.coverage__c}}</td>
-                        <td>{{ $dtz(row.startdate, 'datetime') }}</td>
-                        <td>{{ $dtz(row.enddate, 'datetime') }}</td>
+                        <td>{{ $dtz(row.startDate, 'datetime') }}</td>
+                        <td>{{ $dtz(row.endDate, 'datetime') }}</td>
                         <td>{{row.status}}</td>
                         <td>{{row.responseTime__c}}</td>
                         <td>{{row.responseTimeAfterHours__c}}</td>
