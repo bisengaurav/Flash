@@ -4,12 +4,12 @@
             <entity-relations :title="$t('text.work-center.related-service-resources')">
                 <data-table-basic :source="data.workCenterResources">
                     <template #head>
-                        <th v-t="'entity.workcenterresource.serviceresourcename.label'"></th>
-                        <th v-t="'entity.workcenterresource.workcentername.label'"></th>
-                        <th v-t="'entity.workcenterresource.worktypename.label'"></th>
-                        <th v-t="'entity.workcenterresource.preferencetype__c.label'"></th>
-                        <th v-t="'entity.workcenterresource.startdate__c.label'"></th>
-                        <th v-t="'entity.workcenterresource.enddate__c.label'"></th>
+                        <th v-t="'entity.WorkCenterResource.serviceResourceName.label'"></th>
+                        <th v-t="'entity.WorkCenterResource.workCenterName.label'"></th>
+                        <th v-t="'entity.WorkCenterResource.workTypeName.label'"></th>
+                        <th v-t="'entity.WorkCenterResource.preferenceType__c.label'"></th>
+                        <th v-t="'entity.WorkCenterResource.startDate__c.label'"></th>
+                        <th v-t="'entity.WorkCenterResource.endDate__c.label'"></th>
                     </template>
                     <template #row="{row, id}">
                         <td>

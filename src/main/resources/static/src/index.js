@@ -145,14 +145,6 @@ Vue.filter("yesNo", function(value) {
 import App from './components/app.vue';
 import AppLoader from './components/app-loader.vue';
 
-let _lang = {};
-import _text from './i18n/text.js';
-import _label from './i18n/label.js';
-import _message from './i18n/message.js';
-import _entity from './i18n/entity.js';
-import _filter from './i18n/filter.js';
-_lang = Object.assign({}, _text, _label, _message, _entity, _filter);
-
 
 //
 // load session data
@@ -211,12 +203,12 @@ API.session.getInfo()
 
                     i18n.setLocaleMessage(
                         store.state.$lang,
-                        Object.assign({}, _lang, data.stringsMap)
+                        data.stringsMap
                     );
                     LocalStorage.setVersionedCache(
                         store.state.$lang,
                         data.stringsHashCode,
-                        Object.assign({}, _lang, data.stringsMap)
+                        data.stringsMap
                     );
                     init();
                 });
