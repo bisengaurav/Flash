@@ -14,6 +14,10 @@
             </grid-item>
 
             <grid-item>
+                <form-element-static :label="$t('entity.Asset.equipmentPhoneNumber__c.label')">{{data.equipmentPhoneNumber__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
                 <form-element-static :label="$t('entity.Asset.accountId.label')">{{data.accountId}}</form-element-static>
             </grid-item>
 
@@ -35,6 +39,14 @@
 
             <grid-item>
                 <form-element-static :label="$t('entity.Asset.installationCountry__c.label')">{{data.installationCountry__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('entity.Asset.installationStreet__c.label')">{{data.installationStreet__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('entity.Asset.installationStateProvince__c.label')">{{data.installationStateProvince__c}}</form-element-static>
             </grid-item>
 
             <grid-item>

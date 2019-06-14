@@ -83,5 +83,16 @@ public class CalloutApi {
 			SelectOption.generateList(calloutRepo.getUniqueStatuses().toArray())
 		);
 	}
+
+	/**
+	 * @return OperationResults with list of the SelectOptions
+	 */
+	@GetMapping(value = "getUniqueSAStatuses")
+	public OperationResults getUniqueSAStatuses()
+	{
+		return OperationResults.newSuccess(
+			SelectOption.generateList(calloutRepo.getUniqueSAStatuses().toArray())
+		);
+	}
 	//
 }

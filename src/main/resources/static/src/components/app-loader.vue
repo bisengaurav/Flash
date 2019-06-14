@@ -2,7 +2,7 @@
     <div class="app-loader slds-grid slds-grid_vertical-align-center slds-grid_align-center">
         <div class="slds-text-align_center">
             <div class="app-loader_logo">
-                <img alt="" src="/assets/img/logo-large.png" />
+                <img alt="" src="/static/img/logo-large.png" />
             </div>
 
             <spinner class="app-loader_spinner" />

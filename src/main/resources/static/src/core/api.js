@@ -41,6 +41,9 @@ let API = {
         },
         getUniqueStatuses: () => {
             return Query('/ui-api/callout/getUniqueStatuses', null, 'GET', false, 'session');
+        },
+        getUniqueSAStatuses: () => {
+            return Query('/ui-api/callout/getUniqueSAStatuses', null, 'GET', false, 'session');
         }
     },
     serviceResource: {
@@ -69,9 +72,6 @@ let API = {
     serviceAppointment: {
         getById: (id) => {
             return Query('/ui-api/serviceAppointment/getById', {id});
-        },
-        getUniqueStatuses: () => {
-            return Query('/ui-api/serviceAppointment/getUniqueStatuses', null, 'GET', false, 'session');
         }
     },
     workOrder: {

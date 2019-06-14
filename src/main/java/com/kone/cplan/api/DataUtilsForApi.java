@@ -86,6 +86,7 @@ public class DataUtilsForApi {
 				SelectOption.generateList(repo.getUniqueSalesOrganizations().stream()
 					.flatMap(Pattern.compile(",")::splitAsStream)
 					.distinct()
+					.sorted()
 					.toArray(String[]::new)
 				)
 			);

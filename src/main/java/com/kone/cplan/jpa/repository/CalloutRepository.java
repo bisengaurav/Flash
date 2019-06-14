@@ -38,4 +38,11 @@ public interface CalloutRepository extends JpaRepository<Callout, String>, Callo
 		" GROUP BY c.status" +
 		" ORDER BY c.status")
 	List<String> getUniqueStatuses();
+
+	@Query("SELECT c.serviceAppointmentStatus FROM Callout c" +
+		" WHERE c.serviceAppointmentStatus IS NOT NULL" +
+		" AND c.recordTypeId = '" + CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID + "'" +
+		" GROUP BY c.serviceAppointmentStatus" +
+		" ORDER BY c.serviceAppointmentStatus")
+	List<String> getUniqueSAStatuses();
 }

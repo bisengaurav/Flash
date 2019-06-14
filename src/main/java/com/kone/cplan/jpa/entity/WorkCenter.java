@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(schema = DbSchema.C_PLAN, name= "work_center__c")
+@Table(schema = DbSchema.C_PLAN, name= "view_work_center__c")
 public class WorkCenter implements Serializable {
 
 	//

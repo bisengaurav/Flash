@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  * @created 30-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "resourceabsence")
+@Table(schema = DbSchema.C_PLAN, name = "view_resourceabsence")
 public class ResourceAbsence {
 
 	//
