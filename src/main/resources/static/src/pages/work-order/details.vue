@@ -18,11 +18,17 @@
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.WorkOrder.assembly__c.label')">{{data.assembly__c}}</form-element-static>
+                <form-element-static :label="$t('entity.WorkOrder.caseNumber.label')">
+                    <router-link :to="{name: 'case', params: {id: data.caseId }}"> {{data.caseNumber}}</router-link>
+                </form-element-static>
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.WorkOrder.accountName.label')">{{data.accountName}}</form-element-static>
+                <form-element-static :label="$t('entity.WorkOrder.maintenanceActivityTypeCode__c.label')">{{data.maintenanceActivityTypeCode__c}}</form-element-static>
+            </grid-item>
+
+            <grid-item>
+                <form-element-static :label="$t('entity.WorkOrder.assembly__c.label')">{{data.assembly__c}}</form-element-static>
             </grid-item>
 
             <grid-item>
@@ -36,9 +42,7 @@
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.WorkOrder.serviceTerritoryName.label')">
-                    <router-link :to="{name: 'serviceTerritory', params: {id: data.serviceTerritoryId }}">{{data.serviceTerritoryName}}</router-link>
-                </form-element-static>
+                <form-element-static :label="$t('entity.WorkOrder.accountName.label')">{{data.accountName}}</form-element-static>
             </grid-item>
 
             <grid-item>
@@ -46,22 +50,18 @@
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.WorkOrder.caseNumber.label')">
-                    <router-link :to="{name: 'case', params: {id: data.caseId }}"> {{data.caseNumber}}</router-link>
+                <form-element-static :label="$t('entity.WorkOrder.serviceTerritoryName.label')">
+                    <router-link :to="{name: 'serviceTerritory', params: {id: data.serviceTerritoryId }}">{{data.serviceTerritoryName}}</router-link>
                 </form-element-static>
-            </grid-item>
-
-            <grid-item>
-                <form-element-static :label="$t('entity.WorkOrder.description__c.label')">{{data.description__c}}</form-element-static>
             </grid-item>
 
             <grid-item>
                 <form-element-static :label="$t('entity.WorkOrder.sales_organization__c.label')">{{data.sales_organization__c}}</form-element-static>
             </grid-item>
-
+           
             <grid-item>
-                <form-element-static :label="$t('entity.WorkOrder.maintenanceActivityTypeCode__c.label')">{{data.maintenanceActivityTypeCode__c}}</form-element-static>
-            </grid-item>
+                <form-element-static :label="$t('entity.WorkOrder.description__c.label')">{{data.description__c}}</form-element-static>
+            </grid-item>   
         </template>
 
 
