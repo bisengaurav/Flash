@@ -91,13 +91,13 @@
 <style>
     html,
     body {
-        overflow: hidden;
+/*        overflow: hidden;*/
     }
 
     .main-scroll {
-        height: 100vh;
+/*        height: 100vh;*/
         /*overflow: hidden;*/
-        overflow-y: auto;
+/*        overflow-y: auto;*/
     }
     .main {
         padding: 30px 40px;
