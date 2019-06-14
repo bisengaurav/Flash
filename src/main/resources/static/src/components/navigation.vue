@@ -6,7 +6,7 @@
 
             <div class="nav-panel">
                 <div class="logo">
-                    <img :alt="$t('label.app-name')" src="/assets/img/logo-white.png" />
+                    <img :alt="$t('label.app-name')" src="/static/img/logo-white.png" />
                 </div>
 
                 <div class="nav">
