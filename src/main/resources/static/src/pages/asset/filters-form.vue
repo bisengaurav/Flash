@@ -3,26 +3,6 @@
         <template #fields>
             <grid-item>
                 <form-element
-                    :label="$t('filter.assets.country.label')"
-                    for="country"
-                    :validator="$v.innerValue.installationCountry__c"
-                >
-                    <div class="slds-select_container">
-                        <select-loader
-                            :source="$API.asset.getUniqueCountries"
-                            valueParam="value"
-                            :allowEmpty="true"
-                            v-model="innerValue.installationCountry__c"
-                            @blur.native="$v.innerValue.installationCountry__c.$touch()"
-                            id="country"
-                            class="slds-select"
-                        />
-                    </div>
-                </form-element>
-            </grid-item>
-
-            <grid-item>
-                <form-element
                     :label="$t('filter.assets.type.label')"
                     for="equipment_type"
                     :validator="$v.innerValue.equipmentType__c"
@@ -51,30 +31,10 @@
             </grid-item>
 
             <grid-item>
-                <form-element :label="$t('filter.assets.phone.label')">
+                <form-element :label="$t('filter.assets.equipment-id.label')">
                     <input
-                        id="phone"
-                        v-model="innerValue.equipmentPhoneNumber__c"
-                        class="slds-input"
-                    />
-                </form-element>
-            </grid-item>
-
-            <grid-item>
-                <form-element :label="$t('filter.assets.account.label')">
-                    <input
-                        id="account"
-                        v-model="innerValue.accountName"
-                        class="slds-input"
-                    />
-                </form-element>
-            </grid-item>
-
-            <grid-item>
-                <form-element :label="$t('filter.assets.sold-to.label')">
-                    <input
-                        id="sold_to"
-                        v-model="innerValue.soldToName"
+                        id="customer_asset_name"
+                        v-model="innerValue.name"
                         class="slds-input"
                     />
                 </form-element>
@@ -115,6 +75,56 @@
                     <input
                         id="stateProvince"
                         v-model="innerValue.installationStateProvince__c"
+                        class="slds-input"
+                    />
+                </form-element>
+            </grid-item>
+
+            <grid-item>
+                <form-element
+                    :label="$t('filter.assets.country.label')"
+                    for="country"
+                    :validator="$v.innerValue.installationCountry__c"
+                >
+                    <div class="slds-select_container">
+                        <select-loader
+                            :source="$API.asset.getUniqueCountries"
+                            valueParam="value"
+                            :allowEmpty="true"
+                            v-model="innerValue.installationCountry__c"
+                            @blur.native="$v.innerValue.installationCountry__c.$touch()"
+                            id="country"
+                            class="slds-select"
+                        />
+                    </div>
+                </form-element>
+            </grid-item>
+
+            <grid-item>
+                <form-element :label="$t('filter.assets.account.label')">
+                    <input
+                        id="account"
+                        v-model="innerValue.accountName"
+                        class="slds-input"
+                    />
+                </form-element>
+            </grid-item>
+
+            <grid-item>
+                <form-element :label="$t('filter.assets.sold-to.label')">
+                    <input
+                        id="sold_to"
+                        v-model="innerValue.soldToName"
+                        class="slds-input"
+                    />
+                </form-element>
+            </grid-item>
+
+            <grid-item>
+                <form-element :label="$t('filter.assets.phone.label')">
+                    <input
+                        id="phone"
+                        v-model="innerValue.equipmentPhoneNumber__c"
                         class="slds-input"
                     />
                 </form-element>
@@ -183,6 +193,7 @@
                     installationStateProvince__c: null,
                     fsmLastValidCliEndDate__c: null,
                     salesOrganization__c: null,
+                    name: null
                 }
 
             }

@@ -206,7 +206,7 @@
                 <form-element :label="$t('filter.callouts.sa-status.label')" for="sa_status">
                     <div class="slds-select_container">
                         <select-loader
-                            :source="$API.serviceAppointment.getUniqueStatuses"
+                            :source="$API.serviceAppointment.getUniqueSAStatuses"
                             :allowEmpty="true"
                             v-model="innerValue.serviceAppointmentStatus"
                             id="sa_status"
