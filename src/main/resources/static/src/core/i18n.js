@@ -46,8 +46,13 @@ Vue.prototype.$tdef = i18n.tdef;
 Vue.prototype.$dtz = function(value, key) {
     if (!value) return '';
 
-    var date = Date.parse(value);
-    if (!date || typeof date != 'number' || date === NaN) return '';
+    if (typeof value == 'number') {
+        var date = value;
+
+    } else {
+        var date = Date.parse(value);
+        if (!date || typeof date != 'number' || date === NaN) return '';
+    }
 
     return i18n.d(date, key);
 };
