@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import com.kone.cplan.utils.session.AppSessionContext;
 import com.kone.cplan.utils.spring.AppContextHolder;
 
 /**
@@ -127,8 +126,7 @@ public class Formatters {
 	 * The methods initializes a new {@link Formatters} for the Current User (CU).
 	 */
 	public static Formatters forCurrentUser() {
-		AppSessionContext sessionContext = AppContextHolder.getAppSessionContext();
-		L10nParams l10nParams = sessionContext.getCurrentL10nParams();
+		L10nParams l10nParams = AppContextHolder.getAppSessionContext().getCurrentL10nParams();
 		return (new Formatters(l10nParams.buildLocale(), l10nParams.getTimeZoneId()));
 	}
 	//
