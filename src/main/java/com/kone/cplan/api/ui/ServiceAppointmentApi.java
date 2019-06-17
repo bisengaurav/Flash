@@ -3,7 +3,6 @@ package com.kone.cplan.api.ui;
 import com.kone.cplan.api.DataUtilsForApi;
 import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.jpa.repository.ServiceAppointmentDetailsRepository;
-import com.kone.cplan.jpa.repository.ServiceAppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * This class provides endpoints for UI API that work with ServiceAppointment entities.
  *
- * @author Andrey Gribanov
+ * @author Andrey Gribanov (Cervello)
  * @created 27-05-2019
  */
 @RestController
@@ -23,8 +22,6 @@ public class ServiceAppointmentApi {
 	//
 	//Constants
 	//
-	@Autowired
-	private ServiceAppointmentRepository serviceAppointmentRepo;
 	@Autowired
 	private ServiceAppointmentDetailsRepository serviceAppointmentDetailsRepo;
 	//

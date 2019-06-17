@@ -17,7 +17,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * @author Andrey Gribanov (Cervello)
+ * @created 16-05-2019
+ */
 public class Asset_RepoExtImpl implements Asset_RepoExt {
 
 	//
@@ -33,7 +36,7 @@ public class Asset_RepoExtImpl implements Asset_RepoExt {
 	@Override
 	public List<Asset> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
-		if (baseFilter == null || !(baseFilter instanceof AssetFilter)) {
+		if (!(baseFilter instanceof AssetFilter)) {
 			return (new ArrayList<>());
 		}
 		AssetFilter filter = (AssetFilter) baseFilter;

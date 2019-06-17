@@ -38,11 +38,11 @@ public class DataUtilsForApi {
 		CrudRepository<? extends IEntityWithAccessField, IdType> repository, IdType entityId)
 	{
 		Optional<? extends IEntityWithAccessField> record = repository.findById(entityId);
-		// Check weather the record exists
+		// Check whether the record exists
 		if (!record.isPresent()) {
 			return OperationResults.newErrorByKey("message.common.record-not-found");
 		}
-		// Check weather the Current User has access to the record
+		// Check whether the Current User has access to the record
 		if (!SecurityUtils.userHasAccessToRecord(record.get())) {
 			return OperationResults.newErrorByKey("message.common.record-access-denied");
 		}

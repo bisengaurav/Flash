@@ -9,6 +9,12 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * This repository works with the Callout entity.
+ *
+ * @author Andrey Gribanov (Cervello)
+ * @created 16-05-2019
+ */
 public interface CalloutRepository extends JpaRepository<Callout, String>, Callout_RepoExt, IRepoForSalesOrg {
 
 	@Query("SELECT c.salesOrganizations__c FROM Callout c" +

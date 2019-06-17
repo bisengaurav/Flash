@@ -6,7 +6,7 @@ package com.kone.cplan.jpa.filter;
  * @author Andrey Gribanov (Cervello)
  * @created 31-05-2019
  */
-public class ServiceResourceFilter implements IFilter, IFilterWithSalesOrg {
+public class ServiceResourceFilter implements IFilterWithSalesOrg {
 
 	//
 	//Variables

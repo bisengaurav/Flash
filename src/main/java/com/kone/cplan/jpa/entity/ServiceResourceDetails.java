@@ -8,6 +8,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
+/**
+ * @author Andrey Gribanov (Cervello)
+ * @created 30-05-2019
+ */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_service_resource")
 public class ServiceResourceDetails extends AbstractServiceResource implements Serializable {

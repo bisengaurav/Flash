@@ -6,7 +6,7 @@ package com.kone.cplan.jpa.filter;
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019
  */
-public class AssetFilter implements IFilter, IFilterWithSalesOrg {
+public class AssetFilter implements IFilterWithSalesOrg {
 
 	//
 	//Variables

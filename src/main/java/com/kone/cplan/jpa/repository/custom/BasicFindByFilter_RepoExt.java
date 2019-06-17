@@ -5,6 +5,12 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
+/**
+ * This interface declares repository with 'findByFilter' method.
+ *
+ * @author Andrey Gribanov (Cervello)
+ * @created 16-05-2019
+ */
 public interface BasicFindByFilter_RepoExt {
 
 	List findByFilter(IFilter filter, Pageable pageRequest);

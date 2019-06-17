@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * This class provides endpoints for UI API that work with WorkOrder entities.
  *
- * @author Andrey Gribanov
+ * @author Andrey Gribanov (Cervello)
  * @created 29-05-2019
  */
 @RestController

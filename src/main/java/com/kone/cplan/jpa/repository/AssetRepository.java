@@ -9,7 +9,12 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-
+/**
+ * This repository works with the Asset entity.
+ *
+ * @author Andrey Gribanov (Cervello)
+ * @created 16-05-2019
+ */
 public interface AssetRepository extends JpaRepository<Asset, Integer>, Asset_RepoExt,
 	IRepoForSalesOrg {
 

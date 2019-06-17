@@ -8,11 +8,16 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * This repository works with the ServiceResource entity.
+ *
+ * @author Andrey Gribanov (Cervello)
+ * @created 16-05-2019
+ */
 public interface ServiceResourceRepository extends JpaRepository<ServiceResource, Integer>,
-	ServiceResource_RepoExt, IRepoForSalesOrg {
-
-	@Query("SELECT s.salesOrganization__c" +
-		" FROM ServiceResource s" +
+	ServiceResource_RepoExt, IRepoForSalesOrg
+{
+	@Query("SELECT s.salesOrganization__c FROM ServiceResource s" +
 		" WHERE s.salesOrganization__c IS NOT NULL" +
 		" GROUP BY s.salesOrganization__c" +
 		" ORDER BY s.salesOrganization__c")
