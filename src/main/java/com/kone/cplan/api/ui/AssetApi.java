@@ -27,7 +27,7 @@ import java.util.*;
 public class AssetApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private AssetRepository assetRepo;

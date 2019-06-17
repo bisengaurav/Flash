@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceResourceApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private ServiceResourceRepository serviceResourceRepo;
