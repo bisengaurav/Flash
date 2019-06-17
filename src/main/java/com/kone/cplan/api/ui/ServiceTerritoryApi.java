@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceTerritoryApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private ServiceTerritoryRepository serviceTerritoryRepo;

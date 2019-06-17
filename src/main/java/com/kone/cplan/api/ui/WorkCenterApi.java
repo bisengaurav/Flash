@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WorkCenterApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private WorkCenterRepository workCenterRepo;

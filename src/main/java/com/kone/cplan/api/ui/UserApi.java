@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private UserRepository userRepo;

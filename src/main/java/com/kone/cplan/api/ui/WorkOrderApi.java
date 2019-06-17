@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WorkOrderApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private WorkOrderDetailsRepository workOrderDetailsRepo;
