@@ -27,7 +27,7 @@ import java.util.*;
 public class AssetApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private AssetRepository assetRepo;
@@ -51,7 +51,7 @@ public class AssetApi {
 	//Public methods to work with the Asset entity.
 	//
 	/**
-	 * @param Integer id of a Asset entity
+	 * @param Integer id of an Asset entity
 	 * @return OperationResults with a Asset entity
 	 */
 	@GetMapping(value = "getById")

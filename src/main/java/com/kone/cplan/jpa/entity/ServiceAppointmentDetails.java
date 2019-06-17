@@ -8,6 +8,10 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+/**
+ * @author Andrey Gribanov (Cervello)
+ * @created 30-05-2019
+ */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_serviceappointment_details")
 public class ServiceAppointmentDetails extends AbstractServiceAppointment implements Serializable {

@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
 
+/**
+ * @author Andrey Gribanov (Cervello)
+ * @created 30-05-2019
+ */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_work_center_resource")
 public class WorkCenterResource {

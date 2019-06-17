@@ -7,6 +7,10 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
 
+/**
+ * @author Andrey Gribanov (Cervello)
+ * @created 30-05-2019
+ */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_workorder_details")
 public class WorkOrderDetails extends AbstractWorkOrder implements Serializable {

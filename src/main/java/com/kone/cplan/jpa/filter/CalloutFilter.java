@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * @author Andrey Gribanov (Cervello)
  * @created 27-05-2019
  */
-public class CalloutFilter implements IFilter, IFilterWithSalesOrg {
+public class CalloutFilter implements IFilterWithSalesOrg {
 
 	//
 	//Variables

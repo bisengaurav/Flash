@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CaseApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private CaseDetailsRepository caseDetailsRepo;

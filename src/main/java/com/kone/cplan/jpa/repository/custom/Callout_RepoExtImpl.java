@@ -33,7 +33,7 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 	@Override
 	public List<Callout> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
-		if (baseFilter == null || !(baseFilter instanceof CalloutFilter)) {
+		if (!(baseFilter instanceof CalloutFilter)) {
 			return (new ArrayList<>());
 		}
 		CalloutFilter filter = (CalloutFilter) baseFilter;

@@ -1,6 +1,8 @@
 package com.kone.cplan.jpa.utils;
 
 /**
+ * This class provides JPA utilities.
+ *
  * @author Andrey Gribanov (Cervello)
  * @created 07-06-2019
  */

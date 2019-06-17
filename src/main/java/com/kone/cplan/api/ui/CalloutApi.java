@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalloutApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private CalloutRepository calloutRepo;

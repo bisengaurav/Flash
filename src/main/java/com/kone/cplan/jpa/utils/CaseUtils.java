@@ -1,5 +1,11 @@
 package com.kone.cplan.jpa.utils;
 
+/**
+ * This class provides utils to work with Case entity.
+ *
+ * @author Andrey Gribanov (Cervello)
+ * @created 13-06-2019
+ */
 public class CaseUtils {
 
 	//

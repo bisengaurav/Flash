@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * This class provides endpoints for UI API that work with ServiceResource entities.
  *
- * @author Andrey Gribanov
+ * @author Andrey Gribanov (Cervello)
  * @created 24-05-2019
  */
 @RestController
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceResourceApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private ServiceResourceRepository serviceResourceRepo;

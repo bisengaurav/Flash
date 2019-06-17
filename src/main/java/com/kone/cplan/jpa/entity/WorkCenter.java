@@ -7,6 +7,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
+/**
+ * @author Andrey Gribanov (Cervello)
+ * @created 30-05-2019
+ */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name= "view_work_center__c")
 public class WorkCenter implements Serializable {

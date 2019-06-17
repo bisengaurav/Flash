@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * This class provides endpoints for UI API that work with User entities.
  *
- * @author Andrey Gribanov
+ * @author Andrey Gribanov (Cervello)
  * @created 24-05-2019
  */
 @RestController
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserApi {
 
 	//
-	//Constants
+	//Variables
 	//
 	@Autowired
 	private UserRepository userRepo;
@@ -33,8 +33,7 @@ public class UserApi {
 	//Public methods to work with the User entity.
 	//
 	/**
-	 * @param Integer id of a User entity
-	 * @return OperationResults with a User entity
+	 * @return OperationResults with a UserWrapper
 	 */
 	@GetMapping(value = "getUserInfo")
 	public OperationResults getUserInfo() {

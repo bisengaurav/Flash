@@ -32,7 +32,7 @@ public class ServiceResource_RepoExtImpl implements ServiceResource_RepoExt {
 	@Override
 	public List<ServiceResource> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
-		if (baseFilter == null || !(baseFilter instanceof ServiceResourceFilter)) {
+		if (!(baseFilter instanceof ServiceResourceFilter)) {
 			return (new ArrayList<>());
 		}
 		ServiceResourceFilter filter = (ServiceResourceFilter) baseFilter;
