@@ -106,7 +106,7 @@ export const Asset = {
     ]
 }
 
-export const Callout = {
+export const Case = {
     title: 'caseNumber',
     action: API.case.getById,
     fields: [
@@ -213,7 +213,7 @@ export const Callout = {
 
 export const ServiceAppointment = {
     title: 'appointmentNumber',
-    action: API.case.getById,
+    action: API.serviceAppointment.getById,
     fields: [
         {
             field: 'status',
@@ -279,6 +279,7 @@ export const ServiceAppointment = {
 }
 
 export const ServiceResource = {
+    title: 'name',
     action: API.serviceResource.getById,
     fields: [
         {
@@ -428,6 +429,7 @@ export const ServiceResource = {
 }
 
 export const ServiceTerritory = {
+    title: 'name',
     action: API.serviceTerritory.getById,
     fields: [
         {
@@ -582,6 +584,10 @@ export const WorkOrder = {
                     type: 'link',
                     to: 'serviceAppointment',
                     id: 'id'
+                },
+                {
+                    field: 'status',
+                    type: 'text'
                 },
                 {
                     field: 'serviceResourceName',

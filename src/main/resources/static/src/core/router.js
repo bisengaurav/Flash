@@ -62,104 +62,192 @@ routes.push({
 // Entity Details pages
 //
 
-//import EntityDetailsBuilder from '../components/entity-details-builder/';
+import EntityDetailsBuilder from '../components/entity-details-builder/';
 
+
+// // Asset
+// import AssetDetails from '../pages/asset/details.vue';
+// routes.push({
+//     path: '/asset/:id',
+//     name: 'asset',
+//     component: AssetDetails,
+// //    component: EntityDetailsBuilder,
+//     props(route) {
+//         return {
+// //            entity: 'Asset',
+//             id: +route.params['id']
+//         }
+//     }
+// });
+
+// // Case
+// import CaseDetails from '../pages/case/details.vue';
+// routes.push({
+//     path: '/case/:id',
+//     name: 'case',
+//     component: CaseDetails,
+//     props(route) {
+//         return {
+//             id: +route.params['id']
+//         }
+//     }
+// });
+
+// // Service Resource
+// import ServiceResourceDetails from '../pages/service-resource/details.vue';
+// routes.push({
+//     path: '/service-resource/:id',
+//     name: 'serviceResource',
+//     component: ServiceResourceDetails,
+//     props(route) {
+//         return {
+//             id: +route.params['id']
+//         }
+//     }
+// });
+
+// // Service Territory
+// import ServiceTerritoryDetails from '../pages/service-territory/details.vue';
+// routes.push({
+//     path: '/service-territory/:id',
+//     name: 'serviceTerritory',
+//     component: ServiceTerritoryDetails,
+//     props(route) {
+//         return {
+//             id: +route.params['id']
+//         }
+//     }
+// });
+
+// // Service Appointment
+// import ServiceAppointmentDetails from '../pages/service-appointment/details.vue';
+// routes.push({
+//     path: '/service-appointment/:id',
+//     name: 'serviceAppointment',
+//     component: ServiceAppointmentDetails,
+//     props(route) {
+//         return {
+//             id: +route.params['id']
+//         }
+//     }
+// });
+
+// // Work Center
+// import WorkCenterDetails from '../pages/work-center/details.vue';
+// routes.push({
+//     path: '/work-center/:id',
+//     name: 'workCenter',
+//     component: WorkCenterDetails,
+//     props(route) {
+//         return {
+//             id: +route.params['id']
+//         }
+//     }
+// });
+
+// // Work Order
+// import WorkOrderDetails from '../pages/work-order/details.vue';
+// routes.push({
+//     path: '/work-order/:id',
+//     name: 'workOrder',
+//     component: WorkOrderDetails,
+//     props(route) {
+//         return {
+//             id: +route.params['id']
+//         }
+//     }
+// });
 
 // Asset
-import AssetDetails from '../pages/asset/details.vue';
 routes.push({
     path: '/asset/:id',
     name: 'asset',
-    component: AssetDetails,
-//    component: EntityDetailsBuilder,
+   component: EntityDetailsBuilder,
     props(route) {
         return {
-//            entity: 'Asset',
+            entity: 'Asset',
             id: +route.params['id']
         }
     }
 });
 
 // Case
-import CaseDetails from '../pages/case/details.vue';
 routes.push({
     path: '/case/:id',
     name: 'case',
-    component: CaseDetails,
+    component: EntityDetailsBuilder,
     props(route) {
         return {
+            entity: 'Case',
             id: +route.params['id']
         }
     }
 });
 
 // Service Resource
-import ServiceResourceDetails from '../pages/service-resource/details.vue';
 routes.push({
     path: '/service-resource/:id',
     name: 'serviceResource',
-    component: ServiceResourceDetails,
+    component: EntityDetailsBuilder,
     props(route) {
         return {
+            entity: 'ServiceResource',
             id: +route.params['id']
         }
     }
 });
 
 // Service Territory
-import ServiceTerritoryDetails from '../pages/service-territory/details.vue';
 routes.push({
     path: '/service-territory/:id',
     name: 'serviceTerritory',
-    component: ServiceTerritoryDetails,
+    component: EntityDetailsBuilder,
     props(route) {
         return {
+            entity: 'ServiceTerritory',
             id: +route.params['id']
         }
     }
 });
 
 // Service Appointment
-import ServiceAppointmentDetails from '../pages/service-appointment/details.vue';
 routes.push({
     path: '/service-appointment/:id',
     name: 'serviceAppointment',
-    component: ServiceAppointmentDetails,
+    component: EntityDetailsBuilder,
     props(route) {
         return {
+            entity: 'ServiceAppointment',
             id: +route.params['id']
         }
     }
 });
 
 // Work Center
-import WorkCenterDetails from '../pages/work-center/details.vue';
 routes.push({
     path: '/work-center/:id',
     name: 'workCenter',
-    component: WorkCenterDetails,
+    component: EntityDetailsBuilder,
     props(route) {
         return {
+            entity: 'WorkCenter',
             id: +route.params['id']
         }
     }
 });
 
 // Work Order
-import WorkOrderDetails from '../pages/work-order/details.vue';
 routes.push({
     path: '/work-order/:id',
     name: 'workOrder',
-    component: WorkOrderDetails,
+    component: EntityDetailsBuilder,
     props(route) {
         return {
+            entity: 'WorkOrder',
             id: +route.params['id']
         }
     }
 });
-
-
-
 
 //
 // 404

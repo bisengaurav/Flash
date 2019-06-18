@@ -11,7 +11,11 @@
                 <grid-item x="2">
                     <form-element-static :label="$t('entity.User.profileName.label')">{{data.user.profileName}}</form-element-static>
                 </grid-item>
-
+                
+                <grid-item x="2">
+                    <form-element-static :label="$t('entity.User.email.label')">{{data.user.email}}</form-element-static>
+                </grid-item>
+                
                 <grid-item x="2">
                     <form-element-static :label="$t('entity.User.timezoneSidKey.label')">{{data.user.timezoneSidKey}}</form-element-static>
                 </grid-item>

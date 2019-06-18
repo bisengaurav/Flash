@@ -43,7 +43,7 @@ Vue.prototype.$tdef = i18n.tdef;
 
 // $d alias function
 
-Vue.prototype.$dtz = function(value, key) {
+i18n.dtz  = function(value, key) {
     if (!value) return '';
 
     if (typeof value == 'number') {
@@ -57,5 +57,6 @@ Vue.prototype.$dtz = function(value, key) {
     return i18n.d(date, key);
 };
 
+Vue.prototype.$dtz = i18n.dtz;
 
 export default i18n;

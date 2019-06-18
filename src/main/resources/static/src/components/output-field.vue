@@ -3,12 +3,13 @@
 
     <span v-else-if="props.type == 'yn'">{{props.value|yesNo}}</span>
 
-    <span v-else-if="['date', 'datetime', 'time'].includes(props.type)">{{ $dtz(props.value, props.type) }}</span>
+    <span  v-else-if="['date', 'datetime', 'time'].includes(props.type)">{{ $options.methods.dtz(props.value, props.type)  }}</span>
 
     <router-link v-else-if="props.type == 'link'" :to="{name: props.params.to, params: {id: props.params.id }}">{{props.value}}</router-link>
 </template>
 
 <script>
+    import i18n from '../core/i18n';
     export default {
         props: {
             type: {
@@ -21,6 +22,15 @@
             params: {
                 default: null
             }
+        },
+        methods: {
+            dtz(value, key) {
+                return i18n.dtz(value, key);
+            }
+        },
+        updated() {
+            console.log(this)
         }
     }
+    
 </script>

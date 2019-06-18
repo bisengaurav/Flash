@@ -57,10 +57,10 @@
 
                                 <output-field
                                     :type="f.type"
-                                    :value="data[f.field]"
+                                    :value="row[f.field]"
                                     :params="{
                                         to: f.to,
-                                        id: data[f.id]
+                                        id: row[f.id]
                                     }"
                                 />
 
