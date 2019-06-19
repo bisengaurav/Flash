@@ -7,6 +7,8 @@
             ok: $t('label.button.ok'),
             cancel: $t('label.button.cancel')
         }"
+        :auto="true"
+        :input-id="id"
         class="slds-input-has-icon slds-input-has-icon_right"
         input-class="slds-input"
     >
@@ -18,7 +20,6 @@
 
 <script>
     import {Datetime} from 'vue-datetime';
-    import 'vue-datetime/dist/vue-datetime.min.css'
 
     import Icons from '../core/icons.js';
     import {faCalendarAlt} from '@fortawesome/free-solid-svg-icons/';
@@ -44,6 +45,10 @@
             valueTimestamp: {
                 type: Boolean,
                 default: true
+            },
+            id: {
+                type: String,
+                default: ''
             }
         },
         data() {
@@ -86,170 +91,213 @@
         background: rgba(255,255,255,.6);
     }
 
-
-
-
     .vdatetime-popup {
         z-index: 1100;
         position: fixed;
 
         top: 50%;
         left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        width: 340px;
+        -webkit-transform: translate(-50%, -160px);
+        transform: translate(-50%, -160px);
+        width: 300px;
 
         max-width: calc(100% - 30px);
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
-        color: #444;
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,.16);
         background: #fff;
+        border: 1px solid #dddbda;
+        border-radius: .25rem;
     }
 
+
+
     .vdatetime-popup__header {
-        padding: 18px 30px;
-        background: #3f51b5;
-        color: #fff;
-        font-size: 32px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+
+        padding: .6rem 1rem .65rem;;
+        /*background-color: #0071b9;*/
+        border-bottom: 2px solid #dddbda;
+        border-radius: .24rem .24rem 0 0;
     }
     .vdatetime-popup__title {
         display: none;
     }
-    .vdatetime-popup__year {
-        font-weight: 300;
-        font-size: 14px;
-        cursor: pointer;
-    }
+    .vdatetime-popup__year,
     .vdatetime-popup__date {
-        line-height: 1;
+        font-weight: 700;
         cursor: pointer;
+        /*color: #fff;*/
+        border-bottom: 1px dashed #ccc;
     }
 
+
+
     .vdatetime-popup__actions {
-        padding: 0 20px 10px 30px;
+        padding: .75rem 1rem;
         text-align: right;
+        border-top: 2px solid #dddbda;
+        border-bottom-right-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+        background-color: #edeff0;
     }
 
     .vdatetime-popup__actions__button {
+        position: relative;
         display: inline-block;
-        border: none;
-        padding: 10px 20px;
-        background: transparent;
-        font-size: 16px;
-        color: #3f51b5;
+        padding: 0 1rem;
+        border-radius: 0.25rem;
+
+        line-height: 1.875rem;
+        color: #0070d2;
+
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: middle;
         cursor: pointer;
-        transition: color .3s
+
+        -webkit-appearance: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .vdatetime-popup__actions__button--cancel {
+        color: #0071b9;
+        border: 1px solid #dddbda;
+        background-color: #fff;
+    }
+    .vdatetime-popup__actions__button--cancel:hover {
+        color: #004987;
+        background-color: #f4f6f9;
     }
 
-    .vdatetime-popup__actions__button:hover {
-        color: #444
+    .vdatetime-popup__actions__button--confirm {
+        color: #fff;
+        background-color: #0071b9;
+        border: 1px solid #0071b9;
     }
-    .vdatetime-calendar__navigation--previous:hover svg path, .vdatetime-calendar__navigation--next:hover svg path {
-        stroke: #888;
+    .vdatetime-popup__actions__button--confirm:hover {
+        background-color: #004987;
+        border-color: #004987;
     }
 
 
 
 
     .vdatetime-calendar__navigation {
-        position: relative;
-        margin: 15px 0;
-        padding: 0 30px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+
+        margin: .5rem 0;
+        padding: 0 .5rem;
         width: 100%;
-    }
-    .vdatetime-calendar__navigation--previous,
-    .vdatetime-calendar__navigation--next {
-        position: absolute;
-        top: 0;
-        padding: 0 5px;
-        width: 18px;
-        cursor: pointer
-    }
-    .vdatetime-calendar__navigation--previous svg, .vdatetime-calendar__navigation--next svg {
-        width: 8px;
-    }
-    .vdatetime-calendar__navigation--previous svg path, .vdatetime-calendar__navigation--next svg path {
-        transition: stroke .3s;
-    }
-    .vdatetime-calendar__navigation--previous {
-        left: 25px;
-    }
-    .vdatetime-calendar__navigation--next {
-        right: 25px;
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
     }
 
     .vdatetime-calendar__current--month {
         text-align: center;
-        text-transform: capitalize;
     }
 
+    .vdatetime-calendar__navigation--previous,
+    .vdatetime-calendar__navigation--next {
+        padding: 4px 10px;
+        cursor: pointer
+    }
+    .vdatetime-calendar__navigation--previous {
+    }
+    .vdatetime-calendar__navigation--next {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    .vdatetime-calendar__navigation--previous svg,
+    .vdatetime-calendar__navigation--next svg {
+        width: 8px;
+        stroke: #706e6b;
+    }
+    .vdatetime-calendar__navigation--previous:hover svg path,
+    .vdatetime-calendar__navigation--next:hover svg path {
+        stroke: #0070d2;
+    }
+
+
+
+
     .vdatetime-calendar__month {
-        padding: 0 20px;
+        padding: .4rem .5rem;
+
+        display: -ms-flexbox;
+        display: flex;
+
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+
+        -ms-flex-align: start;
+        align-items: flex-start;
     }
 
     .vdatetime-calendar__month__weekday,
     .vdatetime-calendar__month__day {
         display: inline-block;
         width: 14.28571%;
-        line-height: 36px;
         text-align: center;
-        font-size: 15px;
-        font-weight: 300;
+    }
+
+    .vdatetime-calendar__month__weekday > span,
+    .vdatetime-calendar__month__day > span {
+        display: block;
+        width: 100%;
+        padding: 1px 0;
+    }
+
+    .vdatetime-calendar__month__weekday > span > span,
+    .vdatetime-calendar__month__day > span > span {
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        margin: 0 auto;
+        border-radius: 50%;
         cursor: pointer
     }
 
-    .vdatetime-calendar__month__weekday > span, .vdatetime-calendar__month__day > span {
-        display: block;
-        width: 100%;
-        position: relative;
-        height: 0;
-        padding: 0 0 100%;
-        overflow: hidden;
-    }
-
-    .vdatetime-calendar__month__weekday > span > span, .vdatetime-calendar__month__day > span > span {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border: 0;
-        border-radius: 50%;
-        transition: background-color .3s, color .3s;
-    }
-
     .vdatetime-calendar__month__weekday {
+        padding-bottom: 2px;
+        font-size: .75rem;
         font-weight: bold;
     }
 
     .vdatetime-calendar__month__day:hover > span > span {
-        background: #eee;
+        background: #edeff0;
     }
 
     .vdatetime-calendar__month__day--selected {
     }
-
     .vdatetime-calendar__month__day--selected > span > span,
     .vdatetime-calendar__month__day--selected:hover > span > span {
         color: #fff;
-        background: #3f51b5;
+        background: #0071b9;
     }
 
     .vdatetime-calendar__month__day--disabled {
         opacity: 0.4;
         cursor: default
     }
-
     .vdatetime-calendar__month__day--disabled:hover > span > span {
         color: inherit;
         background: transparent;
@@ -258,120 +306,65 @@
 
 
 
-    .vdatetime-time-picker::after {
-        content: '';
-        display: table;
-        clear: both
+    .vdatetime-time-picker,
+    .vdatetime-year-picker,
+    .vdatetime-month-picker {
+        display: -ms-flexbox;
+        display: flex;
     }
-
-    .vdatetime-time-picker__list {
-        float: left;
-        width: 50%;
-        height: 305px;
+    .vdatetime-time-picker__list,
+    .vdatetime-year-picker__list,
+    .vdatetime-month-picker__list {
+        height: 230px;
         overflow-y: scroll
     }
 
+    .vdatetime-time-picker__item,
+    .vdatetime-year-picker__item,
+    .vdatetime-month-picker__item {
+        padding: 4px 0;
+        text-align: center;
+        cursor: pointer;
+    }
+    .vdatetime-time-picker__item:hover,
+    .vdatetime-year-picker__item:hover,
+    .vdatetime-month-picker__item:hover {
+        background: #edeff0;
+    }
+
+    .vdatetime-time-picker__item--selected,
+    .vdatetime-time-picker__item--selected:hover,
+    .vdatetime-year-picker__item--selected,
+    .vdatetime-year-picker__item--selected:hover,
+    .vdatetime-month-picker__item--selected,
+    .vdatetime-month-picker__item--selected:hover {
+        color: #fff;
+        background: #0071b9;
+    }
+
+    .vdatetime-time-picker__item--disabled,
+    .vdatetime-time-picker__item--disabled:hover,
+    .vdatetime-year-picker__item--disabled,
+    .vdatetime-year-picker__item--disabled:hover,
+    .vdatetime-month-picker__item--disabled,
+    .vdatetime-month-picker__item--disabled:hover {
+        color: #8d9194;
+        background: #fff;
+        cursor: default;
+    }
+
+
+
+
+    .vdatetime-time-picker__list {
+        width: 50%;
+    }
     .vdatetime-time-picker__with-suffix .vdatetime-time-picker__list {
         width: 33.3%;
     }
-
-    .vdatetime-time-picker__item {
-        padding: 10px 0;
-        font-size: 20px;
-        text-align: center;
-        cursor: pointer;
-        transition: font-size .3s;
-    }
-
-    .vdatetime-time-picker__item:hover {
-        font-size: 32px;
-    }
-
-    .vdatetime-time-picker__item--selected {
-        color: #3f51b5;
-        font-size: 32px;
-    }
-
-    .vdatetime-time-picker__item--disabled {
-        opacity: 0.4;
-        cursor: default;
-        font-size: 20px !important;
-    }
-
-
-
-    .vdatetime-year-picker__list {
-        width: 100%;
-        height: 305px;
-        overflow-y: scroll
-    }
-    .vdatetime-year-picker__item {
-        padding: 10px 0;
-        font-size: 20px;
-        text-align: center;
-        cursor: pointer;
-        transition: font-size .3s;
-    }
-
-    .vdatetime-year-picker__item:hover {
-        font-size: 32px;
-    }
-
-    .vdatetime-year-picker__item--selected {
-        color: #3f51b5;
-        font-size: 32px;
-    }
-
-    .vdatetime-year-picker__item--disabled {
-        opacity: 0.4;
-        cursor: default
-    }
-
-    .vdatetime-year-picker__item--disabled:hover {
-        color: inherit;
-        background: transparent
-    }
-
-
-
-
-    .vdatetime-month-picker::after {
-        content: '';
-        display: table;
-        clear: both
-    }
+    .vdatetime-year-picker__list,
     .vdatetime-month-picker__list {
-        float: left;
         width: 100%;
-        height: 305px;
-        overflow-y: scroll
-    }
-
-    .vdatetime-month-picker__item {
-        padding: 10px 0;
-        font-size: 20px;
-        text-align: center;
-        cursor: pointer;
-        transition: font-size .3s;
-    }
-
-    .vdatetime-month-picker__item:hover {
-        font-size: 32px;
-    }
-
-    .vdatetime-month-picker__item--selected {
-        color: #3f51b5;
-        font-size: 32px;
-    }
-
-    .vdatetime-month-picker__item--disabled {
-        opacity: 0.4;
-        cursor: default
-    }
-
-    .vdatetime-month-picker__item--disabled:hover {
-        color: inherit;
-        background: transparent
     }
 
 </style>

@@ -1,104 +1,8 @@
 <template>
     <section>
-        <h1 class="slds-text-heading_large slds-m-bottom_large" v-t="'text.home.page-title'"></h1>
+        <h1 class="slds-text-heading_large slds-m-bottom_large">{{pageTitle}}</h1>
 
-        <div class="cmp-home-page_wrapper" v-html="$t('text.home.html')">
-        </div>
-
-        <!-- <h1 class="slds-text-heading_large slds-m-bottom_large">Translation</h1>
-        <p><b>Lang:</b> {{$lang}}</p>
-        <p><b>Timezone:</b> {{$timezone}}</p>
-        <br/>
-        <p><b>date:</b> {{ $dtz(new Date(), 'date') }}</p>
-        <p><b>datetime:</b> {{ $dtz(new Date(), 'datetime') }}</p>
-        <p><b>time:</b> {{ $dtz(new Date(), 'time') }}</p>
-        <br/><br/>
-
-        <div class="slds-container_large">
-            <h1 class="slds-text-heading_large slds-m-bottom_large">Branding</h1>
-
-            <p class="slds-text-heading_medium slds-m-bottom_small">Medium Heading</p>
-            <p class="slds-text-heading_small slds-m-bottom_small">Small Heading</p>
-
-            <p class="slds-m-bottom_small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dolore ducimus, excepturi expedita illo impedit inventore ipsa minus, necessitatibus nemo neque placeat quas quod tempora tenetur veritatis voluptas voluptate voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p class="slds-text-color_weak slds-m-bottom_small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p class="slds-text-color_error slds-m-bottom_small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p class="slds-text-color_success slds-m-bottom_small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-            <alert type="info" class="slds-m-bottom_small">Lorem ipsum dolor sit amet</alert>
-            <alert type="warning" class="slds-m-bottom_small">Lorem ipsum dolor sit amet</alert>
-            <alert type="error" class="slds-m-bottom_small">Lorem ipsum dolor sit amet</alert>
-            <alert type="success" class="slds-m-bottom_small">Lorem ipsum dolor sit amet</alert>
-            <alert type="static" class="slds-m-bottom_small">Lorem ipsum dolor sit amet</alert>
-
-            <div class="slds-grid slds-gutters_direct slds-wrap">
-                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
-                    <div class="slds-p-vertical_medium">
-                        <help-pointer content="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></help-pointer>
-                        <span class="slds-m-left_xx-small">Tooltip</span>
-                    </div>
-
-                    <form-element label="Lorem ipsum dolor sit" class="slds-m-bottom_small">
-                        <input class="slds-input" />
-                        <div class="slds-form-element__help">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
-                    </form-element>
-
-                    <form-element label="Lorem ipsum dolor sit" class="slds-m-bottom_small">
-                        <div class="slds-select_container">
-                            <select class="slds-select">
-                                <option>Option</option>
-                            </select>
-                        </div>
-                    </form-element>
-
-                    <checkbox label="Lorem ipsum dolor sit" class="slds-m-bottom_small" />
-
-                    <checkbox-toggle label="Lorem ipsum dolor sit" class="slds-m-bottom_small" />
-
-                    <button class="slds-button slds-button_neutral">Cancel</button>
-                    <button class="slds-button slds-button_outline-brand">Cancel</button>
-                    <button class="slds-button slds-button_brand">Save</button>
-                    <button class="slds-button slds-button_neutral" disabled>Cancel</button>
-                    <button class="slds-button slds-button_outline-brand" disabled>Cancel</button>
-                    <button class="slds-button slds-button_brand" disabled>Save</button>
-                </div>
-
-                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-has-error">
-                    <div class="slds-p-vertical_medium">
-                        <icon icon="exclamation-triangle" class="slds-icon slds-icon_x-small slds-icon-text-default" />
-                        <icon icon="exclamation-triangle" class="slds-icon slds-icon_x-small slds-icon-text-light" />
-                        <icon icon="exclamation-triangle" class="slds-icon slds-icon_x-small slds-icon-text-warning" />
-                        <icon icon="exclamation-triangle" class="slds-icon slds-icon_x-small slds-icon-text-error" />
-                        <icon icon="exclamation-triangle" class="slds-icon slds-icon_x-small slds-icon-text-success" />
-                    </div>
-
-                    <form-element label="Lorem ipsum dolor sit" class="slds-m-bottom_small">
-                        <input class="slds-input" />
-                        <div class="slds-form-element__help">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
-                    </form-element>
-
-                    <form-element label="Lorem ipsum dolor sit" :required="true" class="slds-m-bottom_small">
-                        <div class="slds-select_container">
-                            <select class="slds-select">
-                                <option>Option</option>
-                            </select>
-                        </div>
-                    </form-element>
-
-                    <checkbox label="Lorem ipsum dolor sit" class="slds-m-bottom_small" />
-
-                    <checkbox-toggle label="Lorem ipsum dolor sit" class="slds-m-bottom_small" />
-
-                    <button class="slds-button slds-button_destructive">Save</button>
-                    <button class="slds-button slds-button_text-destructive">Save</button>
-                    <button class="slds-button slds-button_success">Success</button>
-                    <button class="slds-button slds-button_destructive" disabled>Save</button>
-                    <button class="slds-button slds-button_text-destructive" disabled>Save</button>
-                    <button class="slds-button slds-button_success" disabled>Success</button>
-                </div>
-            </div>
-        </div> -->
-
+        <div class="home-page_wrapper" v-html="$t('text.home.html')" />
     </section>
 </template>
 
@@ -107,29 +11,24 @@
 
     export default {
         extends: PageInterface,
-
         //
         // PARAMS: props, data, computed
         //
         data() {
             return {
-                pageTitle: 'Home'
+                pageTitle: this.$t('text.home.page-title')
             }
         }
-
     }
 </script>
 
 <style scoped>
-
-    .cmp-home-page_wrapper >>>  h2 {
+    .home-page_wrapper >>> h2 {
         font-size: .95rem;
         font-weight: 700;
     }
-
-    .cmp-home-page_wrapper >>> ul {
+    .home-page_wrapper >>> ul {
         margin-left: 1.5rem;
         list-style: disc;
     }
-
 </style>
