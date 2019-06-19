@@ -13,14 +13,14 @@ import java.sql.Timestamp;
  * @created 30-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_work_center_resource")
-public class WorkCenterResource {
+@Table(schema = DbSchema.C_PLAN, name = "view_fsm_wc_assignment_of_work_center")
+public class WcAssignmentOfWorkCenter {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public WorkCenterResource() {};
+	public WcAssignmentOfWorkCenter() {};
 	//
 
 	//

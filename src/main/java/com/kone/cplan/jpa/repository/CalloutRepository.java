@@ -31,12 +31,34 @@ public interface CalloutRepository extends JpaRepository<Callout, String>, Callo
 		" ORDER BY c.maintenanceActivityTypeCode__c")
 	List<String> getUniqueMaintenanceActivityTypeCodes();
 
+	@Query("SELECT c.maintenanceActivityTypeCode__c FROM Callout c" +
+		" WHERE c.maintenanceActivityTypeCode__c IS NOT NULL" +
+		" AND c.recordTypeId = '" + CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID + "'" +
+		" AND (c.salesOrganizations__c LIKE :salesOrg" +
+		" OR c.salesOrganizations__c LIKE CONCAT(:salesOrg, ',%')" +
+		" OR c.salesOrganizations__c LIKE CONCAT('%,', :salesOrg, ',%')" +
+		" OR c.salesOrganizations__c LIKE CONCAT('%,', :salesOrg))" +
+		" GROUP BY c.maintenanceActivityTypeCode__c" +
+		" ORDER BY c.maintenanceActivityTypeCode__c")
+	List<String> getUniqueMaintenanceActivityTypeCodesBySalesOrg(String salesOrg);
+
 	@Query("SELECT c.assembly__c FROM Callout c" +
 		" WHERE c.assembly__c IS NOT NULL" +
 		" AND c.recordTypeId = '" + CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID + "'" +
 		" GROUP BY c.assembly__c" +
 		" ORDER BY c.assembly__c")
 	List<String> getUniqueAssemblies();
+
+	@Query("SELECT c.assembly__c FROM Callout c" +
+		" WHERE c.assembly__c IS NOT NULL" +
+		" AND c.recordTypeId = '" + CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID + "'" +
+		" AND (c.salesOrganizations__c LIKE :salesOrg" +
+		" OR c.salesOrganizations__c LIKE CONCAT(:salesOrg, ',%')" +
+		" OR c.salesOrganizations__c LIKE CONCAT('%,', :salesOrg, ',%')" +
+		" OR c.salesOrganizations__c LIKE CONCAT('%,', :salesOrg))" +
+		" GROUP BY c.assembly__c" +
+		" ORDER BY c.assembly__c")
+	List<String> getUniqueAssembliesBySalesOrg(String salesOrg);
 
 	@Query("SELECT c.status FROM Callout c" +
 		" WHERE c.status IS NOT NULL" +
@@ -45,10 +67,32 @@ public interface CalloutRepository extends JpaRepository<Callout, String>, Callo
 		" ORDER BY c.status")
 	List<String> getUniqueStatuses();
 
+	@Query("SELECT c.status FROM Callout c" +
+		" WHERE c.status IS NOT NULL" +
+		" AND c.recordTypeId = '" + CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID + "'" +
+		" AND (c.salesOrganizations__c LIKE :salesOrg" +
+		" OR c.salesOrganizations__c LIKE CONCAT(:salesOrg, ',%')" +
+		" OR c.salesOrganizations__c LIKE CONCAT('%,', :salesOrg, ',%')" +
+		" OR c.salesOrganizations__c LIKE CONCAT('%,', :salesOrg))" +
+		" GROUP BY c.status" +
+		" ORDER BY c.status")
+	List<String> getUniqueStatusesBySalesOrg(String salesOrg);
+
 	@Query("SELECT c.serviceAppointmentStatus FROM Callout c" +
 		" WHERE c.serviceAppointmentStatus IS NOT NULL" +
 		" AND c.recordTypeId = '" + CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID + "'" +
 		" GROUP BY c.serviceAppointmentStatus" +
 		" ORDER BY c.serviceAppointmentStatus")
 	List<String> getUniqueSAStatuses();
+
+	@Query("SELECT c.serviceAppointmentStatus FROM Callout c" +
+		" WHERE c.serviceAppointmentStatus IS NOT NULL" +
+		" AND c.recordTypeId = '" + CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID + "'" +
+		" AND (c.salesOrganizations__c LIKE :salesOrg" +
+		" OR c.salesOrganizations__c LIKE CONCAT(:salesOrg, ',%')" +
+		" OR c.salesOrganizations__c LIKE CONCAT('%,', :salesOrg, ',%')" +
+		" OR c.salesOrganizations__c LIKE CONCAT('%,', :salesOrg))" +
+		" GROUP BY c.serviceAppointmentStatus" +
+		" ORDER BY c.serviceAppointmentStatus")
+	List<String> getUniqueSAStatusesBySalesOrg(String salesOrg);
 }

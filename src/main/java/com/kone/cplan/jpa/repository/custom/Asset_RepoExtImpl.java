@@ -37,7 +37,7 @@ public class Asset_RepoExtImpl implements Asset_RepoExt {
 	public List<Asset> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
 		if (!(baseFilter instanceof AssetFilter)) {
-			return (new ArrayList<>());
+			return new ArrayList<>();
 		}
 		AssetFilter filter = (AssetFilter) baseFilter;
 
@@ -45,6 +45,7 @@ public class Asset_RepoExtImpl implements Asset_RepoExt {
 		CriteriaQuery<Asset> query = cb.createQuery(Asset.class);
 		Root<Asset> root = query.from(Asset.class);
 
+		//- add user's filters from Equipment page
 		List<Predicate> predicates = new ArrayList<>();
 
 		if (filter.getName() != null) {
@@ -92,7 +93,6 @@ public class Asset_RepoExtImpl implements Asset_RepoExt {
 		if (filter.getFsmLastValidCliEndDate__c() != null) {
 			predicates.add(cb.greaterThanOrEqualTo(root.get("fsmLastValidCliEndDate__c"), new Date(System.currentTimeMillis())));
 		}
-
 		if (filter.getSalesOrganization__c() != null) {
 			predicates.add(cb.or(
 				cb.like(root.get("salesOrganizations__c"), filter.getSalesOrganization__c()),

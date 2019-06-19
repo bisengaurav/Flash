@@ -30,6 +30,16 @@ public interface AssetRepository extends JpaRepository<Asset, Integer>, Asset_Re
 		" ORDER BY e.installationCountry__c")
 	List<String> getUniqueCountries();
 
+	@Query("SELECT e.installationCountry__c FROM Asset e" +
+		" WHERE e.installationCountry__c IS NOT NULL" +
+		" AND (e.salesOrganizations__c LIKE :salesOrg" +
+		" OR e.salesOrganizations__c LIKE CONCAT(:salesOrg, ',%')" +
+		" OR e.salesOrganizations__c LIKE CONCAT('%,', :salesOrg, ',%')" +
+		" OR e.salesOrganizations__c LIKE CONCAT('%,', :salesOrg))" +
+		" GROUP BY e.installationCountry__c" +
+		" ORDER BY e.installationCountry__c")
+	List<String> getUniqueCountriesBySalesOrg(String salesOrg);
+
 	@Query("SELECT e FROM EquipmentType e ORDER BY e.value")
 	List<EquipmentType> getUniqueEquipmentTypes();
 }

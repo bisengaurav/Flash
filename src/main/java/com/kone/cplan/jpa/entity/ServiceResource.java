@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @created 30-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_service_resource")
+@Table(schema = DbSchema.C_PLAN, name = "view_serviceresource")
 public class ServiceResource extends AbstractServiceResource implements Serializable {
 
 	//
