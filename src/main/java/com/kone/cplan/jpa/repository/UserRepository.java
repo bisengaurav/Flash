@@ -12,4 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	User findBySfId(String sfId);
+
+	User findFirstByFederationIdentifier(String federationId);
 }

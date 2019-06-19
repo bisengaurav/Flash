@@ -33,7 +33,7 @@ public class ServiceResource_RepoExtImpl implements ServiceResource_RepoExt {
 	public List<ServiceResource> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
 		if (!(baseFilter instanceof ServiceResourceFilter)) {
-			return (new ArrayList<>());
+			return new ArrayList<>();
 		}
 		ServiceResourceFilter filter = (ServiceResourceFilter) baseFilter;
 
@@ -43,6 +43,7 @@ public class ServiceResource_RepoExtImpl implements ServiceResource_RepoExt {
 
 		List<Predicate> predicates = new ArrayList<>();
 
+		//- add user's filters from Service Resources page
 		if (filter.getName() != null) {
 			predicates.add(cb.like(cb.lower(root.get("name")),
 				JpaUtils.buildContainsPattern(filter.getName(), false)));
@@ -55,9 +56,12 @@ public class ServiceResource_RepoExtImpl implements ServiceResource_RepoExt {
 			predicates.add(cb.equal(root.get("salesOrganization__c"), filter.getSalesOrganization__c()));
 		}
 
+		//- add filter by isActive field (only active ServiceResources are needed)
 		predicates.add(cb.equal(root.get("isActive"), true));
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
+
+		//- order by 'name'
 		query.orderBy(cb.asc(root.get("name")));
 
 		TypedQuery<ServiceResource> typedQuery = entityManager.createQuery(query);

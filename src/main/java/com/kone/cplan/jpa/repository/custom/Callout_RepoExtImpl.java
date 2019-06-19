@@ -5,6 +5,7 @@ import com.kone.cplan.jpa.filter.CalloutFilter;
 import com.kone.cplan.jpa.filter.IFilter;
 import com.kone.cplan.jpa.utils.CaseUtils;
 import com.kone.cplan.jpa.utils.JpaUtils;
+import com.kone.cplan.utils.datatype.DatetimeUtils;
 import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
@@ -16,7 +17,9 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Callout_RepoExtImpl implements Callout_RepoExt {
 
@@ -34,7 +37,7 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 	public List<Callout> findByFilter(IFilter baseFilter, Pageable pageRequest) {
 
 		if (!(baseFilter instanceof CalloutFilter)) {
-			return (new ArrayList<>());
+			return new ArrayList<>();
 		}
 		CalloutFilter filter = (CalloutFilter) baseFilter;
 
@@ -44,6 +47,7 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 
 		List<Predicate> predicates = new ArrayList<>();
 
+		//- add user's filters from Callouts page
 		if (filter.getCaseNumber() != null) {
 			predicates.add(cb.like(cb.lower(root.get("caseNumber")),
 				JpaUtils.buildContainsPattern(filter.getCaseNumber(), false)));
@@ -110,7 +114,8 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 				JpaUtils.buildContainsPattern(filter.getAppointmentNumber(), false)));
 		}
 		if (filter.getServiceAppointmentStatus() != null) {
-			predicates.add(cb.equal(root.get("serviceAppointmentStatus"), filter.getServiceAppointmentStatus()));
+			predicates.add(cb.equal(root.get("serviceAppointmentStatus"),
+				filter.getServiceAppointmentStatus()));
 		}
 		if (filter.getServiceResourceName() != null) {
 			predicates.add(cb.like(cb.lower(root.get("serviceResourceName")),
@@ -124,7 +129,6 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 			predicates.add(cb.like(cb.lower(root.get("caseOwnerTxt__c")),
 				JpaUtils.buildContainsPattern(filter.getCaseOwnerTxt__c(), false)));
 		}
-
 		if (filter.getSalesOrganization__c() != null) {
 			predicates.add(cb.or(
 				cb.like(root.get("salesOrganizations__c"), filter.getSalesOrganization__c()),
@@ -136,11 +140,20 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 					"," + filter.getSalesOrganization__c(), true))));
 		}
 
-		// TODO: change created date to yesterday or today
-		predicates.add(cb.greaterThanOrEqualTo(root.get("createdDate"), new Timestamp(1546290000000L)));
+		//- get current user's local time and drop time
+		Calendar currentUserCalendar = DatetimeUtils.getCalendarForCU();
+		DatetimeUtils.resetTimePart(currentUserCalendar);
+
+		//- add filter by 'createdDate' (Case created date is >= yesterday 00:00)
+		predicates.add(cb.greaterThanOrEqualTo(root.get("createdDate"),
+			new Timestamp(currentUserCalendar.getTimeInMillis() - TimeUnit.DAYS.toMillis(1))));
+
+		//- add filter by Record Type (the relevant Callout type is 'Field Service')
 		predicates.add(cb.equal(root.get("recordTypeId"), CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID));
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
+
+		//- order by 'createdDate'
 		query.orderBy(cb.desc(root.get("createdDate")));
 
 		TypedQuery<Callout> typedQuery = entityManager.createQuery(query);

@@ -14,14 +14,14 @@ import java.sql.Timestamp;
  * @created 30-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_service_resource_appointment")
-public class ServiceResourceAppointment implements Serializable {
+@Table(schema = DbSchema.C_PLAN, name = "view_serviceappointment_of_resource")
+public class ServiceAppointmentOfResource implements Serializable {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public ServiceResourceAppointment() {};
+	public ServiceAppointmentOfResource() {};
 	//
 
 	//

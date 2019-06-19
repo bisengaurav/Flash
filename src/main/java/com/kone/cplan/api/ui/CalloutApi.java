@@ -5,6 +5,8 @@ import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.jpa.filter.CalloutFilter;
 import com.kone.cplan.jpa.repository.CalloutRepository;
 import com.kone.cplan.utils.dto.SelectOption;
+import com.kone.cplan.utils.session.AppSessionInfo;
+import com.kone.cplan.utils.spring.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,9 +59,12 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueMaintenanceActivityTypeCodes")
 	public OperationResults getUniqueMaintenanceActivityTypeCodes()
 	{
-		return OperationResults.newSuccess(
-			SelectOption.generateList(calloutRepo.getUniqueMaintenanceActivityTypeCodes().toArray())
-		);
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		return OperationResults.newSuccess(SelectOption.generateList(
+			(userInfo.isAdmin()	? calloutRepo.getUniqueMaintenanceActivityTypeCodes()
+				: calloutRepo.getUniqueMaintenanceActivityTypeCodesBySalesOrg(userInfo.getSalesOrg())
+			).toArray()
+		));
 	}
 
 	/**
@@ -68,9 +73,12 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueAssemblies")
 	public OperationResults getUniqueAssemblies()
 	{
-		return OperationResults.newSuccess(
-			SelectOption.generateList(calloutRepo.getUniqueAssemblies().toArray())
-		);
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		return OperationResults.newSuccess(SelectOption.generateList(
+			(userInfo.isAdmin()	? calloutRepo.getUniqueAssemblies()
+				: calloutRepo.getUniqueAssembliesBySalesOrg(userInfo.getSalesOrg())
+			).toArray()
+		));
 	}
 
 	/**
@@ -79,9 +87,12 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueStatuses")
 	public OperationResults getUniqueStatuses()
 	{
-		return OperationResults.newSuccess(
-			SelectOption.generateList(calloutRepo.getUniqueStatuses().toArray())
-		);
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		return OperationResults.newSuccess(SelectOption.generateList(
+			(userInfo.isAdmin()	? calloutRepo.getUniqueStatuses()
+				: calloutRepo.getUniqueStatusesBySalesOrg(userInfo.getSalesOrg())
+			).toArray()
+		));
 	}
 
 	/**
@@ -90,9 +101,12 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueSAStatuses")
 	public OperationResults getUniqueSAStatuses()
 	{
-		return OperationResults.newSuccess(
-			SelectOption.generateList(calloutRepo.getUniqueSAStatuses().toArray())
-		);
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		return OperationResults.newSuccess(SelectOption.generateList(
+			(userInfo.isAdmin()	? calloutRepo.getUniqueSAStatuses()
+				: calloutRepo.getUniqueSAStatusesBySalesOrg(userInfo.getSalesOrg())
+			).toArray()
+		));
 	}
 	//
 }

@@ -10,14 +10,14 @@ import java.io.Serializable;
  * @created 30-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name= "view_service_resource_work_center")
-public class ServiceResourceWorkCenter implements Serializable {
+@Table(schema = DbSchema.C_PLAN, name= "view_fsm_wc_assignment_of_resource")
+public class WcAssignmentOfResource implements Serializable {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public ServiceResourceWorkCenter() {};
+	public WcAssignmentOfResource() {};
 	//
 
 	//

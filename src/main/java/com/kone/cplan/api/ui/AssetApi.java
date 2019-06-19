@@ -7,6 +7,8 @@ import com.kone.cplan.jpa.filter.AssetFilter;
 import com.kone.cplan.jpa.repository.AssetDetailsRepository;
 import com.kone.cplan.jpa.repository.AssetRepository;
 import com.kone.cplan.utils.dto.SelectOption;
+import com.kone.cplan.utils.session.AppSessionInfo;
+import com.kone.cplan.utils.spring.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -106,9 +108,12 @@ public class AssetApi {
 	@GetMapping(value = "getUniqueCountries")
 	public OperationResults getUniqueCountries()
 	{
-		return OperationResults.newSuccess(
-			SelectOption.generateList(assetRepo.getUniqueCountries().toArray())
-		);
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		return OperationResults.newSuccess(SelectOption.generateList(
+			(userInfo.isAdmin()	? assetRepo.getUniqueCountries()
+				: assetRepo.getUniqueCountriesBySalesOrg(userInfo.getSalesOrg())
+			).toArray()
+		));
 	}
 	//
 

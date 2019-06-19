@@ -14,7 +14,7 @@ import java.util.Set;
  * @created 30-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_service_territory")
+@Table(schema = DbSchema.C_PLAN, name = "view_serviceterritory")
 public class ServiceTerritory implements Serializable, IEntityWithSalesOrg {
 
 	//
@@ -43,7 +43,7 @@ public class ServiceTerritory implements Serializable, IEntityWithSalesOrg {
 	@JoinColumn(name = "serviceterritoryid", referencedColumnName = "sfid")
 	@Where(clause = "isactive = true")
 	@OrderBy(clause = "service_resource_name")
-	private Set<ServiceTerritoryResource> activeServiceTerritoryResources;
+	private Set<ServTerMemberOfTerritory> activeServTerMembersOfTerritory;
 	//
 
 	//
@@ -65,8 +65,8 @@ public class ServiceTerritory implements Serializable, IEntityWithSalesOrg {
 		return salesOrganization__c;
 	}
 
-	public Set<ServiceTerritoryResource> getActiveServiceTerritoryResources() {
-		return activeServiceTerritoryResources;
+	public Set<ServTerMemberOfTerritory> getActiveServTerMembersOfTerritory() {
+		return activeServTerMembersOfTerritory;
 	}
-	//
+//
 }

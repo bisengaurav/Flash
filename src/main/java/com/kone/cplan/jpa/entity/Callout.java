@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  * @created 27-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_case")
+@Table(schema = DbSchema.C_PLAN, name = "view_callout")
 public class Callout extends AbstractCase {
 
 	//

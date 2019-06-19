@@ -13,14 +13,14 @@ import java.sql.Timestamp;
  * @created 30-05-2019
  */
 @Entity
-@Table(schema = DbSchema.C_PLAN, name = "view_service_territory_resource")
-public class ServiceTerritoryResource {
+@Table(schema = DbSchema.C_PLAN, name = "view_serviceterritorymember_of_territory")
+public class ServTerMemberOfTerritory {
 
 	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
-	public ServiceTerritoryResource() {};
+	public ServTerMemberOfTerritory() {};
 	//
 
 	//

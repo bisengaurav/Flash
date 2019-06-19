@@ -37,16 +37,16 @@ public class DataUtilsForApi {
 	public static <IdType> OperationResults findByIdWithAccessCheck(
 		CrudRepository<? extends IEntityWithAccessField, IdType> repository, IdType entityId)
 	{
-		Optional<? extends IEntityWithAccessField> record = repository.findById(entityId);
+		Optional<? extends IEntityWithAccessField> optionalResult = repository.findById(entityId);
 		// Check whether the record exists
-		if (!record.isPresent()) {
+		if (!optionalResult.isPresent()) {
 			return OperationResults.newErrorByKey("message.common.record-not-found");
 		}
 		// Check whether the Current User has access to the record
-		if (!SecurityUtils.userHasAccessToRecord(record.get())) {
+		if (!SecurityUtils.userHasAccessToRecord(optionalResult.get())) {
 			return OperationResults.newErrorByKey("message.common.record-access-denied");
 		}
-		return OperationResults.newSuccess(record);
+		return OperationResults.newSuccess(optionalResult.get());
 	}
 
 	public static OperationResults findByFilter(BasicFindByFilter_RepoExt repo, String filterJson,
@@ -91,9 +91,12 @@ public class DataUtilsForApi {
 				)
 			);
 		} else {
-			return OperationResults.newSuccess(userInfo.getSalesOrg() != null
-				? Arrays.asList(new SelectOption(userInfo.getSalesOrg()))
-				: new ArrayList<SelectOption>());
+			//- if current user is not assigned sales org, then return empty list. In other case
+			// return list contains SelectOption with his sales org.
+			return OperationResults.newSuccess(userInfo.getSalesOrg() == null
+				? new ArrayList<SelectOption>()
+				: Arrays.asList(new SelectOption(userInfo.getSalesOrg()))
+			);
 		}
 	}
 	//
