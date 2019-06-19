@@ -18,10 +18,6 @@
             </grid-item>
 
             <grid-item>
-                <form-element-static :label="$t('entity.Asset.equipmentPhoneNumber__c.label')">{{data.equipmentPhoneNumber__c}}</form-element-static>
-            </grid-item>
-
-            <grid-item>
                 <form-element-static :label="$t('entity.Asset.accountId.label')">{{data.accountId}}</form-element-static>
             </grid-item>
 

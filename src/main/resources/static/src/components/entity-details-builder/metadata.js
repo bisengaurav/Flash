@@ -471,8 +471,8 @@ export const ServiceTerritory = {
 }
 
 export const WorkCenter = {
+    title: 'name',
     action: API.workCenter.getById,
-
     relations: [
         {
             title: 'text.work-center.related-service-resources',

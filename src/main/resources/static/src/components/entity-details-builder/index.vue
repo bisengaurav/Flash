@@ -117,6 +117,7 @@
                 }
 
                 // data
+                this.metadata = Metadata[this.$props.entity];
                 this.metadata.action(this.id)
                     .then(data => {
                         this.loading = false;
