@@ -77,6 +77,11 @@ Vue.component('HelpPointer', HelpPointer);
 import OutputField from './components/output-field.vue';
 Vue.component('OutputField', OutputField);
 
+import DatePicker from './components/date-picker.vue';
+Vue.component('DatePicker', DatePicker);
+
+
+
 //
 // MARKUP Components
 //
@@ -86,12 +91,6 @@ Vue.component('Grid', Grid);
 
 import GridItem from './markup/grid-item.vue';
 Vue.component('GridItem', GridItem);
-
-import EntityDetailsLayout from './markup/entity-details-layout.vue';
-Vue.component('EntityDetailsLayout', EntityDetailsLayout);
-
-import EntityRelations from './markup/entity-relations.vue';
-Vue.component('EntityRelations', EntityRelations);
 
 import FiltersFormLayout from './markup/filters-form-layout.vue';
 Vue.component('FiltersFormLayout', FiltersFormLayout);
@@ -118,6 +117,8 @@ import i18n from './core/i18n'; // contains Vue.use()
 import router from './core/router.js'; // contains Vue.use()
 
 import store from './store'; // contains Vue.use()
+
+import {Settings as LuxonSettings} from 'luxon';
 
 
 
@@ -161,7 +162,11 @@ API.session.getInfo()
         if (!store.state.$lang)
             throw new Error("Can't resolve language settings");
 
+        // apply lang to global settings
+        LuxonSettings.defaultLocale = store.state.$lang; // setup locale for DatePicker
         i18n.locale = store.state.$lang;
+
+        // created date formats for current locale
         i18n.setDateTimeFormat(store.state.$lang, {
             date: {
                 timeZone: store.state.$timezone,
@@ -238,3 +243,4 @@ function init() {
         i18n
     });
 }
+

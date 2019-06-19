@@ -148,7 +148,8 @@
                     <div class="slds-select_container">
                         <select-loader
                             :source="$API.asset.getUniqueSalesOrganizations"
-                            :allowEmpty="false"
+                            :allowEmpty="$user.isAdmin"
+                            :autoApplyFirstOption="!$user.isAdmin"
                             v-model="innerValue.salesOrganization__c"
                             id="sales_org"
                             class="slds-select"

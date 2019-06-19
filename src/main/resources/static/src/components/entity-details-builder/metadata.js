@@ -328,7 +328,7 @@ export const ServiceResource = {
         {
             title: 'text.service-resource.related-work-centers',
             dataField: 'wcAssignmentsOfResource',
-            entity: 'WorkCenterResource',
+            entity: 'WorkCenterAssignment',
             fields: [
                 {
                     field: 'name',
@@ -336,7 +336,7 @@ export const ServiceResource = {
                     to: 'workCenter',
                     id: 'id'
                 }
-            ] 
+            ]
         },
         {
             title: 'text.service-resource.related-absences',
@@ -477,7 +477,7 @@ export const WorkCenter = {
         {
             title: 'text.work-center.related-service-resources',
             dataField: 'wcAssignmentsOfWorkCenter',
-            entity: 'WorkCenterResource',
+            entity: 'WorkCenterAssignment',
             fields: [
                 {
                     field: 'serviceResourceName',
