@@ -148,7 +148,7 @@
                     <div class="slds-select_container">
                         <select-loader
                             :source="$API.asset.getUniqueSalesOrganizations"
-                            :allowEmpty="true"
+                            :allowEmpty="false"
                             v-model="innerValue.salesOrganization__c"
                             id="sales_org"
                             class="slds-select"

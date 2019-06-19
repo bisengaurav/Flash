@@ -327,7 +327,7 @@ export const ServiceResource = {
         },
         {
             title: 'text.service-resource.related-work-centers',
-            dataField: 'serviceResourceWorkCenters',
+            dataField: 'wcAssignmentsOfResource',
             entity: 'WorkCenterResource',
             fields: [
                 {
@@ -363,7 +363,7 @@ export const ServiceResource = {
         },
         {
             title: 'text.service-resource.related-appointments',
-            dataField: 'serviceResourceAppointments',
+            dataField: 'serviceAppointmentsOfResource',
             entity: 'ServiceAppointment',
             fields: [
                 {
@@ -444,7 +444,7 @@ export const ServiceTerritory = {
     relations: [
         {
             title: 'text.service-territory.related-service-resources',
-            dataField: 'activeServiceTerritoryResources',
+            dataField: 'activeServTerMembersOfTerritory',
             entity: 'ServiceTerritoryMember',
             fields: [
                 {
@@ -476,7 +476,7 @@ export const WorkCenter = {
     relations: [
         {
             title: 'text.work-center.related-service-resources',
-            dataField: 'workCenterResources',
+            dataField: 'wcAssignmentsOfWorkCenter',
             entity: 'WorkCenterResource',
             fields: [
                 {

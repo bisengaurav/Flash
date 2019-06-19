@@ -5,7 +5,7 @@
         v-model="innerValue"
     >
         <option v-if="allowEmpty" :value="null">{{emptyLabel}}</option>
-        <option v-for="o in options" :value="o.value">{{o.label}}</option>
+        <option v-for="o in options" :value="o.value" :selected="true">{{o.label}}</option>
     </select>
 </template>
 
