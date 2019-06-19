@@ -18,6 +18,10 @@ export const Asset = {
             type: 'text'
         },
         {
+            field: 'equipmentPhoneNumber__c',
+            type: 'text'
+        },
+        {
             field: 'accountId',
             type: 'text'
         },
