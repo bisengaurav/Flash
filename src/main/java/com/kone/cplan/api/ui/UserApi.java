@@ -8,6 +8,7 @@ import com.kone.cplan.utils.session.AppSessionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -42,6 +43,19 @@ public class UserApi {
 			return OperationResults.newErrorByKey("message.common.record-not-found");
 		}
 		return OperationResults.newSuccess(new UserWrapper(currentUser));
+	}
+
+	/**
+	 * @param String federationId of a User entity
+	 * @return OperationResults with a UserWrapper
+	 */
+	@GetMapping(value = "getByFederationId")
+	public OperationResults getByFederationId(@RequestParam String federationId) {
+		User user = userRepo.findFirstByFederationIdentifier(federationId);
+		if (user == null) {
+			return OperationResults.newErrorByKey("message.common.record-not-found");
+		}
+		return OperationResults.newSuccess(new UserWrapper(user));
 	}
 	//
 
