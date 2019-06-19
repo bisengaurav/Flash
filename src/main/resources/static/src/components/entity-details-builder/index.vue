@@ -7,7 +7,7 @@
 
         <loader type="block" :height="400" :loading="loading" #content>
             <div v-if="data">
-                <div v-if="metadata.fields.length > 0" class="slds-card slds-p-around_medium slds-m-bottom_x-large">
+                <div v-if="metadata.fields && metadata.fields.length > 0" class="slds-card slds-p-around_medium slds-m-bottom_x-large">
                     <grid>
 
                         <grid-item
