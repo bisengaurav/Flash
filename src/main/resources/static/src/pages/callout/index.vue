@@ -14,6 +14,7 @@
                 <template #head>
                     <th v-t="'entity.Callout.caseNumber.label'"></th>
                     <th v-t="'entity.Callout.status.label'"></th>
+                    <th v-t="'entity.Callout.caseOwnerTxt__c.label'"></th>
                     <th v-t="'entity.Callout.createdDate.label'"></th>
                     <th v-t="'entity.Callout.dueDate__c.label'"></th>
                     <th v-t="'entity.Callout.entrapment__c.label'"></th>
@@ -27,6 +28,7 @@
                     <th v-t="'entity.Callout.contactName.label'"></th>
                     <th v-t="'entity.Callout.callerName__c.label'"></th>
                     <th v-t="'entity.Callout.workOrderNumber.label'"></th>
+                    <th v-t="'entity.Callout.maintenanceActivityTypeCode__c.label'"></th>
                     <th v-t="'entity.Callout.assemblyNumber__c.label'"></th>
                     <th v-t="'entity.Callout.appointmentNumber.label'"></th>
                     <th v-t="'entity.Callout.serviceAppointmentStatus.label'"></th>
@@ -36,6 +38,7 @@
                 <template #row="{row, id}">
                     <td><router-link :to="{name: 'case', params: {id: row.id }}">{{row.caseNumber}}</router-link></td>
                     <td>{{row.status}}</td>
+                    <td>{{row.caseOwnerTxt__c}}</td>
                     <td>{{ $dtz(row.createdDate, 'datetime') }}</td>
                     <td>{{ $dtz(row.dueDate__c, 'datetime') }}</td>
                     <td>{{ row.entrapment__c|yesNo }}</td>
@@ -49,6 +52,7 @@
                     <td>{{row.contactName}}</td>
                     <td>{{row.callerName__c}}</td>
                     <td><router-link v-if="row.workOrderNumber" :to="{name: 'workOrder', params: {id: row.workOrderId }}">{{row.workOrderNumber}}</router-link></td>
+                    <td>{{row.maintenanceActivityTypeCode__c}}</td>
                     <td>{{row.assemblyNumber__c}}</td>
                     <td><router-link v-if="row.appointmentNumber" :to="{name: 'serviceAppointment', params: {id: row.serviceAppointmentId }}">{{row.appointmentNumber}}</router-link></td>
                     <td>{{row.serviceAppointmentStatus}}</td>

@@ -42,6 +42,10 @@ export const Asset = {
             type: 'text'
         },
         {
+            field: 'installationStateProvince__c',
+            type: 'text'
+        },
+        {
             field: 'installationCountry__c',
             type: 'text'
         },
