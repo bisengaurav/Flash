@@ -30,6 +30,8 @@
                     <DatePicker
                         id="created_after"
                         v-model="innerValue.createdDate"
+                        :min="createdDateMin"
+                        :max="createdDateMax"
                     />
                 </form-element>
             </grid-item>
@@ -276,6 +278,7 @@
     import FiltersInterface from '../../interfaces/filters.js';
     import SelectBoolean from '../../components/select-boolean.vue';
     import {required} from 'vuelidate/lib/validators';
+import {DateTime} from 'luxon';
 
     export default {
         extends: FiltersInterface,
@@ -310,8 +313,14 @@
                     serviceTerritoryName: null,
                     caseOwnerTxt__c: null,
                     salesOrganization__c: null,
-                }
+                },
+                createdDateMin: null,
+                createdDateMax: null
             }
+        },
+        created() {
+            this.createdDateMin = DateTime.utc().minus({days: 1}).set({ hour: 0, minute: -1*DateTime.utc().setZone(this.$timezone).offset, second: 0 }).toISO();
+            this.createdDateMax = DateTime.utc().toISO();
         },
 
         //

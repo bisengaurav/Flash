@@ -9,6 +9,8 @@
         }"
         :auto="true"
         :input-id="id"
+        :min-datetime="min"
+        :max-datetime="max"
         class="slds-input-has-icon slds-input-has-icon_right"
         input-class="slds-input"
     >
@@ -49,6 +51,14 @@
             id: {
                 type: String,
                 default: ''
+            },
+            min: {
+                type: String,
+                default: null
+            },
+            max: {
+                type: String,
+                default: null
             }
         },
         data() {
