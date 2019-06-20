@@ -21,6 +21,7 @@
                     <th v-t="'entity.Asset.installationStreet__c.label'"></th>
                     <th v-t="'entity.Asset.installationCity__c.label'"></th>
                     <th v-t="'entity.Asset.installationStateProvince__c.label'"></th>
+                    <th v-t="'entity.Asset.installationCountry__c.label'"></th>
                     <th v-t="'entity.Asset.serviceTerritoryName.label'"></th>
                     <th v-t="'entity.Asset.workCenterName.label'"></th>
                     <th v-t="'entity.Asset.fsmLastValidCliEndDate__c.label'"></th>
@@ -36,6 +37,7 @@
                     <td>{{row.installationStreet__c}}</td>
                     <td>{{row.installationCity__c}}</td>
                     <td>{{row.installationStateProvince__c}}</td>
+                    <td>{{row.installationCountry__c}}</td>
                     <td><router-link :to="{name: 'serviceTerritory', params: {id: row.serviceTerritoryId }}">{{row.serviceTerritoryName}}</router-link></td>
                     <td><router-link :to="{name: 'workCenter', params: {id: row.workCenterId }}">{{row.workCenterName}}</router-link></td>
                     <td>{{row.fsmLastValidCliEndDate__c|yesNo}}</td>
