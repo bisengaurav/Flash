@@ -4,6 +4,7 @@ import com.kone.cplan.jpa.entity.Asset;
 import com.kone.cplan.jpa.filter.AssetFilter;
 import com.kone.cplan.jpa.filter.IFilter;
 import com.kone.cplan.jpa.utils.JpaUtils;
+import com.kone.cplan.utils.datatype.DatetimeUtils;
 import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
@@ -13,8 +14,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -90,8 +91,15 @@ public class Asset_RepoExtImpl implements Asset_RepoExt {
 			predicates.add(cb.like(cb.lower(root.get("installationStateProvince__c")),
 				JpaUtils.buildContainsPattern(filter.getInstallationStateProvince__c(), false)));
 		}
+
+		//- get current user's local time and drop time
+		Calendar currentUserCalendar = DatetimeUtils.getCalendarForCU();
+		DatetimeUtils.resetTimePart(currentUserCalendar);
+
 		if (filter.getFsmLastValidCliEndDate__c() != null) {
-			predicates.add(cb.greaterThanOrEqualTo(root.get("fsmLastValidCliEndDate__c"), new Date(System.currentTimeMillis())));
+			predicates.add(filter.getFsmLastValidCliEndDate__c()
+				? cb.greaterThanOrEqualTo(root.get("fsmLastValidCliEndDate__c"), currentUserCalendar.getTime())
+				: cb.lessThan(root.get("fsmLastValidCliEndDate__c"), currentUserCalendar.getTime()));
 		}
 		if (filter.getSalesOrganization__c() != null) {
 			predicates.add(cb.or(
