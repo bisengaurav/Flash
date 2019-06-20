@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	//TODO: temp code that changes session context
 	@Override
 	public void onApplicationEvent(InteractiveAuthenticationSuccessEvent event) {
-		sessionContext.changeUser("0051r0000090MnrAAE"); //Robert Sramek, isAdmin: true, salesOrg: "KNE"
+		sessionContext.changeUser("0051w000000tNXoAAM"); //Jonathan heiniger, isAdmin: true, salesOrg: "MKOF"
 	}
 	//
 }
