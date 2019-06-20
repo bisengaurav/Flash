@@ -1,4 +1,4 @@
-import moment from 'moment';
+import {DateTime} from 'luxon';
 import store from '../store';
 
 
@@ -83,22 +83,15 @@ class LocalStorage {
     }
 
     /*
-    years       y
-    quarters    Q
-    months      M
-    weeks       w
-    days        d
-    hours       h
-    minutes     m
-    seconds     s
+        ageObject: {String [months | weeks | days | hours | minutes] key: Number count}
     */
-    getDatedCache(key, ageCount, ageUnit) {
+    getDatedCache(key, ageObject) {
         if (!this.isAvailable) return null;
 
         let storage = window.localStorage,
             data = this.get(key);
 
-        if (data && data.date && moment(data.date) > moment().subtract(ageCount, ageUnit)) {
+        if ( data && data.date && (data.date > DateTime.utc().minus(ageObject).valueOf()) ) {
             return data.value;
 
         } else {
@@ -111,7 +104,7 @@ class LocalStorage {
         if (!this.isAvailable) return null;
 
         this.set(key, {
-            date: moment(),
+            date: DateTime.utc().valueOf(),
             value: value
         });
     }

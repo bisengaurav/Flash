@@ -278,7 +278,7 @@
     import FiltersInterface from '../../interfaces/filters.js';
     import SelectBoolean from '../../components/select-boolean.vue';
     import {required} from 'vuelidate/lib/validators';
-import {DateTime} from 'luxon';
+    import {DateTime} from 'luxon';
 
     export default {
         extends: FiltersInterface,
