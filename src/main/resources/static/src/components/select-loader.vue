@@ -5,7 +5,7 @@
         v-model="innerValue"
     >
         <option v-if="allowEmpty" :value="null">{{emptyLabel}}</option>
-        <option v-for="o in options" :value="o.value" :selected="true">{{o.label}}</option>
+        <option v-for="o in options" :value="o.value">{{o.label}}</option>
     </select>
 </template>
 
@@ -28,6 +28,10 @@
                 default: 'label'
             },
             allowEmpty: {
+                type: Boolean,
+                default: false
+            },
+            autoApplyFirstOption: {
                 type: Boolean,
                 default: false
             },
@@ -78,6 +82,11 @@
                         label: this.getLabel(option)
                     }
                 });
+
+                // auto apply 1st option in the list
+                if (this.$props.autoApplyFirstOption && this.options.length > 0 && !this.innerValue) {
+                    this.innerValue = this.options[0].value;
+                }
             },
             getValue: function(option) {
                 if (typeof this.valueParam === 'function') {

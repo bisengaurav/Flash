@@ -24,7 +24,7 @@ export default {
             let f = {};
 
             Object.keys(this.innerValue).forEach(k => {
-                if (this.innerValue[k]) f[k] = this.innerValue[k];
+                if (this.innerValue[k] !== undefined && this.innerValue[k] !== null) f[k] = this.innerValue[k];
             });
 
             return f;

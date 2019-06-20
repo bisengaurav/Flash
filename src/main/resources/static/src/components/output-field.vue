@@ -10,6 +10,7 @@
 
 <script>
     import i18n from '../core/i18n';
+
     export default {
         props: {
             type: {
@@ -24,13 +25,8 @@
             }
         },
         methods: {
-            dtz(value, key) {
-                return i18n.dtz(value, key);
-            }
-        },
-        updated() {
-            console.log(this)
+            dtz: i18n.dtz
         }
     }
-    
+
 </script>

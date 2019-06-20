@@ -26,21 +26,19 @@
             </grid-item>
 
             <grid-item>
-                <form-element :label="$t('filter.callouts.created-after.label')">
-                    <input
+                <form-element :label="$t('filter.callouts.created-after.label')" for="created_after">
+                    <DatePicker
                         id="created_after"
                         v-model="innerValue.createdDate"
-                        class="slds-input"
                     />
                 </form-element>
             </grid-item>
 
             <grid-item>
-                <form-element :label="$t('filter.callouts.due-date-after.label')">
-                    <input
+                <form-element :label="$t('filter.callouts.due-date-after.label')" for="due_date_after">
+                    <DatePicker
                         id="due_date_after"
                         v-model="innerValue.dueDate__c"
-                        class="slds-input"
                     />
                 </form-element>
             </grid-item>

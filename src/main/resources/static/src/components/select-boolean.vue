@@ -20,11 +20,11 @@
                 innerSource: [
                     {
                         label: this.$props.trueLabel || this.$t('label.select-option.true'),
-                        value: true
+                        value: 'true'
                     },
                     {
                         label: this.$props.falseLabel || this.$t('label.select-option.false'),
-                        value: false
+                        value: 'false'
                     }
                 ]
             }

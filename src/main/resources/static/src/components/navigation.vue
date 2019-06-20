@@ -37,10 +37,8 @@
             </div>
         </div>
 
-        <div class="main-scroll">
-            <div class="main" popover-boundary>
-                <slot></slot>
-            </div>
+        <div class="main" popover-boundary>
+            <slot></slot>
         </div>
 
     </div>
@@ -89,16 +87,6 @@
 </script>
 
 <style>
-    html,
-    body {
-/*        overflow: hidden;*/
-    }
-
-    .main-scroll {
-/*        height: 100vh;*/
-        /*overflow: hidden;*/
-/*        overflow-y: auto;*/
-    }
     .main {
         padding: 30px 40px;
         margin-left: 90px;

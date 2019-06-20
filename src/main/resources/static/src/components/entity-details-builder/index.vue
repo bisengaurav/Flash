@@ -32,44 +32,46 @@
                 </div>
 
 
-                <entity-relations
+                <div
                     v-for="r in metadata.relations"
                     :key="r.entity"
-                    :title="$t(r.title)"
                 >
-                    <data-table-basic :source="data[r.dataField]">
+                    <h2 class="slds-text-heading_small slds-m-bottom_x-small" v-t="r.title"></h2>
+                    <div class="primary-section slds-m-bottom_large">
+                        <data-table-basic :source="data[r.dataField]">
 
-                        <template #head>
+                            <template #head>
 
-                            <th
-                                v-for="f in r.fields"
-                                :key="f.field"
-                                v-t="'entity.'+r.entity+'.'+f.field+'.label'"
-                            />
-
-                        </template>
-                        <template #row="{row, id}">
-
-                            <td
-                                v-for="f in r.fields"
-                                :key="f.field"
-                            >
-
-                                <output-field
-                                    :type="f.type"
-                                    :value="row[f.field]"
-                                    :params="{
-                                        to: f.to,
-                                        id: row[f.id]
-                                    }"
+                                <th
+                                    v-for="f in r.fields"
+                                    :key="f.field"
+                                    v-t="'entity.'+r.entity+'.'+f.field+'.label'"
                                 />
 
-                            </td>
+                            </template>
+                            <template #row="{row, id}">
 
-                        </template>
+                                <td
+                                    v-for="f in r.fields"
+                                    :key="f.field"
+                                >
 
-                    </data-table-basic>
-                </entity-relations>
+                                    <output-field
+                                        :type="f.type"
+                                        :value="row[f.field]"
+                                        :params="{
+                                            to: f.to,
+                                            id: row[f.id]
+                                        }"
+                                    />
+
+                                </td>
+
+                            </template>
+
+                        </data-table-basic>
+                    </div>
+                </div>
             </div>
         </loader>
 
@@ -98,7 +100,7 @@
         },
         data() {
             return  {
-                metadata: Metadata[this.$props.entity],
+                metadata: null,
                 loading: true,
                 data: null
             }
