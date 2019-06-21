@@ -110,13 +110,11 @@ public class AssetApi {
 	public OperationResults getUniqueCountries()
 	{
 		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
-		return OperationResults.newSuccess(SelectOption.generateList(
-			//- if current User is C-Plan admin, then get all unique countries. In other case
-			// get unique countries filtered by User's sales org.
-			(userInfo.isAdmin()	? assetRepo.getUniqueCountries()
-				: assetRepo.getUniqueCountriesBySalesOrg(userInfo.getSalesOrg())
-			).toArray()
-		));
+		List<String> statuses = (userInfo.isAdmin()
+			? assetRepo.getUniqueCountries()
+			: assetRepo.getUniqueCountriesBySalesOrg(userInfo.getSalesOrg()));
+		
+		return OperationResults.newSuccess(SelectOption.generateList(statuses.toArray()));
 	}
 	//
 
