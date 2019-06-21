@@ -33,6 +33,8 @@ public class User implements Serializable {
 	private String profileId;
 	@Column
 	private String profileName;
+	@Column(name = "userroleid")
+	private String roleId;
 	
 	@Column
 	private String name;
@@ -40,7 +42,7 @@ public class User implements Serializable {
 	private String email;
 
 	@Column(name = "federationidentifier")
-	private String federationIdentifier;
+	private String federationId;
 
 	@Column
 	private String salesOrganization__c;
@@ -89,6 +91,14 @@ public class User implements Serializable {
 	public String getProfileName() {
 		return profileName;
 	}
+	
+	public String getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -96,8 +106,8 @@ public class User implements Serializable {
 		return email;
 	}
 
-	public String getFederationIdentifier() {
-		return federationIdentifier;
+	public String getFederationId() {
+		return federationId;
 	}
 
 	public String getSalesOrganization__c() {

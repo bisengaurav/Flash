@@ -67,7 +67,7 @@ public class ServiceResourceApi {
 	@GetMapping(value = "getUniqueSalesOrganizations")
 	public OperationResults getUniqueSalesOrganizations()
 	{
-		return DataUtilsForApi.getUniqueSalesOrganizations(serviceResourceRepo);
+		return DataUtilsForApi.getUniqueSalesOrgs(serviceResourceRepo);
 	}
 	//
 }

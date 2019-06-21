@@ -100,7 +100,7 @@ public class ServiceResourceDetails extends AbstractServiceResource implements S
 		filter.setParameter("currentTimeParam", new Timestamp(currentUserCalendar.getTimeInMillis()));
 		filter.setParameter("currentTimePlusTwoWeeksParam",
 			new Timestamp(currentUserCalendar.getTimeInMillis()	+ TimeUnit.DAYS.toMillis(14)));
-		filter.setParameter("breakRecordTypeParam", ResourceAbsenceUtils.BREAK_RECORD_TYPE_ID);
+		filter.setParameter("breakRecordTypeParam", ResourceAbsenceUtils.RECORD_TYPE_ID_BREAK);
 		DatetimeUtils.resetTimePart(currentUserCalendar);
 		filter.setParameter("todayParam", new Timestamp(currentUserCalendar.getTimeInMillis()));
 	}

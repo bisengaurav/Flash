@@ -65,6 +65,7 @@ public class AssetApi {
 	 * @param AssetFilter
 	 * @return OperationResults with list of the Asset entities
 	 */
+	@SuppressWarnings("unchecked")
 	@GetMapping(value = "getAllByFilter")
 	public OperationResults getAllByFilter(@RequestParam(name = "filter") String filterJson)
 	{
@@ -74,7 +75,7 @@ public class AssetApi {
 		if (!operationResults.isSuccessful()) {
 			return operationResults;
 		}
-		List<Asset> result = (List<Asset>) operationResults.getReturnedObject();
+		List<Asset> result = (List<Asset>)operationResults.getReturnedObject();
 
 		//- sort data
 		/*
@@ -99,7 +100,7 @@ public class AssetApi {
 	@GetMapping(value = "getUniqueSalesOrganizations")
 	public OperationResults getUniqueSalesOrganizations()
 	{
-		return DataUtilsForApi.getUniqueSalesOrganizations(assetRepo);
+		return DataUtilsForApi.getUniqueSalesOrgs(assetRepo);
 	}
 
 	/**
@@ -108,12 +109,12 @@ public class AssetApi {
 	@GetMapping(value = "getUniqueCountries")
 	public OperationResults getUniqueCountries()
 	{
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
-		return OperationResults.newSuccess(SelectOption.generateList(
-			(userInfo.isAdmin()	? assetRepo.getUniqueCountries()
-				: assetRepo.getUniqueCountriesBySalesOrg(userInfo.getSalesOrg())
-			).toArray()
-		));
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
+		List<String> statuses = (userInfo.isAdmin()
+			? assetRepo.getUniqueCountries()
+			: assetRepo.getUniqueCountriesBySalesOrg(userInfo.getSalesOrg()));
+		
+		return OperationResults.newSuccess(SelectOption.generateList(statuses.toArray()));
 	}
 	//
 

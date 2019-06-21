@@ -1,7 +1,7 @@
 package com.kone.cplan.config.spring;
 
-import com.kone.cplan.config.AppProps;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.kone.cplan.config.AppSettings;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -27,13 +27,6 @@ public class MvcConfig implements WebMvcConfigurer {
 	//
 	
 	//
-	//Variables
-	//
-	@Autowired
-	private AppProps appProps;
-	//
-	
-	//
 	//Private methods
 	//
 	private String getTemplateForAllPageUrls()
@@ -42,7 +35,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		//exclude folders with static resources
 		exceptionsToPath.addAll(STATIC_RESOURCE_FOLDERS);
 		//exclude UI API
-		exceptionsToPath.add(appProps.getUiApiPath());
+		exceptionsToPath.add(AppSettings.getUiApiPath());
 		
 		//Example of expression that ignores 2 sub-paths:
 		//{pathWithExceptions:^(?!ui-api|another-api).*$}/**. The part in curly braces is a RegEx
@@ -64,10 +57,6 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/").setViewName("index");
 		//- all other URLs for pages
 		registry.addViewController(this.getTemplateForAllPageUrls()).setViewName("index");
-		
-		//TODO: temp login and logout
-		registry.addViewController("/login").setViewName("login");
-		registry.addViewController("/logoutSuccess").setViewName("logoutSuccess");
 	}
 	
 	

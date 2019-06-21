@@ -19,6 +19,8 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
+ * Custom extension of the standard repository for the {@link Asset} entity.
+ * 
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019
  */

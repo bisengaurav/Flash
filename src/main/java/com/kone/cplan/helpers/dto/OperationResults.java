@@ -142,10 +142,9 @@ public class OperationResults {
 		return (new OperationResults(false, Strings.getAndFormat(errorKey, params)));
 	}
 	
-	//TODO: we should remove this method later
-	public static OperationResults notImplementedError()
+	/*public static OperationResults notImplementedError()
 	{
 		return (new OperationResults(false, "Not implemented yet"));
-	}
+	}*/
 	//
 }

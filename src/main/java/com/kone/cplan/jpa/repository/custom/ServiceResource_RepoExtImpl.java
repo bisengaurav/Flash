@@ -16,7 +16,11 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Custom extension of the standard repository for the {@link ServiceResource} entity.
+ * 
+ * @author Andrey Gribanov (Cervello)
+ */
 public class ServiceResource_RepoExtImpl implements ServiceResource_RepoExt {
 
 	//

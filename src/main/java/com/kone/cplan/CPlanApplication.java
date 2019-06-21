@@ -1,18 +1,23 @@
 package com.kone.cplan;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
-import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
 
 import com.kone.cplan.config.AppSettings;
 import com.kone.cplan.utils.i18n.Strings;
 import com.kone.cplan.utils.spring.AppContextHolder;
 
+/**
+ * This is an entry point of the Spring Boot application.
+ * 
+ * @author Gennadiy Pervukhin
+ */
 @SpringBootApplication
 public class CPlanApplication {
 
@@ -38,7 +43,7 @@ public class CPlanApplication {
 	//
 	//Public methods
 	//
-	@EventListener(ApplicationReadyEvent.class)
+	@PostConstruct
 	public void initAppAfterStartup()
 	{
 		//initialize the static utility for application context

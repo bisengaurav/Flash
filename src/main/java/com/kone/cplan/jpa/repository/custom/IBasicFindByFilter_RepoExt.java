@@ -11,7 +11,7 @@ import java.util.List;
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019
  */
-public interface BasicFindByFilter_RepoExt {
+public interface IBasicFindByFilter_RepoExt {
 
-	List findByFilter(IFilter filter, Pageable pageRequest);
+	List<?> findByFilter(IFilter filter, Pageable pageRequest);
 }

@@ -4,7 +4,7 @@ import com.kone.cplan.jpa.entity.ServiceAppointmentDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * This repository works with the ServiceAppointmentDetails entity.
+ * This repository works with the {@link ServiceAppointmentDetails} entity.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019

@@ -3,7 +3,7 @@ package com.kone.cplan.jpa.filter;
 import java.lang.reflect.Field;
 
 /**
- * This interface declares a basic filter for entities
+ * This interface declares a basic filter for entities.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 20-05-2019
