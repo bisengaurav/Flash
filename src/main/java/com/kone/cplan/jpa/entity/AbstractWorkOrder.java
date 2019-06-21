@@ -5,7 +5,6 @@ import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -13,7 +12,7 @@ import java.sql.Timestamp;
  * @created 30-05-2019
  */
 @MappedSuperclass
-abstract class AbstractWorkOrder implements Serializable, IEntityWithSalesOrg {
+abstract class AbstractWorkOrder implements IEntityWithSalesOrg {
 
 	//
 	//Variables

@@ -255,7 +255,8 @@
                     <div class="slds-select_container">
                         <select-loader
                             :source="$API.callout.getUniqueSalesOrganizations"
-                            :allowEmpty="true"
+                            :allowEmpty="$user.isAdmin"
+                            :autoApplyFirstOption="!$user.isAdmin"
                             v-model="innerValue.salesOrganization__c"
                             @blur.native="$v.innerValue.salesOrganization__c.$touch()"
                             id="sales_org"

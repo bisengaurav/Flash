@@ -18,6 +18,12 @@ import java.sql.Timestamp;
 public class ServiceAppointmentOfResource implements Serializable {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = 8990795840180839861L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/

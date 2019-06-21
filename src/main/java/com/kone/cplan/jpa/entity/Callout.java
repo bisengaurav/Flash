@@ -3,6 +3,7 @@ package com.kone.cplan.jpa.entity;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -11,7 +12,14 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_callout")
-public class Callout extends AbstractCase {
+public class Callout extends AbstractCase implements Serializable {
+
+	//
+	//Constants
+	//
+	public static final String RECORD_TYPE_ID_FIELD_SERVICE = "012w0000000V9MrAAK";
+	private static final long serialVersionUID = -8364610581712182160L;
+	//
 
 	//
 	//Variables

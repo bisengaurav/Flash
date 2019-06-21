@@ -25,6 +25,12 @@ import java.util.Set;
 public class WorkCenter implements Serializable {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = -7210909766304672118L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/

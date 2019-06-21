@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @author Andrey Gribanov (Cervello)
@@ -13,7 +14,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name ="equipment_type__c")
-public class EquipmentType {
+public class EquipmentType implements Serializable {
+
+	//
+	//Constants
+	//
+	private static final long serialVersionUID = -540686510509240533L;
+	//
 
 	//
 	//Constructors

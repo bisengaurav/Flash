@@ -27,7 +27,8 @@
                         <select-loader
                             :source="$API.serviceResource.getUniqueSalesOrganizations"
                             v-model="innerValue.salesOrganization__c"
-                            :allowEmpty="true"
+                            :allowEmpty="$user.isAdmin"
+                            :autoApplyFirstOption="!$user.isAdmin"
                             id="sales_org"
                             class="slds-select"
                         />

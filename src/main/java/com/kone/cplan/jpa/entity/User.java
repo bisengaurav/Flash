@@ -14,6 +14,12 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = 1537967644914258315L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
@@ -23,8 +29,6 @@ public class User implements Serializable {
 	//
 	//Variables
 	//
-	private static final long serialVersionUID = -3052393242729063561L;
-	
 	@Id
 	private Integer id;
 	@Column(name = "sfid", unique = true)

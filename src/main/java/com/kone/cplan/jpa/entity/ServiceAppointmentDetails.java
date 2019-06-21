@@ -17,6 +17,12 @@ import java.sql.Timestamp;
 public class ServiceAppointmentDetails extends AbstractServiceAppointment implements Serializable {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = -8113652763520533722L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
