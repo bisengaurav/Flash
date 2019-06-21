@@ -4,6 +4,16 @@ body {
     background: #edeff0;
 }
 
+.logo-small,
+.logo-small img {
+
+}
+.logo-large,
+.logo-large img {
+    width: 195px;
+    height: 100px;
+}
+
 
 /* Text / Heading */
 

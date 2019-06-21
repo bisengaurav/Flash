@@ -1,33 +1,50 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="_csrf" th:attr="content=${_csrf.token}" />
+	<meta name="_csrf_header" th:attr="content=${_csrf.headerName}" />
+
+	<link href="/static/slds/css/salesforce-lightning-design-system.min.css" rel="stylesheet">
+	<link href="/static/css/slds-addons.css" rel="stylesheet">
+	<link href="/static/css/slds-branding.css" rel="stylesheet">
+
 	<title>Login with SSO</title>
-	
-<style>
 
-.error
-{
-	color: red;
-}
-.message
-{
-	color: green;
-}
-
-</style>
-
+	<style>
+	    .login-status {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+		}
+	    .login-status .logo-large {
+			margin: 0 auto 15px;
+		}
+	</style>
 </head>
 
 <body>
-	<h3>Login with SSO</h3>
+    <div class="login-status slds-grid slds-grid_vertical-align-center slds-grid_align-center">
+        <div class="slds-container_small slds-p-around_medium">
+            <div class="logo-large">
+                <img alt="" src="/static/img/logo-large.png" />
+            </div>
 
-	<div th:if="${results != null && results.getMessages().size() > 0}">
-		<div th:text="${results.getMessages().get(0)}" th:classappend="${results.isSuccessful() ? 'message' : 'error'}"></div>
-	</div>
+			<h1 class="slds-text-heading_large slds-text-align_center slds-m-bottom_large">Login with SSO</h1>
 
-	<div th:each="oauthProvider : ${oauthProviders}">
-		<a th:text="${'Login via ' + oauthProvider.key}" th:href="${oauthProvider.value}">SSO Provider</a>
-	</div>
+
+
+			<div th:if="${results != null && results.getMessages().size() > 0}">
+				<div th:text="${results.getMessages().get(0)}" class="slds-notify slds-notify_alert" th:classappend="${results.isSuccessful() ? 'slds-theme_alert-texture slds-theme_success' : 'slds-theme_alert-texture slds-theme_error'}"></div>
+			</div>
+
+			<div th:each="oauthProvider : ${oauthProviders}" class="slds-p-around_medium slds-m-top_medium">
+				<a th:text="${'Login via ' + oauthProvider.key}" th:href="${oauthProvider.value}">SSO Provider</a>
+			</div>
+        </div>
+    </div>
+
 </body>
 </html>
