@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -14,7 +15,13 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_serviceterritorymember_of_territory")
-public class ServTerMemberOfTerritory {
+public class ServTerMemberOfTerritory implements Serializable {
+
+	//
+	//Constants
+	//
+	private static final long serialVersionUID = -2413668242256677175L;
+	//
 
 	//
 	//Constructors

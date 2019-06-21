@@ -3,7 +3,6 @@ package com.kone.cplan.jpa.repository.custom;
 import com.kone.cplan.jpa.entity.Callout;
 import com.kone.cplan.jpa.filter.CalloutFilter;
 import com.kone.cplan.jpa.filter.IFilter;
-import com.kone.cplan.jpa.utils.CaseUtils;
 import com.kone.cplan.jpa.utils.JpaUtils;
 import com.kone.cplan.utils.datatype.DatetimeUtils;
 import org.springframework.data.domain.Pageable;
@@ -154,7 +153,7 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 			new Timestamp(currentUserCalendar.getTimeInMillis() - TimeUnit.DAYS.toMillis(1))));
 
 		//- add filter by Record Type (the relevant Callout type is 'Field Service')
-		predicates.add(cb.equal(root.get("recordTypeId"), CaseUtils.RECORD_TYPE_ID_FIELD_SERVICE));
+		predicates.add(cb.equal(root.get("recordTypeId"), Callout.RECORD_TYPE_ID_FIELD_SERVICE));
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
 
