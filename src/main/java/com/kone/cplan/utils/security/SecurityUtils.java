@@ -23,11 +23,11 @@ public class SecurityUtils {
 	//Constants
 	//
 	//KONE: KC3 Agent
-	private static final String PRODILE_ID_KC3_AGENT = "00ew0000001V7qqAAC";
+	private static final String PROFILE_ID_KC3_AGENT = "00ew0000001V7qqAAC";
 	//KONE: External KC3 Agent
-	private static final String PRODILE_ID_EXTERNAL_KC3_AGENT = "00e1r000001mw9oAAA";
+	private static final String PROFILE_ID_EXTERNAL_KC3_AGENT = "00e1r000001mw9oAAA";
 	//KONE: Field Service Administrator
-	private static final String PRODILE_ID_FIELD_SERVICE_ADMIN = "00ew0000001V7q9AAC";
+	private static final String PROFILE_ID_FIELD_SERVICE_ADMIN = "00ew0000001V7q9AAC";
 	
 	//Central Management
 	private static final String ROLE_ID_CENTRAL_MGMT = "00E20000000huXREAY";
@@ -37,14 +37,14 @@ public class SecurityUtils {
 	
 	private static final Set<String> ALLOWED_PROFILES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 	static {
-		ALLOWED_PROFILES_IDs.add(PRODILE_ID_KC3_AGENT);
-		ALLOWED_PROFILES_IDs.add(PRODILE_ID_EXTERNAL_KC3_AGENT);
-		ALLOWED_PROFILES_IDs.add(PRODILE_ID_FIELD_SERVICE_ADMIN);
+		ALLOWED_PROFILES_IDs.add(PROFILE_ID_KC3_AGENT);
+		ALLOWED_PROFILES_IDs.add(PROFILE_ID_EXTERNAL_KC3_AGENT);
+		ALLOWED_PROFILES_IDs.add(PROFILE_ID_FIELD_SERVICE_ADMIN);
 	}
 	
 	private static final Set<String> ADMIN_PROFILES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 	static {
-		ADMIN_PROFILES_IDs.add(PRODILE_ID_FIELD_SERVICE_ADMIN);
+		ADMIN_PROFILES_IDs.add(PROFILE_ID_FIELD_SERVICE_ADMIN);
 	}
 	
 	private static final Set<String> ADMIN_ROLES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
