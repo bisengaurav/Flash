@@ -64,10 +64,6 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/").setViewName("index");
 		//- all other URLs for pages
 		registry.addViewController(this.getTemplateForAllPageUrls()).setViewName("index");
-		
-		//TODO: temp login and logout
-		registry.addViewController("/login").setViewName("login");
-		registry.addViewController("/logoutSuccess").setViewName("logoutSuccess");
 	}
 	
 	
