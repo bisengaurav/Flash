@@ -4,7 +4,6 @@ import com.kone.cplan.jpa.utils.IEntityWithSalesOrgs;
 import com.kone.cplan.utils.datatype.DatetimeUtils;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -13,7 +12,7 @@ import java.util.Calendar;
  * @created 22-05-2019
  */
 @MappedSuperclass
-public abstract class AbstractAsset implements Serializable, IEntityWithSalesOrgs {
+public abstract class AbstractAsset implements IEntityWithSalesOrgs {
 
 	//
 	//Variables

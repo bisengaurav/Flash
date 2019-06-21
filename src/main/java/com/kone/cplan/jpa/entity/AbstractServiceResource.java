@@ -3,14 +3,13 @@ package com.kone.cplan.jpa.entity;
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * @author Andrey Gribanov (Cervello)
  * @created 30-05-2019
  */
 @MappedSuperclass
-public abstract class AbstractServiceResource implements Serializable, IEntityWithSalesOrg {
+public abstract class AbstractServiceResource implements IEntityWithSalesOrg {
 
 	//
 	//Variables

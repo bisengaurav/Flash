@@ -4,6 +4,7 @@ import com.kone.cplan.helpers.db.DbSchema;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -12,7 +13,13 @@ import java.util.Set;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_asset")
-public class AssetDetails extends AbstractAsset {
+public class AssetDetails extends AbstractAsset implements Serializable {
+
+	//
+	//Constants
+	//
+	private static final long serialVersionUID = 5617195980048003393L;
+	//
 
 	//
 	//Constructors

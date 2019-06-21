@@ -1,7 +1,6 @@
 package com.kone.cplan.jpa.entity;
 
 import com.kone.cplan.helpers.db.DbSchema;
-import com.kone.cplan.jpa.utils.ResourceAbsenceUtils;
 import com.kone.cplan.utils.datatype.DatetimeUtils;
 import org.hibernate.Session;
 import org.hibernate.annotations.*;
@@ -29,6 +28,12 @@ import java.util.concurrent.TimeUnit;
 	@ParamDef(name = "todayParam", type = "timestamp")
 })
 public class ServiceResourceDetails extends AbstractServiceResource implements Serializable {
+
+	//
+	//Constants
+	//
+	private static final long serialVersionUID = -8718884358520808704L;
+	//
 
 	//
 	//Constructors
@@ -100,7 +105,7 @@ public class ServiceResourceDetails extends AbstractServiceResource implements S
 		filter.setParameter("currentTimeParam", new Timestamp(currentUserCalendar.getTimeInMillis()));
 		filter.setParameter("currentTimePlusTwoWeeksParam",
 			new Timestamp(currentUserCalendar.getTimeInMillis()	+ TimeUnit.DAYS.toMillis(14)));
-		filter.setParameter("breakRecordTypeParam", ResourceAbsenceUtils.RECORD_TYPE_ID_BREAK);
+		filter.setParameter("breakRecordTypeParam", ResourceAbsence.RECORD_TYPE_ID_BREAK);
 		DatetimeUtils.resetTimePart(currentUserCalendar);
 		filter.setParameter("todayParam", new Timestamp(currentUserCalendar.getTimeInMillis()));
 	}

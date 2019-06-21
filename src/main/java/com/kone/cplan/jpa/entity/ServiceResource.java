@@ -14,6 +14,12 @@ import java.io.Serializable;
 public class ServiceResource extends AbstractServiceResource implements Serializable {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = -708188788867281161L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/

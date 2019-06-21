@@ -14,6 +14,12 @@ import java.io.Serializable;
 public class WcAssignmentOfResource implements Serializable {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = -8678803104744350146L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
