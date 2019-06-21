@@ -24,7 +24,7 @@ public class DatetimeUtils {
 	 * @return {@link Calendar}
 	 */
 	public static Calendar getCalendarForCU() {
-		L10nParams l10nParams = AppContextHolder.getAppSessionContext().getCurrentL10nParams();
+		L10nParams l10nParams = AppContextHolder.appSessionContext().getCurrentL10nParams();
 		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(l10nParams.getTimeZoneId()),
 			l10nParams.buildLocale());
 		

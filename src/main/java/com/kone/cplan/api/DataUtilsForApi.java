@@ -83,7 +83,7 @@ public class DataUtilsForApi {
 		}
 
 		//- check or set Sales Organization
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
 		if (!userInfo.isAdmin()) {
 			if (userInfo.getSalesOrg() == null) {
 				return OperationResults.newSuccess(new ArrayList<>());
@@ -106,7 +106,7 @@ public class DataUtilsForApi {
 	 * @param repo - repository must implement the {@link IRepoForSalesOrg}
 	 */
 	public static OperationResults getUniqueSalesOrgs(IRepoForSalesOrg repo) {
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
 		//- If current user's profile is C-Plan Admin then all SalesOrgs are available to him.
 		// In other case only his SalesOrg is available.
 		if (userInfo.isAdmin()) {

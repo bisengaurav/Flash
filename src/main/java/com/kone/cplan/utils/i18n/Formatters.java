@@ -126,7 +126,7 @@ public class Formatters {
 	 * The methods initializes a new {@link Formatters} for the Current User (CU).
 	 */
 	public static Formatters forCurrentUser() {
-		L10nParams l10nParams = AppContextHolder.getAppSessionContext().getCurrentL10nParams();
+		L10nParams l10nParams = AppContextHolder.appSessionContext().getCurrentL10nParams();
 		return (new Formatters(l10nParams.buildLocale(), l10nParams.getTimeZoneId()));
 	}
 	//

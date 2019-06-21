@@ -67,7 +67,7 @@ public class MsAzureUtils {
 		}
 		
 		//STEP #3: everything is correct. So, we change user in the session context
-		AppContextHolder.getAppSessionContext().changeUser(sfUser);
+		AppContextHolder.appSessionContext().changeUser(sfUser);
 	}
 	//
 }

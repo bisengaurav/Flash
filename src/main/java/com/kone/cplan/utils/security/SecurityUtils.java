@@ -76,7 +76,7 @@ public class SecurityUtils {
 	// The method returns true if the current User has access to the record and false otherwise
 	public static boolean userHasAccessToRecord(IEntityWithAccessField record)
 	{
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
 		//- if the current User is not a C-Plan admin we should check whether he is allowed to see the record.
 		// Depending on the object the record has either 'salesOrganization__c' (may contain null or one
 		// Sales Organization) or 'salesOrganizations__c' (may contain any number of Sales Organizations

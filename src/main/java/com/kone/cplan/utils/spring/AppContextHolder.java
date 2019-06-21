@@ -30,8 +30,7 @@ public class AppContextHolder {
 		AppContextHolder.appContext = appContext;
 	}
 	
-	//TODO: rename
-	public static AppSessionContext getAppSessionContext() {
+	public static AppSessionContext appSessionContext() {
 		return appContext.getBean(AppSessionContext.class);
 	}
 	

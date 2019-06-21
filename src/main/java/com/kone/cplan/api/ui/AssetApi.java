@@ -109,7 +109,7 @@ public class AssetApi {
 	@GetMapping(value = "getUniqueCountries")
 	public OperationResults getUniqueCountries()
 	{
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
 		List<String> statuses = (userInfo.isAdmin()
 			? assetRepo.getUniqueCountries()
 			: assetRepo.getUniqueCountriesBySalesOrg(userInfo.getSalesOrg()));

@@ -62,7 +62,7 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueMaintenanceActivityTypeCodes")
 	public OperationResults getUniqueMaintenanceActivityTypeCodes()
 	{
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
 		return OperationResults.newSuccess(SelectOption.generateList(
 			(userInfo.isAdmin()	? calloutRepo.getUniqueMaintenanceActivityTypeCodes()
 				: calloutRepo.getUniqueMaintenanceActivityTypeCodesBySalesOrg(userInfo.getSalesOrg())
@@ -76,7 +76,7 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueAssemblies")
 	public OperationResults getUniqueAssemblies()
 	{
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
 		return OperationResults.newSuccess(SelectOption.generateList(
 			(userInfo.isAdmin()	? calloutRepo.getUniqueAssemblies()
 				: calloutRepo.getUniqueAssembliesBySalesOrg(userInfo.getSalesOrg())
@@ -90,7 +90,7 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueStatuses")
 	public OperationResults getUniqueStatuses()
 	{
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
 		List<String> statuses = (userInfo.isAdmin()
 			? calloutRepo.getUniqueStatuses()
 			: calloutRepo.getUniqueStatusesBySalesOrg(userInfo.getSalesOrg()));
@@ -104,7 +104,7 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueSAStatuses")
 	public OperationResults getUniqueSAStatuses()
 	{
-		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
+		AppSessionInfo.UserInfo userInfo = AppContextHolder.appSessionContext().getCurrentUserInfo();
 		List<String> saStatuses = (userInfo.isAdmin()
 			? calloutRepo.getUniqueSAStatuses()
 			: calloutRepo.getUniqueSAStatusesBySalesOrg(userInfo.getSalesOrg()));
