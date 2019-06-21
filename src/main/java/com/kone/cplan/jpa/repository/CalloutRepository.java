@@ -23,7 +23,7 @@ public interface CalloutRepository extends JpaRepository<Callout, String>, Callo
 		" AND c.recordTypeId = '" + CaseUtils.RECORD_TYPE_ID_FIELD_SERVICE + "'" +
 		" GROUP BY c.salesOrganizations__c" +
 		" ORDER BY c.salesOrganizations__c")
-	List<String> getUniqueSalesOrganizations();
+	List<String> getUniqueSalesOrgs();
 
 	@Query("SELECT c.maintenanceActivityTypeCode__c FROM Callout c" +
 		" WHERE c.maintenanceActivityTypeCode__c IS NOT NULL" +

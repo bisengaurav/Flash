@@ -8,6 +8,7 @@ package com.kone.cplan.jpa.utils;
  */
 public class ResourceAbsenceUtils {
 
+	//TODO: move to Entity
 	//
 	//Constants
 	//

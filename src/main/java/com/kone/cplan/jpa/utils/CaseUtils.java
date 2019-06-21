@@ -8,6 +8,7 @@ package com.kone.cplan.jpa.utils;
  */
 public class CaseUtils {
 
+	//TODO: move to Entity
 	//
 	//Constants
 	//

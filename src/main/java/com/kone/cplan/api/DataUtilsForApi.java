@@ -92,7 +92,7 @@ public class DataUtilsForApi {
 		}
 
 		//- prepare pagination
-		Pageable pageRequest = PagingUtils.extractOrGetDefaultPageRequest(defaultSort);
+		Pageable pageRequest = PagingUtils.getDefaultPageRequest(defaultSort);
 
 		//- get and return data
 		return OperationResults.newSuccess(repo.findByFilter(filter, pageRequest));
@@ -114,7 +114,7 @@ public class DataUtilsForApi {
 				//- Account's Sales_Organizations__c field, which is used for filtering records by
 				// sales org, may contain several sales orgs separated by comma. We need to parse
 				// all the fields and extract all sales orgs.
-				SelectOption.generateList(repo.getUniqueSalesOrganizations().stream()
+				SelectOption.generateList(repo.getUniqueSalesOrgs().stream()
 					.flatMap(Pattern.compile(",")::splitAsStream)
 					.distinct()
 					.sorted()

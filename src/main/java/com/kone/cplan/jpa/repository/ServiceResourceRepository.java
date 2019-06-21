@@ -21,5 +21,5 @@ public interface ServiceResourceRepository extends JpaRepository<ServiceResource
 		" WHERE s.salesOrganization__c IS NOT NULL" +
 		" GROUP BY s.salesOrganization__c" +
 		" ORDER BY s.salesOrganization__c")
-	List<String> getUniqueSalesOrganizations();
+	List<String> getUniqueSalesOrgs();
 }

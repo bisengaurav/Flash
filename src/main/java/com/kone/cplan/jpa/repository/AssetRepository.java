@@ -42,7 +42,7 @@ public interface AssetRepository extends JpaRepository<Asset, Integer>, Asset_Re
 		"    ORDER BY sales_organizations__c LIMIT 1" +
 		"  ) ass" +
 		") TABLE cte")
-	List<String> getUniqueSalesOrganizations();
+	List<String> getUniqueSalesOrgs();
 
 
 //	@Query("SELECT a.installationCountry__c FROM Asset a" +
