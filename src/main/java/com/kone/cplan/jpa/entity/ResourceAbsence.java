@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -14,7 +15,14 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_resourceabsence")
-public class ResourceAbsence {
+public class ResourceAbsence implements Serializable {
+
+	//
+	//Constants
+	//
+	public static final String RECORD_TYPE_ID_BREAK = "012w0000000V96WAAS";
+	private static final long serialVersionUID = -1741192520291423958L;
+	//
 
 	//
 	//Variables

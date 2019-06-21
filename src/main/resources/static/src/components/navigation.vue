@@ -5,7 +5,7 @@
             <div class="slds-backdrop" @click="close"></div>
 
             <div class="nav-panel">
-                <div class="logo">
+                <div class="logo logo-small">
                     <img :alt="$t('label.app-name')" src="/static/img/logo-white.png" />
                 </div>
 
@@ -138,11 +138,6 @@
         z-index: 2;
         background-color: #0071b9;
         opacity: 0;
-    }
-    .logo,
-    .logo img {
-        width: 113px;
-        height: 57px;
     }
 
 

@@ -3,6 +3,7 @@ package com.kone.cplan.jpa.entity;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
@@ -11,7 +12,13 @@ import java.sql.Date;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_entitlement")
-public class Entitlement {
+public class Entitlement implements Serializable {
+
+	//
+	//Constants
+	//
+	private static final long serialVersionUID = 6010253443548139289L;
+	//
 
 	//
 	//Constructors

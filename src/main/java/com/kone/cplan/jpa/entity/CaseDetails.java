@@ -3,6 +3,7 @@ package com.kone.cplan.jpa.entity;
 import com.kone.cplan.helpers.db.DbSchema;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -11,7 +12,13 @@ import java.util.Set;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_case_details")
-public class CaseDetails extends AbstractCase {
+public class CaseDetails extends AbstractCase implements Serializable {
+
+	//
+	//Constants
+	//
+	private static final long serialVersionUID = -8070917679876045919L;
+	//
 
 	//
 	//Constructors

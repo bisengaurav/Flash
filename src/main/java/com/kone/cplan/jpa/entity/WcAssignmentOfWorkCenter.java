@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -14,7 +15,13 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(schema = DbSchema.C_PLAN, name = "view_fsm_wc_assignment_of_work_center")
-public class WcAssignmentOfWorkCenter {
+public class WcAssignmentOfWorkCenter implements Serializable {
+
+	//
+	//Constants
+	//
+	private static final long serialVersionUID = 5142153918705098801L;
+	//
 
 	//
 	//Constructors

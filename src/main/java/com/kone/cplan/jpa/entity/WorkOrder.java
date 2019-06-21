@@ -15,6 +15,12 @@ import java.io.Serializable;
 public class WorkOrder extends AbstractWorkOrder implements Serializable {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = -4377897156432335419L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/

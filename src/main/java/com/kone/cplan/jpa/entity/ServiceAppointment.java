@@ -14,6 +14,12 @@ import java.io.Serializable;
 public class ServiceAppointment extends AbstractServiceAppointment implements Serializable {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = -8278167715448857154L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/

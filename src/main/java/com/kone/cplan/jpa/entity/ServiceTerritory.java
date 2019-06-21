@@ -18,6 +18,12 @@ import java.util.Set;
 public class ServiceTerritory implements Serializable, IEntityWithSalesOrg {
 
 	//
+	//Constants
+	//
+	private static final long serialVersionUID = 7253906716565877661L;
+	//
+
+	//
 	//Constructors
 	//
 	/*For JPA and JSON-deserialization*/
