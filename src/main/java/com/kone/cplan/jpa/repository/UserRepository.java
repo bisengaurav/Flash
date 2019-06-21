@@ -13,5 +13,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	User findBySfId(String sfId);
 
-	User findFirstByFederationIdentifier(String federationId);
+	User findFirstByFederationId(String federationId);
 }

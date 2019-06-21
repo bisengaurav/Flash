@@ -1,7 +1,12 @@
 package com.kone.cplan.utils.spring;
 
-import org.springframework.context.ApplicationContext;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com.kone.cplan.jpa.repository.UserRepository;
 import com.kone.cplan.utils.session.AppSessionContext;
 
 /**
@@ -25,8 +30,19 @@ public class AppContextHolder {
 		AppContextHolder.appContext = appContext;
 	}
 	
+	//TODO: rename
 	public static AppSessionContext getAppSessionContext() {
 		return appContext.getBean(AppSessionContext.class);
+	}
+	
+	public static HttpSession httpSession() {
+		ServletRequestAttributes requestAttributes =
+			(ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+		return (requestAttributes != null ? requestAttributes.getRequest().getSession() : null);
+	}
+	
+	public static UserRepository userRepo() {
+		return appContext.getBean(UserRepository.class);
 	}
 	//
 

@@ -2,78 +2,70 @@ package com.kone.cplan.config.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.event.InteractiveAuthenticationSuccessEvent;
+import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.kone.cplan.utils.session.AppSessionContext;
+import com.kone.cplan.utils.security.oauth.MsAzureUtils;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
-	implements ApplicationListener<InteractiveAuthenticationSuccessEvent>
+	implements ApplicationListener<AuthenticationSuccessEvent>
 {
 	//
 	//Constants
 	//
+	//TODO: delete test
 	private static final String[] PATTERNS_FOR_PUBLIC_URLs = new String[] {
-		"/css/*", "/js/*", "/img/*", "/favicon.ico", "/slds/**", "/error**", "/test*"
+		"/css/*", "/js/*", "/img/*", "/favicon.ico", "/slds/**", "/error**", "/login", "/logout",
+		"/test/**"
 	};
 	//
-	
+
 	//
 	//Variables
 	//
 	@Autowired
-	private AppSessionContext sessionContext;
+	private OAuth2UserService<OidcUserRequest, OidcUser> oidcUserService;
 	//
-	
+
 	//
 	//Protected methods
 	//
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
+
+		//- configure access to URLs
 		http
 			.authorizeRequests()
 				.antMatchers(PATTERNS_FOR_PUBLIC_URLs).permitAll()
 				//.anyRequest().permitAll()
-				.anyRequest().authenticated()
-			.and()
-			.formLogin().loginPage("/login").permitAll()
-			.and()
-			.logout().logoutRequestMatcher(
-				new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
-		
+				.anyRequest().authenticated();
+
+		//- configure login
+		http.oauth2Login().userInfoEndpoint().oidcUserService(oidcUserService)
+			.and().loginPage("/login");
+
+		//- configure logout
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+
 		//http.csrf().disable();
 	}
 	//
-	
+
 	//
 	//Public methods
 	//
-	//TODO: this is a temp code for testing period until we implement SSO authentication
-	@SuppressWarnings("deprecation")
-	@Bean
 	@Override
-	public UserDetailsService userDetailsService() {
-		UserDetails testUser = User.withDefaultPasswordEncoder()
-			.username("testuser").password("123QWEasd").roles("USER").build();
-		return new InMemoryUserDetailsManager(testUser);
-	}
-	
-	//TODO: temp code that changes session context
-	@Override
-	public void onApplicationEvent(InteractiveAuthenticationSuccessEvent event) {
-		sessionContext.changeUser("0051r0000090MnrAAE"); //Robert Sramek, isAdmin: true, salesOrg: "KNE"
+	public void onApplicationEvent(AuthenticationSuccessEvent event) {
+		MsAzureUtils.handleAuthentication(event);
 	}
 	//
 }

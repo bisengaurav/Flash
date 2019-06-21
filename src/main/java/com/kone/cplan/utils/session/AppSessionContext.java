@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.LocaleResolver;
 
-import com.kone.cplan.helpers.datatype.StringUtils;
+import com.kone.cplan.jpa.entity.User;
 import com.kone.cplan.jpa.repository.UserRepository;
 import com.kone.cplan.utils.i18n.L10nParams;
 
@@ -56,16 +56,14 @@ public class AppSessionContext
 	//
 	//Private methods
 	//
-	private void initialize(String userSfId) {
-		this.sessionInfo = null;
+	private void initialize(User sfUser) {
 		
-		if (StringUtils.isNotEmpty(userSfId))
-		{
-			this.sessionInfo = new AppSessionInfo(userRepo.findBySfId(userSfId));
-			//change current locale for the session
-			localeResolver.setLocale(this.request, null,
-				this.sessionInfo.getL10nParams().buildLocale());
-		}
+		//- initialize an set new session info
+		this.sessionInfo = new AppSessionInfo(sfUser);
+		
+		//- change current locale for the session
+		localeResolver.setLocale(this.request, null,
+			this.sessionInfo.getL10nParams().buildLocale());
 	}
 	//
 	
@@ -73,7 +71,11 @@ public class AppSessionContext
 	//Public methods
 	//
 	public void changeUser(String userSfId) {
-		this.initialize(userSfId);
+		this.initialize(userRepo.findBySfId(userSfId));
+	}
+	
+	public void changeUser(User sfUser) {
+		this.initialize(sfUser);
 	}
 	//
 }

@@ -7,6 +7,7 @@ import com.kone.cplan.jpa.entity.User;
 import com.kone.cplan.jpa.utils.IEntityWithAccessField;
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrgs;
+import com.kone.cplan.utils.datatype.collection.SetUtils;
 import com.kone.cplan.utils.session.AppSessionInfo;
 import com.kone.cplan.utils.spring.AppContextHolder;
 
@@ -21,20 +22,55 @@ public class SecurityUtils {
 	//
 	//Constants
 	//
+	//KONE: KC3 Agent
+	private static final String PRODILE_ID_KC3_AGENT = "00ew0000001V7qqAAC";
+	//KONE: External KC3 Agent
+	private static final String PRODILE_ID_EXTERNAL_KC3_AGENT = "00e1r000001mw9oAAA";
+	//KONE: Field Service Administrator
+	private static final String PRODILE_ID_FIELD_SERVICE_ADMIN = "00ew0000001V7q9AAC";
+	
+	//Central Management
+	private static final String ROLE_ID_CENTRAL_MGMT = "00E20000000huXREAY";
+	//FSM: Field Service Management
+	private static final String ROLE_ID_FIELD_SERVICE_MGMT = "00Ew0000001zukGEAQ";
+	
+	
+	private static final Set<String> ALLOWED_PROFILES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+	static {
+		ALLOWED_PROFILES_IDs.add(PRODILE_ID_KC3_AGENT);
+		ALLOWED_PROFILES_IDs.add(PRODILE_ID_EXTERNAL_KC3_AGENT);
+		ALLOWED_PROFILES_IDs.add(PRODILE_ID_FIELD_SERVICE_ADMIN);
+	}
+	
 	private static final Set<String> ADMIN_PROFILES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 	static {
-		//TODO: clarify whether we can hard code these values
-		//ADMIN_PROFILES_IDs.add("00ew0000001V7qqAAC"); //KONE: KC3 Agent
-		//ADMIN_PROFILES_IDs.add("00e1r000001mw9oAAA"); //KONE: External KC3 Agent
-		ADMIN_PROFILES_IDs.add("00ew0000001V7q9AAC"); //KONE: Field Service Administrator
+		ADMIN_PROFILES_IDs.add(PRODILE_ID_FIELD_SERVICE_ADMIN);
+	}
+	
+	private static final Set<String> ADMIN_ROLES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+	static {
+		ADMIN_ROLES_IDs.add(ROLE_ID_CENTRAL_MGMT);
+		ADMIN_ROLES_IDs.add(ROLE_ID_FIELD_SERVICE_MGMT);
 	}
 	//
 	
 	//
 	//Public static methods
 	//
+	/**
+	 * The method determines whether the passed user can log into the app. 
+	 */
+	public static boolean userCanLogin(User user) {
+		if (user == null) { return false; }
+		
+		return SetUtils.contains(ALLOWED_PROFILES_IDs, user.getProfileId());
+	}
+	
 	public static boolean isAdminUser(User user) {
-		return (user != null ? ADMIN_PROFILES_IDs.contains(user.getProfileId()) : false);
+		if (user == null) { return false; }
+		
+		return (SetUtils.contains(ADMIN_PROFILES_IDs, user.getProfileId()) &&
+			SetUtils.contains(ADMIN_ROLES_IDs, user.getRoleId()));
 	}
 
 	// The method returns true if the current User has access to the record and false otherwise
