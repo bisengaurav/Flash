@@ -21,6 +21,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Custom extension of the standard repository for the {@link Callout} entity.
+ * 
+ * @author Andrey Gribanov (Cervello)
+ */
 public class Callout_RepoExtImpl implements Callout_RepoExt {
 
 	//
@@ -149,7 +154,7 @@ public class Callout_RepoExtImpl implements Callout_RepoExt {
 			new Timestamp(currentUserCalendar.getTimeInMillis() - TimeUnit.DAYS.toMillis(1))));
 
 		//- add filter by Record Type (the relevant Callout type is 'Field Service')
-		predicates.add(cb.equal(root.get("recordTypeId"), CaseUtils.FIELD_SERVICE_RECORD_TYPE_ID));
+		predicates.add(cb.equal(root.get("recordTypeId"), CaseUtils.RECORD_TYPE_ID_FIELD_SERVICE));
 
 		query.select(root).where(predicates.toArray(new Predicate[]{}));
 

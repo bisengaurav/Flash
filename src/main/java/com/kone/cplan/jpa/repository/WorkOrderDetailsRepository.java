@@ -4,7 +4,7 @@ import com.kone.cplan.jpa.entity.WorkOrderDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * This repository works with the WorkOrderDetails entity.
+ * This repository works with the {@link WorkOrderDetails} entity.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019

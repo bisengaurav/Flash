@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 /**
- * This repository works with the ServiceResource entity.
+ * This repository works with the {@link ServiceResource} entity.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019

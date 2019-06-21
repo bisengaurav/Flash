@@ -1,6 +1,7 @@
 package com.kone.cplan.config.spring;
 
 import java.util.Locale;
+import java.util.TimeZone;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +33,7 @@ public class LocaleConfig implements WebMvcConfigurer
 	@EventListener(ApplicationReadyEvent.class)
 	public void initAppAfterStartup()
 	{
+		TimeZone.setDefault(TimeZone.getTimeZone(AppSettings.DEFAULT_TIME_ZONE_ID));
 		Locale.setDefault(AppSettings.DEFAULT_LOCALE);
 	}
 

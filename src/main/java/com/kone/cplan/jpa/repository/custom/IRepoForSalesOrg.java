@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface IRepoForSalesOrg {
 
+	//TODO: rename to getUniqueSalesOrgs?
 	List<String> getUniqueSalesOrganizations();
 }

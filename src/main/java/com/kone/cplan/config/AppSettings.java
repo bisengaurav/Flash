@@ -69,5 +69,9 @@ public class AppSettings {
 	{
 		return getPropertyValue("spring.messages.basename");
 	}
+	
+	public static String getUiApiPath() {
+		return getPropertyValue("cplan.url.ui-api-path");
+	}
 	//
 }

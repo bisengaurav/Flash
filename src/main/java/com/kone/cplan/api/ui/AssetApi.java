@@ -65,6 +65,7 @@ public class AssetApi {
 	 * @param AssetFilter
 	 * @return OperationResults with list of the Asset entities
 	 */
+	@SuppressWarnings("unchecked")
 	@GetMapping(value = "getAllByFilter")
 	public OperationResults getAllByFilter(@RequestParam(name = "filter") String filterJson)
 	{
@@ -74,7 +75,7 @@ public class AssetApi {
 		if (!operationResults.isSuccessful()) {
 			return operationResults;
 		}
-		List<Asset> result = (List<Asset>) operationResults.getReturnedObject();
+		List<Asset> result = (List<Asset>)operationResults.getReturnedObject();
 
 		//- sort data
 		/*
@@ -99,7 +100,7 @@ public class AssetApi {
 	@GetMapping(value = "getUniqueSalesOrganizations")
 	public OperationResults getUniqueSalesOrganizations()
 	{
-		return DataUtilsForApi.getUniqueSalesOrganizations(assetRepo);
+		return DataUtilsForApi.getUniqueSalesOrgs(assetRepo);
 	}
 
 	/**

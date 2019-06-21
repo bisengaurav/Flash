@@ -4,7 +4,7 @@ import com.kone.cplan.jpa.entity.ServiceResourceDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * This repository works with the ServiceResourceDetails entity.
+ * This repository works with the {@link ServiceResourceDetails} entity.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019

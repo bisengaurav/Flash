@@ -1,7 +1,7 @@
 package com.kone.cplan.config;
 
 /**
- * This class provides utilities for the application URLs.
+ * This class provides constants and utilities for the application URLs.
  * 
  * @author Gennadiy Pervukhin
  * @created 18-06-2019

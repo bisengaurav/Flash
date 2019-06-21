@@ -7,6 +7,9 @@ import com.kone.cplan.jpa.repository.CalloutRepository;
 import com.kone.cplan.utils.dto.SelectOption;
 import com.kone.cplan.utils.session.AppSessionInfo;
 import com.kone.cplan.utils.spring.AppContextHolder;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +53,7 @@ public class CalloutApi {
 	@GetMapping(value = "getUniqueSalesOrganizations")
 	public OperationResults getUniqueSalesOrganizations()
 	{
-		return DataUtilsForApi.getUniqueSalesOrganizations(calloutRepo);
+		return DataUtilsForApi.getUniqueSalesOrgs(calloutRepo);
 	}
 
 	/**
@@ -88,11 +91,11 @@ public class CalloutApi {
 	public OperationResults getUniqueStatuses()
 	{
 		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
-		return OperationResults.newSuccess(SelectOption.generateList(
-			(userInfo.isAdmin()	? calloutRepo.getUniqueStatuses()
-				: calloutRepo.getUniqueStatusesBySalesOrg(userInfo.getSalesOrg())
-			).toArray()
-		));
+		List<String> statuses = (userInfo.isAdmin()
+			? calloutRepo.getUniqueStatuses()
+			: calloutRepo.getUniqueStatusesBySalesOrg(userInfo.getSalesOrg()));
+		
+		return OperationResults.newSuccess(SelectOption.generateList(statuses.toArray()));
 	}
 
 	/**
@@ -102,11 +105,11 @@ public class CalloutApi {
 	public OperationResults getUniqueSAStatuses()
 	{
 		AppSessionInfo.UserInfo userInfo = AppContextHolder.getAppSessionContext().getCurrentUserInfo();
-		return OperationResults.newSuccess(SelectOption.generateList(
-			(userInfo.isAdmin()	? calloutRepo.getUniqueSAStatuses()
-				: calloutRepo.getUniqueSAStatusesBySalesOrg(userInfo.getSalesOrg())
-			).toArray()
-		));
+		List<String> saStatuses = (userInfo.isAdmin()
+			? calloutRepo.getUniqueSAStatuses()
+			: calloutRepo.getUniqueSAStatusesBySalesOrg(userInfo.getSalesOrg()));
+		
+		return OperationResults.newSuccess(SelectOption.generateList(saStatuses.toArray()));
 	}
 	//
 }

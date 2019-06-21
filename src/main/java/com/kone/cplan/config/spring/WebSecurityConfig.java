@@ -22,10 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	//
 	//Constants
 	//
-	//TODO: delete test
 	private static final String[] PATTERNS_FOR_PUBLIC_URLs = new String[] {
-		"/css/*", "/js/*", "/img/*", "/favicon.ico", "/slds/**", "/error**", "/login", "/logout",
-		"/test/**"
+		"/css/*", "/js/*", "/img/*", "/favicon.ico", "/slds/**", "/error**", "/login", "/logout"
 	};
 	//
 

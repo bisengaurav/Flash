@@ -13,6 +13,11 @@ import com.kone.cplan.config.AppSettings;
 import com.kone.cplan.utils.i18n.Strings;
 import com.kone.cplan.utils.spring.AppContextHolder;
 
+/**
+ * This is an entry point of the Spring Boot application.
+ * 
+ * @author Gennadiy Pervukhin
+ */
 @SpringBootApplication
 public class CPlanApplication {
 

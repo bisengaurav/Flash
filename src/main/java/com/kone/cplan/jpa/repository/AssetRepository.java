@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 /**
- * This repository works with the Asset entity.
+ * This repository works with the {@link Asset} entity.
  *
  * @author Andrey Gribanov (Cervello)
  * @created 16-05-2019
