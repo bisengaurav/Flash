@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Login with SSO</title>
+	
+<style>
+
+.error
+{
+	color: red;
+}
+.message
+{
+	color: green;
+}
+
+</style>
+
+</head>
+
+<body>
+	<h3>Login with SSO</h3>
+
+	<div th:if="${results != null && results.getMessages().size() > 0}">
+		<div th:text="${results.getMessages().get(0)}" th:classappend="${results.isSuccessful() ? 'message' : 'error'}"></div>
+	</div>
+
+	<div th:each="oauthProvider : ${oauthProviders}">
+		<a th:text="${'Login via ' + oauthProvider.key}" th:href="${oauthProvider.value}">SSO Provider</a>
+	</div>
+</body>
+</html>

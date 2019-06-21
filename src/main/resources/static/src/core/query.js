@@ -73,7 +73,7 @@ function Query(url, data, method = 'GET', loading = false, cacheType = false) {
             cachedData = LocalStorage.getSessionCache(url);
         }
         if (typeof cacheType === 'object') {
-            cachedData = LocalStorage.getDatedCache(url, cacheType.ageCount, cacheType.ageUnit);
+            cachedData = LocalStorage.getDatedCache(url, cacheType);
         }
 
         if (cachedData) {

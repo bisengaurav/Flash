@@ -1,10 +1,12 @@
 package com.kone.cplan.jpa.entity;
 
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrgs;
+import com.kone.cplan.utils.datatype.DatetimeUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
 
 /**
  * @author Andrey Gribanov (Cervello)
@@ -174,8 +176,12 @@ public abstract class AbstractAsset implements Serializable, IEntityWithSalesOrg
 	}
 
 	public Boolean getFsmLastValidCliEndDate__c() {
-		if (fsmLastValidCliEndDate__c == null) { return null; }
-		return fsmLastValidCliEndDate__c.getTime() >= System.currentTimeMillis();
+		if (fsmLastValidCliEndDate__c == null) { return false; }
+
+		Calendar currentUserCalendar = DatetimeUtils.getCalendarForCU();
+		DatetimeUtils.resetTimePart(currentUserCalendar);
+		//- return true if 'fsmLastValidCliEndDate__c' is today or future. In other case return false.
+		return fsmLastValidCliEndDate__c.getTime() >= currentUserCalendar.getTimeInMillis();
 	}
 
 	@Override
