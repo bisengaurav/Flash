@@ -1,4 +1,4 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity.serviceappt;
 
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
 

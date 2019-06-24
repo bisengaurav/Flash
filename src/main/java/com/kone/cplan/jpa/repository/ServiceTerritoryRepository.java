@@ -1,7 +1,8 @@
 package com.kone.cplan.jpa.repository;
 
-import com.kone.cplan.jpa.entity.ServiceTerritory;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.kone.cplan.jpa.entity.serviceterritory.ServiceTerritory;
 
 /**
  * This repository works with the {@link ServiceTerritory} entity.

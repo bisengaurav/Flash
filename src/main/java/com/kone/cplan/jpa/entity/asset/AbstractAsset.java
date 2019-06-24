@@ -1,4 +1,4 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity.asset;
 
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrgs;
 import com.kone.cplan.utils.datatype.DatetimeUtils;

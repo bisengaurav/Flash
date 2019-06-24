@@ -2,7 +2,7 @@ package com.kone.cplan.api.ui;
 
 import com.kone.cplan.api.DataUtilsForApi;
 import com.kone.cplan.helpers.dto.OperationResults;
-import com.kone.cplan.jpa.entity.ServiceResourceDetails;
+import com.kone.cplan.jpa.entity.serviceres.ServiceResourceDetails;
 import com.kone.cplan.jpa.filter.ServiceResourceFilter;
 import com.kone.cplan.jpa.repository.ServiceResourceDetailsRepository;
 import com.kone.cplan.jpa.repository.ServiceResourceRepository;

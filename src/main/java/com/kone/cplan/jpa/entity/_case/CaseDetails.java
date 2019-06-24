@@ -1,6 +1,7 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity._case;
 
 import com.kone.cplan.helpers.db.DbSchema;
+import com.kone.cplan.jpa.entity.workorder.WorkOrder;
 
 import javax.persistence.*;
 import java.io.Serializable;

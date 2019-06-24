@@ -1,6 +1,6 @@
 package com.kone.cplan.jpa.repository;
 
-import com.kone.cplan.jpa.entity.Callout;
+import com.kone.cplan.jpa.entity._case.Callout;
 import com.kone.cplan.jpa.repository.custom.Callout_RepoExt;
 import com.kone.cplan.jpa.repository.custom.IRepoForSalesOrg;
 import org.springframework.data.jpa.repository.JpaRepository;

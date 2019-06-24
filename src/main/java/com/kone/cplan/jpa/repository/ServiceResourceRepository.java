@@ -1,6 +1,6 @@
 package com.kone.cplan.jpa.repository;
 
-import com.kone.cplan.jpa.entity.ServiceResource;
+import com.kone.cplan.jpa.entity.serviceres.ServiceResource;
 import com.kone.cplan.jpa.repository.custom.IRepoForSalesOrg;
 import com.kone.cplan.jpa.repository.custom.ServiceResource_RepoExt;
 import org.springframework.data.jpa.repository.JpaRepository;

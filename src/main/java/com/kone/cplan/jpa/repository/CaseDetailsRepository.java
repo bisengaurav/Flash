@@ -1,7 +1,8 @@
 package com.kone.cplan.jpa.repository;
 
-import com.kone.cplan.jpa.entity.CaseDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.kone.cplan.jpa.entity._case.CaseDetails;
 
 /**
  * This repository works with the {@link CaseDetails} entity.
