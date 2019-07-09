@@ -68,14 +68,27 @@ public interface AssetRepository extends JpaRepository<Asset, Integer>, Asset_Re
 		") TABLE cte")
 	List<String> getUniqueCountries();
 
-	@Query("SELECT a.installationCountry__c FROM Asset a" +
-		" WHERE a.installationCountry__c IS NOT NULL" +
-		" AND (a.salesOrganizations__c LIKE :salesOrg" +
-		" OR a.salesOrganizations__c LIKE CONCAT(:salesOrg, ',%')" +
-		" OR a.salesOrganizations__c LIKE CONCAT('%,', :salesOrg, ',%')" +
-		" OR a.salesOrganizations__c LIKE CONCAT('%,', :salesOrg))" +
-		" GROUP BY a.installationCountry__c" +
-		" ORDER BY a.installationCountry__c")
+//	@Query("SELECT a.installationCountry__c FROM Asset a" +
+//		" WHERE a.installationCountry__c IS NOT NULL" +
+//		" AND (a.salesOrganizations__c LIKE :salesOrg" +
+//		" OR a.salesOrganizations__c LIKE CONCAT(:salesOrg, ',%')" +
+//		" OR a.salesOrganizations__c LIKE CONCAT('%,', :salesOrg, ',%')" +
+//		" OR a.salesOrganizations__c LIKE CONCAT('%,', :salesOrg))" +
+//		" GROUP BY a.installationCountry__c" +
+//		" ORDER BY a.installationCountry__c")
+
+	//- The native query below is executed a bit faster than the commented query above.
+	@Query(nativeQuery = true, value =
+		"WITH accounts AS (SELECT sfid FROM " + DbSchema.SALESFORCE + ".account" +
+		"  WHERE sales_organizations__c LIKE :salesOrg" +
+		"  OR sales_organizations__c LIKE CONCAT(:salesOrg, ',%')" +
+		"  OR sales_organizations__c LIKE CONCAT('%,', :salesOrg, ',%')" +
+		"  OR sales_organizations__c LIKE CONCAT('%,', :salesOrg))" +
+		"SELECT (ass.installation_country__c) FROM " + DbSchema.SALESFORCE + ".asset ass" +
+		"  WHERE ass.accountid IN (SELECT sfid FROM accounts)" +
+		"  AND ass.installation_country__c IS NOT NULL " +
+		"GROUP BY installation_country__c " +
+		"ORDER BY ass.installation_country__c")
 	List<String> getUniqueCountriesBySalesOrg(String salesOrg);
 
 	@Query("SELECT e FROM EquipmentType e ORDER BY e.value")
