@@ -29,11 +29,11 @@ public abstract class AbstractServiceAppointment implements IEntityWithSalesOrg 
 	@Column
 	private String status;
 
-	@Column
-	private Timestamp scheduledStartOriginal__c;
+	@Column(name = "SchedStartTime")
+	private Timestamp schedStartTime;
 
-	@Column
-	private Timestamp scheduledEndOriginal__c;
+	@Column(name = "SchedEndTime")
+	private Timestamp schedEndTime;
 
 	@Column(name = "serviceresource_id")
 	private Integer serviceResourceId;
@@ -64,12 +64,12 @@ public abstract class AbstractServiceAppointment implements IEntityWithSalesOrg 
 		return status;
 	}
 
-	public Timestamp getScheduledStartOriginal__c() {
-		return scheduledStartOriginal__c;
+	public Timestamp getSchedStartTime() {
+		return schedStartTime;
 	}
 
-	public Timestamp getScheduledEndOriginal__c() {
-		return scheduledEndOriginal__c;
+	public Timestamp getSchedEndTime() {
+		return schedEndTime;
 	}
 
 	public Integer getServiceResourceId() {
