@@ -1,4 +1,4 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity.workcenter;
 
 import com.kone.cplan.helpers.db.DbSchema;
 import com.kone.cplan.utils.datatype.DatetimeUtils;

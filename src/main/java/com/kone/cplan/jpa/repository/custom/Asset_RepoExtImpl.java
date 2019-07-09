@@ -1,6 +1,6 @@
 package com.kone.cplan.jpa.repository.custom;
 
-import com.kone.cplan.jpa.entity.Asset;
+import com.kone.cplan.jpa.entity.asset.Asset;
 import com.kone.cplan.jpa.filter.AssetFilter;
 import com.kone.cplan.jpa.filter.IFilter;
 import com.kone.cplan.jpa.utils.JpaUtils;

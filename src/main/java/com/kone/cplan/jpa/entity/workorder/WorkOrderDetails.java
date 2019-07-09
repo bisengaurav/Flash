@@ -1,6 +1,7 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity.workorder;
 
 import com.kone.cplan.helpers.db.DbSchema;
+import com.kone.cplan.jpa.entity.serviceappt.ServiceAppointment;
 
 import javax.persistence.*;
 import java.io.Serializable;

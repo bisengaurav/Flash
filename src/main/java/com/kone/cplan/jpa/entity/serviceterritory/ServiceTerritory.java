@@ -1,4 +1,4 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity.serviceterritory;
 
 import com.kone.cplan.helpers.db.DbSchema;
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;

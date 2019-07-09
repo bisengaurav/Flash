@@ -1,4 +1,4 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity.workorder;
 
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
 

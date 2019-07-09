@@ -3,6 +3,8 @@ package com.kone.cplan.api.ui;
 import com.kone.cplan.api.DataUtilsForApi;
 import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.jpa.entity.*;
+import com.kone.cplan.jpa.entity.asset.Asset;
+import com.kone.cplan.jpa.entity.asset.EquipmentType;
 import com.kone.cplan.jpa.filter.AssetFilter;
 import com.kone.cplan.jpa.repository.AssetDetailsRepository;
 import com.kone.cplan.jpa.repository.AssetRepository;

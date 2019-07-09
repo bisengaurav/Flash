@@ -1,6 +1,6 @@
 package com.kone.cplan.jpa.repository.custom;
 
-import com.kone.cplan.jpa.entity.ServiceResource;
+import com.kone.cplan.jpa.entity.serviceres.ServiceResource;
 import com.kone.cplan.jpa.filter.IFilter;
 import com.kone.cplan.jpa.filter.ServiceResourceFilter;
 import com.kone.cplan.jpa.utils.JpaUtils;

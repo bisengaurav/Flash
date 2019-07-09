@@ -1,4 +1,4 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity._case;
 
 import com.kone.cplan.helpers.db.DbSchema;
 

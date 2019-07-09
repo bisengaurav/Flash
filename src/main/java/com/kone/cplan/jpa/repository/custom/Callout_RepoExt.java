@@ -1,6 +1,6 @@
 package com.kone.cplan.jpa.repository.custom;
 
-import com.kone.cplan.jpa.entity.Callout;
+import com.kone.cplan.jpa.entity._case.Callout;
 import com.kone.cplan.jpa.filter.IFilter;
 import org.springframework.data.domain.Pageable;
 

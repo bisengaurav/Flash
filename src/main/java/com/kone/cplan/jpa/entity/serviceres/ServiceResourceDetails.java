@@ -1,6 +1,7 @@
-package com.kone.cplan.jpa.entity;
+package com.kone.cplan.jpa.entity.serviceres;
 
 import com.kone.cplan.helpers.db.DbSchema;
+import com.kone.cplan.jpa.entity.serviceappt.ServiceAppointmentOfResource;
 import com.kone.cplan.utils.datatype.DatetimeUtils;
 import org.hibernate.Session;
 import org.hibernate.annotations.*;
