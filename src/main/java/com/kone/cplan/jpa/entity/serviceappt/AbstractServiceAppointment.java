@@ -29,10 +29,10 @@ public abstract class AbstractServiceAppointment implements IEntityWithSalesOrg 
 	@Column
 	private String status;
 
-	@Column(name = "SchedStartTime")
+	@Column(name = "schedstarttime")
 	private Timestamp schedStartTime;
 
-	@Column(name = "SchedEndTime")
+	@Column(name = "schedendtime")
 	private Timestamp schedEndTime;
 
 	@Column(name = "serviceresource_id")

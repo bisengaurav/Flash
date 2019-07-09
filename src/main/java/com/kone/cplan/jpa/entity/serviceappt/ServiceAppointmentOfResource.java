@@ -45,10 +45,10 @@ public class ServiceAppointmentOfResource implements Serializable {
 	@Column
 	private String status;
 
-	@Column(name = "SchedStartTime")
+	@Column(name = "schedstarttime")
 	private Timestamp schedStartTime;
 
-	@Column(name = "SchedEndTime")
+	@Column(name = "schedendtime")
 	private Timestamp schedEndTime;
 
 	@Column(name = "fsl__pinned__c")
