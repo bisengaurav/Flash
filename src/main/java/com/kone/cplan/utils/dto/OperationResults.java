@@ -1,8 +1,8 @@
-package com.kone.cplan.helpers.dto;
+package com.kone.cplan.utils.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kone.cplan.helpers.exception.ExceptionUtils;
+import com.kone.cplan.utils.exception.ExceptionUtils;
 import com.kone.cplan.utils.i18n.Strings;
 
 import java.util.ArrayList;

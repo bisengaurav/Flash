@@ -1,8 +1,9 @@
 package com.kone.cplan.api.ui;
 
 import com.kone.cplan.api.DataUtilsForApi;
-import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.jpa.repository.CaseDetailsRepository;
+import com.kone.cplan.utils.dto.OperationResults;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

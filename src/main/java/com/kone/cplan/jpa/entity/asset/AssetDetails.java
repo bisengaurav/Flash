@@ -1,8 +1,8 @@
 package com.kone.cplan.jpa.entity.asset;
 
-import com.kone.cplan.helpers.db.DbSchema;
-
 import org.hibernate.annotations.Where;
+
+import com.kone.cplan.utils.db.DbSchema;
 
 import javax.persistence.*;
 import java.io.Serializable;

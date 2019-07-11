@@ -1,6 +1,6 @@
-package com.kone.cplan.helpers.exception;
+package com.kone.cplan.utils.exception;
 
-import com.kone.cplan.helpers.datatype.StringUtils;
+import com.kone.cplan.utils.datatype.StringUtils;
 
 public class ExceptionUtils {
 	

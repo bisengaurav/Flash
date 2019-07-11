@@ -3,7 +3,8 @@ package com.kone.cplan.api.ui.utils.pagination;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.kone.cplan.config.AppSettings;
-import com.kone.cplan.helpers.serialization.JsonUtils;
+import com.kone.cplan.utils.serialization.JsonUtils;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 

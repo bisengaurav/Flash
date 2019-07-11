@@ -44,5 +44,4 @@ public class AppContextHolder {
 		return appContext.getBean(UserRepository.class);
 	}
 	//
-
 }

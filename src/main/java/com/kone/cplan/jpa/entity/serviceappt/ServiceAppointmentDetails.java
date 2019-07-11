@@ -1,10 +1,11 @@
 package com.kone.cplan.jpa.entity.serviceappt;
 
-import com.kone.cplan.helpers.db.DbSchema;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.kone.cplan.utils.db.DbSchema;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 

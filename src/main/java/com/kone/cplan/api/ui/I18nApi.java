@@ -1,6 +1,6 @@
 package com.kone.cplan.api.ui;
 
-import com.kone.cplan.helpers.dto.OperationResults;
+import com.kone.cplan.utils.dto.OperationResults;
 import com.kone.cplan.utils.i18n.L10nData;
 import com.kone.cplan.utils.i18n.LanguageData;
 

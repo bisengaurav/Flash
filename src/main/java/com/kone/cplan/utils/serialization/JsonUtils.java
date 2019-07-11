@@ -1,4 +1,4 @@
-package com.kone.cplan.helpers.serialization;
+package com.kone.cplan.utils.serialization;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

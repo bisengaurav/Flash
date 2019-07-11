@@ -19,8 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.kone.cplan.config.AppUrl;
-import com.kone.cplan.helpers.datatype.StringUtils;
-import com.kone.cplan.helpers.dto.OperationResults;
+import com.kone.cplan.utils.datatype.StringUtils;
+import com.kone.cplan.utils.dto.OperationResults;
 import com.kone.cplan.utils.i18n.Strings;
 
 /**

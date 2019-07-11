@@ -1,4 +1,4 @@
-package com.kone.cplan.helpers.datatype;
+package com.kone.cplan.utils.datatype;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;

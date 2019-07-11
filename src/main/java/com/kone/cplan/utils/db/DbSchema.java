@@ -1,4 +1,4 @@
-package com.kone.cplan.helpers.db;
+package com.kone.cplan.utils.db;
 
 public class DbSchema {
 

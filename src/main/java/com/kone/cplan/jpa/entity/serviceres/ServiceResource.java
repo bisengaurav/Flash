@@ -1,8 +1,9 @@
 package com.kone.cplan.jpa.entity.serviceres;
 
-import com.kone.cplan.helpers.db.DbSchema;
-
 import javax.persistence.*;
+
+import com.kone.cplan.utils.db.DbSchema;
+
 import java.io.Serializable;
 
 /**

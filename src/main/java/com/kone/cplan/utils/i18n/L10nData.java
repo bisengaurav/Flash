@@ -1,7 +1,8 @@
 package com.kone.cplan.utils.i18n;
 
 import java.util.Locale;
-import com.kone.cplan.helpers.datatype.StringUtils;
+
+import com.kone.cplan.utils.datatype.StringUtils;
 
 /**
  * This class encapsulates information for localization.

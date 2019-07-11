@@ -1,10 +1,11 @@
 package com.kone.cplan.jpa.repository;
 
-import com.kone.cplan.helpers.db.DbSchema;
 import com.kone.cplan.jpa.entity.asset.Asset;
 import com.kone.cplan.jpa.entity.asset.EquipmentType;
 import com.kone.cplan.jpa.repository.custom.Asset_RepoExt;
 import com.kone.cplan.jpa.repository.custom.IRepoForSalesOrg;
+import com.kone.cplan.utils.db.DbSchema;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

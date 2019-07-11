@@ -2,7 +2,7 @@ package com.kone.cplan.utils.datatype.collection;
 
 import java.util.Set;
 
-import com.kone.cplan.helpers.datatype.StringUtils;
+import com.kone.cplan.utils.datatype.StringUtils;
 
 /**
  * This class provides utilities for sets.

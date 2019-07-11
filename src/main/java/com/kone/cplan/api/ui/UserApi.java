@@ -1,8 +1,8 @@
 package com.kone.cplan.api.ui;
 
-import com.kone.cplan.helpers.dto.OperationResults;
 import com.kone.cplan.jpa.entity.User;
 import com.kone.cplan.jpa.repository.UserRepository;
+import com.kone.cplan.utils.dto.OperationResults;
 import com.kone.cplan.utils.security.SecurityUtils;
 import com.kone.cplan.utils.session.AppSessionContext;
 import org.springframework.beans.factory.annotation.Autowired;

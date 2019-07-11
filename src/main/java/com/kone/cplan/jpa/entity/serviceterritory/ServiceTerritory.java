@@ -1,7 +1,8 @@
 package com.kone.cplan.jpa.entity.serviceterritory;
 
-import com.kone.cplan.helpers.db.DbSchema;
 import com.kone.cplan.jpa.utils.IEntityWithSalesOrg;
+import com.kone.cplan.utils.db.DbSchema;
+
 import org.hibernate.annotations.Where;
 import org.hibernate.annotations.OrderBy;
 
