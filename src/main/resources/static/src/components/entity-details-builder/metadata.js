@@ -236,7 +236,7 @@ export const ServiceAppointment = {
             type: 'datetime'
         },
         {
-            field: 'scheduledStartOriginal__c',
+            field: 'schedStartTime',
             type: 'datetime'
         },
         {
@@ -385,11 +385,11 @@ export const ServiceResource = {
                     type: 'text'
                 },
                 {
-                    field: 'scheduledStartOriginal__c',
+                    field: 'schedStartTime',
                     type: 'datetime'
                 },
                 {
-                    field: 'scheduledEndOriginal__c',
+                    field: 'schedEndTime',
                     type: 'datetime'
                 },
                 {
@@ -608,11 +608,11 @@ export const WorkOrder = {
                     id: 'serviceResourceId'
                 },
                 {
-                    field: 'scheduledStartOriginal__c',
+                    field: 'schedStartTime',
                     type: 'datetime'
                 },
                 {
-                    field: 'scheduledEndOriginal__c',
+                    field: 'schedEndTime',
                     type: 'datetime'
                 }
             ]

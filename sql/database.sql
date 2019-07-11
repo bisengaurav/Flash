@@ -88,15 +88,15 @@ CREATE OR REPLACE VIEW c_plan.view_resourceabsence AS
   SELECT * FROM salesforce.resourceabsence;
 
 CREATE OR REPLACE VIEW c_plan.view_serviceappointment AS
-  SELECT sa.id, sa.sfid, sa.appointmentnumber, sa.work_order__c, sa.status, sa.scheduled_start_original__c,
-  sa.scheduled_end_original__c, sr.id AS "serviceresource_id", sr.name AS "serviceresource_name", u.sales_organization__c
+  SELECT sa.id, sa.sfid, sa.appointmentnumber, sa.work_order__c, sa.status, sa.schedstarttime,
+  sa.schedendtime, sr.id AS "serviceresource_id", sr.name AS "serviceresource_name", u.sales_organization__c
   FROM salesforce.serviceappointment sa
   LEFT JOIN salesforce.serviceresource sr ON sa.assigned_service_resource__c = sr.sfid
   LEFT JOIN salesforce.user u ON sa.ownerid = u.sfid;
 
 CREATE OR REPLACE VIEW c_plan.view_serviceappointment_details AS
-  SELECT sa.id, sa.sfid, sa.appointmentnumber, sa.status, sa.lastmodifieddate, sa.scheduled_start_original__c,
-  sa.scheduled_end_original__c, sa.fsl__pinned__c, sa.blocked_reason__c, acc.id AS "account_id", acc.name AS "account_name",
+  SELECT sa.id, sa.sfid, sa.appointmentnumber, sa.status, sa.lastmodifieddate, sa.schedstarttime,
+  sa.schedendtime, sa.fsl__pinned__c, sa.blocked_reason__c, acc.id AS "account_id", acc.name AS "account_name",
   sr.id AS "serviceresource_id", sr.name AS "serviceresource_name", wo.id AS "workorder_id", wo.workordernumber AS "workorder_number",
   ass.id AS "asset_id", ass.name AS "asset_name", st.id AS "serviceterritory_id", st.name AS "serviceterritory_name",
   u.sales_organization__c
@@ -109,7 +109,7 @@ CREATE OR REPLACE VIEW c_plan.view_serviceappointment_details AS
   LEFT JOIN salesforce.user u ON sa.ownerid = u.sfid;
 
 CREATE OR REPLACE VIEW c_plan.view_serviceappointment_of_resource AS
-  SELECT sa.id, sa.sfid, sa.appointmentnumber, sa.status, sa.scheduled_start_original__c, sa.scheduled_end_original__c,
+  SELECT sa.id, sa.sfid, sa.appointmentnumber, sa.status, sa.schedstarttime, sa.schedendtime,
   sa.fsl__pinned__c, sa.assigned_service_resource__c, wo.id AS "workorder_id", wo.workordernumber AS "workorder_number",
   wo.earliest_start_date__c, wo.due_date__c, wo.maintenance_activity_type__c, wo.assembly__c, wo.description__c,
   loc.name AS "location_name", ass.installation_street__c, ass.installation_city__c

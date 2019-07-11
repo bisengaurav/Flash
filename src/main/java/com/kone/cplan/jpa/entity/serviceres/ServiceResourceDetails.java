@@ -69,8 +69,8 @@ public class ServiceResourceDetails extends AbstractServiceResource implements S
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "assigned_service_resource__c", referencedColumnName = "sfid")
-	@Filter(name = "serviceResourceDetailsFilter", condition = "scheduled_start_original__c >= :todayParam")
-	@OrderBy(clause = "scheduled_start_original__c")
+	@Filter(name = "serviceResourceDetailsFilter", condition = "schedstarttime >= :todayParam")
+	@OrderBy(clause = "schedstarttime")
 	private Set<ServiceAppointmentOfResource> serviceAppointmentsOfResource;
 	//
 

@@ -46,11 +46,11 @@ public class ServiceAppointmentOfResource implements Serializable {
 	@Column
 	private String status;
 
-	@Column
-	private Timestamp scheduledStartOriginal__c;
+	@Column(name = "schedstarttime")
+	private Timestamp schedStartTime;
 
-	@Column
-	private Timestamp scheduledEndOriginal__c;
+	@Column(name = "schedendtime")
+	private Timestamp schedEndTime;
 
 	@Column(name = "fsl__pinned__c")
 	private Boolean fslPinned__c;
@@ -105,12 +105,12 @@ public class ServiceAppointmentOfResource implements Serializable {
 		return status;
 	}
 
-	public Timestamp getScheduledStartOriginal__c() {
-		return scheduledStartOriginal__c;
+	public Timestamp getSchedStartTime() {
+		return schedStartTime;
 	}
 
-	public Timestamp getScheduledEndOriginal__c() {
-		return scheduledEndOriginal__c;
+	public Timestamp getSchedEndTime() {
+		return schedEndTime;
 	}
 
 	public Boolean getFslPinned__c() {
