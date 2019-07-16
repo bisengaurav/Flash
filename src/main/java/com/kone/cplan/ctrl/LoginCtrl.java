@@ -115,7 +115,7 @@ public class LoginCtrl {
 	//
 	//Public methods
 	//
-	@GetMapping("/login")
+	@GetMapping(AppUrl.PAGE_LOGIN)
 	public String processLogin(HttpServletRequest request, Model model) {
 		
 		//STEP #1: if a user logged in already, then we redirect him to the home page
