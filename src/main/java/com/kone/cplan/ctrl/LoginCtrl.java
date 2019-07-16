@@ -108,19 +108,19 @@ public class LoginCtrl {
 		//STEP #2: save the OAuth providers in the model
 		this.prepareOAuthProviders(model);
 		
-		return AppUrl.VIEW_LOGIN;
+		return AppUrl.PAGE_LOGIN;
 	}
 	//
 
 	//
 	//Public methods
 	//
-	@GetMapping(AppUrl.PAGE_LOGIN)
+	@GetMapping(AppUrl.URL_LOGIN)
 	public String processLogin(HttpServletRequest request, Model model) {
 		
 		//STEP #1: if a user logged in already, then we redirect him to the home page
 		if (isAuthenticated()) {
-			return ("redirect:" + AppUrl.PAGE_HOME);
+			return ("redirect:" + AppUrl.URL_HOME);
 		}
 		
 		//STEP #2: decide whether we should open the custom login page and show some information there
@@ -134,7 +134,7 @@ public class LoginCtrl {
 		}
 		
 		//STEP #3: start automatic login via MS Azure SSO
-		return ("redirect:" + AppUrl.PAGE_START_OAUTH_AZURE);
+		return ("redirect:" + AppUrl.URL_START_OAUTH_AZURE);
 	}
 	//
 }

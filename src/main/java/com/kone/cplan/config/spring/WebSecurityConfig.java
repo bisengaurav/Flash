@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.kone.cplan.config.AppUrl;
 import com.kone.cplan.utils.security.oauth.MsAzureUtils;
 
 @Configuration
@@ -49,10 +50,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
 		//- configure login
 		http.oauth2Login().userInfoEndpoint().oidcUserService(oidcUserService)
-			.and().loginPage("/login");
+			.and().loginPage(AppUrl.URL_LOGIN);
 
 		//- configure logout
-		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher(AppUrl.URL_LOGOUT));
 
 		//http.csrf().disable();
 	}

@@ -10,9 +10,10 @@ public class AppUrl {
 
 	public static final String URL_START_OAUTH = "/oauth2/authorization";
 	
-	public static final String PAGE_HOME = "/";
-	public static final String PAGE_LOGIN = "/login";
-	public static final String PAGE_START_OAUTH_AZURE = URL_START_OAUTH + "/azure";
+	public static final String URL_HOME = "/";
+	public static final String URL_LOGIN = "/login";
+	public static final String URL_LOGOUT = "/logout";
+	public static final String URL_START_OAUTH_AZURE = URL_START_OAUTH + "/azure";
 	
-	public static final String VIEW_LOGIN = "login";
+	public static final String PAGE_LOGIN = "login";
 }
