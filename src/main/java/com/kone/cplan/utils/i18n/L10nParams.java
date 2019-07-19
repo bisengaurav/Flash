@@ -62,17 +62,17 @@ public class L10nParams {
 		this.languageCode = user.getLanguageLocaleKey();
 		
 		//- extract and set country code
-		if (user.getLocaleSidkey().length() == 2) {
+		if (user.getLocaleSidKey().length() == 2) {
 			//examples: "ru", "fr"
-			this.countryCode = user.getLocaleSidkey();
+			this.countryCode = user.getLocaleSidKey();
 		}
-		else if (user.getLocaleSidkey().length() > 2 && user.getLocaleSidkey().contains("_")) {
+		else if (user.getLocaleSidKey().length() > 2 && user.getLocaleSidKey().contains("_")) {
 			//examples: "en_US", "fr_FR_EURO"
-			this.countryCode = user.getLocaleSidkey().split("_")[1];
+			this.countryCode = user.getLocaleSidKey().split("_")[1];
 		}
 		else {
 			//all other unknown cases
-			this.countryCode = user.getLocaleSidkey();
+			this.countryCode = user.getLocaleSidKey();
 		}
 		
 		//- set time zone key

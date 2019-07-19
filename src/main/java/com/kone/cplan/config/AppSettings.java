@@ -43,8 +43,7 @@ public class AppSettings {
 	//
 	private static Environment environment;
 	
-	public static void initialize(Environment environment)
-	{
+	public static void initialize(Environment environment) {
 		AppSettings.environment = environment;
 	}
 	//
@@ -56,8 +55,7 @@ public class AppSettings {
 	//
 	//Private static methods
 	//
-	private static String getPropertyValue(String key)
-	{
+	private static String getPropertyValue(String key) {
 		return environment.getProperty(key);
 	}
 	//
@@ -65,11 +63,10 @@ public class AppSettings {
 	//
 	//Public static methods
 	//
-	public static String getMessagesBaseName()
-	{
+	public static String getMessagesBaseName() {
 		return getPropertyValue("spring.messages.basename");
 	}
-	
+
 	public static String getUiApiPath() {
 		return getPropertyValue("cplan.url.ui-api-path");
 	}

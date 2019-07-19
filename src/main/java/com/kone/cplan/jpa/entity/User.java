@@ -59,7 +59,7 @@ public class User implements Serializable {
 	 * official dialects)
 	 * - "en_US" (it means US dialect of English language).
 	 * 
-	 * So we can consider that the 2nd part is a dialect, but is not a country code
+	 * So we can consider that the 2nd part is a dialect, but is not a country code.
 	 */
 	@Column(name = "languagelocalekey")
 	private String languageLocaleKey;
@@ -70,7 +70,7 @@ public class User implements Serializable {
 	 * found in SF DB: ru, ru_RU, en_US (but not "en"), fr_FR_EURO.
 	 */
 	@Column(name = "localesidkey")
-	private String localeSidkey;
+	private String localeSidKey;
 	
 	/**
 	 * This SF field stores time zone Ids. For example, Europe/Moscow, America/New_York, GMT, but
@@ -127,10 +127,10 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * See {@link User#localeSidkey}
+	 * See {@link User#localeSidKey}
 	 */
-	public String getLocaleSidkey() {
-		return localeSidkey;
+	public String getLocaleSidKey() {
+		return localeSidKey;
 	}
 
 	/**
