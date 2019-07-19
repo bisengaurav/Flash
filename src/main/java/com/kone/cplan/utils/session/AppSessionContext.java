@@ -58,7 +58,7 @@ public class AppSessionContext
 	//
 	private void initialize(User sfUser) {
 		
-		//- initialize an set new session info
+		//- initialize and set new session info
 		this.sessionInfo = new AppSessionInfo(sfUser);
 		
 		//- change current locale for the session
