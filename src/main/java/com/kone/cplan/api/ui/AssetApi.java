@@ -123,10 +123,10 @@ public class AssetApi {
 	}
 	
 	@GetMapping(value = "getUniqueCountries_SlowFake")
-	public OperationResults getUniqueCountries_SlowFake(HttpServletResponse response)
-		throws InterruptedException, IOException
+	public OperationResults getUniqueCountries_SlowFake(@RequestParam int seconds,
+		HttpServletResponse response) throws InterruptedException, IOException
 	{
-		Thread.sleep(35000);
+		Thread.sleep(seconds * 1000);
 		response.sendError(HttpStatus.SERVICE_UNAVAILABLE.value());
 		return OperationResults.newSuccess(new SelectOption[0]);
 		
