@@ -1,7 +1,6 @@
 package com.kone.cplan.api.ui;
 
 import com.kone.cplan.api.DataUtilsForApi;
-import com.kone.cplan.jpa.entity.*;
 import com.kone.cplan.jpa.entity.asset.Asset;
 import com.kone.cplan.jpa.entity.asset.EquipmentType;
 import com.kone.cplan.jpa.filter.AssetFilter;

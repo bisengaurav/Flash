@@ -7,7 +7,6 @@ import com.kone.cplan.utils.session.AppSessionInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -38,11 +37,11 @@ public class SessionApi {
 		return OperationResults.newSuccess(sessionContext.getSessionInfo());
 	}
 	
-	//TODO: this is a test method that allows to change session context
-	@GetMapping(value = "fake_ChangeSfUser")
+	//This is a test method that allows to change session context
+	/*@GetMapping(value = "fake_ChangeSfUser")
 	public OperationResults fake_ChangeSfUser(@RequestParam String userSfId) {
 		sessionContext.changeUser(userSfId);
 		return OperationResults.newSuccess(sessionContext.getSessionInfo());
-	}
+	}*/
 	//
 }

@@ -1,7 +1,5 @@
 package com.kone.cplan.utils.i18n;
 
-import java.util.Locale;
-
 import com.kone.cplan.utils.datatype.StringUtils;
 
 /**
@@ -26,9 +24,9 @@ public class L10nData {
 	//examples: RU, US
 	private String countryCode;
 	
-	private String dateTimePattern;
+	/*private String dateTimePattern;
 	private String datePattern;
-	private String timePattern;
+	private String timePattern;*/
 	
 	private LanguageData languageData;
 	//
@@ -38,16 +36,6 @@ public class L10nData {
 	//
 	public String getCountryCode() {
 		return countryCode;
-	}
-	
-	public String getDateTimePattern() {
-		return dateTimePattern;
-	}
-	public String getDatePattern() {
-		return datePattern;
-	}
-	public String getTimePattern() {
-		return timePattern;
 	}
 	
 	public LanguageData getLanguageData() {
@@ -65,14 +53,17 @@ public class L10nData {
 		
 		//- initialize a new L10nData and Locale
 		L10nData l10nData = new L10nData(countryCode);
-		Locale locale = new Locale(languageCode, countryCode);
 		
 		//- set patterns
-		//TODO: Talk to Alex and decide whether we need this.
+		//As of now, Alex does not use these patterns
+		/*
+		Locale locale = new Locale(languageCode, countryCode);
+		
 		Formatters formatters = new Formatters(locale);
 		l10nData.dateTimePattern = formatters.forDateTime().toPattern();
 		l10nData.datePattern = formatters.forDate().toPattern();
 		l10nData.timePattern = formatters.forTime().toPattern();
+		*/
 		
 		//- initialize and set language data
 		l10nData.languageData = LanguageData.buildNew(languageCode);
