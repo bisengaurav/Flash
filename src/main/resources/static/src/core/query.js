@@ -6,6 +6,7 @@ import LocalStorage from './local-storage';
 import i18n from './i18n';
 
 
+
 /**
  * Wrapper for native fetch() method
  *
@@ -18,7 +19,7 @@ import i18n from './i18n';
  * @param cacheType [false | 'session' | {ageCount, ageUnit}] default false - set caching for specific url. Required method GET
  * @return Promise
  */
-function Query(url, data, method = 'GET', loading = false, cacheType = false) {
+function Query(url, data, method = 'GET', loading = false, cacheType = false, printErrorMessages = true) {
     //
     // process Headers
     //
@@ -94,15 +95,15 @@ function Query(url, data, method = 'GET', loading = false, cacheType = false) {
                 return response.json();
 
             } else {
-                console.log(response);
-                throw new Error(
-                    i18n.tdef('message', 'label.http.response-status') +': '+response.status
-
-                    +(response.statusText &&
-                        ', '+i18n.tdef('response', 'label.http.response-message') +': '+response.statusText
-                    )
-                );
-
+                // create error wrapper
+                throw {
+                    context: response,
+                    data: null,
+                    messages: [
+                        i18n.tdef('message', 'label.http.response-status') +response.status
+                        +(response.statusText && ', '+i18n.tdef('response', 'label.http.response-message') +': ' +response.statusText)
+                    ]
+                };
             }
         })
         //
@@ -124,24 +125,29 @@ function Query(url, data, method = 'GET', loading = false, cacheType = false) {
                 return json.returnedObject;
 
             } else {
-                console.log(json);
-                throw new Error(
-                    json.messages.length > 0 ? json.messages.join(', ') : i18n.tdef('API query error', 'message.api.undefined-error')
-                );
+                // create error wrapper
+                throw {
+                    context: json,
+                    data: json.returnedObject,
+                    messages: (json.messages.length > 0 ? json.messages : [i18n.tdef('API query error', 'message.api.undefined-error')])
+
+                };
             }
         })
         //
         // process any errors from response and 2 "then" above
         //
         .catch(error => {
-            let message = `
-                <h2 class="slds-text-heading_small">`+i18n.tdef('ERROR', 'label.common.error-title')+`</h2>
-                <p>${error.message}</p>
-            `;
-            EM.$emit(PUSH, {
-                type: 'error',
-                message
-            });
+            if (printErrorMessages) {
+                console.error(error);
+
+                error.messages.forEach((m) => {
+                    EM.$emit(PUSH, {
+                        type: 'error',
+                        message: `<h2 class="slds-text-heading_small">`+i18n.tdef('ERROR', 'label.common.error-title')+`</h2><p>${m}</p>`
+                    });
+                });
+            }
 
             throw error;
         });

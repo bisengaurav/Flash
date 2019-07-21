@@ -12,7 +12,7 @@ let API = {
             return Query('/ui-api/asset/getById', {id});
         },
         getUniqueCountries: () => {
-            return Query('/ui-api/asset/getUniqueCountries', null, 'GET', false, 'session');
+            return Query('/ui-api/asset/getUniqueCountries', null, 'GET', false, 'session', false);
         },
         getEquipmentTypes: () => {
             return Query('/ui-api/asset/getUniqueEquipmentTypes', null, 'GET', false, 'session');
