@@ -12,16 +12,12 @@ import com.kone.cplan.utils.session.AppSessionInfo;
 import com.kone.cplan.utils.spring.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.util.*;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * This class provides endpoints for UI API that work with Assets.
@@ -120,16 +116,6 @@ public class AssetApi {
 			: assetRepo.getUniqueCountriesBySalesOrg(userInfo.getSalesOrg()));
 		
 		return OperationResults.newSuccess(SelectOption.generateList(statuses.toArray()));
-	}
-	
-	@GetMapping(value = "getUniqueCountries_SlowFake")
-	public OperationResults getUniqueCountries_SlowFake(@RequestParam int seconds,
-		HttpServletResponse response) throws InterruptedException, IOException
-	{
-		Thread.sleep(seconds * 1000);
-		response.sendError(HttpStatus.SERVICE_UNAVAILABLE.value());
-		return OperationResults.newSuccess(new SelectOption[0]);
-		
 	}
 	//
 
