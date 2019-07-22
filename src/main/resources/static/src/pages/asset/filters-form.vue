@@ -86,15 +86,15 @@
                     for="country"
                     :validator="$v.innerValue.installationCountry__c"
                 >
-                    <div class="slds-select_container">
-                        <select-loader
+                    <div :class="{'slds-select_container': !countriesLoadingFailed}">
+                        <select-loader-attempts
                             :source="$API.asset.getUniqueCountries"
                             valueParam="value"
                             :allowEmpty="true"
                             v-model="innerValue.installationCountry__c"
                             @blur.native="$v.innerValue.installationCountry__c.$touch()"
                             id="country"
-                            class="slds-select"
+                            @LOADING_FAILED="countriesLoadingFailed = true"
                         />
                     </div>
                 </form-element>
@@ -171,16 +171,19 @@
     import FiltersInterface from '../../interfaces/filters.js';
     import {required} from 'vuelidate/lib/validators';
     import SelectBoolean from '../../components/select-boolean.vue';
+    import SelectLoaderAttempts from '../../components/select-loader-attempts.vue';
 
     export default {
         extends: FiltersInterface,
 
         components: {
-            SelectBoolean
+            SelectBoolean,
+            SelectLoaderAttempts
         },
 
         data() {
             return {
+                countriesLoadingFailed: false,
                 metadata: {
                     installationCountry__c:  null,
                     equipmentType__c: null,
