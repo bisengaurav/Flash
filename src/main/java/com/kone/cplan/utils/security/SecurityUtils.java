@@ -34,7 +34,7 @@ public class SecurityUtils {
 	//FSM: Field Service Management
 	private static final String ROLE_ID_FIELD_SERVICE_MGMT = "00Ew0000001zukGEAQ";
 	
-	
+	//Ids of SF profiles that are allowed in the app
 	private static final Set<String> ALLOWED_PROFILES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 	static {
 		ALLOWED_PROFILES_IDs.add(PROFILE_ID_KC3_AGENT);
@@ -42,11 +42,13 @@ public class SecurityUtils {
 		ALLOWED_PROFILES_IDs.add(PROFILE_ID_FIELD_SERVICE_ADMIN);
 	}
 	
+	//Ids of SF profiles that are considered as Administrator profiles
 	private static final Set<String> ADMIN_PROFILES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 	static {
 		ADMIN_PROFILES_IDs.add(PROFILE_ID_FIELD_SERVICE_ADMIN);
 	}
 	
+	//Ids of SF roles that are considered as Administrator roles
 	private static final Set<String> ADMIN_ROLES_IDs = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 	static {
 		ADMIN_ROLES_IDs.add(ROLE_ID_CENTRAL_MGMT);

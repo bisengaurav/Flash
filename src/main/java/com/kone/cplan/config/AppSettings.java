@@ -21,7 +21,7 @@ public class AppSettings {
 	
 	public static final String DATABASE_URL;
 	static {
-		String dbUrlFromSystemVar = System.getenv("ADB_DATABASE_URL");
+		String dbUrlFromSystemVar = System.getenv("CPLAN_DATABASE_URL");
 		DATABASE_URL = (dbUrlFromSystemVar != null ? dbUrlFromSystemVar : DEFAULT_DB_URL);
 	}
 
