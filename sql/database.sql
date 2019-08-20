@@ -1,3 +1,5 @@
+CREATE SCHEMA IF NOT EXISTS c_plan;
+
 CREATE TABLE c_plan.equipment_type__c (api_name varchar(255) PRIMARY KEY, value varchar(255));
 -- Insert data in 'equipment_type__c' table actual for 21.06.2019
 INSERT INTO c_plan.equipment_type__c (value, api_name) VALUES
@@ -15,8 +17,6 @@ INSERT INTO c_plan.equipment_type__c (value, api_name) VALUES
 ('PFI', '008'),
 ('Stairlift', '006'),
 ('Test', 'Test');
-
-CREATE SCHEMA IF NOT EXISTS c_plan;
 
 -- Views creation
 CREATE OR REPLACE VIEW c_plan.view_asset AS
