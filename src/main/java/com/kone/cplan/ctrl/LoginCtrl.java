@@ -110,6 +110,20 @@ public class LoginCtrl {
 		
 		return AppUrl.PAGE_LOGIN;
 	}
+	
+	private static String startLoginFlow(HttpServletRequest request) {
+
+		//- if the connection is not secure (HTTP vs HTTPS), then we redirect a user to the same
+		//Login page using HTTPS. This is not needed for testing in local environment.
+		final String currentUrl = request.getRequestURL().toString();
+		if (!request.isSecure() && !currentUrl.startsWith("http://localhost")) {
+			String newUrl = currentUrl.replaceFirst("^http://", "https://");
+			return ("redirect:" + newUrl);
+		}
+
+		//- start automatic login via MS Azure SSO
+		return ("redirect:" + AppUrl.URL_START_OAUTH_AZURE);
+	}
 	//
 
 	//
@@ -133,8 +147,8 @@ public class LoginCtrl {
 			return prepareLoginPage(model, extractError(request, model));
 		}
 		
-		//STEP #3: start automatic login via MS Azure SSO
-		return ("redirect:" + AppUrl.URL_START_OAUTH_AZURE);
+		//STEP #3: start login flow
+		return startLoginFlow(request);
 	}
 	//
 }
