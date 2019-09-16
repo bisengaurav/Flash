@@ -1,7 +1,7 @@
 package com.kone.cplan.utils.i18n;
 
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
+import com.kone.cplan.utils.spring.AppContextHolder;
 
 /**
  * This class provides static utilities to work with localized messages. But it must be parameterized
@@ -26,7 +26,7 @@ public class Strings {
 	//Public static utility methods
 	//
 	public static String get(String code) {
-		return messageSource.getMessage(code, null, LocaleContextHolder.getLocale());
+		return messageSource.getMessage(code, null, AppContextHolder.currentLocale());
 	}
 	
 	public static String getAndFormat(String code, Object... params) {
